@@ -4,52 +4,6 @@
 
 <xmp theme="spacelab" style="display:none;">
 
-<div class="navbar navbar-default">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">Brand</a>
-  </div>
-  <div class="navbar-collapse collapse navbar-responsive-collapse">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Active</a></li>
-      <li><a href="#">Link</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Dropdown header</li>
-          <li><a href="#">Separated link</a></li>
-          <li><a href="#">One more separated link</a></li>
-        </ul>
-      </li>
-    </ul>
-    <form class="navbar-form navbar-left">
-      <input type="text" class="form-control col-lg-8" placeholder="Search">
-    </form>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Link</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-
-
 ###Links:
 * [GitHub Home](http://github.com/mikeder)
 * [SqweebNet](http://sqweeb.net)
@@ -61,22 +15,8 @@ Thinking through updates and what not, testing TTL.
 ###12/14/14 - Initialized
 
 ###12/13/14 - Realized
-
-###This is a long block of text:
-The web server side code proved to be a little more tricky. I have minimal
-programming knowledge to being with so taking on three languages(C/C++,PHP and
-Javascript) with the same project was good practice. The web page that the
-Arduino calls is add.php, and all this page does is take the 2 interger values
-from the POST and plugs them into a MySQL database called dht. That part was
-pretty straight forward, but it doesn't actually account for calling that page
-from a browser without passing in the 2 integers. This causes a blank entry or
-2 0's to get logged in the database which throws of the graphs. For graphing
-the data I used the Google Charts API, which is fed from the dht database via
-JSON output. This part was kind of tricky for me as I had never used JSON
-formatting before. I came up with getLast24.php which connnects to the
-database, asks for the past 24 hours worth of data and then formats that data
-into a JSON object.
-
+- [x] Discovered GitHub Pages - github.io
+- [x] Watched all new videos from Mike Levin
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
