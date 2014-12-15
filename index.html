@@ -15,6 +15,20 @@ Thinking through updates and what not, testing TTL.
 
 ###12/13/14 - Realized
 
+###This is a long block of text:
+The web server side code proved to be a little more tricky. I have minimal
+programming knowledge to being with so taking on three languages(C/C++,PHP and
+Javascript) with the same project was good practice. The web page that the
+Arduino calls is add.php, and all this page does is take the 2 interger values
+from the POST and plugs them into a MySQL database called dht. That part was
+pretty straight forward, but it doesn't actually account for calling that page
+from a browser without passing in the 2 integers. This causes a blank entry or
+2 0's to get logged in the database which throws of the graphs. For graphing
+the data I used the Google Charts API, which is fed from the dht database via
+JSON output. This part was kind of tricky for me as I had never used JSON
+formatting before. I came up with getLast24.php which connnects to the
+database, asks for the past 24 hours worth of data and then formats that data
+into a JSON object.
 
 </xmp>
 
