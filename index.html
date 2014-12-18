@@ -22,7 +22,6 @@ Start of Log:
 After struggling to get the the Arch installation of CherryMusic updated to the latest version I decided it would be easier to migrate back to Ubuntu. At least under Ubuntu/Debian I can run the server as a service like I'm used to doing.
 Updating from now on should only require a git pull within the cherrymusic dir.
 My steps taken for migration back to Ubuntu were as follows:
-Roughly following this blog post: http://fomori.org/blog/?p=687
 
 - Create new VM on esxi-ts1 host via VMWare vSphere Client
 - Install Ubuntu Server 14.04.10 x86 on new VM
@@ -50,6 +49,7 @@ $ sudo mount -a
 ```
 
 - Install CherryMusic and dependencies
+Roughly following this blog post: http://fomori.org/blog/?p=687
 
 ```
 $ sudo apt-get install python3
