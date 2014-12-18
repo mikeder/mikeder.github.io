@@ -24,17 +24,17 @@ Updating from now on should only require a git pull within the cherrymusic dir.
 My steps taken for migration back to Ubuntu were as follows:
 Roughly following this blog post: http://fomori.org/blog/?p=687
 
-1. Create new VM on esxi-ts1 host via VMWare vSphere Client
-2. Install Ubuntu Server 14.04.10 x86 on new VM
-3. Install OpenSSH and Samba(needed for connecting to NAS via cifs)
-4. Edit /etc/fstab to mount music folder:
+- Create new VM on esxi-ts1 host via VMWare vSphere Client
+- Install Ubuntu Server 14.04.10 x86 on new VM
+- Install OpenSSH and Samba(needed for connecting to NAS via cifs)
+- Edit /etc/fstab to mount music folder:
 
 ```
 # Add this line to the bottom of the fstab file (//ts0 is my NAS)
 //ts0/Music /mnt/music cifs users,auto,credentials=/etc/.cifsauth 0 0
 ```
 
-5. Edit /etc/.cifsauth to include creds to connect to NAS
+- Edit /etc/.cifsauth to include creds to connect to NAS
 
 ```
 # Example /etc/.cifsauth
@@ -42,13 +42,14 @@ username=NASuser
 password=NASuserPassword123
 ```
 
-6. Make the /mnt/music folder and mount the NAS in it
+- Make the /mnt/music folder and mount the NAS in it
 
 ```
 $ sudo mkdir /mnt/music
 $ sudo mount -a
 ```
-7. Install CherryMusic and dependencies
+
+- Install CherryMusic and dependencies
 
 ```
 $ sudo apt-get install python3
@@ -60,11 +61,11 @@ $ git clone --branch devel git://github.com/devsnd/cherrymusic.git
 $ python3 cherrymusic --setup
 ```
 
-8. Connect to localhost:8080 to configure (cherryM:8080 in my case)
-9. Kill server with ^C so it can be run as a service
-10. Init script pulled from:
+- Connect to localhost:8080 to configure (cherryM:8080 in my case)
+- Kill server with ^C so it can be run as a service
+- Init script pulled from:
 --* https://github.com/Lord-Simon/Scripts/tree/master/cherrymusic
-11. Once script is install start the server back up as a service
+- Once script is install start the server back up as a service
 
 ```
 $ sudo service cherrymusic start
@@ -72,7 +73,7 @@ $ sudo service cherrymusic status
  * CherryMusic 'cherrymusic' is running (pid 5758).
 ```
 
-12. Update DHCP reservations and port forwarding to point to new server.
+- Update DHCP reservations and port forwarding to point to new server.
 
 --------------------------------------------------------------------------------
 ### Tue Dec 16 21:34:25 EST 2014
