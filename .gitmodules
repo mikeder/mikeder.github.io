@@ -1,0 +1,3 @@
+[submodule "strapdown"]
+	path = strapdown
+	url = git://github.com/mikeder/strapdown.git
