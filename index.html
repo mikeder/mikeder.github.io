@@ -87,6 +87,12 @@ safely clear the source folder and not end up with duplicates. Although since
 the copy portion of the script above only updates the target, if a file already
 exists on the NAS it won't get copied over again.
 
+```
+$ crontab -l
+
+* 6,12,18,0 * * *    /home/meder/jobs/rscrape.sh >> /home/meder/jobs/rscrape.log 2>&1
+```
+
 Next up is the sqweeb.net/dht update. I'd like to overhaul the site and perhaps
 use strapdown.js there too so its just as pretty as this page. Eventually I see
 myself replacing the WordPress install with a custom page using
