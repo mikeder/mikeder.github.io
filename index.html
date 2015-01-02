@@ -13,22 +13,38 @@
 
 ###Todo:
 - [ ] Replace bad DIMM in TS2 (Bank 2 DIMM A)
-- [ ] Setup Minecraft VM on TS1
 - [ ] Write UPS -> RPi -> IPMI tool
 - [ ] Update sqweeb.net/dht
 - [ ] Write CherryMusic DB connector/parser script
 - [ ] Rewrite player creation script in Python
 - [ ] Set up NOC-tools VM (pinger, account-creation, etc.)
-- [x] Expand tools VM root filesystem
-- [x] Finish bash script for tools/rsdc (verbose and cronjob)
-- [x] Create less priveledged user for cherryM
 
 --------------------------------------------------------------------------------
 ### Start of Log:
 --------------------------------------------------------------------------------
+### Fri Jan  2 05:15:44 EST 2015
+
+#### Minecraft VM Setup
+- [x] Setup Minecraft VM on TS1
+
+Just finished getting the Minecraft server setup in another Ubuntu 14.10 VM. It
+took a bit of tinkering to get MSM, the Minecraft server management utility,
+working. MSM hasn't been update in a couple years now so it doesn't know how to
+install Minecraft server past version 1.5.2. This is a problem because the
+current version of Minecraft is 1.8.1 and the default MSM installation will get
+a 1.5.2 server up and running but thats not very useful. I found a blog post
+outlining how to set up a Minecraft server on Amazon AWS and he included
+details on how to patch MSM to get it working with new versions of Minecraft.
+MSM documentation - http://msmhq.com/docs/commands/server.html
+Blog w/ patch -
+http://www.aaronbell.com/how-to-run-minecraft-server-manager-on-amazon-linux/
+
+Just wanted to document these for later use if needed.
+--------------------------------------------------------------------------------
 ### Fri Jan  2 02:35:39 EST 2015
 
 #### Expanding root filesystem on Ubuntu 14.10 running on ESXi 5.5
+- [x] Expand tools VM root filesystem
 
 I knew this day would come, since the music scraper script is running full time
 now the disk on my tools VM filled up pretty quickly. When I initially created
@@ -143,7 +159,9 @@ seem should be part of any music player in some way shape or form.
 ### Sun Dec 28 05:08:53 EST 2014
 
 #### RSDC + rscrape.sh
+- [x] Finish bash script for tools/rsdc (verbose and cronjob)
 I am very pleased with how well the music-scraper script is working now. In my
+
 first run it brought down 1.3GB worth of music. I have written a bash script 
 that is run every 6hrs via cron job and now the process is fully automated. The
 bash script is quite simple, there is a list of subreddits to scrape and a for
@@ -302,6 +320,7 @@ working as I intend. Nice.
 ### Mon Dec 22 13:59:44 EST 2014
 
 #### Fixing a possible security hole in CherryM and Updates
+- [x] Create less priveledged user for cherryM
 
    I realized that running a music server that is open to the outside world with a user that has sudo access and write access on my NAS was probably not the 
 best idea. Unfortunately I tried to implement my changes while sleep deprived,
