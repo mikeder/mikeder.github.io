@@ -31,11 +31,10 @@ that runs every 12hrs to include a line that finds all source files older than
 getting downloaded and converted again but since the copy portion of the script
 only updates the destination location I shouldn't end up with duplicates.
 
-'''
+```
 # Command to remove files older than 14 days and delete them
 find /home/meder/Downloads/rsdc/in/* -mtime +14 -exec rm {} \;
-
-'''
+```
 
 I pull this command from a [howtogeek][1] page that that breaks down the parts
 of that command, although its pretty self explanatory.
