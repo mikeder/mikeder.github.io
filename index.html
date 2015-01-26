@@ -17,6 +17,8 @@
 [4]: http://sqweeb.net/dht
 [5]: https://cherrypy.readthedocs.org/en/latest/
 [6]: http://www.makotemplates.org/
+[7]: http://pygal.org/
+[8]: http://overviewer.org
 
 ###Todo:
 - [ ] Write UPS -> IPMI tool interface
@@ -59,7 +61,7 @@ the Arduino serve a basic XML page that it can update at regular intervals and
 then the data collection agent (RaspberryPi or Tools VM) can grab the values
 from that sensor page and store them in a SQLite database. From there I will
 process the data however necessary. I found a very nice looking python svg
-plotting library called [pygal](http://pygal.org/) which should serve my needs 
+plotting library called [pygal][7] which should serve my needs 
 very nicely. It has support for a wide variety of graphs and styles which 
 already fit the style I have in my head for the overall look of the new 
 'portal'.
@@ -73,10 +75,10 @@ UPS and IPMI status checking just because, really my server setup is not
 critical to know that status of 24/7. It certainly doesn't have a large user
 base or anything (me) but I like the idea of monitoring, its what I do.
 
-The Minecraft server map will most likely use [Overviewer](http://overviewer.org)
-to generate a map of the small server that my girlfriend and I play on. Pretty
-simple stuff to implement, my front end would likely only need to schedule when
-to run the overviewer.py script.
+The Minecraft server map will most likely use [Overviewer][8] to generate a map 
+of the small server that my girlfriend and I play on. Pretty simple stuff to 
+implement, my front end would likely only need to schedule when to run the 
+overviewer.py script.
 
 --------------------------------------------------------------------------------
 ### Sat Jan 24 09:44:56 EST 2015
