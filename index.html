@@ -29,6 +29,19 @@
 
 ### Start of Log:
 --------------------------------------------------------------------------------
+### Thu Feb 12 08:26:08 EST 2015
+
+#### PowerCLI Useful command
+
+Adding this to the list of useful commands for the sysadmin world
+
+```
+# IPAddress[0] = internal IP, IPAddress[2] = external IP
+Get-VM "xb1-*lobby*" | Select Name, @{N="IP Address";E={@($_.guest.IPAddress[2])}}
+```
+
+
+--------------------------------------------------------------------------------
 ### Thu Feb  5 08:41:03 EST 2015
 
 #### SqweebNet + Graphite + Grafana
