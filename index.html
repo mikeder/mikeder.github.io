@@ -22,9 +22,7 @@
 
 ###Todo:
 - [ ] Write UPS -> IPMI tool interface
-- [ ] Update sqweeb.net
 - [ ] Write CherryMusic DB connector/parser script
-- [ ] Rewrite player creation script in Python
 - [ ] Organize vinyl collection..
 
 ### Start of Log:
@@ -40,11 +38,12 @@ Adding this to the list of useful commands for the sysadmin world
 Get-VM "xb1-*lobby*" | Select Name, @{N="IP Address";E={@($_.guest.IPAddress[2])}}
 ```
 
-
 --------------------------------------------------------------------------------
 ### Thu Feb  5 08:41:03 EST 2015
 
 #### SqweebNet + Graphite + Grafana
+
+- [X] Update sqweeb.net
 
 I spent most of the day yesterday setting up a few new things on the sqweeb.net
 servers, specifically Graphite and Grafana. I started with a new Ubuntu VM,
