@@ -56,7 +56,7 @@ Two things were found out while making the storage-schema change above:
 1. Just chaging storage-schema.conf and restarting carbon-cache.py is not
 enough to get the changes in place. (further investigation required)
 
-* I suspected this may be a problem because the graphite docs did mention that
+I suspected this may be a problem because the graphite docs did mention that
 the whisper data files are preallocated, meaning that all the required data
 points for the retention values are all written out in 0's so the files
 don't explode later on as they are written to. This means that simply
@@ -69,7 +69,7 @@ will recreate the files in the correct size.
 2. When graphite-client attempts to send an update and the receiver (graphite)
 is not listening, graphite-client crashes. (will try:except this)
 
-* This is going to be part of the work to graphite-client additions that I do
+This is going to be part of the work to graphite-client additions that I do
 this weekend. I am still chewing through my options for getting metrics from
 the host machine, there are many different stats daemons available:
 (statsd, collectd, Diamond, etc.)
