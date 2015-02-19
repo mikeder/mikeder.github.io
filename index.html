@@ -49,6 +49,15 @@ retentions = 1s:1d,1m:7d,5m:30d
 This will allow me to see more overall trending views on Grafana while still
 keeping the tight 1 second resolution for checking out spikes.
 
+#### 08:50 update
+
+2 things were found out while making the storage-schema change above:
+
+1. Just chaging storage-schema.conf and restarting carbon-cache.py is not
+enough to get the changes in place. (further investigation required)
+2. When graphite-client attempts to send an update and the receiver (graphite)
+is not listening, graphite-client crashes. (will try:except this)
+
 --------------------------------------------------------------------------------
 ### Thu Feb 19 04:26:37 EST 2015
 
