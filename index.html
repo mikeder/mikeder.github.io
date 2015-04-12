@@ -32,6 +32,35 @@
 
 ### Start of Log:
 --------------------------------------------------------------------------------
+### Sun Apr 12 6:08PM EDT 2015
+
+#### Notes from proxmox ve configurations
+
+1. Do NOT hook up both NIC's to an unmanaged switch without first configuring
+2. Configure the host eth0 w/o an assigned IP
+3. Configure host vmbr0 with eth0 as a slave and DHCP can be used
+
+```
+# network interface settings
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet manual
+
+iface eth1 inet manual
+
+auto vmbr0
+iface vmbr0 inet dhcp
+	bridge_ports eth0
+	bridge_stp off
+	bridge_fd 0
+```
+
+
+
+
+--------------------------------------------------------------------------------
 ### Sat Mar 14 03:03:09 EDT 2015
 
 #### NOC Tools Development
@@ -947,11 +976,17 @@ My steps taken for migration back to Ubuntu were as follows:
 - Create new VM on esxi-ts1 host via VMWare vSphere Client
 - Install Ubuntu Server 14.10 32bit/x86 on new VM
 - Install OpenSSH and Samba(needed for connecting to NAS via cifs)
+- Install cifs-utils
+
+```
+$ sudo apt-get install cifs-utils
+```
+
 - Edit /etc/fstab to mount music folder:
 
 ```
 # Add this line to the bottom of the fstab file (//ts0 is my NAS)
-//ts0/Music /mnt/music cifs users,auto,credentials=/etc/.cifsauth 0 0
+//svault/Music /mnt/music cifs users,auto,credentials=/etc/.cifsauth 0 0
 ```
 
 - Edit /etc/.cifsauth to include creds to connect to NAS
@@ -980,7 +1015,7 @@ $ sudo adduser cherry
 $ su cherry
 $ git clone --branch devel git://github.com/devsnd/cherrymusic.git
 # Create symlink to music folder for cherry's basedir
-$ ln -s /mnt/music/\!SORTED/ /home/cherry/cherrymusic-devel/basedir
+$ ln -s /mnt/music/\!SORTED/ /home/cherry/cherrymusic/basedir
 # Start server with --setup tag and perfor initial configuration
 $ python3 cherrymusic --setup
 ```
