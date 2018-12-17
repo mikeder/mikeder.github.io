@@ -1,3 +1,6 @@
 [submodule "strapdown"]
 	path = strapdown
 	url = https://github.com/mikeder/strapdown.git
+[submodule "site/m.css"]
+	path = site/m.css
+	url = git://github.com/mosra/m.css
