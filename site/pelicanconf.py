@@ -51,4 +51,4 @@ M_SITE_LOGO_TEXT = 'Mike Eder'
 M_LINKS_NAVBAR2 = [('Blog', 'blog/', '[blog]', [
                         ('News', 'blog/news/', ''),
                         ('Archive', 'blog/archive/', '')]),
-                   ('Resume', 'resume/', 'resume', [])]
+                   ('Resume', 'pages/resume/', 'resume', [])]
