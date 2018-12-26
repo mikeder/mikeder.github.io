@@ -30,7 +30,7 @@ Tools Administrator / ServiceNow Developer, Zenimax Online Studios, Apr. 2016 - 
 - Slack integration and bot development.
 - Technical lead for migration from `ServiceNow <https://www.servicenow.com/>`_ to `ChangeGear <https://www.sunviewsoftware.com/products>`_ ticketing systems.
 
-System Administrator, Zenimax Online Studios, Aug. 2014 – Apr. 2016
+System Administrator, Zenimax Online Studios, Aug. 2014 - Apr. 2016
 -------------------------------------------------------------------
 
 Operations and Development support for various game studios within the Bethesda/Zenimax Media umbrella.
@@ -47,17 +47,14 @@ Operations Support:
 - Infrastructure maintenance and vendor support coordination
 - Apply updates to virtual hosts and patch server operating systems (ESXi 5.5, Centos 6.6, HP and Dell chassis firmware)
 - Hardware installation and configuration (racking new hardware, running cables, installing OS and configuring IP addresses for remote management interfaces)
-- Parts replacement where HP and Dell tech isn't necessary (power supplies, hard drives, etc.)
+- Parts replacement for Dell and HP hardware (power supplies, hard drives, etc.)
 - Server management (Configuration updates via Chef)
 - Monitoring health of various environments and infrastructure:
 - Shinken for host and service monitoring in our datacenters
 - Geckoboard for live HUD's (populations, queues, realm status)
 - Graphite/Grafana for historic metrics monitoring (populations, game load, database load, etc.)
 - Splunk for exploit investigations, error finding/log diving
-
-- First point of contact for alerts and service requests:
 - Alarm handling (hardware and service performance alerts)
-
 
 Tools Development:
 
@@ -68,28 +65,17 @@ Tools Development:
 Game Credits
 ============
 
-Programming/Engineering
------------------------
-
-- Dishonored: Death of the Outsider (2017)	 	`Bethesda.net Engineering Team`
-- The Evil Within 2 (2017)	 	`Bethesda.net Engineering Team`
-- Prey (2017)	 	`Bethesda.net Engineering Team`
-- The Elder Scrolls V: Skyrim - Special Edition (2016)	 	`Bethesda.net Engineering Team`
- 
-Technology
-----------
-
-- Prey: Mooncrash (2018)	 `Bethesda.net Engineering Team`
-- The Elder Scrolls: Legends - Heroes of Skyrim (2017)	 `Operations Systems Admins`
-- The Elder Scrolls Online: Morrowind (2017)	 `Bethesda.net Engineering Team`
-- Quake: Champions (Early Access Edition) (2017)	 `Operations Systems Admins`
-- Dishonored 2 (2016)	 `Tools Admin`
-- DOOM (2016)	 `Live Operations Systems Admins`
-- The Elder Scrolls V: Skyrim - Special Edition (2016)	 `Tools Admin`
- 
-Administration
---------------
-- Fallout 4 (2015)	 	`Operations Systems Admins`
+- Prey: Mooncrash (2018)    `Bethesda.net Engineering Team`
+- Dishonored: Death of the Outsider (2017)  `Bethesda.net Engineering Team`
+- The Evil Within 2 (2017)  `Bethesda.net Engineering Team`
+- Prey (2017)   `Bethesda.net Engineering Team`
+- The Elder Scrolls: Legends - Heroes of Skyrim (2017)  `Operations Systems Admins`
+- The Elder Scrolls Online: Morrowind (2017)    `Bethesda.net Engineering Team`
+- Quake: Champions (Early Access Edition) (2017)    `Operations Systems Admins`
+- Dishonored 2 (2016)   `Tools Admin`
+- DOOM (2016)   `Live Operations Systems Admins`
+- The Elder Scrolls V: Skyrim - Special Edition (2016)  `Tools Admin`
+- Fallout 4 (2015)  `Operations Systems Admins`
 
 `MobyGames <https://www.mobygames.com/developer/sheet/view/developerId,767199>`_
 
