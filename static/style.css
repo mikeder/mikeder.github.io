@@ -2,6 +2,11 @@
   margin: auto;
   width: 50%;
   text-align: center;
-  border: 3px solid green;
+  border: 3px solid Aqua;
   padding: 10px;
+}
+
+body {
+  background-color: LightSlateGray;
+  text-color: SkyBlue;
 }
