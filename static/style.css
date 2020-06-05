@@ -7,7 +7,62 @@ body {
   /* border: 3px solid Aqua; */
   padding: 10px;
   background-color: #121212;
+  /* background-image: linear-gradient(direction, darkgray, black); */
   color: whitesmoke;
+}
+
+audio{
+  border: black;
+}
+
+source {
+  border: black;
+  padding: 10px;
+}
+
+div.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+}
+
+div.content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  padding-top: 35px;
+  padding-bottom: 70px;
+  opacity: 1.0;
+}
+
+.content a {
+  color: plum;
+}
+
+.content a:hover{
+  color: lightseagreen;
+}
+
+.content li{
+  font-size: inherit;
+  padding: 5px;
+  list-style-type: none;
+  text-decoration: underline;
+}
+
+.content li:hover{
+  color: plum;
+}
+
+.content-chunk{
+  background-color: rgb(36, 36, 36);
+  border: black;
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .footer {
@@ -15,30 +70,36 @@ body {
   padding: 20px 10px;
   text-align: center;
   text-decoration: none;
+  color: lightseagreen;
 }
 
 .footer a {
   color: whitesmoke;
+  padding: 2px;
   text-align: center;
   text-decoration: none;
+}
+
+.footer a:hover {
+  background-color: rgba(43, 40, 40, 0.568);
+  border-width: 1px;
+  color: lightseagreen;
 }
 
 .footer-right {
   float: right;
 }
 
-.content {
-  padding-top: 35px;
+hr {
+  color: lightseagreen;
 }
 
-/* Style the nav with a grey background and some padding */
 .nav {
   overflow: hidden;
   background-color: #1b1b1d;
   padding: 20px 10px;
 }
 
-/* Style the nav links */
 .nav a {
   float: left;
   color: whitesmoke;
@@ -50,25 +111,28 @@ body {
   border-radius: 2px;
 }
 
-/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the nav to increase when the font gets bigger */
 .nav a.logo {
   font-size: 25px;
   font-weight: bold;
 }
 
-/* Change the background color on mouse-over */
 .nav a:hover {
-  background-color: rgba(107, 104, 104, 0.568);
-  color: white;
+  background-color: rgba(43, 40, 40, 0.568);
+  border-width: 1px;
+  color: lightseagreen;
 }
 
-/* Style the active/current link*/
+.nav a:active {
+  background-color: rgba(43, 40, 40, 0.568);
+  border-width: 1px;
+  color: plum;
+}
+
 .nav a.active {
   background-color: darkgray;
   color: white;
 }
 
-/* Float the link section to the right */
 .nav-right {
   float: right;
 }
