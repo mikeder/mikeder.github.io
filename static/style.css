@@ -4,10 +4,8 @@ body {
   width: 50%;
   text-align: center;
   font-size: 18px;
-  /* border: 3px solid Aqua; */
   padding: 10px;
   background-color: #121212;
-  /* background-image: linear-gradient(direction, darkgray, black); */
   color: whitesmoke;
 }
 
@@ -20,16 +18,26 @@ source {
   padding: 10px;
 }
 
-div.center {
-  margin-left: auto;
-  margin-right: auto;
-  display: table;
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-div.content ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 lightseagreen;
+}
+/* On click, add a deeper PINK shadow */
+.card:active {
+  box-shadow: 0 8px 16px 0 hotpink;
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 15px 16px;
 }
 
 .content {
@@ -39,7 +47,7 @@ div.content ul {
 }
 
 .content a {
-  color: plum;
+  color: hotpink;
 }
 
 .content a:hover{
@@ -54,7 +62,7 @@ div.content ul {
 }
 
 .content li:hover{
-  color: plum;
+  color: hotpink;
 }
 
 .content-chunk{
@@ -63,6 +71,19 @@ div.content ul {
   border-radius: 15px;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+
+div.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+}
+
+div.content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .footer {
@@ -109,6 +130,8 @@ hr {
   font-size: 22px;
   line-height: 35px;
   border-radius: 2px;
+  text-shadow: hotpink;
+  box-shadow: hotpink;
 }
 
 .nav a.logo {
@@ -125,7 +148,7 @@ hr {
 .nav a:active {
   background-color: rgba(43, 40, 40, 0.568);
   border-width: 1px;
-  color: plum;
+  color: hotpink;
 }
 
 .nav a.active {
