@@ -5,14 +5,13 @@
     <link>https://mikeder.net/</link>
     <description>Recent content on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 08:32:49 -0400</lastBuildDate><atom:link href="https://mikeder.net/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://mikeder.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Projects</title>
-      <link>https://mikeder.net/pages/projects/</link>
+      <link>https://mikeder.net/projects/</link>
       <pubDate>Wed, 16 Sep 2020 08:32:49 -0400</pubDate>
       
-      <guid>https://mikeder.net/pages/projects/</guid>
+      <guid>https://mikeder.net/projects/</guid>
       <description>Globber go blog and minecraft server monitor
 synthdb Synthesizer service notes database.
 TTSH Some notes and pictures of my nights and weekends spent soldering two ARP 2600 clones.</description>
@@ -20,10 +19,10 @@ TTSH Some notes and pictures of my nights and weekends spent soldering two ARP 2
     
     <item>
       <title>Music</title>
-      <link>https://mikeder.net/pages/music/</link>
+      <link>https://mikeder.net/music/</link>
       <pubDate>Tue, 15 Sep 2020 21:28:33 -0400</pubDate>
       
-      <guid>https://mikeder.net/pages/music/</guid>
+      <guid>https://mikeder.net/music/</guid>
       <description>Juxtaposition by Mike Eder 
 Twosyn by Mike Eder
 Gerp9 by Mike Eder</description>
@@ -31,10 +30,10 @@ Gerp9 by Mike Eder</description>
     
     <item>
       <title>About</title>
-      <link>https://mikeder.net/pages/about/</link>
+      <link>https://mikeder.net/about/</link>
       <pubDate>Tue, 15 Sep 2020 21:28:26 -0400</pubDate>
       
-      <guid>https://mikeder.net/pages/about/</guid>
+      <guid>https://mikeder.net/about/</guid>
       <description>Some placeholder text. This place will have something on it one day.</description>
     </item>
     

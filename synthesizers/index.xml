@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mikeder.net</title>
-    <link>https://mikeder.net/pages/synthesizers/</link>
+    <link>https://mikeder.net/synthesizers/</link>
     <description>Recent content on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://mikeder.net/pages/synthesizers/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://mikeder.net/synthesizers/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

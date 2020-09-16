@@ -3,36 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mikeder.net/</loc>
+    <loc>https://mikeder.net/projects/</loc>
     <lastmod>2020-09-16T08:32:49-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mikeder.net/pages/</loc>
-    <lastmod>2020-09-16T08:32:49-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mikeder.net/pages/projects/</loc>
-    <lastmod>2020-09-16T08:32:49-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mikeder.net/pages/music/</loc>
+    <loc>https://mikeder.net/music/</loc>
     <lastmod>2020-09-15T21:28:33-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mikeder.net/pages/about/</loc>
+    <loc>https://mikeder.net/about/</loc>
     <lastmod>2020-09-15T21:28:26-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mikeder.net/pages/synthesizers/</loc>
+    <loc>https://mikeder.net/synthesizers/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mikeder.net/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mikeder.net/</loc>
   </url>
   
   <url>
