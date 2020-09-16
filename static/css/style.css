@@ -86,7 +86,7 @@ div.content ul {
   padding: 0;
 }
 
-.footer {
+footer {
   overflow: hidden;
   padding: 20px 10px;
   text-align: center;
@@ -94,20 +94,20 @@ div.content ul {
   color: lightseagreen;
 }
 
-.footer a {
+footer a {
   color: whitesmoke;
   padding: 2px;
   text-align: center;
   text-decoration: none;
 }
 
-.footer a:hover {
+footer a:hover {
   background-color: rgba(43, 40, 40, 0.568);
   border-width: 1px;
   color: lightseagreen;
 }
 
-.footer-right {
+footer-right {
   float: right;
 }
 
@@ -119,6 +119,7 @@ hr {
   overflow: hidden;
   background-color: #1b1b1d;
   padding: 20px 10px;
+  border-radius: 15px;
 }
 
 .nav a {

@@ -1,4 +1,3 @@
 baseURL = "https://mikeder.net/"
 languageCode = "en-us"
 title = "mikeder.net"
-theme = "blank"
