@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mikeder.net</title>
+    <link>https://mikeder.net/page/</link>
+    <description>Recent content on mikeder.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Sep 2020 21:28:33 -0400</lastBuildDate><atom:link href="https://mikeder.net/page/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Music</title>
+      <link>https://mikeder.net/page/music/</link>
+      <pubDate>Tue, 15 Sep 2020 21:28:33 -0400</pubDate>
+      
+      <guid>https://mikeder.net/page/music/</guid>
+      <description>Juxtaposition by Mike Eder 
+Twosyn by Mike Eder
+Gerp9 by Mike Eder</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://mikeder.net/page/about/</link>
+      <pubDate>Tue, 15 Sep 2020 21:28:26 -0400</pubDate>
+      
+      <guid>https://mikeder.net/page/about/</guid>
+      <description>Some placeholder text. This place will have something on it one day.</description>
+    </item>
+    
+  </channel>
+</rss>
