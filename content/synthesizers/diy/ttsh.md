@@ -8,7 +8,6 @@ draft: true
 
 An ARP 2600 clone for the masses.
 
+    Some placeholder text.
 
-Some placeholder text.
-
-This place will have something on it one day.
+_This place will have something on it one day._

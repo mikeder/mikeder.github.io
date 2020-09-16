@@ -1,3 +1,4 @@
 baseURL = "https://mikeder.net/"
 languageCode = "en-us"
-title = "Mike Eder Dot Net"
+title = "mikeder.net"
+theme = "blank"
