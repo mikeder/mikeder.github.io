@@ -47,11 +47,11 @@ source {
 }
 
 .content a {
-  color: hotpink;
+  color: lightseagreen;
 }
 
 .content a:hover{
-  color: lightseagreen;
+  color: hotpink;
 }
 
 .content li{
@@ -71,8 +71,12 @@ source {
   border-radius: 15px;
   padding-top: 5px;
   padding-bottom: 5px;
+  box-shadow: 0 4px 8px 0 lightseagreen;
 }
 
+.content-chunk h1{
+  color: lightseagreen;
+}
 
 div.center {
   margin-left: auto;
@@ -107,12 +111,14 @@ footer a:hover {
   color: lightseagreen;
 }
 
-footer-right {
-  float: right;
+footer a:active {
+  background-color: rgba(43, 40, 40, 0.568);
+  border-width: 1px;
+  color: hotpink;
 }
 
 hr {
-  color: lightseagreen;
+  color: hotpink;
 }
 
 .nav {
@@ -120,6 +126,8 @@ hr {
   background-color: #1b1b1d;
   padding: 20px 10px;
   border-radius: 15px;
+  box-shadow: 0 4px 8px 0 lightseagreen;
+  transition: 0.3s;
 }
 
 .nav a {
@@ -150,11 +158,6 @@ hr {
   background-color: rgba(43, 40, 40, 0.568);
   border-width: 1px;
   color: hotpink;
-}
-
-.nav a.active {
-  background-color: darkgray;
-  color: white;
 }
 
 .nav-right {

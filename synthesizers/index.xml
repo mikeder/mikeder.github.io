@@ -5,6 +5,35 @@
     <link>https://mikeder.net/synthesizers/</link>
     <description>Recent content on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://mikeder.net/synthesizers/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Sep 2020 21:55:06 -0400</lastBuildDate><atom:link href="https://mikeder.net/synthesizers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Roland SH-201</title>
+      <link>https://mikeder.net/synthesizers/roland/sh201/</link>
+      <pubDate>Wed, 16 Sep 2020 21:55:06 -0400</pubDate>
+      
+      <guid>https://mikeder.net/synthesizers/roland/sh201/</guid>
+      <description>My first true synthesizer, a virtual analog poly synth that I never really clicked with. The sound on the SH-201 always seemed quite thin and harsh to me, although to be fair was a quite novice sound designer at the time and probably didn&amp;rsquo;t give it a real workout.
+The SH-201 was OK at best, it tended to have some bad aliasing in higher pitches and just never sound very high quality to me.</description>
+    </item>
+    
+    <item>
+      <title>Roland MC-505</title>
+      <link>https://mikeder.net/synthesizers/roland/mc505/</link>
+      <pubDate>Wed, 16 Sep 2020 20:48:52 -0400</pubDate>
+      
+      <guid>https://mikeder.net/synthesizers/roland/mc505/</guid>
+      <description>The Roland MC-505 was my first piece of kit, and my entry point to a new hobby in electronic music production. I was quickly overwhelmed once I had a look at the manual, it was huge and I had no idea what any of the features were. I didn&amp;rsquo;t even know the first thing about music production or music theory for that matter. All I knew is that this chunky groovebox made some cool sounds and you could tweak them and combine them in all sorts of new ways!</description>
+    </item>
+    
+    <item>
+      <title>Roland Juno-6</title>
+      <link>https://mikeder.net/synthesizers/roland/juno6/</link>
+      <pubDate>Tue, 15 Sep 2020 22:02:36 -0400</pubDate>
+      
+      <guid>https://mikeder.net/synthesizers/roland/juno6/</guid>
+      <description>My first &amp;ldquo;vintage&amp;rdquo; synthesizer. Purchased when I realized the sound quality on the SH-201 was really letting me down. I was instantly hooked on the lush chords and pads it produced when run through the built-in chorus. THIS is what Roland poly synths should sound like. Some argue that the DCO&amp;rsquo;s are not quite as flavorful as true analog VCO&amp;rsquo;s but I&amp;rsquo;ll be damned if the Juno doesn&amp;rsquo;t just sound great.</description>
+    </item>
+    
   </channel>
 </rss>
