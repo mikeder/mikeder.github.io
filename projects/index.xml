@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on mikeder.net</title>
+    <link>https://mikeder.net/projects/</link>
+    <description>Recent content in Projects on mikeder.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Sep 2020 08:32:49 -0400</lastBuildDate>
+    
+	<atom:link href="https://mikeder.net/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sqweebking</title>
+      <link>https://mikeder.net/projects/sqweebking/</link>
+      <pubDate>Thu, 17 Sep 2020 09:47:49 -0400</pubDate>
+      
+      <guid>https://mikeder.net/projects/sqweebking/</guid>
+      <description>&amp;ldquo;sqweebking&amp;rdquo; is an alias I&amp;rsquo;ve used on the internet for a long time, it has no real meaning, it&amp;rsquo;s just unique. Sometimes I record synthesizer jams and upload them to SoundCloud, YouTube or Bandcamp.
+Juxtaposition by sqweebking  Twosyn by sqweebking
+Gerp9 by sqweebking</description>
+    </item>
+    
+    <item>
+      <title>TTSHv4</title>
+      <link>https://mikeder.net/projects/ttsh/</link>
+      <pubDate>Thu, 17 Sep 2020 09:05:19 -0400</pubDate>
+      
+      <guid>https://mikeder.net/projects/ttsh/</guid>
+      <description>Some notes and pictures of my nights and weekends spent soldering two ARP 2600 clones.</description>
+    </item>
+    
+    <item>
+      <title>sqweeb.net</title>
+      <link>https://mikeder.net/projects/sqweebnet/</link>
+      <pubDate>Thu, 17 Sep 2020 09:05:04 -0400</pubDate>
+      
+      <guid>https://mikeder.net/projects/sqweebnet/</guid>
+      <description>My homelab, where I learn about application development, linux systems administration and a bit of security.</description>
+    </item>
+    
+    <item>
+      <title>globber</title>
+      <link>https://mikeder.net/projects/globber/</link>
+      <pubDate>Thu, 17 Sep 2020 09:04:56 -0400</pubDate>
+      
+      <guid>https://mikeder.net/projects/globber/</guid>
+      <description>Go blog and Minecraft server monitor.</description>
+    </item>
+    
+  </channel>
+</rss>
