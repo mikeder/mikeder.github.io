@@ -1,10 +1,8 @@
 ---
-title: "TTSH"
+title: "TTSH (Two Thousand Six Hundred)"
 date: 2020-09-15T20:59:52-04:00
 draft: true
 ---
-
-# TTSH (Two Thousand Six Hundred)
 
 An ARP 2600 clone for the masses.
 

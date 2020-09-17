@@ -1,5 +1,7 @@
-<iframe style="border: 0; width: 350px; height: 470px;"
-src="https://bandcamp.com/EmbeddedPlayer/album={{ .Get "id" }}/size=large/bgcol=333333/linkcol=0f91ff/tracklist=false/transparent=true/"
-seamless>
-<a href="{{ .Get "link" }}">{{ .Get "title" }}</a>
-</iframe><br>
+<iframe 
+    style="border: 0; width: auto; height: 450px;"
+    src='https://bandcamp.com/EmbeddedPlayer/album={{ .Get "id" }}/size=large/bgcol=333333/linkcol=0f91ff/tracklist=false/transparent=true/'
+>
+<a href='{{ .Get "link" }}'>{{ .Get "title" }}</a>
+</iframe>
+<br>

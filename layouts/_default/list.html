@@ -3,7 +3,7 @@
 		{{ if or .Title .Content }}
 		<div class="content-chunk">
 			{{ with .Title }}<h1>{{ . }}</h1>{{ end }}
-			{{ with .Content }}<div>{{ . }}</div>{{ end }}
+			{{ with .Content }}<div class="container">{{ . }}</div>{{ end }}
 		</div>
 		{{ end }}
 
@@ -11,5 +11,6 @@
 			{{ .Render "summary" }}
 		{{ end }}
 		{{ partial "pagination.html" . }}
+		{{ partial "sidebar.html" . }}
 	</main>
 {{ end }}
