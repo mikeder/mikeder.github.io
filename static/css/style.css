@@ -121,6 +121,11 @@ hr {
   color: hotpink;
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
 .nav {
   overflow: hidden;
   background-color: #1b1b1d;
