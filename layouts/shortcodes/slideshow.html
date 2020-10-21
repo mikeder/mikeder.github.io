@@ -13,8 +13,8 @@
     {{ end }}
 
     <!-- Next and previous buttons -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <a id="prev" class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a id="next" class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
 <br>
 
@@ -26,6 +26,14 @@
 </div>
 
 <script>
+
+    var prev = document.getElementById("prev");
+    prev.classList.remove("content");
+    var next = document.getElementById("next");
+    next.classList.remove("content");
+    var slideshow = document.getElementById("slideshow");
+    slideshow.classList.remove("content");
+
     var slideIndex = 1;
     showSlides(slideIndex);
 
@@ -38,8 +46,6 @@
     }
 
     function showSlides(n) {
-        var slideshow = document.getElementById("slideshow");
-        slideshow.classList.remove("content");
         var i;
         var slides = document.getElementsByClassName("mySlides");
         var dots = document.getElementsByClassName("dot");
