@@ -2,7 +2,6 @@
 title: "About"
 date: 2020-09-15T21:28:26-04:00
 draft: false
-menu: "main"
 ---
 
 A fan of coding, gaming and synthesizers. Previous Toyota/Lexus master of diagnostics and repair (2003-2014). Current cloud architect and software engineer (2014-2020).

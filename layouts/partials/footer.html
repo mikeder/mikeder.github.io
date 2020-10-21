@@ -3,34 +3,44 @@
     &copy; {{ now.Year }} <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
   </p>
 
+  {{ with .Site.Params.bandcampuser }}
   <a
     class="fab fa-bandcamp"
     style="font-size: 24px"
-    href="https://bandcamp.com/mikeder"
+    href="https://bandcamp.com/{{.}}"
     target="_blank"
   ></a>
+  {{ end }}
+  {{ with .Site.Params.githubuser }}
   <a
     class="fab fa-github"
     style="font-size: 24px"
-    href="https://github.com/mikeder"
+    href="https://github.com/{{.}}"
     target="_blank"
   ></a>
+  {{ end }}
+  {{ with .Site.Params.instagramuser }}
   <a
     class="fab fa-instagram"
     style="font-size: 24px"
-    href="https://www.instagram.com/sqweebking/"
+    href="https://www.instagram.com/{{.}}/"
     target="_blank"
   ></a>
+  {{ end }}
+  {{ with .Site.Params.soundclouduser }}
   <a
     class="fab fa-soundcloud"
     style="font-size: 24px"
-    href="https://soundcloud.com/sqweebking"
+    href="https://soundcloud.com/{{.}}"
     target="_blank"
   ></a>
+  {{ end }}
+  {{ with .Site.Params.youtubeuser}}
   <a
     class="fab fa-youtube"
     style="font-size: 24px"
-    href="https://www.youtube.com/user/synthatik"
+    href="https://www.youtube.com/user/{{.}}"
     target="_blank"
   ></a>
+  {{ end }}
 </footer>

@@ -1,8 +1,11 @@
 ---
-title: "Michael W. Eder"
+title: "Resume"
 date: 2019-01-25
 draft: false
+layout: resume
 ---
+
+## Michael W. Eder
 
 - <http://mikeder.net>
 - <https://github.com/mikeder>

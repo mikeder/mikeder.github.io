@@ -1,3 +1,11 @@
 baseURL = "https://mikeder.net/"
 languageCode = "en-us"
 title = "mikeder.net"
+sectionPagesMenu = "main"
+
+[params]
+    bandcampuser = "mikeder"
+    githubuser = "mikeder"
+    instagramuser = "sqweebking"
+    soundclouduser = "sqweebking"
+    youtubeuser = "synthatik"
