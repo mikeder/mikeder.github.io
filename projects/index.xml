@@ -6,7 +6,11 @@
     <description>Recent content in Projects on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 08:32:49 -0400</lastBuildDate><atom:link href="https://mikeder.net/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Sep 2020 08:32:49 -0400</lastBuildDate>
+    
+	<atom:link href="https://mikeder.net/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>sqweebking</title>
       <link>https://mikeder.net/projects/sqweebking/</link>
@@ -19,15 +23,14 @@ Gerp9 by sqweebking</description>
     </item>
     
     <item>
-      <title>TTSHv4</title>
+      <title>Two Thousand Six Hundred v4</title>
       <link>https://mikeder.net/projects/ttsh/</link>
       <pubDate>Thu, 17 Sep 2020 09:05:19 -0400</pubDate>
       
       <guid>https://mikeder.net/projects/ttsh/</guid>
       <description>Some notes and pictures of my nights and weekends spent soldering two ARP 2600 clones.
 The start of the build phase, two full kits from SynthCube.
-&amp;ldquo;Full Kits&amp;rdquo;
-&amp;ldquo;Finished Kits&amp;rdquo;</description>
+1 / 13 Caption 0001  2 / 13 Caption 0004  3 / 13 Caption 0005  4 / 13 Caption 0006  5 / 13 Caption 0007  6 / 13 Caption 0008  7 / 13 Caption 0009  8 / 13 Caption 0010  9 / 13 Caption 0011  10 / 13 Caption 0012  11 / 13 Caption 0013  12 / 13 Caption 0015  13 / 13 Caption 0016  &amp;#10094; &amp;#10095;                 var slideIndex = 1; showSlides(slideIndex); function plusSlides(n) { showSlides(slideIndex += n); } function currentSlide(n) { showSlides(slideIndex = n); } function showSlides(n) { var slideshow = document.</description>
     </item>
     
     <item>

@@ -6,7 +6,11 @@
     <description>Recent content in Synthesizers on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 08:32:49 -0400</lastBuildDate><atom:link href="https://mikeder.net/synthesizers/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Sep 2020 08:32:49 -0400</lastBuildDate>
+    
+	<atom:link href="https://mikeder.net/synthesizers/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Roland SH-201</title>
       <link>https://mikeder.net/synthesizers/roland/sh201/</link>

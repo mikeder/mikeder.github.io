@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on mikeder.net</title>
+    <link>https://mikeder.net/about/</link>
+    <description>Recent content in About on mikeder.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Sep 2020 21:28:26 -0400</lastBuildDate>
+    
+	<atom:link href="https://mikeder.net/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Resume</title>
+      <link>https://mikeder.net/about/resume/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mikeder.net/about/resume/</guid>
+      <description>Michael W. Eder  http://mikeder.net https://github.com/mikeder emailme@mikeder.net  Work Experience Lead Golang Developer / E-Commerce, Bethesda.net Aug. 2019 - Current  Lead Golang language migration effort for E-Commerce team. Provide end-to-end gRPC and REST microservice implementations. Work closely with in-house and contract engineers to promote development and engineering best practices.  SRE Lead / Live Engineering, Bethesda.net Apr. 2019 - Aug. 2019  Lead team of 8 local and remote engineers from various backgrounds.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,7 +6,11 @@
     <description>Recent content on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Sep 2020 09:47:49 -0400</lastBuildDate><atom:link href="https://mikeder.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Sep 2020 09:47:49 -0400</lastBuildDate>
+    
+	<atom:link href="https://mikeder.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>sqweebking</title>
       <link>https://mikeder.net/projects/sqweebking/</link>
@@ -19,15 +23,14 @@ Gerp9 by sqweebking</description>
     </item>
     
     <item>
-      <title>TTSHv4</title>
+      <title>Two Thousand Six Hundred v4</title>
       <link>https://mikeder.net/projects/ttsh/</link>
       <pubDate>Thu, 17 Sep 2020 09:05:19 -0400</pubDate>
       
       <guid>https://mikeder.net/projects/ttsh/</guid>
       <description>Some notes and pictures of my nights and weekends spent soldering two ARP 2600 clones.
 The start of the build phase, two full kits from SynthCube.
-&amp;ldquo;Full Kits&amp;rdquo;
-&amp;ldquo;Finished Kits&amp;rdquo;</description>
+1 / 13 Caption 0001  2 / 13 Caption 0004  3 / 13 Caption 0005  4 / 13 Caption 0006  5 / 13 Caption 0007  6 / 13 Caption 0008  7 / 13 Caption 0009  8 / 13 Caption 0010  9 / 13 Caption 0011  10 / 13 Caption 0012  11 / 13 Caption 0013  12 / 13 Caption 0015  13 / 13 Caption 0016  &amp;#10094; &amp;#10095;                 var slideIndex = 1; showSlides(slideIndex); function plusSlides(n) { showSlides(slideIndex += n); } function currentSlide(n) { showSlides(slideIndex = n); } function showSlides(n) { var slideshow = document.</description>
     </item>
     
     <item>
@@ -77,13 +80,12 @@ The SH-201 was OK at best, it tended to have some bad aliasing in higher pitches
     </item>
     
     <item>
-      <title>About</title>
-      <link>https://mikeder.net/about/</link>
-      <pubDate>Tue, 15 Sep 2020 21:28:26 -0400</pubDate>
+      <title>Resume</title>
+      <link>https://mikeder.net/about/resume/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://mikeder.net/about/</guid>
-      <description>A fan of coding, gaming and synthesizers. Previous Toyota/Lexus master of diagnostics and repair (2003-2014). Current cloud architect and software engineer (2014-2020).
-This site will probably contain notes about things I&amp;rsquo;m working on currently, or thoughts about things I worked on in the past with no particular theme.</description>
+      <guid>https://mikeder.net/about/resume/</guid>
+      <description>Michael W. Eder  http://mikeder.net https://github.com/mikeder emailme@mikeder.net  Work Experience Lead Golang Developer / E-Commerce, Bethesda.net Aug. 2019 - Current  Lead Golang language migration effort for E-Commerce team. Provide end-to-end gRPC and REST microservice implementations. Work closely with in-house and contract engineers to promote development and engineering best practices.  SRE Lead / Live Engineering, Bethesda.net Apr. 2019 - Aug. 2019  Lead team of 8 local and remote engineers from various backgrounds.</description>
     </item>
     
   </channel>
