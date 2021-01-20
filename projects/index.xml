@@ -6,20 +6,16 @@
     <description>Recent content in Projects on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 08:32:49 -0400</lastBuildDate>
-    
-	<atom:link href="https://mikeder.net/projects/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 16 Sep 2020 08:32:49 -0400</lastBuildDate><atom:link href="https://mikeder.net/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>sqweebking</title>
-      <link>https://mikeder.net/projects/sqweebking/</link>
+      <title>Music</title>
+      <link>https://mikeder.net/projects/music/</link>
       <pubDate>Thu, 17 Sep 2020 09:47:49 -0400</pubDate>
       
-      <guid>https://mikeder.net/projects/sqweebking/</guid>
-      <description>&amp;ldquo;sqweebking&amp;rdquo; is an alias I&amp;rsquo;ve used on the internet for a long time, it has no real meaning, it&amp;rsquo;s just unique. Sometimes I record synthesizer jams and upload them to SoundCloud, YouTube or Bandcamp.
-Juxtaposition by sqweebking  Twosyn by sqweebking
-Gerp9 by sqweebking</description>
+      <guid>https://mikeder.net/projects/music/</guid>
+      <description>Sometimes I record synthesizer jams and upload them to SoundCloud, YouTube or Bandcamp.
+Juxtaposition by Mike Eder  Twosyn by Mike Eder
+Gerp9 by Mike Eder</description>
     </item>
     
     <item>
@@ -31,24 +27,6 @@ Gerp9 by sqweebking</description>
       <description>Some notes and pictures of my nights and weekends spent soldering two ARP 2600 clones.
 The start of the build phase, two full kits from SynthCube.
 1 / 27 Caption 0001  2 / 27 Caption 0004  3 / 27 Caption 0005  4 / 27 Caption 0006  5 / 27 Caption 0007  6 / 27 Caption 0008  7 / 27 Caption 0009  8 / 27 Caption 0010  9 / 27 Caption 0011  10 / 27 Caption 0012  11 / 27 Caption 0013  12 / 27 Caption 0015  13 / 27 Caption 0016  14 / 27 Caption 0017  15 / 27 Caption 0018  16 / 27 Caption 0019  17 / 27 Caption 0020  18 / 27 Caption 0021  19 / 27 Caption 0022  20 / 27 Caption 0023  21 / 27 Caption 0024  22 / 27 Caption 0025  23 / 27 Caption 0026  24 / 27 Caption 0027  25 / 27 Caption 0028  26 / 27 Caption 0029  27 / 27 Caption 0030  &amp;#10094; &amp;#10095;                               var prev = document.</description>
-    </item>
-    
-    <item>
-      <title>sqweeb.net</title>
-      <link>https://mikeder.net/projects/sqweebnet/</link>
-      <pubDate>Thu, 17 Sep 2020 09:05:04 -0400</pubDate>
-      
-      <guid>https://mikeder.net/projects/sqweebnet/</guid>
-      <description>My homelab, where I learn about application development, linux systems administration and a bit of security.</description>
-    </item>
-    
-    <item>
-      <title>globber</title>
-      <link>https://mikeder.net/projects/globber/</link>
-      <pubDate>Thu, 17 Sep 2020 09:04:56 -0400</pubDate>
-      
-      <guid>https://mikeder.net/projects/globber/</guid>
-      <description>Go blog and Minecraft server monitor.</description>
     </item>
     
   </channel>
