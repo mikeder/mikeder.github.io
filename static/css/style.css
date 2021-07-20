@@ -37,7 +37,9 @@ source {
 
 /* Add some padding inside the card container */
 .container {
+  display: inline-block;
   padding: 15px 16px;
+  text-align: left;
 }
 
 .content {
