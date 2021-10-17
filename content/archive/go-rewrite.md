@@ -1,0 +1,66 @@
+---
+title: Go Rewrite
+date: 2020-01-29 03:03:41
+updated: 2020-01-28 22:34:12
+categories: ["Archive"]
+draft: true
+---
+
+I'm rewriting this old blog in Go for a couple reasons:
+
+1. Updating the old Python container was getting to be a pain in the ass. Due to the `tornado-blog` project being based on Python 2.7 and just being janky as fuck otherwise, I figured it would be easier to rewrite it in Go.
+
+2. There are some aspects of the Go standard library that I didn't have much exposure to yet. Serving static files and dynamic template pages is always useful to know how to do, so I wanted to look at `"html/template"` and some other facets of `"net/http"`.
+
+
+I started the rewrite with a basic main.go - copying in bits and pieces of other projects like [blog shovel](https://github.com/mikeder/blogshovel) and [gopinger](https://github.com/mikeder/gopinger). These projects were obviously pretty "quick and dirty" so I just threw everything in main to start.
+
+To start I just wanted to see how to render templates, then provide them some data from a database. This part was pretty straight forward following examples online. What wasn't immediately obvious to me was how to properly compose templates when calling `template.Execute()`. I ended up with a template structure like this:
+
+<pre class="prettyprint">
+templates/
+├── blog.html
+├── footer.html
+├── head.html
+├── home.html
+└── nav.html
+</pre>
+
+With that, a template that you would render with a call to `Execute()` can use the other components like this:
+
+<pre class="prettyprint" lang="html">
+ # blog.html
+    {{ template "head.html" }}
+        {{ template "nav.html" }}
+                {{ if .Posts }}
+                   ...
+                {{ end }}
+    {{ template "footer.html" }}
+</pre>
+
+
+Once the core pieces were working, I went about breaking up main into more logical chunks.
+
+`cmd/` contains main and the API handlers.
+<pre class="prettyprint">
+cmd/
+└── globber
+    ├── internal
+    │   └── handlers
+    │       └── handlers.go
+    └── main.go
+</pre>
+
+`internal/` contains the database access methods and a web package for rendering and/or handling render errors. 
+<pre class="prettyprint">
+internal/
+├── blog
+│   └── blog.go
+├── database
+│   └── database.go
+└── web
+    └── web.go
+</pre>
+
+
+With this stuff in place I now have a "working" site that will get all the posts from the database and render them all or an individual. I've done some UI bootstrap and theme copy pasta to get the looks just about the same, without a bunch of the other CSS and JS bloat I had accumulated on the Python repo. Next steps are to figure out a new auth system and post entry/update forms. I'm still writing this post on the Python side while also checking formatting on the [new](https://new.sqweeb.net/blog/entry/go-rewrite) side. :D
