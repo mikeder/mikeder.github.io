@@ -13,17 +13,8 @@
       <pubDate>Tue, 15 Sep 2020 21:28:26 -0400</pubDate>
       
       <guid>https://mikeder.net/about/about/</guid>
-      <description>A fan of coding, gaming and synthesizers. Previous Toyota/Lexus master of diagnostics and repair (2003-2014). Current cloud architect and software engineer (2014-2020).
-This site will probably contain notes about things I&amp;rsquo;m working on currently, or thoughts about things I worked on in the past with no particular theme.</description>
-    </item>
-    
-    <item>
-      <title>Resume</title>
-      <link>https://mikeder.net/about/resume/</link>
-      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://mikeder.net/about/resume/</guid>
-      <description>Michael W. Eder  http://mikeder.net https://github.com/mikeder emailme@mikeder.net  Work Experience Lead Golang Developer / E-Commerce, Bethesda.net Aug. 2019 - Current  Lead Golang language migration effort for E-Commerce team. Provide end-to-end gRPC and REST microservice implementations. Work closely with in-house and contract engineers to promote development and engineering best practices.  SRE Lead / Live Engineering, Bethesda.net Apr. 2019 - Aug. 2019  Lead team of 8 local and remote engineers from various backgrounds.</description>
+      <description>A fan of coding, gaming and synthesizers.
+This site will contain notes about things I am currently working on, or thoughts about things I worked on in the past with no particular theme.</description>
     </item>
     
   </channel>
