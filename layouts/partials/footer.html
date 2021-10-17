@@ -2,7 +2,7 @@
 
 <footer>
     <p>
-        &copy; {{ now.Year }} <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        &copy; {{ now.Year }} <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> v: {{- $version -}}
     </p>
 
     {{ with .Site.Params.bandcampuser }}
@@ -16,7 +16,4 @@
     {{ end }} {{ with .Site.Params.youtubeuser}}
     <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/{{.}}" target="_blank"></a>
     {{ end }}
-    <div class="date">
-        Version: {{- $version -}}
-    </div>
 </footer>
