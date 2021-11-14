@@ -2,6 +2,7 @@ baseURL = "https://mikeder.net/"
 languageCode = "en-us"
 title = "mikeder.net"
 sectionPagesMenu = "main"
+enableGitInfo = true
 
 [params]
     bandcampuser = "mikeder"
