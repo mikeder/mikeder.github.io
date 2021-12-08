@@ -5,7 +5,17 @@
     <link>https://mikeder.net/blog/</link>
     <description>Recent content in Blogs on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://mikeder.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Dec 2021 21:55:33 -0500</lastBuildDate><atom:link href="https://mikeder.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MBA Monterey</title>
+      <link>https://mikeder.net/blog/mba-monterey/</link>
+      <pubDate>Tue, 07 Dec 2021 21:55:33 -0500</pubDate>
+      
+      <guid>https://mikeder.net/blog/mba-monterey/</guid>
+      <description>Issues after upgrade to MacOS 12.0 Monterey  Battery life went to shit, have to enable low power mode on battery. Bitwig and SoundCraft MTK 12 mixer no longer cooperate.  </description>
+    </item>
+    
     <item>
       <title></title>
       <link>https://mikeder.net/blog/archive/</link>
