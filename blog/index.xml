@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on mikeder.net</title>
+    <link>https://mikeder.net/blog/</link>
+    <description>Recent content in Blogs on mikeder.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://mikeder.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://mikeder.net/blog/archive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/</guid>
+      <description>Archive of old Python tornado blog.</description>
+    </item>
+    
+  </channel>
+</rss>
