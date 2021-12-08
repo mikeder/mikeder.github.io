@@ -1,7 +1,7 @@
 ---
 title: "MBA Monterey"
 date: 2021-12-07T21:55:33-05:00
-draft: true
+draft: false
 ---
 
 ## Issues after upgrade to MacOS 12.0 Monterey
