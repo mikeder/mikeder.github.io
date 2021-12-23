@@ -1,6 +1,6 @@
 {{ $version := "latest" }} {{ if .GitInfo }} {{ $version = .GitInfo.AbbreviatedHash }} {{ end }}
 
-<footer>
+<footer id="site-footer">
     <p>
         &copy; {{ now.Year }} <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> v: {{- $version -}}
     </p>

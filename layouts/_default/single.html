@@ -1,25 +1,24 @@
 {{ define "main" }}
-	<main class="content">
-		<article class="content-chunk">
-			<h1>{{ .Title }}</h1>
-			<h5>{{ .Date.Format "02.01.2006 15:04" }}</h5>
-			<div class="container">
-				{{ .Content }}
-			</div>
-			{{ with .Params.tags }}
-			<div>
-				<ul id="tags">
-					{{ range . }}
-					<li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
-					{{ end }}
-				</ul>
-			</div>
-			{{ end }}
-			{{ with .Site.DisqusShortname }}
-			<div>
-				{{ template "_internal/disqus.html" . }}
-			</div>
-			{{ end }}
-		</article>
-	</main>
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>{{ .Title }}</h1>
+        <h5>{{ .Date.Format "02.01.2006 15:04" }}</h5>
+        <div class="container">
+            {{ .Content }}
+        </div>
+        {{ with .Params.tags }}
+        <div>
+            <ul id="tags">
+                {{ range . }}
+                <li><a href="{{ " /tags/ " | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+                {{ end }}
+            </ul>
+        </div>
+        {{ end }} {{ with .Site.DisqusShortname }}
+        <div>
+            {{ template "_internal/disqus.html" . }}
+        </div>
+        {{ end }}
+    </article>
+</main>
 {{ end }}
