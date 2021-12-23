@@ -1,35 +1,27 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Blogs</title>
-	
-	
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="alternate" type="application/rss+xml" href="/blog/index.xml" title="mikeder.net">
-	<script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
-</head>
-<body>
-	<header>
-	<div class="nav">
-		<a href="https://mikeder.net/">Home</a>
-		
-			
-			<a href="/about/">Abouts</a>
-			
-			<a href="/blog/">Blogs</a>
-			
-			<a href="/projects/">Projects</a>
-			
-			<a href="/synthesizers/">Synthesizers</a>
-			
-		
-    </div>	
-</header>
 
-	
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Blogs</title>
+     
+    <link rel="stylesheet" href='/css/style.css'> 
+    <link rel="alternate" type="application/rss+xml" href="/blog/index.xml" title="mikeder.net">
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
 	<main class="content">
 		
 		<div class="content-chunk">
@@ -44,7 +36,9 @@
 	<time>07.12.2021 21:55</time>
 	
 	<div class="container">
-		Issues after upgrade to MacOS Monterey  Battery life went to shit, have to enable low power mode on battery. Bitwig and SoundCraft MTK 12 mixer no longer cooperate.  Issue #1 I don&rsquo;t have a whole lot of evidence to support but it did feel like the battery life on my brand new Macbook Air M1 had gotten a lot worse after the upgrade to Monterey (12.0.1). Previously I could use the laptop for several days without reaching for the charger, now it seems the battery percentage was dropping several percent every few minutes.
+		Issues after upgrading my 2020 Macbook Air (m1) to macOS Monterey:
+ Battery life went to shit, have to enable low power mode on battery. Bitwig and SoundCraft MTK 12 mixer no longer cooperate.   
+Issue #1 I don&rsquo;t have a whole lot of evidence to support but it did feel like the battery life on my brand new Macbook Air M1 had gotten a lot worse after the upgrade to Monterey (12.
 		
 			<a href="https://mikeder.net/blog/mba-monterey/">Read more...</a>
 		
@@ -72,10 +66,48 @@
 
 		</div>
 	</main>
+ 
 
-	 
 
-<footer>
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()" style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>  
+
+<footer id="site-footer">
     <p>
         &copy; 2021 <a href="https://mikeder.net/">mikeder.net</a> v:latest</p>
 
@@ -92,4 +124,5 @@
     
 </footer>
 </body>
+
 </html>

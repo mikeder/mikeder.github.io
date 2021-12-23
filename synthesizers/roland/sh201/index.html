@@ -1,52 +1,80 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Roland SH-201</title>
-	
-	
-	<link rel="stylesheet" href="/css/style.css">
-	
-	<script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
-</head>
-<body>
-	<header>
-	<div class="nav">
-		<a href="https://mikeder.net/">Home</a>
-		
-			
-			<a href="/about/">Abouts</a>
-			
-			<a href="/blog/">Blogs</a>
-			
-			<a href="/projects/">Projects</a>
-			
-			<a href="/synthesizers/">Synthesizers</a>
-			
-		
-    </div>	
-</header>
 
-	
-	<main class="content">
-		<article class="content-chunk">
-			<h1>Roland SH-201</h1>
-			<h5>16.09.2020 21:55</h5>
-			<div class="container">
-				<p>My first true synthesizer, a virtual analog poly synth that I never really clicked with. The sound on the SH-201 always seemed quite thin and harsh to me, although to be fair was a quite novice sound designer at the time and probably didn&rsquo;t give it a real workout.</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Roland SH-201</title>
+     
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>Roland SH-201</h1>
+        <h5>16.09.2020 21:55</h5>
+        <div class="container">
+            <p>My first true synthesizer, a virtual analog poly synth that I never really clicked with. The sound on the SH-201 always seemed quite thin and harsh to me, although to be fair was a quite novice sound designer at the time and probably didn&rsquo;t give it a real workout.</p>
 <p>The SH-201 was OK at best, it tended to have some bad aliasing in higher pitches and just never sound very high quality to me. It was passable, and some sounds better than what I could coax out of the <a href="/synthesizers/roland/mc505">MC-505</a> but most of the time it left me wanting something more lush&hellip;</p>
 
-			</div>
-			
-			
-		</article>
-	</main>
+        </div>
+         
+    </article>
+</main>
+ 
 
-	   
 
-<footer>
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()" style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
     <p>
         &copy; 2021 <a href="https://mikeder.net/">mikeder.net</a> v:cec0f77</p>
 
@@ -63,4 +91,5 @@
     
 </footer>
 </body>
+
 </html>
