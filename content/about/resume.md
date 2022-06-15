@@ -1,7 +1,7 @@
 ---
 title: "Resume"
 date: 2019-01-25
-draft: true
+draft: false
 layout: resume
 ---
 
@@ -13,8 +13,9 @@ layout: resume
 
 ## Work Experience
 
-### Lead Golang Developer / E-Commerce, Bethesda.net `Aug. 2019 - Current`
+### Tech Lead Staff Engineer / Commerce & Identity, Bethesda.net `Aug. 2019 - Current`
 
+- Tech lead for excavate team that migrated 300k+ BNET accounts, games, and wallets to STEAM.
 - Lead Golang language migration effort for E-Commerce team.
 - Provide end-to-end gRPC and REST microservice implementations.
 - Work closely with in-house and contract engineers to promote development and engineering best practices.
