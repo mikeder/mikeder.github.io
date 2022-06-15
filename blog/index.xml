@@ -53,7 +53,8 @@ Issue #1 I don&amp;rsquo;t have a whole lot of evidence to support but it did fe
       <pubDate>Mon, 13 Apr 2020 00:20:41 +0000</pubDate>
       
       <guid>https://mikeder.net/blog/archive/1586737241-chicken-tamer/</guid>
-      <description></description>
+      <description>I&amp;rsquo;ve setup a CloudFront distribution to serve some static assets and media files for this domain. This will make load times faster and allow me to serve content from AWS&amp;rsquo;s edge locations instead of from a single container instance of this &amp;ldquo;blog&amp;rdquo;.
+Testing some random image embeds here:</description>
     </item>
     
     <item>
@@ -62,16 +63,9 @@ Issue #1 I don&amp;rsquo;t have a whole lot of evidence to support but it did fe
       <pubDate>Mon, 16 Mar 2020 21:05:48 +0000</pubDate>
       
       <guid>https://mikeder.net/blog/archive/1584392748-minecraft-status/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Links</title>
-      <link>https://mikeder.net/blog/archive/1583891798-links/</link>
-      <pubDate>Wed, 11 Mar 2020 01:56:38 +0000</pubDate>
-      
-      <guid>https://mikeder.net/blog/archive/1583891798-links/</guid>
-      <description></description>
+      <description>I spent the better part of the day yesterday working on a Minecraft status checker package for the site. The Minecraft query protocol is somewhat tricky to implement for a novice like me but apparently it changes a bit when there are plugins involved on the server. I&amp;rsquo;ll update this post later with some of my findings.
+For now, there is a neat, albeit somewhat basic status page here
+Well, I tried to update this post but apparently my token went invalid while I was typing it and I lost it all when I hit &amp;ldquo;Save&amp;rdquo;.</description>
     </item>
     
     <item>
@@ -119,7 +113,9 @@ Issue #1 I don&amp;rsquo;t have a whole lot of evidence to support but it did fe
       <pubDate>Wed, 11 Dec 2019 03:42:50 +0000</pubDate>
       
       <guid>https://mikeder.net/blog/archive/1576035770-minecraft-again/</guid>
-      <description>Map: http://sqweeb.net:4444</description>
+      <description>server link
+ 
+Map: http://sqweeb.net:4444</description>
     </item>
     
     <item>
@@ -168,7 +164,7 @@ root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# #
       <pubDate>Fri, 02 Feb 2018 02:56:09 +0000</pubDate>
       
       <guid>https://mikeder.net/blog/archive/1517540169-edgerouter-dnsmasq-setup/</guid>
-      <description></description>
+      <description>configure set service dhcp-server use-dnsmasq enable commit save exit https://help.ubnt.com/hc/en-us/articles/115002673188-EdgeRouter-Using-dnsmasq-for-DHCP-Server</description>
     </item>
     
     <item>
@@ -472,7 +468,7 @@ Take all 3 servers for $120, server 1 was my main workhorse for the better part 
       <pubDate>Tue, 05 May 2015 17:50:05 +0000</pubDate>
       
       <guid>https://mikeder.net/blog/archive/1430848205-youtube-embed-testing/</guid>
-      <description>UMF15 Weekend 2 timelapse </description>
+      <description>UMF15 Weekend 2 timelapse   </description>
     </item>
     
     <item>

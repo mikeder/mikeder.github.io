@@ -90,7 +90,8 @@ Issue #1 I don&rsquo;t have a whole lot of evidence to support but it did feel l
 	<time>13.04.2020 00:20</time>
 	
 	<div class="container">
-		
+		I&rsquo;ve setup a CloudFront distribution to serve some static assets and media files for this domain. This will make load times faster and allow me to serve content from AWS&rsquo;s edge locations instead of from a single container instance of this &ldquo;blog&rdquo;.
+Testing some random image embeds here:
 		
 	</div>
 </article>
@@ -101,18 +102,11 @@ Issue #1 I don&rsquo;t have a whole lot of evidence to support but it did feel l
 	<time>16.03.2020 21:05</time>
 	
 	<div class="container">
+		I spent the better part of the day yesterday working on a Minecraft status checker package for the site. The Minecraft query protocol is somewhat tricky to implement for a novice like me but apparently it changes a bit when there are plugins involved on the server. I&rsquo;ll update this post later with some of my findings.
+For now, there is a neat, albeit somewhat basic status page here
+Well, I tried to update this post but apparently my token went invalid while I was typing it and I lost it all when I hit &ldquo;Save&rdquo;.
 		
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1583891798-links/">Links</a></h1>
-	<time>11.03.2020 01:56</time>
-	
-	<div class="container">
-		
+			<a href="https://mikeder.net/blog/archive/1584392748-minecraft-status/">Read more...</a>
 		
 	</div>
 </article>
@@ -149,6 +143,21 @@ Issue #1 I don&rsquo;t have a whole lot of evidence to support but it did feel l
 		GOMAXPROCS=2 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 37.13ms 45.17ms 398.89ms 84.51% Req/Sec 1.13k 226.65 1.99k 71.67% 67708 requests in 15.01s, 289.02MB read Requests/sec: 4511.45 Transfer/sec: 19.26MB GOMAXPROX=4 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 24.
 		
 			<a href="https://mikeder.net/blog/archive/1580346038-go-rewrite-load/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1580267021-go-rewrite/">Go Rewrite</a></h1>
+	<time>29.01.2020 03:03</time>
+	
+	<div class="container">
+		I&rsquo;m rewriting this old blog in Go for a couple reasons:
+  Updating the old Python container was getting to be a pain in the ass. Due to the tornado-blog project being based on Python 2.7 and just being janky as fuck otherwise, I figured it would be easier to rewrite it in Go.
+  There are some aspects of the Go standard library that I didn&rsquo;t have much exposure to yet.
+		
+			<a href="https://mikeder.net/blog/archive/1580267021-go-rewrite/">Read more...</a>
 		
 	</div>
 </article>
@@ -212,6 +221,8 @@ Issue #1 I don&rsquo;t have a whole lot of evidence to support but it did feel l
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
      
     <a class="fab fa-github" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
      

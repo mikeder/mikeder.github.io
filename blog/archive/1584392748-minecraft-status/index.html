@@ -26,7 +26,13 @@
         <h1>Minecraft Status</h1>
         <h5>16.03.2020 21:05</h5>
         <div class="container">
-            <!-- raw HTML omitted -->
+            <p>I spent the better part of the day yesterday working on a Minecraft status checker package for the site. The Minecraft query protocol is somewhat tricky to implement for a novice like me but apparently it changes a bit when there are plugins involved on the server. I&rsquo;ll update this post later with some of my findings.</p>
+<p>For now, there is a neat, albeit somewhat basic status page <a href="https://sqweeb.net/minecraft">here</a></p>
+<p>Well, I tried to update this post but apparently my token went invalid while I was typing it and I lost it all when I hit &ldquo;Save&rdquo;. I&rsquo;ll have to increase the JWT expiry on this server before I attempt another &ldquo;large&rdquo; entry update like that :(</p>
+<p>Edit: 4/2/2020
+OK, I&rsquo;ve added some auth token refresh handling to the server and front end so I can stay logged in without issue now. I&rsquo;ve also abandoned my own implementation of the Minecraft query protocol and decided to use a package I found on GitHub called <a href="https://github.com/Tnze/go-mc">go-mc</a></p>
+<p>This package uses the latest protocol and has a lot nicer encapsulation around packet encoding and localization that I was too lazy to bother with. It also has a much larger portion of the API implemented so I could potentially write a bot to do some player level interaction in the future. For now though, I&rsquo;ve updated the <code>/minecraft</code> API on this server to use the new package and also keep track of players that have joined the server. Player names, uuid&rsquo;s, &ldquo;first seen&rdquo; and &ldquo;last seen&rdquo; time stamps are now recorded in the database. I may expand on this to include play time calculations and other fun stuff.</p>
+<p>I&rsquo;ve updated the <code>/minecraft</code> page to show which players are currently online, as well as changed the &ldquo;Server Highlights&rdquo; from cards to a carousel display. That should do it for this entry, I&rsquo;ll probably start a new one for further updates to the backend stuff.</p>
 
         </div>
          
@@ -78,10 +84,12 @@
 
 <footer id="site-footer">
     <p>
-        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:7ba9364</p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:1d81109</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
      
     <a class="fab fa-github" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
      
