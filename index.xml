@@ -179,6 +179,15 @@ Map: http://sqweeb.net:4444</description>
     </item>
     
     <item>
+      <title>Resume</title>
+      <link>https://mikeder.net/about/resume/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mikeder.net/about/resume/</guid>
+      <description>Michael W. Eder  http://mikeder.net https://github.com/mikeder emailme@mikeder.net  Work Experience Tech Lead Staff Engineer / Commerce &amp;amp; Identity, Bethesda.net Aug. 2019 - Current  Tech lead for excavate team that migrated 300k+ BNET accounts, games, and wallets to STEAM. Lead Golang language migration effort for E-Commerce team. Provide end-to-end gRPC and REST microservice implementations. Work closely with in-house and contract engineers to promote development and engineering best practices.  SRE Lead / Live Engineering, Bethesda.</description>
+    </item>
+    
+    <item>
       <title>Proxmox - Storage Gateway</title>
       <link>https://mikeder.net/blog/archive/1539912236-proxmox-storage-gateway/</link>
       <pubDate>Fri, 19 Oct 2018 01:23:56 +0000</pubDate>
@@ -186,7 +195,7 @@ Map: http://sqweeb.net:4444</description>
       <guid>https://mikeder.net/blog/archive/1539912236-proxmox-storage-gateway/</guid>
       <description>Download AWS appliance .ova
   Unpack .ova:
-  meder@pve:~$ tar xvf AWS-Appliance-2018-09-26-1537973163.ovaAWS-Appliance-2018-09-26-1537973163.ovfAWS-Appliance-2018-09-26-1537973163.mfAWS-Appliance-2018-09-26-1537973163-disk1.vmdk Import .ovf:  root@pve:~# qm importovf 110 /home/meder/AWS-Appliance-2018-09-26-1537973163.ovf local-lvm Import VM image .vmdk:  root@pve:/# qm importdisk 110 /home/meder/AWS-Appliance-2018-09-26-1537973163-disk1.vmdk local-lvmUsing default stripesize 64.00 KiB.Logical volume &amp;quot;vm-110-disk-1&amp;quot; created.(100.00/100%) Change disk1 driver to VirtIO Add additional VirtIO disk2 to allocate to cache. Add network adapter. Adjust memory to fit on your host, minimum recommended is 16GB.</description>
+  meder@pve:~$ tar xvf AWS-Appliance-2018-09-26-1537973163.ova AWS-Appliance-2018-09-26-1537973163.ovf AWS-Appliance-2018-09-26-1537973163.mf AWS-Appliance-2018-09-26-1537973163-disk1.vmdk  Import .ovf:  root@pve:~# qm importovf 110 /home/meder/AWS-Appliance-2018-09-26-1537973163.ovf local-lvm  Import VM image .vmdk:  root@pve:/# qm importdisk 110 /home/meder/AWS-Appliance-2018-09-26-1537973163-disk1.vmdk local-lvm Using default stripesize 64.00 KiB. Logical volume &amp;quot;vm-110-disk-1&amp;quot; created. (100.00/100%)  Change disk1 driver to VirtIO Add additional VirtIO disk2 to allocate to cache. Add network adapter. Adjust memory to fit on your host, minimum recommended is 16GB.</description>
     </item>
     
     <item>
@@ -253,8 +262,8 @@ root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# #
       <guid>https://mikeder.net/blog/archive/1507860924-debian-9-stretch-laptop-setup/</guid>
       <description>Setting up an old Acer Aspire One 722-0473
 Edit /etc/apt/sources.list - add contrib and non-free packages
-deb http://httpredir.debian.org/debian/ stretch main contrib non-free Update and install drivers apt-get updateapt-get install firmware-amd-graphics Add touchpad config Edit /usr/share/X11/xorg.conf.d/50-touchpad.conf - add below section
-Section &amp;quot;InputClass&amp;quot;Identifier &amp;quot;touchpad catchall&amp;quot;Driver &amp;quot;synaptics&amp;quot;MatchIsTouchpad &amp;quot;on&amp;quot;Option &amp;quot;TapButton1&amp;quot; &amp;quot;1&amp;quot;Option &amp;quot;TapButton1&amp;quot; &amp;quot;3&amp;quot;EndSection </description>
+deb http://httpredir.debian.org/debian/ stretch main contrib non-free  Update and install drivers apt-get update apt-get install firmware-amd-graphics  Add touchpad config Edit /usr/share/X11/xorg.conf.d/50-touchpad.conf - add below section
+Section &amp;quot;InputClass&amp;quot; Identifier &amp;quot;touchpad catchall&amp;quot; Driver &amp;quot;synaptics&amp;quot; MatchIsTouchpad &amp;quot;on&amp;quot; Option &amp;quot;TapButton1&amp;quot; &amp;quot;1&amp;quot; Option &amp;quot;TapButton1&amp;quot; &amp;quot;3&amp;quot; EndSection </description>
     </item>
     
     <item>
@@ -330,7 +339,7 @@ sudo apt-get install python-dev python-pip postgresql ruby sudo pip install ecds
       <pubDate>Sat, 24 Sep 2016 01:18:48 +0000</pubDate>
       
       <guid>https://mikeder.net/blog/archive/1474679928-nginx-reverse-proxy-2-0/</guid>
-      <description>I realized I didn&#39;t want to have a single SSL cert covering *all* of my subdomains here @ sqweeb.netSo I set out on rebuilding my reverse proxy from the ground up.
+      <description>I realized I didn&#39;t want to have a single SSL cert covering *all* of my subdomains here @ sqweeb.net So I set out on rebuilding my reverse proxy from the ground up.
 I first spun up a fresh Debian 8 virtual machine, patched it up and installed nginx and the Lets Encrypt cert bot. Once the default server was up and running and I had the root certificate in place I made an ssl-defaults config file that would be included in default/root config.</description>
     </item>
     
