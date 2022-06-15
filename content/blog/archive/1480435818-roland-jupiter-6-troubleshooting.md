@@ -3,7 +3,7 @@ title: Roland Jupiter 6 Troubleshooting
 date: 2016-11-29 16:10:18
 updated: 2016-11-29 11:10:18
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 CPU acting very erratic, front panel sometimes doesn't boot, other times will go completly haywire (See Video)

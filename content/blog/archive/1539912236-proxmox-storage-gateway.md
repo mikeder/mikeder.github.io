@@ -3,7 +3,7 @@ title: Proxmox - Storage Gateway
 date: 2018-10-19 01:23:56
 updated: 2018-10-18 22:50:01
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 * Download AWS appliance .ova

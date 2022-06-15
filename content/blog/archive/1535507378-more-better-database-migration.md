@@ -3,7 +3,7 @@ title: More advanced database migration
 date: 2018-08-29 01:49:38
 updated: 2020-05-05 16:37:37
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 This database migration or promotion allows for moving of data between two hosts in separate networks. We open an SSH tunnel from our local machine to a bastion or "jumpbox" within the same network of each database and then `mysqldump` the data from one host to another via local ports.

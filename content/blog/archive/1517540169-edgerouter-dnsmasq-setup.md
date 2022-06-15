@@ -3,7 +3,7 @@ title: Edgerouter dnsmasq setup
 date: 2018-02-02 02:56:09
 updated: 2018-02-01 21:56:09
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 <pre class=prettyprint>

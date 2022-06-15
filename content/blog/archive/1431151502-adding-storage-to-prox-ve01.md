@@ -3,7 +3,7 @@ title: Adding storage to prox-ve01
 date: 2015-05-09 06:05:02
 updated: 2015-05-09 02:23:52
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 I initially installed 4 HDD's in the prox-ve01 server that were a mix of old hard drives from other computers that were still good but not being used.

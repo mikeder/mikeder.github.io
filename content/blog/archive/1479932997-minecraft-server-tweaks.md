@@ -3,7 +3,7 @@ title: Minecraft Server Tweaks
 date: 2016-11-23 20:29:57
 updated: 2016-11-23 16:05:01
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 * Cache Proxy in front of [https://mc-map.sqweeb.net](https://mc-map.sqweeb.net)

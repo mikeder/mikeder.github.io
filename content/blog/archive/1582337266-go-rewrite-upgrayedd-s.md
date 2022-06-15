@@ -3,7 +3,7 @@ title: Go Rewrite - UPGRAYEDD's
 date: 2020-02-22 02:07:46
 updated: 2020-02-27 00:30:24
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 At the point where rewritten functionality needs some upgrading. Login, db models/mgmt stuff, etc. all needs improving over what is in place in the Python code.

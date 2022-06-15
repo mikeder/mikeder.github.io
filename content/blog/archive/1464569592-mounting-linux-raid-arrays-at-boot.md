@@ -3,7 +3,7 @@ title: Mounting Linux Raid Arrays At Boot
 date: 2016-05-30 00:53:12
 updated: 2016-05-29 21:21:49
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 I have been having issues on reboot ever since I put together this newest server. I have 2 new Linux raid arrays (/dev/md0 and /dev/md1) both in a raid 1 consisting of 2 disks each:

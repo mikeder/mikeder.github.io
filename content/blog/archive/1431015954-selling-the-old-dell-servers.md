@@ -3,7 +3,7 @@ title: Selling the old Dell Servers
 date: 2015-05-07 16:25:54
 updated: 2015-06-28 03:24:20
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 ### Sold on 6/21/15 for $120 to a Mike from Ashburn, VA ###

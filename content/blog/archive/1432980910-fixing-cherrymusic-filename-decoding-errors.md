@@ -3,7 +3,7 @@ title: Fixing CherryMusic filename decoding errors
 date: 2015-05-30 10:15:10
 updated: 2015-06-01 15:46:25
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 I recently came across a strange problem with the CherryMusic server that only appeared when it was started via an /etc/init.d script. In certain folders the tracks would not show, although the folder showed that there were files within, when you clicked on the folder it would just open an empty list. This condition would also be accompanied by the following error in the logs:

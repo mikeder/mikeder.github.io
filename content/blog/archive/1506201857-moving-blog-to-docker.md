@@ -3,7 +3,7 @@ title: Moving blog database
 date: 2017-09-23 21:24:17
 updated: 2017-09-23 17:41:49
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 Working on some of the initial steps to moving this blog to docker today. Since containers aren't exactly presistent I have to get the database migrated to a dedicated mysql node. Once that is done I can move the blog into a python2.7 container and onto a new docker host.

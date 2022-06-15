@@ -3,7 +3,7 @@ title: TTSH v4 Build Part 1
 date: 2020-04-18 17:09:52
 updated: 2020-04-20 13:33:22
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 The TTSH (TwoThousandSixHundred) v4 is the latest incarnation of a DIY clone of the now infamous ARP 2600 synthesizer from the early 1970's. The TTSH project was originally started by [The Human Comparator](http://thehumancomparator.net) in 2013, it has gone through many revisions and bug fixes to the main PCB since then. Originally launched it was sold as "The Kit" that came with the powder coated and screen printed front panel, main PCB and 3 VCO PCB's for <b>$620</b> USD. You were still responsible for sourcing the rest of the BOM (bill of materials), the "rare parts kit" from Thonk.de or eBay and building a case for it all to fit into once done. This was a bar of entry a bit too high for me at the time and I withheld my order in hopes of a more complete kit in the future.

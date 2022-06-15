@@ -3,7 +3,7 @@ title: Current SEDS Mod List
 date: 2016-02-08 18:16:44
 updated: 2016-07-12 08:10:28
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 Full list of the mods we're running on [teamSqweeb](http://steamcommunity.com/groups/sqweeb) Space Engineers Dedicated Server:

@@ -3,7 +3,7 @@ title: Replacing squid3 w/ nginx
 date: 2015-06-28 12:43:47
 updated: 2015-06-29 08:02:12
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 When I was using the squid3 package in pfSense it came configured ready to use SSL and you could just import your cert's or let it generate one for you and it just worked. Then I decided to swap out pfSense for a basic squid3 proxy, which at first was great. Configuration was super simple and I had it up and running in a matter of minutes, for most of my backend anyway. I quickly realized that squid3 did not come compiled with SSL support and this meant I couldn't proxy to servers running on HTTPS (airtime, proxmox, etc). No problem, there is plenty of documentation out there on how to recompile with SSL support and where to put certs and all that. Problem was, I couldn't for the life of me get it to work. I would compile and recompile and squid would never end up with SSL support.

@@ -3,7 +3,7 @@ title: Enabling HTTPS with Lets Encrypt
 date: 2015-12-15 00:25:13
 updated: 2016-02-11 07:10:19
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 [Lets Encrypt](https://letsencrypt.org/) has made it super simple to create and install ssl certificates so I decided to finally make the jump to https. They have developed an auto installer client that is already working for Apache but apparently the NGINX installer is still under development. They also give you the option of just generating certs and installing them manually so that's what I opted to do.

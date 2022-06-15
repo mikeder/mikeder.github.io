@@ -3,7 +3,7 @@ title: Airtime, Icecast and pfSense
 date: 2015-05-14 18:07:07
 updated: 2015-05-15 03:54:57
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 Taking another look streaming internet radio along with more robust firewall and DNS control. I found a real nice Open Source radio backend called <a href="https://www.sourcefabric.org/en/airtime/" target="_blank">Airtime</a> that re-kindled the idea of running an internet radio stream. Getting Airtime installed took a few tries, eventually I decided to just use their easy-install script. One thing to note is that the server locale needs to be set to US-UTF8 before postgresql is installed, otherwise the airtime installer will complain that the database was made with the wrong format and will error out.

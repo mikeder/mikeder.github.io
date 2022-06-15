@@ -3,7 +3,7 @@ title: Site plan and next steps
 date: 2015-05-04 18:15:55
 updated: 2015-05-09 02:19:27
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 I plan on this blog being an on going project that will evolve into a portal of sorts for my personal coding projects. Step one was getting the blog up and running to have a place to document my work and also have a starting point from which to branch out into the custom website I have envisioned. Here i will tie together the small programming projects that I come up with and provide them with a decent looking front end as so far i have really only dealt with the server side and command line aspect.

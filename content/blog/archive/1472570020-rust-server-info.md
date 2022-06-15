@@ -3,7 +3,7 @@ title: Rust Server Info
 date: 2016-08-30 15:13:40
 updated: 2016-09-24 23:09:41
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 ## [tS] Rusty Noobs

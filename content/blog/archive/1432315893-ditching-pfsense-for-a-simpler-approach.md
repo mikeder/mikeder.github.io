@@ -3,7 +3,7 @@ title: Ditching pfSense for a simpler approach
 date: 2015-05-22 17:31:33
 updated: 2015-05-27 11:07:57
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 I decided to just get rid of the pfSense firewall/router in my setup up in favor of just a plain squid3 reverse proxy. While pfSense does provide a nice WebUI for administering the firewall and all of the add-on's available it ended up being overly complicated for what I was trying to accomplish. Mainly I just wanted to use the reverse proxy functionality provided by the squid3 package and while it was easy to setup and get going I found that if I made one incorrect firewall rule I could easily lock myself out of the GUI and lose access to all of the servers behind the proxy. Once I started reading up more on setting up squid I realized that manually configuring a reverse proxy in yet another OpenVZ container would be easy enough.

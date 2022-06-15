@@ -3,7 +3,7 @@ title: Installing Cabot on Debian 8
 date: 2016-10-12 14:00:37
 updated: 2016-10-28 11:16:04
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 https://www.unicoda.com/?p=1624

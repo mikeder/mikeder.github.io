@@ -3,7 +3,7 @@ title: Basic CherryMusic App
 date: 2015-06-14 15:33:21
 updated: 2015-06-14 11:35:45
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 Found this posted to the CherryMusic github project page. It is a basic wrapper that functions just like the regular Web app but contained in an android app that can save login creds and may work as a Chrome and Mozilla alternative.

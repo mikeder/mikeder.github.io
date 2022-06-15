@@ -3,7 +3,7 @@ title: Adding logging to CherryMusic service
 date: 2015-05-21 15:04:26
 updated: 2015-05-30 08:18:54
 categories: ["Archive"]
-draft: true
+draft: false
 ---
 
 This morning I added some logging functionality to the <a href="https://github.com/mikeder/cherrymusic-conf/tree/add-log" target="_blank">cherrymusic service script</a> that lives in /etc/init.d/cherrymusic. I have a couple issues going on with the music server that are going to require some log digging. One of which I've already fixed: Some of the Web Rips sub directories would open up empty. Upon review the logs when accessing those folders I found this:
