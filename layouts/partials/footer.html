@@ -7,6 +7,8 @@
 
     {{ with .Site.Params.bandcampuser }}
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/{{.}}" target="_blank"></a>
+    {{ end }} {{ with .Site.Params.dockerhubuser}}
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/{{.}}" target="_blank"></a>
     {{ end }} {{ with .Site.Params.githubuser }}
     <a class="fab fa-github" style="font-size: 24px" href="https://github.com/{{.}}" target="_blank"></a>
     {{ end }} {{ with .Site.Params.instagramuser }}
