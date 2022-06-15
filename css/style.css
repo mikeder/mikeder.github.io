@@ -26,6 +26,17 @@ source {
     padding-bottom: 10px;
 }
 
+pre code {
+    display: block;
+    background: none;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    max-width: inherit;
+    min-width: 100px;
+    padding: 0;
+}
+
 
 /* On mouse-over, add a deeper shadow */
 
