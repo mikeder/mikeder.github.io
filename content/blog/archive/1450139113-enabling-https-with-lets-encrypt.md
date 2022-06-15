@@ -14,14 +14,14 @@ First I cloned the [Lets Encrypt GitHub](https://github.com/letsencrypt/letsencr
 root@proxy-01:~# git clone https://github.com/letsencrypt/letsencrypt
 root@proxy-01:~# cd letsencrypt/
 ./letsencrypt-auto certonly --standalone -d sqweeb.net -d git.sqweeb.net -d subsonic.sqweeb.net -d wekan.sqweeb.net -d cherry.sqweeb.net -d www.sqweeb.net
-</pre>
+```
 
 This gave me an error that port 80 was already in use:
 <pre class='prettyprint'>
 The program nginx (process ID 4510) is already listening on TCP port x
    x 80. This will prevent us from binding to that port. Please stop the  x
    x nginx program temporarily and then try again.
-</pre>
+```
 
 It is required to stop the web server or in this case, proxy, to get around this error: 
 
@@ -29,12 +29,12 @@ It is required to stop the web server or in this case, proxy, to get around this
 <pre class='prettyprint'>
 root@proxy-01:~/letsencrypt# service nginx stop
 Stopping nginx: nginx.
-</pre>
+```
 
 Rerun the letsencrypt script:
 <pre class='prettyprint'>
 ./letsencrypt-auto certonly --standalone -d sqweeb.net -d git.sqweeb.net -d subsonic.sqweeb.net -d wekan.sqweeb.net -d cherry.sqweeb.net -d www.sqweeb.net
-</pre>
+```
 
 This will put the certificate chain in /etc/letsencrypt/live/sqweeb.net ready to be used by NGINX. From here it is just a matter of swapping out the self signed certificate I was using for this newly generated cert.
 
@@ -51,7 +51,7 @@ ssl_session_cache builtin:1000 shared:SSL:10m;
 ssl_protocols TLSv1.1 TLSv1.2;
 ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK';
 ssl_prefer_server_ciphers on;
-</pre>
+```
 
 I also enabled a HTTP -> HTTPS redirect so all of the requests to upstream servers handled by this proxy would now be using SSL, instead of a select few that require it.
 
@@ -68,7 +68,7 @@ server {
 # Once all the config changes are made, restart the nginx service:
 root@proxy-01:~# service nginx start
 Starting nginx: nginx.
-</pre>
+```
 
 Now https is working across all of my subdomains! Only gripe is the subsonic app on my phone doesn't seem to be able to connect to [https://subsonic.sqweeb.net](https://subsonic.sqweeb.net) whereas my girlfriends phone can. This may require some updating of OS and/or more digging but I will update this post once its sorted out.
 

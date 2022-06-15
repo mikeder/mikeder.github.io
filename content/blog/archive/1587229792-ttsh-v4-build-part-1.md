@@ -18,35 +18,9 @@ Then started the waiting game, this was a "pre-order" after all, SynthCube gave 
 Build process to be continued...
 
 
-</p><p><br></p><div class="row">
-    <div class="col-md-4">
-      <div class="thumbnail-large">
-        <a href="https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0001.jpg" target="_blank">
-          <img src="https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0001.jpg" alt="Lights">
-          <div class="caption">
-            <p>The start.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail-large">
-        <a href="https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0002.jpg" target="_blank">
-          <img src="https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0002.jpg" alt="Lights">
-          <div class="caption">
-            <p>Matching transistors.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail-large">
-        <a href="https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0004.jpg" target="_blank">
-          <img src="https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0004.jpg" alt="Lights">
-          <div class="caption">
-            <p>First round of VCO boards.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+![The Start.](https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0001.jpg)
+
+![Matching Transistors](https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0002.jpg)
+
+![First round of VCO boards.](https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0004.jpg)
+

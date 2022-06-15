@@ -25,7 +25,7 @@ This morning I added some logging functionality to the <a href="https://github.c
   File "/home/cherrymusic/cherrymusic-devel/cherrymusicserver/cherrymodel.py", line 401, in to_dict
     urlpath = quote(self.path.encode('utf8'))
 UnicodeEncodeError: 'utf-8' codec can't encode character '\udce2' in position 29: surrogates not allowed
-</pre>
+```
 
 This is obviously because my filename sanitizing in the music-scraper script I use is lacking. So I found a decent bash script for renaming filenames that contain invalid characters.
 
@@ -46,14 +46,14 @@ find "$1" -depth -print0 | while IFS= read -r -d '' file; do
     fi
   fi
 done
-</pre>
+```
 
 I saved this script in /home/cherrymusic so I can run it if I start to see this issue again but ideally I'd like to fix the music-scraper script so it doesn't allow these characters through in the first place.
 
-<pre class="prettyprint">
+```bash
 # Dump all filenames to be changed into a text file to be reviewed
 cherrymusic@cherrym-ct:~$ ./rename.sh /mnt/vm-storage-1/Music/Web\ Rips > rename.txt
-</pre>
+```
 
 Once everything was looking good in the test run dump into replace.txt I removed the "echo" from the mv command in the rename script and ran it again to actually perform the renaming.
 
@@ -62,4 +62,4 @@ Finally I added a cron job to be run daily to rotate the cherrymusic log files s
 <pre class="prettyprint" lang-bsh>
 # m h  dom mon dow   command
 @daily /home/cherrymusic/logrotate.sh
-</pre>
+```

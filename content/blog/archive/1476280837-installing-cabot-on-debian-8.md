@@ -8,7 +8,7 @@ draft: true
 
 https://www.unicoda.com/?p=1624
 
-<pre class="prettyprint">
+```bash
 sudo apt-get install python-dev python-pip postgresql ruby
 sudo pip install ecdsa fabric pycrypto
 git clone https://github.com/lincolnloop/cabot.git
@@ -24,7 +24,7 @@ source /home/ubuntu/venv/bin/activate
 cd cabot
 foreman start -e conf/production.env
 
-</pre>
+```
 
 Modifying fabric provision/deploy for multi instance deploys:
 

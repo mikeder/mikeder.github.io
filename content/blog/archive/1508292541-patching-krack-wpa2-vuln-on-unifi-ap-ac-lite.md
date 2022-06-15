@@ -20,7 +20,7 @@ ERROR: cannot verify dl.ubnt.com's certificate, issued by `/C=US/O=Amazon/OU=Ser
 To connect to dl.ubnt.com insecurely, use `--no-check-certificate'.
 Image short, header truncated.
 Invalid firmware.
-</pre>
+```
 
 So I logged into another machine and pulled down the .bin file
 
@@ -36,7 +36,7 @@ Saving to: ‘BZ.qca956x.v3.9.3.7537.171013.1101.bin’
 BZ.qca956x.v3.9.3.7 100%[=====================>]   7.11M  21.1MB/s   in 0.3s
 
 2017-10-17 22:04:03 (21.1 MB/s) - ‘BZ.qca956x.v3.9.3.7537.171013.1101.bin’ saved                                                 [7452312/7452312]
-</pre>
+```
 
 Started up a SimpleHTTPServer to serve the file locally:
 
@@ -48,7 +48,7 @@ Serving HTTP on 0.0.0.0 port 8001 ...
 192.168.1.38 - - [17/Oct/2017 22:15:43] "GET /BZ.qca956x.v3.9.3.7537.171013.1101.bin HTTP/1.1" 200 -
 
 BZ.v3.4.19# upgrade http://docker-01.sqweeb.net:8001/BZ.qca956x.v3.9.3.7537.171013.1101.bin
-</pre>
+```
 
 This started the upgrade but was still not successful, still no indication why yet..
 

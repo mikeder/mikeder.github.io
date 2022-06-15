@@ -6,8 +6,9 @@ categories: ["Archive"]
 draft: true
 ---
 
-### GOMAXPROCS=2
-<pre class="prettyprint">
+# GOMAXPROCS=2
+
+```bash
 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4
 Running 15s test @ http://localhost:3000
   4 threads and 100 connections
@@ -17,12 +18,11 @@ Running 15s test @ http://localhost:3000
   67708 requests in 15.01s, 289.02MB read
 Requests/sec:   4511.45
 Transfer/sec:     19.26MB
-</pre>
+```
 
+# GOMAXPROX=4
 
-
-### GOMAXPROX=4
-<pre class="prettyprint">
+```bash
 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4
 Running 15s test @ http://localhost:3000
   4 threads and 100 connections
@@ -32,12 +32,12 @@ Running 15s test @ http://localhost:3000
   100112 requests in 15.01s, 427.07MB read
 Requests/sec:   6669.38
 Transfer/sec:     28.45MB
-</pre>
+```
+
+# GOMAXPROCS=8
 
 
-
-### GOMAXPROCS=8
-<pre class="prettyprint">
+```bash
 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4
 Running 15s test @ http://localhost:3000
   4 threads and 100 connections
@@ -47,10 +47,11 @@ Running 15s test @ http://localhost:3000
   84139 requests in 15.02s, 358.94MB read
 Requests/sec:   5600.43
 Transfer/sec:     23.89MB
-</pre>
+```
 
-## GOMAXPROCS=4 == Max RPS
-<pre class="prettyprint">
+# GOMAXPROCS=4 == Max RPS
+
+```bash
 meder@devb0x:wrk$ wrk http://localhost:3000 -c 150 -d 15s -t 4                                                      
 Running 15s test @ http://localhost:3000
   4 threads and 150 connections
@@ -60,29 +61,36 @@ Running 15s test @ http://localhost:3000
   100559 requests in 15.02s, 428.98MB read
 Requests/sec:   6695.12
 Transfer/sec:     28.56MB
-</pre>
+```
 
-### ways 2 fail
+# ways 2 fail
 
-* 2020/01/29 20:11:56 getting posts from database: Error 1129: Host `'devb0x.tsnet' is blocked` because of many connection errors; unblock with 'mysqladmin flush-hosts'
+1. Too many open connections to the database.
 
-<pre class="prettyprint">
+```log
+2020/01/29 20:11:56 getting posts from database: Error 1129: Host `'devb0x.tsnet' is blocked` because of many connection errors; unblock with 'mysqladmin flush-hosts'
+```
+
+```bash
 mysql> FLUSH HOSTS;
 Query OK, 0 rows affected (0.00 sec)
-</pre>
+```
 
-* 2020/01/29 20:13:17 getting posts from database: dial tcp 192.168.2.109:3306: socket: `too many open files`           
+```log
+2020/01/29 20:13:17 getting posts from database: dial tcp 192.168.2.109:3306: socket: `too many open files`           
 2020/01/29 20:13:17 open ./templates: too many open files
+```
 
-<pre class="prettyprint">
+```go
 db.SetMaxOpenConns(10)
 db.SetMaxIdleConns(2)
-</pre>
+```
 
-### GOMAXPROCS=4 + 50 clients 4 threads with db hits
+# GOMAXPROCS=4 + 50 clients 4 threads with db hits
+
 Hitting the `/blog` endpoint, which loads 40 posts from the database.
 
-<pre class="prettyprint">
+```bash
 meder@devb0x:globber$ wrk http://localhost:3000/blog -c 50 -d 15s -t 4                                              
 Running 15s test @ http://localhost:3000/blog
   4 threads and 50 connections
@@ -92,10 +100,11 @@ Running 15s test @ http://localhost:3000/blog
   11029 requests in 15.02s, 0.98GB read
 Requests/sec:    734.41
 Transfer/sec:     66.82MB
-</pre>
+```
 
 A slew of mostly harmless errors...
-<pre class="prettyprint">
+
+```log
 2020/01/29 21:46:50 getting posts from database: context canceled
 2020/01/29 21:46:50 [devb0x/ReRgRtMjxy-066573] "GET http://localhost:3000/blog HTTP/1.1" from [::1]:33706 - 200 8192B in 31.62011ms
 2020/01/29 21:46:50 http: superfluous response.WriteHeader call from github.com/go-chi/chi/middleware.(*basicWriter).WriteHeader (wrap_writer.go:74)
@@ -105,11 +114,11 @@ A slew of mostly harmless errors...
 2020/01/29 21:46:50 write tcp [::1]:3000->[::1]:33696: write: broken pipe                                           
 2020/01/29 21:46:50 http: superfluous response.WriteHeader call from github.com/go-chi/chi/middleware.(*basicWriter).WriteHeader (wrap_writer.go:74)
 2020/01/29 21:46:50 [devb0x/ReRgRtMjxy-066580] "GET http://localhost:3000/blog HTTP/1.1" from [::1]:33704 - 200 8192B in 18.819665ms
-</pre>
+```
 
 After adding some pagination and post/page limit:
 
-<pre class="prettyprint">
+```bash
 meder@devb0x:globber$ wrk http://localhost:3000/blog -c 30 -d 15s -t 4
 Running 15s test @ http://localhost:3000/blog
   4 threads and 30 connections
@@ -119,4 +128,4 @@ Running 15s test @ http://localhost:3000/blog
   52861 requests in 15.01s, 695.23MB read
 Requests/sec:   3521.95
 Transfer/sec:     46.32MB
-</pre>
+```

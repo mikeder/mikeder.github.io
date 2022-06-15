@@ -12,7 +12,7 @@ When I was using the squid3 package in pfSense it came configured ready to use S
 root@proxy:~# squid3 -v | grep ssl                                                          
 root@proxy:~# 
 # Nothing?!
-</pre>
+```
 
 So I set out to find another option, I knew that nginx could perform reverse proxy functions but at first look it looked more complicated than squid. Having another look it didn't seem so bad, and I was bored at work tonight, so I figured I'd give it a shot. I set up a fresh Debian 7 container and went through the normal procedure of setting up DHCP, reserving the address on the router and updating packages. I roughly followed <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CB4QFjAA&url=https%3A%2F%2Fwww.digitalocean.com%2Fcommunity%2Ftutorials%2Fhow-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins&ei=yu-PVcXjHom1-AHnyoHwBA&usg=AFQjCNFm-Gp9L4Fi2F7wruE3yZfxXyXntw&sig2=NIIfG8AfQpRUYA5mkCQNnA">this tutorial</a> to get nginx installed and a new SSL cert in place.
 
@@ -20,7 +20,7 @@ So I set out to find another option, I knew that nginx could perform reverse pro
 root@proxy:~# apt-get install nginx
 root@proxy:~# cd /etc/nginx
 root@proxy:~# sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/cert.key -out /etc/nginx/cert.crt
-</pre>
+```
 
 Once nginx was installed it was just a matter of creating a new site file in /etc/nginx/sites-availalable with my configuration:
 
@@ -99,13 +99,13 @@ server {
         proxy_pass http://dht;
     }
 }            
-</pre>
+```
 
 After the config is in place I just make a symbolic link to the /sites-enabled folder and restart nginx.
 <pre class='prettyprint'>
 root@nginx-proxy:~# ln -s /etc/nginx/sites-available/sqweebnet /etc/nginx/sites-enabled/sqweebnet
 root@nginx-proxy:~# service nginx restart
 Restarting nginx: nginx.
-</pre>
+```
 
 This whole process was fairly painless, and shockingly it worked right off the bat, no troubleshooting required. I'm not sure if my config is 100% correct w/ regards to the reverse proxy settings at the top but everything seems to work as expected. Also as a nice side effect, nginx happens to use about 1/2 the memory that squid did, even while serving request through SSL encryption, that and the fact that it worked without any headache what so ever make me wonder why I didn't try this earlier. Now that I can proxy to HTTPS enabled servers I can start using Airtime again, so the <a href="/radio">radio page</a> is working again! :D

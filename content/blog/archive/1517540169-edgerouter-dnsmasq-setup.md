@@ -12,7 +12,7 @@ set service dhcp-server use-dnsmasq enable
 commit
 save
 exit
-</pre>
+```
 
 
 
