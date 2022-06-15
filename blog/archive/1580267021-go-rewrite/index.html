@@ -44,7 +44,30 @@
 ├── home.html
 └── nav.html
 </code></pre></div><p>With that, a template that you would render with a call to <code>Execute()</code> can use the other components like this:</p>
-<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#75715e"># blog.html</span>
+    <span style="color:#f92672">{{</span> template <span style="color:#e6db74">&#34;head.html&#34;</span> <span style="color:#f92672">}}</span>
+        <span style="color:#f92672">{{</span> template <span style="color:#e6db74">&#34;nav.html&#34;</span> <span style="color:#f92672">}}</span>
+                <span style="color:#f92672">{{</span> <span style="color:#66d9ef">if</span> .Posts <span style="color:#f92672">}}</span>
+                   ...
+                <span style="color:#f92672">{{</span> end <span style="color:#f92672">}}</span>
+    <span style="color:#f92672">{{</span> template <span style="color:#e6db74">&#34;footer.html&#34;</span> <span style="color:#f92672">}}</span>
+</code></pre></div><p>Once the core pieces were working, I went about breaking up main into more logical chunks.</p>
+<p><code>cmd/</code> contains main and the API handlers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cmd/
+└── globber
+    ├── internal
+    │   └── handlers
+    │       └── handlers.go
+    └── main.go
+</code></pre></div><p><code>internal/</code> contains the database access methods and a web package for rendering and/or handling render errors.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">internal/
+├── blog
+│   └── blog.go
+├── database
+│   └── database.go
+└── web
+    └── web.go
+</code></pre></div><p>With this stuff in place I now have a &ldquo;working&rdquo; site that will get all the posts from the database and render them all or an individual. I&rsquo;ve done some UI bootstrap and theme copy pasta to get the looks just about the same, without a bunch of the other CSS and JS bloat I had accumulated on the Python repo. Next steps are to figure out a new auth system and post entry/update forms. I&rsquo;m still writing this post on the Python side while also checking formatting on the <a href="https://new.sqweeb.net/blog/entry/go-rewrite">new</a> side. :D</p>
 
         </div>
          
@@ -96,7 +119,7 @@
 
 <footer id="site-footer">
     <p>
-        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:7ba9364</p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:573985b</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

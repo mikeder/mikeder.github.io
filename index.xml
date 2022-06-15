@@ -483,7 +483,8 @@ UnicodeEncodeError: &amp;#39;utf-8&amp;#39; codec can&amp;#39;t encode character
       <pubDate>Thu, 21 May 2015 15:04:26 +0000</pubDate>
       
       <guid>https://mikeder.net/blog/archive/1432220666-adding-logging-to-cherrymusic-service/</guid>
-      <description>This morning I added some logging functionality to the cherrymusic service scriptthat lives in /etc/init.d/cherrymusic. I have a couple issues going on with the music server that are going to require some log digging. One of which I&amp;rsquo;ve already fixed: Some of the Web Rips sub directories would open up empty. Upon review the logs when accessing those folders I found this:</description>
+      <description>This morning I added some logging functionality to the cherrymusic service scriptthat lives in /etc/init.d/cherrymusic. I have a couple issues going on with the music server that are going to require some log digging. One of which I&amp;rsquo;ve already fixed: Some of the Web Rips sub directories would open up empty. Upon review the logs when accessing those folders I found this:
+[150521-14:10] ERROR : [21/May/2015:14:10:41] HTTP Traceback (most recent call last): File &amp;#34;/home/cherrymusic/cherrymusic-devel/cherrypy/_cprequest.</description>
     </item>
     
     <item>
