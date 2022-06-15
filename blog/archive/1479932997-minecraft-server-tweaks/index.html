@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Minecraft Server Tweaks</title>
+     
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>Minecraft Server Tweaks</h1>
+        <h5>23.11.2016 20:29</h5>
+        <div class="container">
+            <ul>
+<li>
+<p>Cache Proxy in front of <a href="https://mc-map.sqweeb.net">https://mc-map.sqweeb.net</a></p>
+<ul>
+<li>Add another 32g disk to the proxy VM - proxy-02</li>
+<li>Format, make file system and mount new disk at /mnt/cache/</li>
+<li>Add line to /etc/fstab to mount disk on boot:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/dev/vda1 /mnt/cache ext4 defaults <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2</span>
+</code></pre></div><ul>
+<li>Add the following snippet to /etc/nginx/snippets/proxy-defaults.conf:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">proxy_cache_path /mnt/cache levels<span style="color:#f92672">=</span>1:2 keys_zone<span style="color:#f92672">=</span>my_cache:10m max_size<span style="color:#f92672">=</span>20g inactive<span style="color:#f92672">=</span>60m;
+</code></pre></div><ul>
+<li>Update /etc/nginx/sites-available/mc-map.sqweeb.net to use the cache:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">server <span style="color:#f92672">{</span>
+             ...
+             proxy_cache my_cache;
+             proxy_cache_valid <span style="color:#ae81ff">200</span> <span style="color:#ae81ff">302</span> 10m;
+             add_header X-Cache-Status $upstream_cache_status;
+             ...
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
+<li>
+<p>Reduce dynmap update/render interval from every 1s to every 5s.</p>
+</li>
+<li>
+<p>Restrict number of tile updates to 1 at a time.</p>
+<ul>
+<li>Edit plugins/dynmap/configuration.txt:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#75715e"># How often a tile gets rendered (in seconds).</span>
+    renderinterval: <span style="color:#ae81ff">5</span>
+    <span style="color:#75715e"># How many update tiles to work on at once (if not defined, default is 1/2 the number of cores)</span>
+    tiles-rendered-at-once: <span style="color:#ae81ff">1</span>
+</code></pre></div></li>
+<li>
+<p>Move dynmap data to separate disk.</p>
+</li>
+<li>
+<p>Move archive/ and backup/ directories to separate disk.</p>
+<ul>
+<li>Add another 60g disk to minecraft-01 VM</li>
+<li>Format, create file system and mount disk at /mnt/mcdata/</li>
+<li>Add line to /etc/fstab to mount disk on boot:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/dev/vda1 /mnt/mcdata ext4 defaults <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2</span>
+</code></pre></div><ul>
+<li>Copy existing archives, backups and dynmap data to new disk</li>
+<li>Set permissions on /mnt/mcdata/</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@minecraft-01 mnt$ chown -R mc:mc mcdata/
+</code></pre></div><ul>
+<li>Remove original archive/, backup/, and dynmap data directories</li>
+<li>Create symlinks to new directories on separate disk&hellip;</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+         
+        <div>
+            <a href="javascript:history.back()">Go Back</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()" style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:7ba9364</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>

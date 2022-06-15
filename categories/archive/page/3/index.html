@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Archive</title>
+     
+    <link rel="stylesheet" href='/css/style.css'> 
+    <link rel="alternate" type="application/rss+xml" href="/categories/archive/index.xml" title="mikeder.net">
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+	<main class="content">
+		
+		<div class="content-chunk">
+			<h1>Archive</h1>
+			<hr>
+			
+		
+
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/">Roland Jupiter 6 Troubleshooting</a></h1>
+	<time>29.11.2016 16:10</time>
+	
+	<div class="container">
+		CPU acting very erratic, front panel sometimes doesn&rsquo;t boot, other times will go completly haywire (See Video) Initially thought PSU ripple due to age of caps and reported behavior of CPU when the PSU isn&rsquo;t clean.
+Confirmed PSU ripple not the cause, after confirming correct scope settings on FB group.
+Started suspecting CPU itself was bad, asked around for replacements, as well as eprom.
+Europa is &ldquo;taking a hiatus&rdquo; as of 11/18/16, no good
+		
+			<a href="https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/">Minecraft Server Tweaks</a></h1>
+	<time>23.11.2016 20:29</time>
+	
+	<div class="container">
+		Cache Proxy in front of https://mc-map.sqweeb.net
+ Add another 32g disk to the proxy VM - proxy-02 Format, make file system and mount new disk at /mnt/cache/ Add line to /etc/fstab to mount disk on boot:  /dev/vda1 /mnt/cache ext4 defaults 0 2  Add the following snippet to /etc/nginx/snippets/proxy-defaults.conf:  proxy_cache_path /mnt/cache levels=1:2 keys_zone=my_cache:10m max_size=20g inactive=60m;  Update /etc/nginx/sites-available/mc-map.sqweeb.net to use the cache:  server { ... proxy_cache my_cache; proxy_cache_valid 200 302 10m; add_header X-Cache-Status $upstream_cache_status; .
+		
+			<a href="https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1479507653-minecraft-server/">Minecraft Server Info</a></h1>
+	<time>18.11.2016 22:20</time>
+	
+	<div class="container">
+		Dynmap w/ Factions: Here
+###Minecraft Multiplayer
+###Minecraft List
+###Minecraft Server List
+Plugins:
+ dynmap Essentials EssentialsProtect EssentialsSpawn EssentialsGeoIP EssentialsChat EssentialsAntiBuild Factions FactionsDynmap MassiveCore Vault  
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1476280837-installing-cabot-on-debian-8/">Installing Cabot on Debian 8</a></h1>
+	<time>12.10.2016 14:00</time>
+	
+	<div class="container">
+		https://www.unicoda.com/?p=1624
+sudo apt-get install python-dev python-pip postgresql ruby sudo pip install ecdsa fabric pycrypto git clone https://github.com/lincolnloop/cabot.git cd cabot cp conf/production.env.example conf/production.env # Add at least graphite url and login to config nano env/production.env fab provision -H root@localhost fab deploy -H ubuntu@localhost su - ubuntu source /home/ubuntu/venv/bin/activate cd cabot foreman start -e conf/production.env Modifying fabric provision/deploy for multi instance deploys:
+ Clone official repo Make new local branch - &lsquo;tesl&rsquo; Find/replace all instances of ubuntu with tesl in fabfile.
+		
+			<a href="https://mikeder.net/blog/archive/1476280837-installing-cabot-on-debian-8/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1474679928-nginx-reverse-proxy-2-0/">NGINX Reverse Proxy 2.0</a></h1>
+	<time>24.09.2016 01:18</time>
+	
+	<div class="container">
+		I realized I didn't want to have a single SSL cert covering *all* of my subdomains here @ sqweeb.netSo I set out on rebuilding my reverse proxy from the ground up.
+I first spun up a fresh Debian 8 virtual machine, patched it up and installed nginx and the Lets Encrypt cert bot. Once the default server was up and running and I had the root certificate in place I made an ssl-defaults config file that would be included in default/root config.
+		
+			<a href="https://mikeder.net/blog/archive/1474679928-nginx-reverse-proxy-2-0/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1474654243-installing-turtl-on-debian-8/">Installing Turtl on Debian 8</a></h1>
+	<time>23.09.2016 18:10</time>
+	
+	<div class="container">
+		Installation Doc
+Google Group Installation Guide
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1472578134-troubleshooting-large-iowait-spikes/">Troubleshooting large IOWait spikes</a></h1>
+	<time>30.08.2016 17:28</time>
+	
+	<div class="container">
+		changed mount options:
+ Before: defaults,noatime,nodiratime,barrier=1,data=ordered,errors=remount-ro After: relatime,barrier=0,errors=remount-ro  pveperf before:
+root@pve-01:~# pveperf / CPU BOGOMIPS: 19244.00 REGEX/SECOND: 959888 HD SIZE: 27.19 GB (/dev/dm-0) BUFFERED READS: 195.02 MB/sec AVERAGE SEEK TIME: 0.26 ms FSYNCS/SECOND: 301.31 DNS EXT: 93.93 ms DNS INT: 93.76 ms (sqweeb.net) root@pve-01:~# pveperf /var/lib/vz CPU BOGOMIPS: 19244.00 REGEX/SECOND: 978722 HD SIZE: 178.85 GB (/dev/mapper/pve-data) BUFFERED READS: 197.73 MB/sec AVERAGE SEEK TIME: 0.20 ms FSYNCS/SECOND: 316.08 DNS EXT: 84.
+		
+			<a href="https://mikeder.net/blog/archive/1472578134-troubleshooting-large-iowait-spikes/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1472570020-rust-server-info/">Rust Server Info</a></h1>
+	<time>30.08.2016 15:13</time>
+	
+	<div class="container">
+		[tS] Rusty Noobs   Server turned off (9/22/16)
+ I&rsquo;ve decided to turn off the server for now, due to lack of traffic. The virtual machine will be backed up and stored in its current state but will remain powered off until its needed again.    Server Update, Map Wipe, Performance Increases! (9/1/16)
+ The server was updated and map wiped today, the map size was increased from 3000 to 3555 Server tick rate was increased from 30 to 60 An underlying storage issue was resolved resulting in lower server load and faster loading times Come noob out with us on a fresh server!
+		
+			<a href="https://mikeder.net/blog/archive/1472570020-rust-server-info/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1468841522-finding-the-source-of-excessive-inode-usage/">Finding the source of excessive inode usage</a></h1>
+	<time>18.07.2016 11:32</time>
+	
+	<div class="container">
+		Determine if lack of disks space is an inode problem:
+df -ih Filesystem Inodes IUsed IFree IUse% Mounted on /dev/sda1 1000K 105K 896K 100% / tmpfs 480K 8 480K 1% /dev/shm Find folders with large number of inodes:
+for i in /*; do echo $i; find $i |wc -l; done Change to the directory with the highest number, in my case this morning it was /var.
+Find specific folder w/ large number of inodes:
+		
+			<a href="https://mikeder.net/blog/archive/1468841522-finding-the-source-of-excessive-inode-usage/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1468497010-splunk-light-install/">Splunk Light Install</a></h1>
+	<time>14.07.2016 11:50</time>
+	
+	<div class="container">
+		wget -O splunklight-6.4.2-00f5bb3fa822-linux-2.6-amd64.deb &lsquo;https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&amp;platform=linux&amp;version=6.4.2&amp;product=splunk_light&amp;filename=splunklight-6.4.2-00f5bb3fa822-linux-2.6-amd64.deb&amp;wget=true'
+		
+	</div>
+</article>
+<hr>
+		
+		<div>
+
+	<a href="/categories/archive/page/2/">Previous Page</a>
+
+3 of 5
+
+	<a href="/categories/archive/page/4/">Next Page</a>
+
+</div>
+
+
+		</div>
+	</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()" style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>  
+
+<footer id="site-footer">
+    <p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:latest</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>

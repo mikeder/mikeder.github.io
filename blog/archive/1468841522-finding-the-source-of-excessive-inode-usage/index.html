@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>MBA Monterey</title>
+    <title>Finding the source of excessive inode usage</title>
      
     <link rel="stylesheet" href='/css/style.css'> 
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
@@ -23,48 +23,28 @@
 </header> 
 <main id="content" class="content">
     <article class="content-chunk">
-        <h1>MBA Monterey</h1>
-        <h5>07.12.2021 21:55</h5>
+        <h1>Finding the source of excessive inode usage</h1>
+        <h5>18.07.2016 11:32</h5>
         <div class="container">
-            <p>Issues after upgrading my 2020 Macbook Air (m1) to macOS Monterey:</p>
-<ol>
-<li>Battery life went to shit, have to enable low power mode on battery.</li>
-<li>Bitwig and SoundCraft MTK 12 mixer no longer cooperate.</li>
-</ol>
-<p>
+            <p>Determine if lack of disks space is an inode problem:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    df -ih
 
-
-
-
-
-
-<div class="md__image">
-    <img id="[270 217 375 104 174 420]" src="/img/monterey-ver-1201.png#float-right" onclick="openModal(this.id)" alt="Initial Version"  />
-</div></p>
-<p>Issue #1 I don&rsquo;t have a whole lot of evidence to support but it did feel like the battery life on my brand new Macbook Air M1 had gotten a lot worse after the upgrade to Monterey (12.0.1). Previously I could use the laptop for several days without reaching for the charger, now it seems the battery percentage was dropping several percent every few minutes.</p>
-<p>Issue #2 really bothered me. One of the main reasons for getting a new laptop was to use in my synthesizer studio, for recording purposes. If my main audio interface, a SoundCraft MTK 12 mixer, was no longer recognized, it would defeat the purpose of the shiney new Mac.</p>
-<p>
-
-
-
-
-
-
-<div class="md__image">
-    <img id="[15 480 410 161 23 89]" src="/img/bitwig-device-missing.png" onclick="openModal(this.id)" alt="Bitwig Missing I/O"  />
-</div></p>
-<p>At first it seemed maybe core audio or core services weren&rsquo;t installed right, or maybe Rosetta 2 wasn&rsquo;t working properly. The version of Bitwig that I own doesn&rsquo;t run natively on Apple silicon, so it requires Rosetta for Intel CPU emulation. 
-
-
-
-
-
-
-<div class="md__image">
-    <img id="[296 176 129 60 108 367]" src="/img/bitwig-kind-intel.png#float-left" onclick="openModal(this.id)" alt="Bitwig Missing I/O"  />
-</div> I tried reinstalling Bitwig first, that had no effect. Then I tried reinstalling Rosetta 2, which kept giving me errors but still reported as being installed successfully.</p>
-<p>Finally, I just reinstalled MacOS itself, luckily this was a simple affair; just continue holding the power button on the laptop while turning it on, until a gear icon shows up. You can then navigate to a menu to perform a reinstall, which left all of my programs and stuff in place.</p>
-<p>After the reinstall I tried Bitwig again, at first it seemed the problem persisted but after a disconnect/reconnect of the USB cable to the mixer, things started working again! The mixer was recognized as unplugged and replugged and magically all the inputs and outputs came back as routing options. I swear I unplugged and replugged the mixer several times before attempting any of the above, so I blame MacOS.</p>
+    Filesystem     Inodes IUsed IFree IUse% Mounted on
+    /dev/sda1       1000K  105K  896K   100% /
+    tmpfs            480K     <span style="color:#ae81ff">8</span>  480K    1% /dev/shm
+</code></pre></div><p>Find folders with large number of inodes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#66d9ef">for</span> i in /*; <span style="color:#66d9ef">do</span> echo $i; find $i |wc -l; <span style="color:#66d9ef">done</span>
+</code></pre></div><p>Change to the directory with the highest number, in my case this morning it was /var.</p>
+<p>Find specific folder w/ large number of inodes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#66d9ef">for</span> i in ./*; <span style="color:#66d9ef">do</span> echo $i; find $i |wc -l; <span style="color:#66d9ef">done</span>
+</code></pre></div><p>Change to the directory with the highest number again, in my case /var/spool.</p>
+<p>Repeat.</p>
+<p>I found that /var/spool/clientmqueue had 917,xxx tiny files in it (all likely undelivered mail), that once removed dropped the inode usage back down to 11%.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    cd /var/spool/clientmqueue <span style="color:#f92672">&amp;&amp;</span> find . -type f -delete
+    Filesystem     Inodes IUsed IFree IUse% Mounted on
+    /dev/sda1       1000K  105K  896K   11% /
+    tmpfs            480K     <span style="color:#ae81ff">8</span>  480K    1% /dev/shm
+</code></pre></div><p><a href="http://stackoverflow.com/questions/653096/howto-free-inode-usage">http://stackoverflow.com/questions/653096/howto-free-inode-usage</a></p>
 
         </div>
          
@@ -116,7 +96,7 @@
 
 <footer id="site-footer">
     <p>
-        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:2fc11f9</p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:7ba9364</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VM Restore</title>
+     
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>VM Restore</h1>
+        <h5>23.03.2021 01:54</h5>
+        <div class="container">
+            <h2 id="restoring-vms-after-a-host-ssd-gets-cooked">Restoring VM&rsquo;s after a host SSD gets cooked.</h2>
+<p>When I went to power my homelab server back on, after sitting idle for 8 months while we moved house, it displayed some concerning ata device warnings on boot. After a reboot it failed an automatic run of <code>fsck -a</code> and recommended performing a manual run. The root device <code>/dev/mapper/pve-root</code> was corrupted and after performing several manual filesystem checks the system could no longer boot. The 64G SanDisk SSD(SDSSDP-064G) I was using as the OS disk had shit the bed.</p>
+<p>These are some notes from the process of reinstalling the host OS (Proxmox VE) and restoring the VM&rsquo;s from backup.</p>
+<ol>
+<li>Remove the dead drive and reinstall Proxmox to a backup 128G SSD. (I&rsquo;ve got a brand new NVME drive on the way to replace this one)</li>
+<li>Mount the 2 WD Black 1TB drives I use as directory/VM disk storage to the host.</li>
+<li>Recreate the config files for the VM&rsquo;s&hellip;</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@pve:/etc/pve/qemu-server# ls
+100.conf  101.conf  102.conf  104.conf
+
+root@pve:/etc/pve/qemu-server# cat 100.conf
+boot: order<span style="color:#f92672">=</span>scsi0;ide2;net0
+cores: <span style="color:#ae81ff">2</span>
+ide2: none,media<span style="color:#f92672">=</span>cdrom
+memory: <span style="color:#ae81ff">2048</span>
+name: freenas
+net0: virtio<span style="color:#f92672">=</span>3E:94:1D:50:03:30,bridge<span style="color:#f92672">=</span>vmbr0,firewall<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+numa: <span style="color:#ae81ff">0</span>
+ostype: l26
+scsi0: black1:100/vm-100-disk-1.raw,size<span style="color:#f92672">=</span>32G
+scsi1: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WMC4M1155464,size<span style="color:#f92672">=</span>2000G
+scsi2: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M2XPP587,size<span style="color:#f92672">=</span>2000G
+scsi3: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M0173865,size<span style="color:#f92672">=</span>2000G
+scsi4: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M7KDVTJ7,size<span style="color:#f92672">=</span>2000G
+scsi5: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M6NXP2AJ,size<span style="color:#f92672">=</span>2000G
+scsihw: virtio-scsi-pci
+smbios1: uuid<span style="color:#f92672">=</span>0469a370-945e-4225-a53e-9f2cc8b7b1ff
+sockets: <span style="color:#ae81ff">1</span>
+vmgenid: b74c87a6-b8f7-42ae-a47c-14c426cfb856
+
+root@pve:/etc/pve/qemu-server# cat 101.conf
+bootdisk: scsi0
+cores: <span style="color:#ae81ff">4</span>
+memory: <span style="color:#ae81ff">6144</span>
+name: docker-01
+net0: virtio<span style="color:#f92672">=</span>92:D5:CF:4C:76:8E,bridge<span style="color:#f92672">=</span>vmbr0
+numa: <span style="color:#ae81ff">0</span>
+onboot: <span style="color:#ae81ff">1</span>
+ostype: l26
+scsi0: black1:101/vm-101-disk-1.raw,size<span style="color:#f92672">=</span>66G
+scsi1: black1:101/vm-101-disk-2.raw,size<span style="color:#f92672">=</span>200G
+scsihw: virtio-scsi-pci
+smbios1: uuid<span style="color:#f92672">=</span>fc830c01-699d-4e7e-8255-2b6e8b451013
+sockets: <span style="color:#ae81ff">1</span>
+usb0: host<span style="color:#f92672">=</span>046d:0994
+
+root@pve:/etc/pve/qemu-server# cat 102.conf
+bootdisk: scsi0
+cores: <span style="color:#ae81ff">4</span>
+lock: backup
+memory: <span style="color:#ae81ff">4096</span>
+name: minecraft
+net0: virtio<span style="color:#f92672">=</span>12:1A:83:CD:0E:D2,bridge<span style="color:#f92672">=</span>vmbr0
+numa: <span style="color:#ae81ff">0</span>
+onboot: <span style="color:#ae81ff">1</span>
+ostype: l26
+scsi0: black2:102/vm-102-disk-1.qcow2,size<span style="color:#f92672">=</span>200G
+scsihw: virtio-scsi-pci
+smbios1: uuid<span style="color:#f92672">=</span>e1feb44f-bfc2-4a75-b175-3c6df2e55b13
+sockets: <span style="color:#ae81ff">1</span>
+
+root@pve:/etc/pve/qemu-server# cat 104.conf
+bootdisk: scsi0
+cores: <span style="color:#ae81ff">1</span>
+memory: <span style="color:#ae81ff">512</span>
+name: mysql-01
+net0: virtio<span style="color:#f92672">=</span>0A:08:2B:8E:1B:3E,bridge<span style="color:#f92672">=</span>vmbr0
+numa: <span style="color:#ae81ff">0</span>
+onboot: <span style="color:#ae81ff">1</span>
+ostype: l26
+protection: <span style="color:#ae81ff">1</span>
+scsi0: black2:104/vm-104-disk-1.raw,size<span style="color:#f92672">=</span>16G
+scsihw: virtio-scsi-pci
+smbios1: uuid<span style="color:#f92672">=</span>46dd2aeb-e04a-4c4c-9b71-71844efb79f7
+sockets: <span style="color:#ae81ff">1</span>
+startup: order<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+</code></pre></div>
+        </div>
+         
+        <div>
+            <a href="javascript:history.back()">Go Back</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()" style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:7ba9364</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>

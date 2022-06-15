@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Go Rewrite - Load</title>
+     
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>Go Rewrite - Load</h1>
+        <h5>30.01.2020 01:00</h5>
+        <div class="container">
+            <h1 id="gomaxprocs2">GOMAXPROCS=2</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">meder@devb0x:wrk$ wrk http://localhost:3000 -c <span style="color:#ae81ff">100</span> -d 15s -t <span style="color:#ae81ff">4</span>
+Running 15s test @ http://localhost:3000
+  <span style="color:#ae81ff">4</span> threads and <span style="color:#ae81ff">100</span> connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    37.13ms   45.17ms 398.89ms   84.51%
+    Req/Sec     1.13k   226.65     1.99k    71.67%
+  <span style="color:#ae81ff">67708</span> requests in 15.01s, 289.02MB read
+Requests/sec:   4511.45
+Transfer/sec:     19.26MB
+</code></pre></div><h1 id="gomaxprox4">GOMAXPROX=4</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">meder@devb0x:wrk$ wrk http://localhost:3000 -c <span style="color:#ae81ff">100</span> -d 15s -t <span style="color:#ae81ff">4</span>
+Running 15s test @ http://localhost:3000
+  <span style="color:#ae81ff">4</span> threads and <span style="color:#ae81ff">100</span> connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    24.82ms   30.69ms 280.80ms   85.86%
+    Req/Sec     1.68k   253.46     2.62k    68.50%
+  <span style="color:#ae81ff">100112</span> requests in 15.01s, 427.07MB read
+Requests/sec:   6669.38
+Transfer/sec:     28.45MB
+</code></pre></div><h1 id="gomaxprocs8">GOMAXPROCS=8</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">meder@devb0x:wrk$ wrk http://localhost:3000 -c <span style="color:#ae81ff">100</span> -d 15s -t <span style="color:#ae81ff">4</span>
+Running 15s test @ http://localhost:3000
+  <span style="color:#ae81ff">4</span> threads and <span style="color:#ae81ff">100</span> connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    27.39ms   32.98ms 378.54ms   86.09%
+    Req/Sec     1.41k   203.20     2.14k    68.00%
+  <span style="color:#ae81ff">84139</span> requests in 15.02s, 358.94MB read
+Requests/sec:   5600.43
+Transfer/sec:     23.89MB
+</code></pre></div><h1 id="gomaxprocs4--max-rps">GOMAXPROCS=4 == Max RPS</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">meder@devb0x:wrk$ wrk http://localhost:3000 -c <span style="color:#ae81ff">150</span> -d 15s -t <span style="color:#ae81ff">4</span>                                                      
+Running 15s test @ http://localhost:3000
+  <span style="color:#ae81ff">4</span> threads and <span style="color:#ae81ff">150</span> connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    36.57ms   45.55ms 492.70ms   85.83%
+    Req/Sec     1.68k   282.89     2.67k    66.00%
+  <span style="color:#ae81ff">100559</span> requests in 15.02s, 428.98MB read
+Requests/sec:   6695.12
+Transfer/sec:     28.56MB
+</code></pre></div><h1 id="ways-2-fail">ways 2 fail</h1>
+<ol>
+<li>Too many open connections to the database.</li>
+</ol>
+<pre tabindex="0"><code class="language-log" data-lang="log">2020/01/29 20:11:56 getting posts from database: Error 1129: Host `'devb0x.tsnet' is blocked` because of many connection errors; unblock with 'mysqladmin flush-hosts'
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mysql&gt; FLUSH HOSTS;
+Query OK, <span style="color:#ae81ff">0</span> rows affected <span style="color:#f92672">(</span>0.00 sec<span style="color:#f92672">)</span>
+</code></pre></div><pre tabindex="0"><code class="language-log" data-lang="log">2020/01/29 20:13:17 getting posts from database: dial tcp 192.168.2.109:3306: socket: `too many open files`           
+2020/01/29 20:13:17 open ./templates: too many open files
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">SetMaxOpenConns</span>(<span style="color:#ae81ff">10</span>)
+<span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">SetMaxIdleConns</span>(<span style="color:#ae81ff">2</span>)
+</code></pre></div><h1 id="gomaxprocs4--50-clients-4-threads-with-db-hits">GOMAXPROCS=4 + 50 clients 4 threads with db hits</h1>
+<p>Hitting the <code>/blog</code> endpoint, which loads 40 posts from the database.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">meder@devb0x:globber$ wrk http://localhost:3000/blog -c <span style="color:#ae81ff">50</span> -d 15s -t <span style="color:#ae81ff">4</span>                                              
+Running 15s test @ http://localhost:3000/blog
+  <span style="color:#ae81ff">4</span> threads and <span style="color:#ae81ff">50</span> connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    79.80ms   78.68ms 683.00ms   87.42%
+    Req/Sec   184.35     36.49   320.00     70.17%
+  <span style="color:#ae81ff">11029</span> requests in 15.02s, 0.98GB read
+Requests/sec:    734.41
+Transfer/sec:     66.82MB
+</code></pre></div><p>A slew of mostly harmless errors&hellip;</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">2020/01/29 21:46:50 getting posts from database: context canceled
+2020/01/29 21:46:50 [devb0x/ReRgRtMjxy-066573] &quot;GET http://localhost:3000/blog HTTP/1.1&quot; from [::1]:33706 - 200 8192B in 31.62011ms
+2020/01/29 21:46:50 http: superfluous response.WriteHeader call from github.com/go-chi/chi/middleware.(*basicWriter).WriteHeader (wrap_writer.go:74)
+2020/01/29 21:46:50 [devb0x/ReRgRtMjxy-066580] &quot;GET http://localhost:3000/blog HTTP/1.1&quot; from [::1]:33704 - 200 8192B in 18.819665ms
+2020/01/29 21:46:50 getting posts from database: driver: bad connection                                             
+2020/01/29 21:46:50 [devb0x/ReRgRtMjxy-066577] &quot;GET http://localhost:3000/blog HTTP/1.1&quot; from [::1]:33742 - 200 2889B in 26.299548ms
+2020/01/29 21:46:50 write tcp [::1]:3000-&gt;[::1]:33696: write: broken pipe                                           
+2020/01/29 21:46:50 http: superfluous response.WriteHeader call from github.com/go-chi/chi/middleware.(*basicWriter).WriteHeader (wrap_writer.go:74)
+2020/01/29 21:46:50 [devb0x/ReRgRtMjxy-066580] &quot;GET http://localhost:3000/blog HTTP/1.1&quot; from [::1]:33704 - 200 8192B in 18.819665ms
+</code></pre><p>After adding some pagination and post/page limit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">meder@devb0x:globber$ wrk http://localhost:3000/blog -c <span style="color:#ae81ff">30</span> -d 15s -t <span style="color:#ae81ff">4</span>
+Running 15s test @ http://localhost:3000/blog
+  <span style="color:#ae81ff">4</span> threads and <span style="color:#ae81ff">30</span> connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.60ms   10.39ms 157.32ms   92.23%
+    Req/Sec     0.88k    84.10     1.09k    68.83%
+  <span style="color:#ae81ff">52861</span> requests in 15.01s, 695.23MB read
+Requests/sec:   3521.95
+Transfer/sec:     46.32MB
+</code></pre></div>
+        </div>
+         
+        <div>
+            <a href="javascript:history.back()">Go Back</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()" style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:7ba9364</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>

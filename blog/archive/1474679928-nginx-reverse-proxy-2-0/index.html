@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NGINX Reverse Proxy 2.0</title>
+     
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>NGINX Reverse Proxy 2.0</h1>
+        <h5>24.09.2016 01:18</h5>
+        <div class="container">
+            <pre tabindex="0"><code>I realized I didn't want to have a single SSL cert covering *all* of my subdomains here @ sqweeb.net
+</code></pre><p>So I set out on rebuilding my reverse proxy from the ground up.</p>
+<p>I first spun up a fresh Debian 8 virtual machine, patched it up and installed <a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04" title="NGINX and Lets Encrypt">nginx and the Lets Encrypt cert bot</a>. Once the default server was up and running and I had the root certificate in place I made an ssl-defaults config file that would be included in default/root config. At this stage I also followed some advice from <a href="https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices">SSL Labs</a> and generated a stronger dhparam.pem to be used in my ssl config.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sqweebking@proxy-02:~$ cd /etc/ssl/certs
+sqweebking@proxy-02:~$ openssl dhparam -out dhparam.pem <span style="color:#ae81ff">2048</span>
+<span style="color:#75715e"># Some sites recommend going to 4096 here but I was slightly concerned about performance,</span>
+<span style="color:#75715e"># so I stuck with SSL Labs &#34;at least 2,048 bits of security&#34; requirement</span>
+</code></pre></div><h4 id="etcnginxsites-enableddefault">/etc/nginx/sites-enabled/default</h4>
+<ul>
+<li>Default server config that sets up the basic reverse proxy and directory access for Lets Encrypt.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">include snippets/proxy-defaults.conf;
+include snippets/ssl-defaults.conf;
+
+<span style="color:#75715e"># Default server configuration</span>
+<span style="color:#75715e">#</span>
+server <span style="color:#f92672">{</span>
+        listen <span style="color:#ae81ff">80</span> default_server;
+        listen <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:80 default_server;
+
+        root /var/www/html;
+        server_name _;
+
+        location / <span style="color:#f92672">{</span>
+                <span style="color:#75715e"># First attempt to serve request as file, then</span>
+                <span style="color:#75715e"># as directory, then fall back to displaying a 404.</span>
+                try_files $uri $uri/ <span style="color:#f92672">=</span>404;
+        <span style="color:#f92672">}</span>
+
+        location ~ /.well-known <span style="color:#f92672">{</span>
+                <span style="color:#75715e"># Used by Lets Encrypt to validate the server</span>
+                allow all;
+        <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="etcnginxsnippetsproxy-defaultsconf">/etc/nginx/snippets/proxy-defaults.conf</h4>
+<ul>
+<li>Some basic reverse proxy settings included by the default server config</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Reverse proxy settings</span>
+<span style="color:#75715e">############################</span>
+
+proxy_redirect off;
+proxy_set_header Host $host;
+proxy_set_header X-Forwarded-Proto https;
+proxy_set_header X-Forwarded-Port 443;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $remote_addr;
+proxy_set_header REMOTE_ADDR $remote_addr;
+<span style="color:#75715e">#proxy_http_version 1.1;</span>
+proxy_connect_timeout   600;
+proxy_send_timeout      600;
+proxy_read_timeout      600;
+send_timeout            600;
+</code></pre></div><h4 id="etcnginxsnippetsssl-defaultsconf">/etc/nginx/snippets/ssl-defaults.conf</h4>
+<ul>
+<li>SSL settings applied to all subdomains, included by the default server config</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## from https://cipherli.st/</span>
+<span style="color:#75715e">## and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</span>
+
+ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+ssl_prefer_server_ciphers on;
+<span style="color:#75715e">#ssl_ciphers &#34;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&#34;;</span>
+ssl_ciphers <span style="color:#e6db74">&#39;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA&#39;</span>;
+ssl_ecdh_curve secp384r1;
+ssl_session_cache shared:SSL:10m;
+ssl_session_tickets off;
+ssl_stapling on;
+ssl_stapling_verify on;
+resolver 192.168.1.1;
+resolver_timeout 5s;
+<span style="color:#75715e"># Disable preloading HSTS for now.  You can use the commented out header line that includes</span>
+<span style="color:#75715e"># the &#34;preload&#34; directive if you understand the implications.</span>
+<span style="color:#75715e">#add_header Strict-Transport-Security &#34;max-age=63072000; includeSubdomains; preload&#34;;</span>
+add_header Strict-Transport-Security <span style="color:#e6db74">&#34;max-age=63072000; includeSubdomains&#34;</span>;
+<span style="color:#75715e">#add_header X-Frame-Options DENY;</span>
+add_header X-Content-Type-Options nosniff;
+
+ssl_dhparam /etc/ssl/certs/dhparam.pem;
+</code></pre></div><p>Then I went about getting certs for each subdomain:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sqweebking@proxy-02:~$ sudo certbot-auto certonly -a webroot --webroot-path<span style="color:#f92672">=</span>/var/www/html -d alarm.sqweeb.net
+sqweebking@proxy-02:~$ sudo certbot-auto certonly -a webroot --webroot-path<span style="color:#f92672">=</span>/var/www/html -d dht.sqweeb.net
+sqweebking@proxy-02:~$ sudo certbot-auto certonly -a webroot --webroot-path<span style="color:#f92672">=</span>/var/www/html -d git.sqweeb.net
+sqweebking@proxy-02:~$ sudo certbot-auto certonly -a webroot --webroot-path<span style="color:#f92672">=</span>/var/www/html -d subsonic.sqweeb.net
+etc...
+</code></pre></div><p>After I got all of the certificates put in place I started putting together the config files for each subdomain basically following the same formula each time:</p>
+<h4 id="etcnginxsites-availablesqweebnet">/etc/nginx/sites-available/sqweeb.net</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Begin server definitions</span>
+<span style="color:#75715e">#############################</span>
+
+<span style="color:#75715e"># HTTP -&gt; HTTPS Redirect</span>
+server <span style="color:#f92672">{</span>
+        listen         80;
+        server_name sqweeb.net www.sqweeb.net;
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">301</span> https://$host$request_uri;
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e"># Default Server - Blog</span>
+server <span style="color:#f92672">{</span>
+        listen          <span style="color:#ae81ff">443</span> ssl default;
+        server_name     sqweeb.net www.sqweeb.net;
+
+        ssl_certificate /etc/letsencrypt/live/sqweeb.net/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/sqweeb.net/privkey.pem;
+
+        set $blog_upstream <span style="color:#e6db74">&#34;http://blog-01:8888&#34;</span>;
+        location / <span style="color:#f92672">{</span>
+                proxy_pass $blog_upstream;
+        <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="etcnginxsites-availablesubsonicsqweebnet">/etc/nginx/sites-available/subsonic.sqweeb.net</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Begin server definitions</span>
+<span style="color:#75715e">#############################</span>
+
+<span style="color:#75715e"># HTTP -&gt; HTTPS Redirect</span>
+server <span style="color:#f92672">{</span>
+        listen         80;
+        server_name subsonic.sqweeb.net;
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">301</span> https://$host$request_uri;
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e"># Subsonic Music Server</span>
+server <span style="color:#f92672">{</span>
+        listen          <span style="color:#ae81ff">443</span> ssl;
+        server_name     subsonic.sqweeb.net;
+        client_max_body_size    500M;
+
+        ssl_certificate /etc/letsencrypt/live/subsonic.sqweeb.net/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/subsonic.sqweeb.net/privkey.pem;
+
+        set $subsonic_upstream <span style="color:#e6db74">&#34;https://subsonic-02:8443&#34;</span>;
+        location / <span style="color:#f92672">{</span>
+                proxy_pass $subsonic_upstream;
+        <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Each of these config files is then linked to the /sites-enabled directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sqweebking@proxy-02:~$ sudo ln -s /etc/nginx/sites-available/sqweeb.net /etc/nginx/sites-enabled/sqweeb.net
+sqweebking@proxy-02:~$ sudo ln -s /etc/nginx/sites-available/git.sqweeb.net /etc/nginx/sites-enabled/git.sqweeb.net
+sqweebking@proxy-02:~$ sudo ln -s /etc/nginx/sites-available/subsonic.sqweeb.net /etc/nginx/sites-enabled/subsonic.sqweeb.net
+Etc...
+</code></pre></div><p>Finally tell nginx to check the config  and if all is well, reload nginx:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sqweebking@proxy-02:~$ sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+sqweebking@proxy-02:~$ sudo service nginx reload
+</code></pre></div><p><a href="https://sqweeb.net/entry/enabling-https-with-lets-encrypt">NGINX Reverse Proxy 1.0</a></p>
+
+        </div>
+         
+        <div>
+            <a href="javascript:history.back()">Go Back</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()" style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:7ba9364</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>

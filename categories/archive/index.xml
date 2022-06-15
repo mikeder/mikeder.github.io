@@ -1,34 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogs on mikeder.net</title>
-    <link>https://mikeder.net/blog/</link>
-    <description>Recent content in Blogs on mikeder.net</description>
+    <title>Archive on mikeder.net</title>
+    <link>https://mikeder.net/categories/archive/</link>
+    <description>Recent content in Archive on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 Mar 2022 19:41:15 -0500</lastBuildDate><atom:link href="https://mikeder.net/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Jupiter 6 Issues 2022</title>
-      <link>https://mikeder.net/blog/jupiter-6-issues-2022/</link>
-      <pubDate>Sat, 12 Mar 2022 19:41:15 -0500</pubDate>
-      
-      <guid>https://mikeder.net/blog/jupiter-6-issues-2022/</guid>
-      <description>Jupiter 6 w/ Europa fails to boot, shows code F6.
-Opened it up, reseated all connectors around main boards and problem went away.
-Will revist at another time, if its working, its working.</description>
-    </item>
-    
-    <item>
-      <title>MBA Monterey</title>
-      <link>https://mikeder.net/blog/mba-monterey/</link>
-      <pubDate>Tue, 07 Dec 2021 21:55:33 -0500</pubDate>
-      
-      <guid>https://mikeder.net/blog/mba-monterey/</guid>
-      <description>Issues after upgrading my 2020 Macbook Air (m1) to macOS Monterey:
- Battery life went to shit, have to enable low power mode on battery. Bitwig and SoundCraft MTK 12 mixer no longer cooperate.   
-Issue #1 I don&amp;rsquo;t have a whole lot of evidence to support but it did feel like the battery life on my brand new Macbook Air M1 had gotten a lot worse after the upgrade to Monterey (12.</description>
-    </item>
-    
+    <lastBuildDate>Tue, 23 Mar 2021 01:54:32 +0000</lastBuildDate><atom:link href="https://mikeder.net/categories/archive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VM Restore</title>
       <link>https://mikeder.net/blog/archive/1616464472-vm-restore/</link>
