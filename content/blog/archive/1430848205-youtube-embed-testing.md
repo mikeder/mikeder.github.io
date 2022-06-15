@@ -7,4 +7,6 @@ draft: false
 ---
 
 ## UMF15 Weekend 2 timelapse
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dk0FwxdHQBM" frameborder="0" allowfullscreen></iframe>
+
+{{< youtube dk0FwxdHQBM >}}
+
