@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Docker VM Replacement</title>
+     
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>Docker VM Replacement</h1>
+        <h5>01.01.2022 11:23</h5>
+        <div class="container">
+            <p>Installation notes for replacement of old Debian docker VM.</p>
+<p>Trying Alpine linux as a host, just to try something else. I started w/ the Alpine &ldquo;Standard&rdquo; install in <code>sys</code> mode.</p>
+<p>Install and setup of Alpine was easy enough, just boot the ISO image and perform setup. It took a few minutes to get going.
+Once the OS was installed I followed the <a href="https://wiki.alpinelinux.org/wiki/Docker">docs</a> for installing <code>docker</code> and <code>docker-compose</code>.</p>
+<p>Docker installed fine and worked as expected, docker-compose however did not work.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker:/home/meder# apk add docker docker-compose
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>docker:/home/meder# docker -v
+</span></span><span style="display:flex;"><span>Docker version 20.10.11, build dea9396e184290f638ea873c76db7c80efd5a1d2
+</span></span><span style="display:flex;"><span>docker:/home/meder# docker-compose --version
+</span></span><span style="display:flex;"><span>Traceback <span style="color:#f92672">(</span>most recent call last<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;/usr/bin/docker-compose&#34;</span>, line 33, in &lt;module&gt;
+</span></span><span style="display:flex;"><span>    sys.exit<span style="color:#f92672">(</span>load_entry_point<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;docker-compose==1.29.2&#39;</span>, <span style="color:#e6db74">&#39;console_scripts&#39;</span>, <span style="color:#e6db74">&#39;docker-compose&#39;</span><span style="color:#f92672">)())</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;/usr/bin/docker-compose&#34;</span>, line 22, in importlib_load_entry_point
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> entry_point in distribution<span style="color:#f92672">(</span>dist_name<span style="color:#f92672">)</span>.entry_points
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;/usr/lib/python3.9/importlib/metadata.py&#34;</span>, line 524, in distribution
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Distribution.from_name<span style="color:#f92672">(</span>distribution_name<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;/usr/lib/python3.9/importlib/metadata.py&#34;</span>, line 187, in from_name
+</span></span><span style="display:flex;"><span>    raise PackageNotFoundError<span style="color:#f92672">(</span>name<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>importlib.metadata.PackageNotFoundError: docker-compose
+</span></span></code></pre></div><p>Retrying this with Alpine &ldquo;Extended&rdquo; image, resulted in the same broken installation.</p>
+<p>Trying again w/ Debian as a base OS.</p>
+<p>&hellip;</p>
+<p>Debian worked as expected, I&rsquo;ve since moved on to setting up the usual containers and upgrading my reverse proxy setup to Traefik 2.x.</p>
+<p>Airsonic requires host network mode in order for UPnP/DLNA to work. In order for this to work w/ Traefik as a reverse proxy for external access, I had to jump through some hoops to configure traefik routing to the host port for Airsonic.
+<a href="https://stackoverflow.com/questions/46245684/how-to-get-traefik-to-redirect-to-specific-non-docker-port-from-inside-docker">https://stackoverflow.com/questions/46245684/how-to-get-traefik-to-redirect-to-specific-non-docker-port-from-inside-docker</a></p>
+
+        </div>
+         
+        <div>
+            <a href="javascript:history.back()">Go Back</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()" style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:abdac82</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>

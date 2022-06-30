@@ -34,76 +34,76 @@
 <li>Mount the 2 WD Black 1TB drives I use as directory/VM disk storage to the host.</li>
 <li>Recreate the config files for the VM&rsquo;s&hellip;</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@pve:/etc/pve/qemu-server# ls
-100.conf  101.conf  102.conf  104.conf
-
-root@pve:/etc/pve/qemu-server# cat 100.conf
-boot: order<span style="color:#f92672">=</span>scsi0;ide2;net0
-cores: <span style="color:#ae81ff">2</span>
-ide2: none,media<span style="color:#f92672">=</span>cdrom
-memory: <span style="color:#ae81ff">2048</span>
-name: freenas
-net0: virtio<span style="color:#f92672">=</span>3E:94:1D:50:03:30,bridge<span style="color:#f92672">=</span>vmbr0,firewall<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-numa: <span style="color:#ae81ff">0</span>
-ostype: l26
-scsi0: black1:100/vm-100-disk-1.raw,size<span style="color:#f92672">=</span>32G
-scsi1: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WMC4M1155464,size<span style="color:#f92672">=</span>2000G
-scsi2: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M2XPP587,size<span style="color:#f92672">=</span>2000G
-scsi3: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M0173865,size<span style="color:#f92672">=</span>2000G
-scsi4: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M7KDVTJ7,size<span style="color:#f92672">=</span>2000G
-scsi5: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M6NXP2AJ,size<span style="color:#f92672">=</span>2000G
-scsihw: virtio-scsi-pci
-smbios1: uuid<span style="color:#f92672">=</span>0469a370-945e-4225-a53e-9f2cc8b7b1ff
-sockets: <span style="color:#ae81ff">1</span>
-vmgenid: b74c87a6-b8f7-42ae-a47c-14c426cfb856
-
-root@pve:/etc/pve/qemu-server# cat 101.conf
-bootdisk: scsi0
-cores: <span style="color:#ae81ff">4</span>
-memory: <span style="color:#ae81ff">6144</span>
-name: docker-01
-net0: virtio<span style="color:#f92672">=</span>92:D5:CF:4C:76:8E,bridge<span style="color:#f92672">=</span>vmbr0
-numa: <span style="color:#ae81ff">0</span>
-onboot: <span style="color:#ae81ff">1</span>
-ostype: l26
-scsi0: black1:101/vm-101-disk-1.raw,size<span style="color:#f92672">=</span>66G
-scsi1: black1:101/vm-101-disk-2.raw,size<span style="color:#f92672">=</span>200G
-scsihw: virtio-scsi-pci
-smbios1: uuid<span style="color:#f92672">=</span>fc830c01-699d-4e7e-8255-2b6e8b451013
-sockets: <span style="color:#ae81ff">1</span>
-usb0: host<span style="color:#f92672">=</span>046d:0994
-
-root@pve:/etc/pve/qemu-server# cat 102.conf
-bootdisk: scsi0
-cores: <span style="color:#ae81ff">4</span>
-lock: backup
-memory: <span style="color:#ae81ff">4096</span>
-name: minecraft
-net0: virtio<span style="color:#f92672">=</span>12:1A:83:CD:0E:D2,bridge<span style="color:#f92672">=</span>vmbr0
-numa: <span style="color:#ae81ff">0</span>
-onboot: <span style="color:#ae81ff">1</span>
-ostype: l26
-scsi0: black2:102/vm-102-disk-1.qcow2,size<span style="color:#f92672">=</span>200G
-scsihw: virtio-scsi-pci
-smbios1: uuid<span style="color:#f92672">=</span>e1feb44f-bfc2-4a75-b175-3c6df2e55b13
-sockets: <span style="color:#ae81ff">1</span>
-
-root@pve:/etc/pve/qemu-server# cat 104.conf
-bootdisk: scsi0
-cores: <span style="color:#ae81ff">1</span>
-memory: <span style="color:#ae81ff">512</span>
-name: mysql-01
-net0: virtio<span style="color:#f92672">=</span>0A:08:2B:8E:1B:3E,bridge<span style="color:#f92672">=</span>vmbr0
-numa: <span style="color:#ae81ff">0</span>
-onboot: <span style="color:#ae81ff">1</span>
-ostype: l26
-protection: <span style="color:#ae81ff">1</span>
-scsi0: black2:104/vm-104-disk-1.raw,size<span style="color:#f92672">=</span>16G
-scsihw: virtio-scsi-pci
-smbios1: uuid<span style="color:#f92672">=</span>46dd2aeb-e04a-4c4c-9b71-71844efb79f7
-sockets: <span style="color:#ae81ff">1</span>
-startup: order<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@pve:/etc/pve/qemu-server# ls
+</span></span><span style="display:flex;"><span>100.conf  101.conf  102.conf  104.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@pve:/etc/pve/qemu-server# cat 100.conf
+</span></span><span style="display:flex;"><span>boot: order<span style="color:#f92672">=</span>scsi0;ide2;net0
+</span></span><span style="display:flex;"><span>cores: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>ide2: none,media<span style="color:#f92672">=</span>cdrom
+</span></span><span style="display:flex;"><span>memory: <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>name: freenas
+</span></span><span style="display:flex;"><span>net0: virtio<span style="color:#f92672">=</span>3E:94:1D:50:03:30,bridge<span style="color:#f92672">=</span>vmbr0,firewall<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>numa: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>ostype: l26
+</span></span><span style="display:flex;"><span>scsi0: black1:100/vm-100-disk-1.raw,size<span style="color:#f92672">=</span>32G
+</span></span><span style="display:flex;"><span>scsi1: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WMC4M1155464,size<span style="color:#f92672">=</span>2000G
+</span></span><span style="display:flex;"><span>scsi2: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M2XPP587,size<span style="color:#f92672">=</span>2000G
+</span></span><span style="display:flex;"><span>scsi3: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M0173865,size<span style="color:#f92672">=</span>2000G
+</span></span><span style="display:flex;"><span>scsi4: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M7KDVTJ7,size<span style="color:#f92672">=</span>2000G
+</span></span><span style="display:flex;"><span>scsi5: /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M6NXP2AJ,size<span style="color:#f92672">=</span>2000G
+</span></span><span style="display:flex;"><span>scsihw: virtio-scsi-pci
+</span></span><span style="display:flex;"><span>smbios1: uuid<span style="color:#f92672">=</span>0469a370-945e-4225-a53e-9f2cc8b7b1ff
+</span></span><span style="display:flex;"><span>sockets: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>vmgenid: b74c87a6-b8f7-42ae-a47c-14c426cfb856
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@pve:/etc/pve/qemu-server# cat 101.conf
+</span></span><span style="display:flex;"><span>bootdisk: scsi0
+</span></span><span style="display:flex;"><span>cores: <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>memory: <span style="color:#ae81ff">6144</span>
+</span></span><span style="display:flex;"><span>name: docker-01
+</span></span><span style="display:flex;"><span>net0: virtio<span style="color:#f92672">=</span>92:D5:CF:4C:76:8E,bridge<span style="color:#f92672">=</span>vmbr0
+</span></span><span style="display:flex;"><span>numa: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>onboot: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>ostype: l26
+</span></span><span style="display:flex;"><span>scsi0: black1:101/vm-101-disk-1.raw,size<span style="color:#f92672">=</span>66G
+</span></span><span style="display:flex;"><span>scsi1: black1:101/vm-101-disk-2.raw,size<span style="color:#f92672">=</span>200G
+</span></span><span style="display:flex;"><span>scsihw: virtio-scsi-pci
+</span></span><span style="display:flex;"><span>smbios1: uuid<span style="color:#f92672">=</span>fc830c01-699d-4e7e-8255-2b6e8b451013
+</span></span><span style="display:flex;"><span>sockets: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>usb0: host<span style="color:#f92672">=</span>046d:0994
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@pve:/etc/pve/qemu-server# cat 102.conf
+</span></span><span style="display:flex;"><span>bootdisk: scsi0
+</span></span><span style="display:flex;"><span>cores: <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>lock: backup
+</span></span><span style="display:flex;"><span>memory: <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>name: minecraft
+</span></span><span style="display:flex;"><span>net0: virtio<span style="color:#f92672">=</span>12:1A:83:CD:0E:D2,bridge<span style="color:#f92672">=</span>vmbr0
+</span></span><span style="display:flex;"><span>numa: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>onboot: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>ostype: l26
+</span></span><span style="display:flex;"><span>scsi0: black2:102/vm-102-disk-1.qcow2,size<span style="color:#f92672">=</span>200G
+</span></span><span style="display:flex;"><span>scsihw: virtio-scsi-pci
+</span></span><span style="display:flex;"><span>smbios1: uuid<span style="color:#f92672">=</span>e1feb44f-bfc2-4a75-b175-3c6df2e55b13
+</span></span><span style="display:flex;"><span>sockets: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@pve:/etc/pve/qemu-server# cat 104.conf
+</span></span><span style="display:flex;"><span>bootdisk: scsi0
+</span></span><span style="display:flex;"><span>cores: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>memory: <span style="color:#ae81ff">512</span>
+</span></span><span style="display:flex;"><span>name: mysql-01
+</span></span><span style="display:flex;"><span>net0: virtio<span style="color:#f92672">=</span>0A:08:2B:8E:1B:3E,bridge<span style="color:#f92672">=</span>vmbr0
+</span></span><span style="display:flex;"><span>numa: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>onboot: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>ostype: l26
+</span></span><span style="display:flex;"><span>protection: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>scsi0: black2:104/vm-104-disk-1.raw,size<span style="color:#f92672">=</span>16G
+</span></span><span style="display:flex;"><span>scsihw: virtio-scsi-pci
+</span></span><span style="display:flex;"><span>smbios1: uuid<span style="color:#f92672">=</span>46dd2aeb-e04a-4c4c-9b71-71844efb79f7
+</span></span><span style="display:flex;"><span>sockets: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>startup: order<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+</span></span></code></pre></div>
         </div>
          
         <div>

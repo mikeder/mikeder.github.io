@@ -27,31 +27,31 @@
         <h5>30.05.2015 10:15</h5>
         <div class="container">
             <p>I recently came across a strange problem with the CherryMusic server that only appeared when it was started via an /etc/init.d script. In certain folders the tracks would not show, although the folder showed that there were files within, when you clicked on the folder it would just open an empty list. This condition would also be accompanied by the following error in the logs:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UnicodeEncodeError: <span style="color:#e6db74">&#39;utf-8&#39;</span> codec can<span style="color:#e6db74">&#39;t encode character &#39;</span><span style="color:#ae81ff">\u</span>dce2<span style="color:#960050;background-color:#1e0010">&#39;</span> in position 29: surrogates not allowed 
-</code></pre></div><p>Doing some quick Google-Fu I came across <!-- raw HTML omitted -->this page<!-- raw HTML omitted --> which states that this is caused by a <!-- raw HTML omitted -->bug<!-- raw HTML omitted --> in Python3, but the bug has apparently already been fixed. So I went searching again to figure out how to run the cherrymusic service with LC_CTYPE=&ldquo;en_US.UTF-8&rdquo; set in the environment, which lead me to <!-- raw HTML omitted -->this page.<!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>UnicodeEncodeError: <span style="color:#e6db74">&#39;utf-8&#39;</span> codec can<span style="color:#e6db74">&#39;t encode character &#39;</span><span style="color:#ae81ff">\u</span>dce2<span style="color:#960050;background-color:#1e0010">&#39;</span> in position 29: surrogates not allowed 
+</span></span></code></pre></div><p>Doing some quick Google-Fu I came across <!-- raw HTML omitted -->this page<!-- raw HTML omitted --> which states that this is caused by a <!-- raw HTML omitted -->bug<!-- raw HTML omitted --> in Python3, but the bug has apparently already been fixed. So I went searching again to figure out how to run the cherrymusic service with LC_CTYPE=&ldquo;en_US.UTF-8&rdquo; set in the environment, which lead me to <!-- raw HTML omitted -->this page.<!-- raw HTML omitted --></p>
 <p>I checked the locale settings on the cherry container, which looked correct:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@cherrym:/# locale
-LANG<span style="color:#f92672">=</span>en_US.UTF-8
-LANGUAGE<span style="color:#f92672">=</span>
-LC_CTYPE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_NUMERIC<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_TIME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_COLLATE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_MONETARY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_MESSAGES<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_PAPER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_ADDRESS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_TELEPHONE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_MEASUREMENT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_IDENTIFICATION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
-LC_ALL<span style="color:#f92672">=</span>
-</code></pre></div><p>So as suggested in the comments of that page I just redirected the output of locale to /etc/environment and /etc/default/locale :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@cherrym:/# locale &gt; /etc/environment
-root@cherrym:/# locale &gt; /etc/default/locale
-root@cherrym:/# service cherrymusic restart
-<span style="color:#f92672">[</span> ok <span style="color:#f92672">]</span> Restarting CherryMusic...: cherrymusic.
-</code></pre></div><p>After this all of the folders show their contents as expected and there are no more &lsquo;UnicodeEncodeErrors&rsquo; showing up in the log :)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@cherrym:/# locale
+</span></span><span style="display:flex;"><span>LANG<span style="color:#f92672">=</span>en_US.UTF-8
+</span></span><span style="display:flex;"><span>LANGUAGE<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>LC_CTYPE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_NUMERIC<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_TIME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_COLLATE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_MONETARY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_MESSAGES<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_PAPER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_ADDRESS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_TELEPHONE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_MEASUREMENT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_IDENTIFICATION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>LC_ALL<span style="color:#f92672">=</span>
+</span></span></code></pre></div><p>So as suggested in the comments of that page I just redirected the output of locale to /etc/environment and /etc/default/locale :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@cherrym:/# locale &gt; /etc/environment
+</span></span><span style="display:flex;"><span>root@cherrym:/# locale &gt; /etc/default/locale
+</span></span><span style="display:flex;"><span>root@cherrym:/# service cherrymusic restart
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span> ok <span style="color:#f92672">]</span> Restarting CherryMusic...: cherrymusic.
+</span></span></code></pre></div><p>After this all of the folders show their contents as expected and there are no more &lsquo;UnicodeEncodeErrors&rsquo; showing up in the log :)</p>
 
         </div>
          

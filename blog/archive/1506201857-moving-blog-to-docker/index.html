@@ -28,50 +28,50 @@
         <div class="container">
             <p>Working on some of the initial steps to moving this blog to docker today. Since containers aren&rsquo;t exactly presistent I have to get the database migrated to a dedicated mysql node. Once that is done I can move the blog into a python2.7 container and onto a new docker host.</p>
 <p>First I spun up a new Debian VM, as is tradition, and after updating and upgrading, I installed mysql-server 5.5.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@mysql-01:~# apt-get update
-root@mysql-01:~# apt-get upgrade
-root@mysql-01:~# apt-get install mysql-server
-root@mysql-01:~# mysql --version
-mysql  Ver 14.14 Distrib 5.5.57, <span style="color:#66d9ef">for</span> debian-linux-gnu <span style="color:#f92672">(</span>x86_64<span style="color:#f92672">)</span> using readline 6.3
-</code></pre></div><p><em>In order to get the mysql server listening on all interfaces instead of just localhost, I had to comment out a single line in the config:</em> <code>/etc/mysql/my.cnf</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@mysql-01:~# apt-get update
+</span></span><span style="display:flex;"><span>root@mysql-01:~# apt-get upgrade
+</span></span><span style="display:flex;"><span>root@mysql-01:~# apt-get install mysql-server
+</span></span><span style="display:flex;"><span>root@mysql-01:~# mysql --version
+</span></span><span style="display:flex;"><span>mysql  Ver 14.14 Distrib 5.5.57, <span style="color:#66d9ef">for</span> debian-linux-gnu <span style="color:#f92672">(</span>x86_64<span style="color:#f92672">)</span> using readline 6.3
+</span></span></code></pre></div><p><em>In order to get the mysql server listening on all interfaces instead of just localhost, I had to comment out a single line in the config:</em> <code>/etc/mysql/my.cnf</code></p>
 <ul>
 <li>comment out this line: <code>bind-address = 127.0.0.1</code> -&gt; <code>#bind-address = 127.0.0.1</code></li>
 <li>and restart mysql server: <code>service mysql restart</code></li>
 </ul>
 <h4 id="before">Before</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@mysql-01:~# netstat -tulpan
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-...
-tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> 127.0.0.1:3306            0.0.0.0:*               LISTEN      10710/mysqld
-...
-</code></pre></div><h4 id="after">After</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@mysql-01:~# netstat -tulpan
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-...
-tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> 0.0.0.0:3306            0.0.0.0:*               LISTEN      10710/mysqld
-...
-</code></pre></div><p>I then ran some basic hardening steps like changing the root password, and disabling remote connections for root and anonymous users.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@mysql-01:~# mysql_secure_installation
-</code></pre></div><p>Created a new <code>blog</code> database and <code>bloguser</code> with the appropriate permissions:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@mysql-01:~# mysql -u root -p
-Enter password: supersecretpassw0rd
-mysql&gt; create database blog;
-mysql&gt; create user <span style="color:#e6db74">&#39;bloguser&#39;</span>@<span style="color:#e6db74">&#39;localhost&#39;</span> identified by <span style="color:#e6db74">&#39;password&#39;</span>;
-mysql&gt; grant all on testdb.* to <span style="color:#e6db74">&#39;bloguser&#39;</span> identified by <span style="color:#e6db74">&#39;password&#39;</span>;
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@mysql-01:~# netstat -tulpan
+</span></span><span style="display:flex;"><span>Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> 127.0.0.1:3306            0.0.0.0:*               LISTEN      10710/mysqld
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><h4 id="after">After</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@mysql-01:~# netstat -tulpan
+</span></span><span style="display:flex;"><span>Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> 0.0.0.0:3306            0.0.0.0:*               LISTEN      10710/mysqld
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>I then ran some basic hardening steps like changing the root password, and disabling remote connections for root and anonymous users.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@mysql-01:~# mysql_secure_installation
+</span></span></code></pre></div><p>Created a new <code>blog</code> database and <code>bloguser</code> with the appropriate permissions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@mysql-01:~# mysql -u root -p
+</span></span><span style="display:flex;"><span>Enter password: supersecretpassw0rd
+</span></span><span style="display:flex;"><span>mysql&gt; create database blog;
+</span></span><span style="display:flex;"><span>mysql&gt; create user <span style="color:#e6db74">&#39;bloguser&#39;</span>@<span style="color:#e6db74">&#39;localhost&#39;</span> identified by <span style="color:#e6db74">&#39;password&#39;</span>;
+</span></span><span style="display:flex;"><span>mysql&gt; grant all on testdb.* to <span style="color:#e6db74">&#39;bloguser&#39;</span> identified by <span style="color:#e6db74">&#39;password&#39;</span>;
+</span></span></code></pre></div><hr>
 <p>Then I just had to dump and import the existing database into the new one:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@blog-01:~# mysqldump -u blog -p blog &gt; blog.sql
-root@blog-01:~# mysql -h mysql-01.sqweeb.net -u bloguser -p blog &lt; blog.sql
-</code></pre></div><p>Finally I modify <code>blog.py</code> to point at the new database and restart the blog python process. I could confirm the connection to the new database by checking the processlist:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mysql&gt; show processlist;
-+----+----------+--------------------+------+---------+------+-------+------------------+
-| Id | User     | Host               | db   | Command | Time | State | Info             |
-+----+----------+--------------------+------+---------+------+-------+------------------+
-| <span style="color:#ae81ff">43</span> | bloguser | 192.168.2.48:41700 | blog | Sleep   |   <span style="color:#ae81ff">22</span> |       | NULL             |
-| <span style="color:#ae81ff">48</span> | root     | localhost          | NULL | Query   |    <span style="color:#ae81ff">0</span> | NULL  | show processlist |
-+----+----------+--------------------+------+---------+------+-------+------------------+
-<span style="color:#ae81ff">2</span> rows in set <span style="color:#f92672">(</span>0.00 sec<span style="color:#f92672">)</span>
-</code></pre></div><p>Successful migration.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@blog-01:~# mysqldump -u blog -p blog &gt; blog.sql
+</span></span><span style="display:flex;"><span>root@blog-01:~# mysql -h mysql-01.sqweeb.net -u bloguser -p blog &lt; blog.sql
+</span></span></code></pre></div><p>Finally I modify <code>blog.py</code> to point at the new database and restart the blog python process. I could confirm the connection to the new database by checking the processlist:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysql&gt; show processlist;
+</span></span><span style="display:flex;"><span>+----+----------+--------------------+------+---------+------+-------+------------------+
+</span></span><span style="display:flex;"><span>| Id | User     | Host               | db   | Command | Time | State | Info             |
+</span></span><span style="display:flex;"><span>+----+----------+--------------------+------+---------+------+-------+------------------+
+</span></span><span style="display:flex;"><span>| <span style="color:#ae81ff">43</span> | bloguser | 192.168.2.48:41700 | blog | Sleep   |   <span style="color:#ae81ff">22</span> |       | NULL             |
+</span></span><span style="display:flex;"><span>| <span style="color:#ae81ff">48</span> | root     | localhost          | NULL | Query   |    <span style="color:#ae81ff">0</span> | NULL  | show processlist |
+</span></span><span style="display:flex;"><span>+----+----------+--------------------+------+---------+------+-------+------------------+
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span> rows in set <span style="color:#f92672">(</span>0.00 sec<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>Successful migration.</p>
 
         </div>
          

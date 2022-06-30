@@ -35,24 +35,24 @@
 <li>More that I forgot..</li>
 </ul>
 <p>Installing the blog:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ apt-get install mysql-server python-dev libmysqlclient-dev libffi-dev git python-pip
-$ pip install bcrypt mysql-python torndb tornado markdown futures
-$ mkdir /opt/blog
-$ cd /opt
-$ git clone http://github.com/mikeder/blog
-$ cd blog
-$ mysql -u root -p
-mysql&gt; CREATE DATABASE blog;
-mysql&gt; GRANT ALL PRIVILEGES ON blog.* TO <span style="color:#e6db74">&#39;blog&#39;</span>@<span style="color:#e6db74">&#39;localhost&#39;</span> IDENTIFIED BY <span style="color:#e6db74">&#39;blog&#39;</span>;
-mysql&gt; quit
-$ mysql --user<span style="color:#f92672">=</span>blog --password<span style="color:#f92672">=</span>blog --database<span style="color:#f92672">=</span>blog &lt; schema.sql
-$ python blog.py &amp;
-</code></pre></div><p>Additionally I had to set the timezone:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ dpkg-reconfigure tzdata
-$ service mysqld restart
-$ mysql -u root -p
-mysql&gt; SELECT @@session.time_zone; <span style="color:#75715e">#should report SYSTEM</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ apt-get install mysql-server python-dev libmysqlclient-dev libffi-dev git python-pip
+</span></span><span style="display:flex;"><span>$ pip install bcrypt mysql-python torndb tornado markdown futures
+</span></span><span style="display:flex;"><span>$ mkdir /opt/blog
+</span></span><span style="display:flex;"><span>$ cd /opt
+</span></span><span style="display:flex;"><span>$ git clone http://github.com/mikeder/blog
+</span></span><span style="display:flex;"><span>$ cd blog
+</span></span><span style="display:flex;"><span>$ mysql -u root -p
+</span></span><span style="display:flex;"><span>mysql&gt; CREATE DATABASE blog;
+</span></span><span style="display:flex;"><span>mysql&gt; GRANT ALL PRIVILEGES ON blog.* TO <span style="color:#e6db74">&#39;blog&#39;</span>@<span style="color:#e6db74">&#39;localhost&#39;</span> IDENTIFIED BY <span style="color:#e6db74">&#39;blog&#39;</span>;
+</span></span><span style="display:flex;"><span>mysql&gt; quit
+</span></span><span style="display:flex;"><span>$ mysql --user<span style="color:#f92672">=</span>blog --password<span style="color:#f92672">=</span>blog --database<span style="color:#f92672">=</span>blog &lt; schema.sql
+</span></span><span style="display:flex;"><span>$ python blog.py &amp;
+</span></span></code></pre></div><p>Additionally I had to set the timezone:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ dpkg-reconfigure tzdata
+</span></span><span style="display:flex;"><span>$ service mysqld restart
+</span></span><span style="display:flex;"><span>$ mysql -u root -p
+</span></span><span style="display:flex;"><span>mysql&gt; SELECT @@session.time_zone; <span style="color:#75715e">#should report SYSTEM</span>
+</span></span></code></pre></div>
         </div>
          
         <div>

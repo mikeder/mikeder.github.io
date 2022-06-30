@@ -45,13 +45,28 @@ Will revist at another time, if its working, its working.
 <hr>
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/docker-vm-replacement/">Docker VM Replacement</a></h1>
+	<time>01.01.2022 11:23</time>
+	
+	<div class="container">
+		Installation notes for replacement of old Debian docker VM.
+Trying Alpine linux as a host, just to try something else. I started w/ the Alpine &ldquo;Standard&rdquo; install in sys mode.
+Install and setup of Alpine was easy enough, just boot the ISO image and perform setup. It took a few minutes to get going. Once the OS was installed I followed the docs for installing docker and docker-compose.
+Docker installed fine and worked as expected, docker-compose however did not work.
+		
+			<a href="https://mikeder.net/blog/docker-vm-replacement/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/mba-monterey/">MBA Monterey</a></h1>
 	<time>07.12.2021 21:55</time>
 	
 	<div class="container">
 		Issues after upgrading my 2020 Macbook Air (m1) to macOS Monterey:
- Battery life went to shit, have to enable low power mode on battery. Bitwig and SoundCraft MTK 12 mixer no longer cooperate.   
-Issue #1 I don&rsquo;t have a whole lot of evidence to support but it did feel like the battery life on my brand new Macbook Air M1 had gotten a lot worse after the upgrade to Monterey (12.
+Battery life went to shit, have to enable low power mode on battery. Bitwig and SoundCraft MTK 12 mixer no longer cooperate. Issue #1 I don&rsquo;t have a whole lot of evidence to support but it did feel like the battery life on my brand new Macbook Air M1 had gotten a lot worse after the upgrade to Monterey (12.
 		
 			<a href="https://mikeder.net/blog/mba-monterey/">Read more...</a>
 		
@@ -77,7 +92,7 @@ Issue #1 I don&rsquo;t have a whole lot of evidence to support but it did feel l
 	<time>18.04.2020 17:09</time>
 	
 	<div class="container">
-		The TTSH (TwoThousandSixHundred) v4 is the latest incarnation of a DIY clone of the now infamous ARP 2600 synthesizer from the early 1970&rsquo;s. The TTSH project was originally started by The Human Comparator in 2013, it has gone through many revisions and bug fixes to the main PCB since then. Originally launched it was sold as &ldquo;The Kit&rdquo; that came with the powder coated and screen printed front panel, main PCB and 3 VCO PCB&rsquo;s for $620USD.
+		The TTSH (TwoThousandSixHundred) v4 is the latest incarnation of a DIY clone of the now infamous ARP 2600 synthesizer from the early 1970&rsquo;s. The TTSH project was originally started by The Human Comparator in 2013, it has gone through many revisions and bug fixes to the main PCB since then. Originally launched it was sold as &ldquo;The Kit&rdquo; that came with the powder coated and screen printed front panel, main PCB and 3 VCO PCB&rsquo;s for $620 USD.
 		
 			<a href="https://mikeder.net/blog/archive/1587229792-ttsh-v4-build-part-1/">Read more...</a>
 		
@@ -129,7 +144,7 @@ Well, I tried to update this post but apparently my token went invalid while I w
 	
 	<div class="container">
 		At the point where rewritten functionality needs some upgrading. Login, db models/mgmt stuff, etc. all needs improving over what is in place in the Python code.
- JWT login db models/mgmt featured/favorite cards  
+JWT login db models/mgmt featured/favorite cards 
 		
 	</div>
 </article>
@@ -143,21 +158,6 @@ Well, I tried to update this post but apparently my token went invalid while I w
 		GOMAXPROCS=2 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 37.13ms 45.17ms 398.89ms 84.51% Req/Sec 1.13k 226.65 1.99k 71.67% 67708 requests in 15.01s, 289.02MB read Requests/sec: 4511.45 Transfer/sec: 19.26MB GOMAXPROX=4 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 24.
 		
 			<a href="https://mikeder.net/blog/archive/1580346038-go-rewrite-load/">Read more...</a>
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1580267021-go-rewrite/">Go Rewrite</a></h1>
-	<time>29.01.2020 03:03</time>
-	
-	<div class="container">
-		I&rsquo;m rewriting this old blog in Go for a couple reasons:
-  Updating the old Python container was getting to be a pain in the ass. Due to the tornado-blog project being based on Python 2.7 and just being janky as fuck otherwise, I figured it would be easier to rewrite it in Go.
-  There are some aspects of the Go standard library that I didn&rsquo;t have much exposure to yet.
-		
-			<a href="https://mikeder.net/blog/archive/1580267021-go-rewrite/">Read more...</a>
 		
 	</div>
 </article>

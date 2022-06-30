@@ -32,106 +32,104 @@
 <li>After: relatime,barrier=0,errors=remount-ro</li>
 </ul>
 <p>pveperf before:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@pve-01:~# pveperf /
-CPU BOGOMIPS:      19244.00
-REGEX/SECOND:      <span style="color:#ae81ff">959888</span>
-HD SIZE:           27.19 GB <span style="color:#f92672">(</span>/dev/dm-0<span style="color:#f92672">)</span>
-BUFFERED READS:    195.02 MB/sec
-AVERAGE SEEK TIME: 0.26 ms
-FSYNCS/SECOND:     301.31
-DNS EXT:           93.93 ms
-DNS INT:           93.76 ms <span style="color:#f92672">(</span>sqweeb.net<span style="color:#f92672">)</span>
-
-root@pve-01:~# pveperf /var/lib/vz
-CPU BOGOMIPS:      19244.00
-REGEX/SECOND:      <span style="color:#ae81ff">978722</span>
-HD SIZE:           178.85 GB <span style="color:#f92672">(</span>/dev/mapper/pve-data<span style="color:#f92672">)</span>
-BUFFERED READS:    197.73 MB/sec
-AVERAGE SEEK TIME: 0.20 ms
-FSYNCS/SECOND:     316.08
-DNS EXT:           84.80 ms
-DNS INT:           107.74 ms <span style="color:#f92672">(</span>sqweeb.net<span style="color:#f92672">)</span>
-
-</code></pre></div><p>pveperf after:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@pve-01:~# pveperf /
-CPU BOGOMIPS:      19244.08
-REGEX/SECOND:      <span style="color:#ae81ff">953290</span>
-HD SIZE:           27.19 GB <span style="color:#f92672">(</span>/dev/dm-0<span style="color:#f92672">)</span>
-BUFFERED READS:    176.81 MB/sec
-AVERAGE SEEK TIME: 0.26 ms
-FSYNCS/SECOND:     2128.05
-DNS EXT:           113.88 ms
-DNS INT:           106.68 ms <span style="color:#f92672">(</span>sqweeb.net<span style="color:#f92672">)</span>
-
-root@pve-01:~# pveperf /var/lib/vz
-CPU BOGOMIPS:      19244.08
-REGEX/SECOND:      <span style="color:#ae81ff">980483</span>
-HD SIZE:           178.85 GB <span style="color:#f92672">(</span>/dev/mapper/pve-data<span style="color:#f92672">)</span>
-BUFFERED READS:    194.57 MB/sec
-AVERAGE SEEK TIME: 0.20 ms
-FSYNCS/SECOND:     2376.09
-DNS EXT:           104.70 ms
-DNS INT:           90.75 ms <span style="color:#f92672">(</span>sqweeb.net<span style="color:#f92672">)</span>
-</code></pre></div><p>I also found there were some rouge monitoring processes running after a host reboot, collectd, splunkd, and filebeat were all running from previous installs. I hunted down and removed/stopped/deleted all associated files I could find on the host and the containers.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find / -name <span style="color:#e6db74">&#39;splunk&#39;</span>
-find / -name <span style="color:#e6db74">&#39;collectd&#39;</span>
-find/ -name <span style="color:#e6db74">&#39;filebeat&#39;</span>
-</code></pre></div><p>After these changes I found that the IOWait spikes were still occurring at ~15-20min intervals. Doing some more digging I found something interesting, it seems that the /dev/sda device is the source of delay, and when checking smartctl I found that the firmware is different on this drive compared to a drive of the same model:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@pve-01:~# pveperf /
+</span></span><span style="display:flex;"><span>CPU BOGOMIPS:      19244.00
+</span></span><span style="display:flex;"><span>REGEX/SECOND:      <span style="color:#ae81ff">959888</span>
+</span></span><span style="display:flex;"><span>HD SIZE:           27.19 GB <span style="color:#f92672">(</span>/dev/dm-0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>BUFFERED READS:    195.02 MB/sec
+</span></span><span style="display:flex;"><span>AVERAGE SEEK TIME: 0.26 ms
+</span></span><span style="display:flex;"><span>FSYNCS/SECOND:     301.31
+</span></span><span style="display:flex;"><span>DNS EXT:           93.93 ms
+</span></span><span style="display:flex;"><span>DNS INT:           93.76 ms <span style="color:#f92672">(</span>sqweeb.net<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@pve-01:~# pveperf /var/lib/vz
+</span></span><span style="display:flex;"><span>CPU BOGOMIPS:      19244.00
+</span></span><span style="display:flex;"><span>REGEX/SECOND:      <span style="color:#ae81ff">978722</span>
+</span></span><span style="display:flex;"><span>HD SIZE:           178.85 GB <span style="color:#f92672">(</span>/dev/mapper/pve-data<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>BUFFERED READS:    197.73 MB/sec
+</span></span><span style="display:flex;"><span>AVERAGE SEEK TIME: 0.20 ms
+</span></span><span style="display:flex;"><span>FSYNCS/SECOND:     316.08
+</span></span><span style="display:flex;"><span>DNS EXT:           84.80 ms
+</span></span><span style="display:flex;"><span>DNS INT:           107.74 ms <span style="color:#f92672">(</span>sqweeb.net<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>pveperf after:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@pve-01:~# pveperf /
+</span></span><span style="display:flex;"><span>CPU BOGOMIPS:      19244.08
+</span></span><span style="display:flex;"><span>REGEX/SECOND:      <span style="color:#ae81ff">953290</span>
+</span></span><span style="display:flex;"><span>HD SIZE:           27.19 GB <span style="color:#f92672">(</span>/dev/dm-0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>BUFFERED READS:    176.81 MB/sec
+</span></span><span style="display:flex;"><span>AVERAGE SEEK TIME: 0.26 ms
+</span></span><span style="display:flex;"><span>FSYNCS/SECOND:     2128.05
+</span></span><span style="display:flex;"><span>DNS EXT:           113.88 ms
+</span></span><span style="display:flex;"><span>DNS INT:           106.68 ms <span style="color:#f92672">(</span>sqweeb.net<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@pve-01:~# pveperf /var/lib/vz
+</span></span><span style="display:flex;"><span>CPU BOGOMIPS:      19244.08
+</span></span><span style="display:flex;"><span>REGEX/SECOND:      <span style="color:#ae81ff">980483</span>
+</span></span><span style="display:flex;"><span>HD SIZE:           178.85 GB <span style="color:#f92672">(</span>/dev/mapper/pve-data<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>BUFFERED READS:    194.57 MB/sec
+</span></span><span style="display:flex;"><span>AVERAGE SEEK TIME: 0.20 ms
+</span></span><span style="display:flex;"><span>FSYNCS/SECOND:     2376.09
+</span></span><span style="display:flex;"><span>DNS EXT:           104.70 ms
+</span></span><span style="display:flex;"><span>DNS INT:           90.75 ms <span style="color:#f92672">(</span>sqweeb.net<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>I also found there were some rouge monitoring processes running after a host reboot, collectd, splunkd, and filebeat were all running from previous installs. I hunted down and removed/stopped/deleted all associated files I could find on the host and the containers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find / -name <span style="color:#e6db74">&#39;splunk&#39;</span>
+</span></span><span style="display:flex;"><span>find / -name <span style="color:#e6db74">&#39;collectd&#39;</span>
+</span></span><span style="display:flex;"><span>find/ -name <span style="color:#e6db74">&#39;filebeat&#39;</span>
+</span></span></code></pre></div><p>After these changes I found that the IOWait spikes were still occurring at ~15-20min intervals. Doing some more digging I found something interesting, it seems that the /dev/sda device is the source of delay, and when checking smartctl I found that the firmware is different on this drive compared to a drive of the same model:</p>
 <h4 id="devsda">/dev/sda</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@pve-01:~# smartctl -a /dev/sda
-smartctl 6.4 2014-10-07 r4002 <span style="color:#f92672">[</span>x86_64-linux-4.2.6-1-pve<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>local build<span style="color:#f92672">)</span>
-Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 2002-14, Bruce Allen, Christian Franke, www.smartmontools.org
-
-<span style="color:#f92672">===</span> START OF INFORMATION SECTION <span style="color:#f92672">===</span>
-Device Model:     SanDisk SDSSDA120G
-Serial Number:    <span style="color:#ae81ff">154414402842</span>
-LU WWN Device Id: <span style="color:#ae81ff">5</span> 001b44 eff65c91a
-Firmware Version: Z22000RL
-User Capacity:    120,034,123,776 bytes <span style="color:#f92672">[</span><span style="color:#ae81ff">120</span> GB<span style="color:#f92672">]</span>
-Sector Size:      <span style="color:#ae81ff">512</span> bytes logical/physical
-Rotation Rate:    Solid State Device
-Form Factor:      1.8 inches
-Device is:        Not in smartctl database <span style="color:#f92672">[</span><span style="color:#66d9ef">for</span> details use: -P showall<span style="color:#f92672">]</span>
-ATA Version is:   ACS-2 T13/2015-D revision <span style="color:#ae81ff">3</span>
-SATA Version is:  SATA 3.2, 6.0 Gb/s <span style="color:#f92672">(</span>current: 3.0 Gb/s<span style="color:#f92672">)</span>
-Local Time is:    Wed Aug <span style="color:#ae81ff">31</span> 10:17:57 <span style="color:#ae81ff">2016</span> EDT
-SMART support is: Available - device has SMART capability.
-SMART support is: Enabled
-</code></pre></div><h4 id="devsdc">/dev/sdc</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@pve-01:~# smartctl -a /dev/sdc
-smartctl 6.4 2014-10-07 r4002 <span style="color:#f92672">[</span>x86_64-linux-4.2.6-1-pve<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>local build<span style="color:#f92672">)</span>
-Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 2002-14, Bruce Allen, Christian Franke, www.smartmontools.org
-
-<span style="color:#f92672">===</span> START OF INFORMATION SECTION <span style="color:#f92672">===</span>
-Device Model:     SanDisk SDSSDA120G
-Serial Number:    <span style="color:#ae81ff">154400408149</span>
-LU WWN Device Id: <span style="color:#ae81ff">5</span> 001b44 efe903e55
-Firmware Version: U21010RL
-User Capacity:    120,034,123,776 bytes <span style="color:#f92672">[</span><span style="color:#ae81ff">120</span> GB<span style="color:#f92672">]</span>
-Sector Size:      <span style="color:#ae81ff">512</span> bytes logical/physical
-Rotation Rate:    Solid State Device
-Form Factor:      2.5 inches
-Device is:        Not in smartctl database <span style="color:#f92672">[</span><span style="color:#66d9ef">for</span> details use: -P showall<span style="color:#f92672">]</span>
-ATA Version is:   ACS-2 T13/2015-D revision <span style="color:#ae81ff">3</span>
-SATA Version is:  SATA 3.2, 6.0 Gb/s <span style="color:#f92672">(</span>current: 3.0 Gb/s<span style="color:#f92672">)</span>
-Local Time is:    Wed Aug <span style="color:#ae81ff">31</span> 10:22:50 <span style="color:#ae81ff">2016</span> EDT
-SMART support is: Available - device has SMART capability.
-SMART support is: Enabled
-</code></pre></div><p>At this time it isn&rsquo;t clear if it is even possible to update or change the firmware on these drives..</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@pve-01:~# smartctl -a /dev/sda
+</span></span><span style="display:flex;"><span>smartctl 6.4 2014-10-07 r4002 <span style="color:#f92672">[</span>x86_64-linux-4.2.6-1-pve<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>local build<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 2002-14, Bruce Allen, Christian Franke, www.smartmontools.org
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===</span> START OF INFORMATION SECTION <span style="color:#f92672">===</span>
+</span></span><span style="display:flex;"><span>Device Model:     SanDisk SDSSDA120G
+</span></span><span style="display:flex;"><span>Serial Number:    <span style="color:#ae81ff">154414402842</span>
+</span></span><span style="display:flex;"><span>LU WWN Device Id: <span style="color:#ae81ff">5</span> 001b44 eff65c91a
+</span></span><span style="display:flex;"><span>Firmware Version: Z22000RL
+</span></span><span style="display:flex;"><span>User Capacity:    120,034,123,776 bytes <span style="color:#f92672">[</span><span style="color:#ae81ff">120</span> GB<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Sector Size:      <span style="color:#ae81ff">512</span> bytes logical/physical
+</span></span><span style="display:flex;"><span>Rotation Rate:    Solid State Device
+</span></span><span style="display:flex;"><span>Form Factor:      1.8 inches
+</span></span><span style="display:flex;"><span>Device is:        Not in smartctl database <span style="color:#f92672">[</span><span style="color:#66d9ef">for</span> details use: -P showall<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>ATA Version is:   ACS-2 T13/2015-D revision <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>SATA Version is:  SATA 3.2, 6.0 Gb/s <span style="color:#f92672">(</span>current: 3.0 Gb/s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Local Time is:    Wed Aug <span style="color:#ae81ff">31</span> 10:17:57 <span style="color:#ae81ff">2016</span> EDT
+</span></span><span style="display:flex;"><span>SMART support is: Available - device has SMART capability.
+</span></span><span style="display:flex;"><span>SMART support is: Enabled
+</span></span></code></pre></div><h4 id="devsdc">/dev/sdc</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@pve-01:~# smartctl -a /dev/sdc
+</span></span><span style="display:flex;"><span>smartctl 6.4 2014-10-07 r4002 <span style="color:#f92672">[</span>x86_64-linux-4.2.6-1-pve<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>local build<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 2002-14, Bruce Allen, Christian Franke, www.smartmontools.org
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===</span> START OF INFORMATION SECTION <span style="color:#f92672">===</span>
+</span></span><span style="display:flex;"><span>Device Model:     SanDisk SDSSDA120G
+</span></span><span style="display:flex;"><span>Serial Number:    <span style="color:#ae81ff">154400408149</span>
+</span></span><span style="display:flex;"><span>LU WWN Device Id: <span style="color:#ae81ff">5</span> 001b44 efe903e55
+</span></span><span style="display:flex;"><span>Firmware Version: U21010RL
+</span></span><span style="display:flex;"><span>User Capacity:    120,034,123,776 bytes <span style="color:#f92672">[</span><span style="color:#ae81ff">120</span> GB<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Sector Size:      <span style="color:#ae81ff">512</span> bytes logical/physical
+</span></span><span style="display:flex;"><span>Rotation Rate:    Solid State Device
+</span></span><span style="display:flex;"><span>Form Factor:      2.5 inches
+</span></span><span style="display:flex;"><span>Device is:        Not in smartctl database <span style="color:#f92672">[</span><span style="color:#66d9ef">for</span> details use: -P showall<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>ATA Version is:   ACS-2 T13/2015-D revision <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>SATA Version is:  SATA 3.2, 6.0 Gb/s <span style="color:#f92672">(</span>current: 3.0 Gb/s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Local Time is:    Wed Aug <span style="color:#ae81ff">31</span> 10:22:50 <span style="color:#ae81ff">2016</span> EDT
+</span></span><span style="display:flex;"><span>SMART support is: Available - device has SMART capability.
+</span></span><span style="display:flex;"><span>SMART support is: Enabled
+</span></span></code></pre></div><p>At this time it isn&rsquo;t clear if it is even possible to update or change the firmware on these drives..</p>
 <p>Also look into further fstab tweaks:
 <a href="http://www.howtogeek.com/62761/how-to-tweak-your-ssd-in-ubuntu-for-better-performance/">http://www.howtogeek.com/62761/how-to-tweak-your-ssd-in-ubuntu-for-better-performance/</a></p>
 <h1 id="update-9116---1035am">Update 9/1/16 - 10:35AM</h1>
 <p>After looking back over the above documents, mount option tweaks for SSD&rsquo;s and such I realized I was overlooking one important task; fstrim. Most posts discussed enabling the discard mount option for SSD&rsquo;s but then other posts suggested this option causes a huge decrease in performance and to instead create a cron job that runs fstrim daily or weekly. I enabled a daily TRIM using the following script:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/etc/cron.daily/fstrim
-
-<span style="color:#75715e">#!/bin/sh</span>
-
-PATH<span style="color:#f92672">=</span>/bin:/sbin:/usr/bin:/usr/sbin
-
-ionice -n <span style="color:#ae81ff">7</span> fstrim -v /
-ionice -n <span style="color:#ae81ff">7</span> fstrim -v /var/lib/vz
-
-</code></pre></div><p>I then manually ran the two commands to apply the trim job now and there was an immediate improvement. I am no longer seeing 15-20% spikes in IOWAIT every 20-30 minutes!!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/etc/cron.daily/fstrim
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>/bin:/sbin:/usr/bin:/usr/sbin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ionice -n <span style="color:#ae81ff">7</span> fstrim -v /
+</span></span><span style="display:flex;"><span>ionice -n <span style="color:#ae81ff">7</span> fstrim -v /var/lib/vz
+</span></span></code></pre></div><p>I then manually ran the two commands to apply the trim job now and there was an immediate improvement. I am no longer seeing 15-20% spikes in IOWAIT every 20-30 minutes!!</p>
 
         </div>
          

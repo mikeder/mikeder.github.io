@@ -27,24 +27,24 @@
         <h5>18.07.2016 11:32</h5>
         <div class="container">
             <p>Determine if lack of disks space is an inode problem:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    df -ih
-
-    Filesystem     Inodes IUsed IFree IUse% Mounted on
-    /dev/sda1       1000K  105K  896K   100% /
-    tmpfs            480K     <span style="color:#ae81ff">8</span>  480K    1% /dev/shm
-</code></pre></div><p>Find folders with large number of inodes:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#66d9ef">for</span> i in /*; <span style="color:#66d9ef">do</span> echo $i; find $i |wc -l; <span style="color:#66d9ef">done</span>
-</code></pre></div><p>Change to the directory with the highest number, in my case this morning it was /var.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    df -ih
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Filesystem     Inodes IUsed IFree IUse% Mounted on
+</span></span><span style="display:flex;"><span>    /dev/sda1       1000K  105K  896K   100% /
+</span></span><span style="display:flex;"><span>    tmpfs            480K     <span style="color:#ae81ff">8</span>  480K    1% /dev/shm
+</span></span></code></pre></div><p>Find folders with large number of inodes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i in /*; <span style="color:#66d9ef">do</span> echo $i; find $i |wc -l; <span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>Change to the directory with the highest number, in my case this morning it was /var.</p>
 <p>Find specific folder w/ large number of inodes:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#66d9ef">for</span> i in ./*; <span style="color:#66d9ef">do</span> echo $i; find $i |wc -l; <span style="color:#66d9ef">done</span>
-</code></pre></div><p>Change to the directory with the highest number again, in my case /var/spool.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i in ./*; <span style="color:#66d9ef">do</span> echo $i; find $i |wc -l; <span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>Change to the directory with the highest number again, in my case /var/spool.</p>
 <p>Repeat.</p>
 <p>I found that /var/spool/clientmqueue had 917,xxx tiny files in it (all likely undelivered mail), that once removed dropped the inode usage back down to 11%.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    cd /var/spool/clientmqueue <span style="color:#f92672">&amp;&amp;</span> find . -type f -delete
-    Filesystem     Inodes IUsed IFree IUse% Mounted on
-    /dev/sda1       1000K  105K  896K   11% /
-    tmpfs            480K     <span style="color:#ae81ff">8</span>  480K    1% /dev/shm
-</code></pre></div><p><a href="http://stackoverflow.com/questions/653096/howto-free-inode-usage">http://stackoverflow.com/questions/653096/howto-free-inode-usage</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    cd /var/spool/clientmqueue <span style="color:#f92672">&amp;&amp;</span> find . -type f -delete
+</span></span><span style="display:flex;"><span>    Filesystem     Inodes IUsed IFree IUse% Mounted on
+</span></span><span style="display:flex;"><span>    /dev/sda1       1000K  105K  896K   11% /
+</span></span><span style="display:flex;"><span>    tmpfs            480K     <span style="color:#ae81ff">8</span>  480K    1% /dev/shm
+</span></span></code></pre></div><p><a href="http://stackoverflow.com/questions/653096/howto-free-inode-usage">http://stackoverflow.com/questions/653096/howto-free-inode-usage</a></p>
 
         </div>
          

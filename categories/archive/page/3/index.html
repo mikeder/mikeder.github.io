@@ -37,7 +37,7 @@
 	
 	<div class="container">
 		Cache Proxy in front of https://mc-map.sqweeb.net
- Add another 32g disk to the proxy VM - proxy-02 Format, make file system and mount new disk at /mnt/cache/ Add line to /etc/fstab to mount disk on boot:  /dev/vda1 /mnt/cache ext4 defaults 0 2  Add the following snippet to /etc/nginx/snippets/proxy-defaults.conf:  proxy_cache_path /mnt/cache levels=1:2 keys_zone=my_cache:10m max_size=20g inactive=60m;  Update /etc/nginx/sites-available/mc-map.sqweeb.net to use the cache:  server { ... proxy_cache my_cache; proxy_cache_valid 200 302 10m; add_header X-Cache-Status $upstream_cache_status; .
+Add another 32g disk to the proxy VM - proxy-02 Format, make file system and mount new disk at /mnt/cache/ Add line to /etc/fstab to mount disk on boot: /dev/vda1 /mnt/cache ext4 defaults 0 2 Add the following snippet to /etc/nginx/snippets/proxy-defaults.conf: proxy_cache_path /mnt/cache levels=1:2 keys_zone=my_cache:10m max_size=20g inactive=60m; Update /etc/nginx/sites-available/mc-map.sqweeb.net to use the cache: server { ... proxy_cache my_cache; proxy_cache_valid 200 302 10m; add_header X-Cache-Status $upstream_cache_status; .
 		
 			<a href="https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/">Read more...</a>
 		
@@ -55,7 +55,7 @@
 ###Minecraft List
 ###Minecraft Server List
 Plugins:
- dynmap Essentials EssentialsProtect EssentialsSpawn EssentialsGeoIP EssentialsChat EssentialsAntiBuild Factions FactionsDynmap MassiveCore Vault  
+dynmap Essentials EssentialsProtect EssentialsSpawn EssentialsGeoIP EssentialsChat EssentialsAntiBuild Factions FactionsDynmap MassiveCore Vault 
 		
 	</div>
 </article>
@@ -68,7 +68,7 @@ Plugins:
 	<div class="container">
 		https://www.unicoda.com/?p=1624
 sudo apt-get install python-dev python-pip postgresql ruby sudo pip install ecdsa fabric pycrypto git clone https://github.com/lincolnloop/cabot.git cd cabot cp conf/production.env.example conf/production.env # Add at least graphite url and login to config nano env/production.env fab provision -H root@localhost fab deploy -H ubuntu@localhost su - ubuntu source /home/ubuntu/venv/bin/activate cd cabot foreman start -e conf/production.env Modifying fabric provision/deploy for multi instance deploys:
- Clone official repo Make new local branch - &lsquo;tesl&rsquo; Find/replace all instances of ubuntu with tesl in fabfile.
+Clone official repo Make new local branch - &rsquo;tesl' Find/replace all instances of ubuntu with tesl in fabfile.
 		
 			<a href="https://mikeder.net/blog/archive/1476280837-installing-cabot-on-debian-8/">Read more...</a>
 		
@@ -81,7 +81,7 @@ sudo apt-get install python-dev python-pip postgresql ruby sudo pip install ecds
 	<time>24.09.2016 01:18</time>
 	
 	<div class="container">
-		I realized I didn't want to have a single SSL cert covering *all* of my subdomains here @ sqweeb.net So I set out on rebuilding my reverse proxy from the ground up.
+		I realized I didn&#39;t want to have a single SSL cert covering *all* of my subdomains here @ sqweeb.net So I set out on rebuilding my reverse proxy from the ground up.
 I first spun up a fresh Debian 8 virtual machine, patched it up and installed nginx and the Lets Encrypt cert bot. Once the default server was up and running and I had the root certificate in place I made an ssl-defaults config file that would be included in default/root config.
 		
 			<a href="https://mikeder.net/blog/archive/1474679928-nginx-reverse-proxy-2-0/">Read more...</a>
@@ -108,8 +108,8 @@ Google Group Installation Guide
 	
 	<div class="container">
 		changed mount options:
- Before: defaults,noatime,nodiratime,barrier=1,data=ordered,errors=remount-ro After: relatime,barrier=0,errors=remount-ro  pveperf before:
-root@pve-01:~# pveperf / CPU BOGOMIPS: 19244.00 REGEX/SECOND: 959888 HD SIZE: 27.19 GB (/dev/dm-0) BUFFERED READS: 195.02 MB/sec AVERAGE SEEK TIME: 0.26 ms FSYNCS/SECOND: 301.31 DNS EXT: 93.93 ms DNS INT: 93.76 ms (sqweeb.net) root@pve-01:~# pveperf /var/lib/vz CPU BOGOMIPS: 19244.00 REGEX/SECOND: 978722 HD SIZE: 178.85 GB (/dev/mapper/pve-data) BUFFERED READS: 197.73 MB/sec AVERAGE SEEK TIME: 0.20 ms FSYNCS/SECOND: 316.08 DNS EXT: 84.
+Before: defaults,noatime,nodiratime,barrier=1,data=ordered,errors=remount-ro After: relatime,barrier=0,errors=remount-ro pveperf before:
+root@pve-01:~# pveperf / CPU BOGOMIPS: 19244.00 REGEX/SECOND: 959888 HD SIZE: 27.19 GB (/dev/dm-0) BUFFERED READS: 195.02 MB/sec AVERAGE SEEK TIME: 0.26 ms FSYNCS/SECOND: 301.31 DNS EXT: 93.93 ms DNS INT: 93.76 ms (sqweeb.net) root@pve-01:~# pveperf /var/lib/vz CPU BOGOMIPS: 19244.00 REGEX/SECOND: 978722 HD SIZE: 178.85 GB (/dev/mapper/pve-data) BUFFERED READS: 197.73 MB/sec AVERAGE SEEK TIME: 0.20 ms FSYNCS/SECOND: 316.08 DNS EXT: 84.80 ms DNS INT: 107.
 		
 			<a href="https://mikeder.net/blog/archive/1472578134-troubleshooting-large-iowait-spikes/">Read more...</a>
 		
@@ -122,9 +122,9 @@ root@pve-01:~# pveperf / CPU BOGOMIPS: 19244.00 REGEX/SECOND: 959888 HD SIZE: 27
 	<time>30.08.2016 15:13</time>
 	
 	<div class="container">
-		[tS] Rusty Noobs   Server turned off (9/22/16)
- I&rsquo;ve decided to turn off the server for now, due to lack of traffic. The virtual machine will be backed up and stored in its current state but will remain powered off until its needed again.    Server Update, Map Wipe, Performance Increases! (9/1/16)
- The server was updated and map wiped today, the map size was increased from 3000 to 3555 Server tick rate was increased from 30 to 60 An underlying storage issue was resolved resulting in lower server load and faster loading times Come noob out with us on a fresh server!
+		[tS] Rusty Noobs Server turned off (9/22/16)
+I&rsquo;ve decided to turn off the server for now, due to lack of traffic. The virtual machine will be backed up and stored in its current state but will remain powered off until its needed again. Server Update, Map Wipe, Performance Increases! (9/1/16)
+The server was updated and map wiped today, the map size was increased from 3000 to 3555 Server tick rate was increased from 30 to 60 An underlying storage issue was resolved resulting in lower server load and faster loading times Come noob out with us on a fresh server!
 		
 			<a href="https://mikeder.net/blog/archive/1472570020-rust-server-info/">Read more...</a>
 		
@@ -164,7 +164,7 @@ Find specific folder w/ large number of inodes:
 	<time>30.05.2016 01:00</time>
 	
 	<div class="container">
-		 Immediately start backups on /etc/pve/lxc (DONE) Do some other things..  
+		 Immediately start backups on /etc/pve/lxc (DONE) Do some other things.. 
 		
 	</div>
 </article>

@@ -32,6 +32,22 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1468841522-finding-the-source-of-excessive-inode-usage/">Finding the source of excessive inode usage</a></h1>
+	<time>18.07.2016 11:32</time>
+	
+	<div class="container">
+		Determine if lack of disks space is an inode problem:
+df -ih Filesystem Inodes IUsed IFree IUse% Mounted on /dev/sda1 1000K 105K 896K 100% / tmpfs 480K 8 480K 1% /dev/shm Find folders with large number of inodes:
+for i in /*; do echo $i; find $i |wc -l; done Change to the directory with the highest number, in my case this morning it was /var.
+Find specific folder w/ large number of inodes:
+		
+			<a href="https://mikeder.net/blog/archive/1468841522-finding-the-source-of-excessive-inode-usage/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1468497010-splunk-light-install/">Splunk Light Install</a></h1>
 	<time>14.07.2016 11:50</time>
 	
@@ -47,7 +63,7 @@
 	<time>30.05.2016 01:00</time>
 	
 	<div class="container">
-		 Immediately start backups on /etc/pve/lxc (DONE) Do some other things..  
+		 Immediately start backups on /etc/pve/lxc (DONE) Do some other things.. 
 		
 	</div>
 </article>
@@ -73,7 +89,7 @@ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT fd0 2:0 1 4K 0 disk sda 8:0 0 111.
 	
 	<div class="container">
 		Full list of the mods we&rsquo;re running on teamSqweeb Space Engineers Dedicated Server:
-Active  Id = 436025957, Name = &lsquo;(DX11) Kolt - Command Console Pack&rsquo; Id = 298550266, Name = &lsquo;(DX11)Letters Mod&rsquo; Id = 536696922, Name = &lsquo;(DX11)Rover Cockpit&rsquo; Id = 598415416, Name = &lsquo;Gravel Ore Separator&rsquo; Id = 305329302, Name = &lsquo;Small Ship Mega Mod Pack [100% DX-11 Ready]&rsquo; Id = 401901602, Name = &lsquo;LordChicken Aerospace: No Edges (DX11)&rsquo; Id = 490036307, Name = &lsquo;Reworked Armor Ramps Mod~(DX-11 Ready)&rsquo; Id = 303959338, Name = &lsquo;Concrete Armor Blocks (DX11)&rsquo; Id = 441277694, Name = &lsquo;Extreme Lights&rsquo; Id = 481012219, Name = &lsquo;Industrial Sized (DX11)&rsquo; Id = 349431610, Name = &lsquo;DK Earthbreaker Drill (DX11)&rsquo; Id = 475375953, Name = &lsquo;[Mexpex] Heavy Mining Drill&rsquo; Id = 611420971, Name = &lsquo;Corner LCD&rsquo; Id = 343014073, Name = &lsquo;Maglock Surface MkII (DX11)&rsquo; Id = 561827211, Name = &lsquo;Custom Sound Block Sounds&rsquo; Id = 438226588, Name = &lsquo;Hangar Gates (DX 11)&rsquo; Id = 551854023, Name = &lsquo;Warbros ModLabs Long Ramps&rsquo; Id = 473306528, Name = &lsquo;S - Interior Walls - DX11&rsquo; Id = 521994963, Name = &lsquo;Holographic Projector (DX11)&rsquo; Id = 556092142, Name = &lsquo;(DX11) Tiered Atmospheric Engines&rsquo; Id = 445980520, Name = &lsquo;Button Panels (8,4-1) (DX11)&rsquo; Id = 402341075, Name = &lsquo;(DX11) Tiered Thruster Pack&rsquo; Id = 618982571, Name = &lsquo;(DX11) Tiered Armor Hydrogen Engines&rsquo; Id = 609020322, Name = &lsquo;(DX11) Tiered Armor Atmospheric Engines&rsquo; Id = 405182053, Name = &lsquo;(DX11) Tiered Armor Thrusters&rsquo; Id = 570766073, Name = &lsquo;Midspace&rsquo;s Small Ship Speed 300 mod&rsquo; Id = 570767247, Name = &lsquo;Midspace&rsquo;s Large Ship Speed 300 mod&rsquo; Id = 346482476, Name = &lsquo;Accessible Conveyors /w DX11&rsquo; Id = 563055135, Name = &lsquo;&ldquo;Dusty&rdquo; Conveyor System (DX9 / DX11)&rsquo; Id = 565446909, Name = &lsquo;ShadowFlux Catwalk Pack (DX 11)&rsquo; Id = 577079238, Name = &lsquo;&ldquo;Skyblade&rdquo; Helicopter Propellers&rsquo; Id = 506964853, Name = &lsquo;Advanced Doors Mod Pack~(DX-11 Ready)&rsquo; Id = 517675282, Name = &lsquo;Projector Preview - miniature blueprint display &amp; damage status&rsquo; Id = 605086856, Name = &lsquo;Holographic Radar&rsquo; Id = 584639195, Name = &lsquo;(Beta) Power Transmitters&rsquo; Id = 587688734, Name = &lsquo;Captain Control Seat &amp; Passenger Seat&rsquo; Id = 294555339, Name = &lsquo;(DX11)Titan Engine&rsquo; Id = 530693136, Name = &lsquo;Corner Lights&rsquo; Id = 295394554, Name = &lsquo;(DX11)Hydroponic&rsquo; Id = 419588209, Name = &lsquo;MWI - Main Battleship Cannon Mk3 (DX11)&rsquo; Id = 636314268, Name = &lsquo;[MP FIXED] Manipulation Tool&rsquo; Id = 312976851, Name = &lsquo;(DX11) Eikesters Decorations and more - Part I&rsquo; Id = 451486869, Name = &lsquo;Hammerman decoration pack (DX11)&rsquo;  Removed  Id = 532433982, Name = &lsquo;RB Compact Battery [DX11]&rsquo; Id = 396679430, Name = &lsquo;(DX11) Concrete Tool - placing voxels in survival [Click-ability Update!
+Active Id = 436025957, Name = &lsquo;(DX11) Kolt - Command Console Pack&rsquo; Id = 298550266, Name = &lsquo;(DX11)Letters Mod&rsquo; Id = 536696922, Name = &lsquo;(DX11)Rover Cockpit&rsquo; Id = 598415416, Name = &lsquo;Gravel Ore Separator&rsquo; Id = 305329302, Name = &lsquo;Small Ship Mega Mod Pack [100% DX-11 Ready]&rsquo; Id = 401901602, Name = &lsquo;LordChicken Aerospace: No Edges (DX11)&rsquo; Id = 490036307, Name = &lsquo;Reworked Armor Ramps Mod~(DX-11 Ready)&rsquo; Id = 303959338, Name = &lsquo;Concrete Armor Blocks (DX11)&rsquo; Id = 441277694, Name = &lsquo;Extreme Lights&rsquo; Id = 481012219, Name = &lsquo;Industrial Sized (DX11)&rsquo; Id = 349431610, Name = &lsquo;DK Earthbreaker Drill (DX11)&rsquo; Id = 475375953, Name = &lsquo;[Mexpex] Heavy Mining Drill&rsquo; Id = 611420971, Name = &lsquo;Corner LCD&rsquo; Id = 343014073, Name = &lsquo;Maglock Surface MkII (DX11)&rsquo; Id = 561827211, Name = &lsquo;Custom Sound Block Sounds&rsquo; Id = 438226588, Name = &lsquo;Hangar Gates (DX 11)&rsquo; Id = 551854023, Name = &lsquo;Warbros ModLabs Long Ramps&rsquo; Id = 473306528, Name = &lsquo;S - Interior Walls - DX11&rsquo; Id = 521994963, Name = &lsquo;Holographic Projector (DX11)&rsquo; Id = 556092142, Name = &lsquo;(DX11) Tiered Atmospheric Engines&rsquo; Id = 445980520, Name = &lsquo;Button Panels (8,4-1) (DX11)&rsquo; Id = 402341075, Name = &lsquo;(DX11) Tiered Thruster Pack&rsquo; Id = 618982571, Name = &lsquo;(DX11) Tiered Armor Hydrogen Engines&rsquo; Id = 609020322, Name = &lsquo;(DX11) Tiered Armor Atmospheric Engines&rsquo; Id = 405182053, Name = &lsquo;(DX11) Tiered Armor Thrusters&rsquo; Id = 570766073, Name = &lsquo;Midspace&rsquo;s Small Ship Speed 300 mod&rsquo; Id = 570767247, Name = &lsquo;Midspace&rsquo;s Large Ship Speed 300 mod&rsquo; Id = 346482476, Name = &lsquo;Accessible Conveyors /w DX11&rsquo; Id = 563055135, Name = &lsquo;&ldquo;Dusty&rdquo; Conveyor System (DX9 / DX11)&rsquo; Id = 565446909, Name = &lsquo;ShadowFlux Catwalk Pack (DX 11)&rsquo; Id = 577079238, Name = &lsquo;&ldquo;Skyblade&rdquo; Helicopter Propellers&rsquo; Id = 506964853, Name = &lsquo;Advanced Doors Mod Pack~(DX-11 Ready)&rsquo; Id = 517675282, Name = &lsquo;Projector Preview - miniature blueprint display &amp; damage status&rsquo; Id = 605086856, Name = &lsquo;Holographic Radar&rsquo; Id = 584639195, Name = &lsquo;(Beta) Power Transmitters&rsquo; Id = 587688734, Name = &lsquo;Captain Control Seat &amp; Passenger Seat&rsquo; Id = 294555339, Name = &lsquo;(DX11)Titan Engine&rsquo; Id = 530693136, Name = &lsquo;Corner Lights&rsquo; Id = 295394554, Name = &lsquo;(DX11)Hydroponic&rsquo; Id = 419588209, Name = &lsquo;MWI - Main Battleship Cannon Mk3 (DX11)&rsquo; Id = 636314268, Name = &lsquo;[MP FIXED] Manipulation Tool&rsquo; Id = 312976851, Name = &lsquo;(DX11) Eikesters Decorations and more - Part I&rsquo; Id = 451486869, Name = &lsquo;Hammerman decoration pack (DX11)&rsquo; Removed Id = 532433982, Name = &lsquo;RB Compact Battery [DX11]&rsquo; Id = 396679430, Name = &lsquo;(DX11) Concrete Tool - placing voxels in survival [Click-ability Update!
 		
 			<a href="https://mikeder.net/blog/archive/1454955404-current-seds-mod-list/">Read more...</a>
 		
@@ -127,7 +143,7 @@ First I cloned the Lets Encrypt GitHub repo to my NGINX proxy box and then gener
 	
 	<div class="container">
 		Found this posted to the CherryMusic github project page. It is a basic wrapper that functions just like the regular Web app but contained in an android app that can save login creds and may work as a Chrome and Mozilla alternative.
-Download App Here  may require that you allow app installation from unknown sources but should be fine to allow.  Once installed goto settings and put this url in the address bar: http://cherry.
+Download App Here may require that you allow app installation from unknown sources but should be fine to allow. Once installed goto settings and put this url in the address bar: http://cherry.
 		
 			<a href="https://mikeder.net/blog/archive/1434296001-basic-cherrymusic-app/">Read more...</a>
 		
@@ -141,22 +157,9 @@ Download App Here  may require that you allow app installation from unknown sour
 	
 	<div class="container">
 		I recently came across a strange problem with the CherryMusic server that only appeared when it was started via an /etc/init.d script. In certain folders the tracks would not show, although the folder showed that there were files within, when you clicked on the folder it would just open an empty list. This condition would also be accompanied by the following error in the logs:
-UnicodeEncodeError: &#39;utf-8&#39; codec can&#39;t encode character &#39;\udce2&#39; in position 29: surrogates not allowed Doing some quick Google-Fu I came across this pagewhich states that this is caused by a bugin Python3, but the bug has apparently already been fixed.
+UnicodeEncodeError: &#39;utf-8&#39; codec can&#39;t encode character &#39;\udce2&#39; in position 29: surrogates not allowed Doing some quick Google-Fu I came across this page which states that this is caused by a bug in Python3, but the bug has apparently already been fixed.
 		
 			<a href="https://mikeder.net/blog/archive/1432980910-fixing-cherrymusic-filename-decoding-errors/">Read more...</a>
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1432315893-ditching-pfsense-for-a-simpler-approach/">Ditching pfSense for a simpler approach</a></h1>
-	<time>22.05.2015 17:31</time>
-	
-	<div class="container">
-		I decided to just get rid of the pfSense firewall/router in my setup up in favor of just a plain squid3 reverse proxy. While pfSense does provide a nice WebUI for administering the firewall and all of the add-on&rsquo;s available it ended up being overly complicated for what I was trying to accomplish. Mainly I just wanted to use the reverse proxy functionality provided by the squid3 package and while it was easy to setup and get going I found that if I made one incorrect firewall rule I could easily lock myself out of the GUI and lose access to all of the servers behind the proxy.
-		
-			<a href="https://mikeder.net/blog/archive/1432315893-ditching-pfsense-for-a-simpler-approach/">Read more...</a>
 		
 	</div>
 </article>

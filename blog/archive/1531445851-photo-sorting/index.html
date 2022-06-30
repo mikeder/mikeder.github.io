@@ -26,7 +26,7 @@
         <h1>Photo sorting is dangerous business</h1>
         <h5>13.07.2018 01:37</h5>
         <div class="container">
-            <pre tabindex="0"><code>find . -type f -iname \*.JPG -print0 | xargs -0 -I '{}' /bin/mv &quot;{}&quot; ../JPG/
+            <pre tabindex="0"><code>find . -type f -iname \*.JPG -print0 | xargs -0 -I &#39;{}&#39; /bin/mv &#34;{}&#34; ../JPG/
 </code></pre><p>will overwrite your shit if filenames are the same!</p>
 
         </div>

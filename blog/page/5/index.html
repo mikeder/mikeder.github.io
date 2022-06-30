@@ -32,11 +32,24 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1432315893-ditching-pfsense-for-a-simpler-approach/">Ditching pfSense for a simpler approach</a></h1>
+	<time>22.05.2015 17:31</time>
+	
+	<div class="container">
+		I decided to just get rid of the pfSense firewall/router in my setup up in favor of just a plain squid3 reverse proxy. While pfSense does provide a nice WebUI for administering the firewall and all of the add-on&rsquo;s available it ended up being overly complicated for what I was trying to accomplish. Mainly I just wanted to use the reverse proxy functionality provided by the squid3 package and while it was easy to setup and get going I found that if I made one incorrect firewall rule I could easily lock myself out of the GUI and lose access to all of the servers behind the proxy.
+		
+			<a href="https://mikeder.net/blog/archive/1432315893-ditching-pfsense-for-a-simpler-approach/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1432220666-adding-logging-to-cherrymusic-service/">Adding logging to CherryMusic service</a></h1>
 	<time>21.05.2015 15:04</time>
 	
 	<div class="container">
-		This morning I added some logging functionality to the cherrymusic service scriptthat lives in /etc/init.d/cherrymusic. I have a couple issues going on with the music server that are going to require some log digging. One of which I&rsquo;ve already fixed: Some of the Web Rips sub directories would open up empty. Upon review the logs when accessing those folders I found this:
+		This morning I added some logging functionality to the cherrymusic service script that lives in /etc/init.d/cherrymusic. I have a couple issues going on with the music server that are going to require some log digging. One of which I&rsquo;ve already fixed: Some of the Web Rips sub directories would open up empty. Upon review the logs when accessing those folders I found this:
 [150521-14:10] ERROR : [21/May/2015:14:10:41] HTTP Traceback (most recent call last): File &#34;/home/cherrymusic/cherrymusic-devel/cherrypy/_cprequest.
 		
 			<a href="https://mikeder.net/blog/archive/1432220666-adding-logging-to-cherrymusic-service/">Read more...</a>
@@ -50,7 +63,7 @@
 	<time>14.05.2015 18:07</time>
 	
 	<div class="container">
-		Taking another look streaming internet radio along with more robust firewall and DNS control. I found a real nice Open Source radio backend called Airtimethat re-kindled the idea of running an internet radio stream. Getting Airtime installed took a few tries, eventually I decided to just use their easy-install script. One thing to note is that the server locale needs to be set to US-UTF8 before postgresql is installed, otherwise the airtime installer will complain that the database was made with the wrong format and will error out.
+		Taking another look streaming internet radio along with more robust firewall and DNS control. I found a real nice Open Source radio backend called Airtime that re-kindled the idea of running an internet radio stream. Getting Airtime installed took a few tries, eventually I decided to just use their easy-install script. One thing to note is that the server locale needs to be set to US-UTF8 before postgresql is installed, otherwise the airtime installer will complain that the database was made with the wrong format and will error out.
 		
 			<a href="https://mikeder.net/blog/archive/1431626827-airtime-icecast-and-pfsense/">Read more...</a>
 		
@@ -64,7 +77,7 @@
 	
 	<div class="container">
 		I initially installed 4 HDD&rsquo;s in the prox-ve01 server that were a mix of old hard drives from other computers that were still good but not being used.
- 250GB Seagate (Root filesystem &ldquo;/&quot;) 300GB Seagate (Unmounted) 500GB WD (Unmounted - pulled from blackarmor &ldquo;Downloads&rdquo;) 500GB WD (Unmounted - pulled from blackarmor &ldquo;Storage&rdquo;)  I&rsquo;m in the process of saving anything I may need off the 2 500GB drives and converting them to local storage for proxmox vm&rsquo;s and containers.
+250GB Seagate (Root filesystem &ldquo;/&rdquo;) 300GB Seagate (Unmounted) 500GB WD (Unmounted - pulled from blackarmor &ldquo;Downloads&rdquo;) 500GB WD (Unmounted - pulled from blackarmor &ldquo;Storage&rdquo;) I&rsquo;m in the process of saving anything I may need off the 2 500GB drives and converting them to local storage for proxmox vm&rsquo;s and containers.
 		
 			<a href="https://mikeder.net/blog/archive/1431151502-adding-storage-to-prox-ve01/">Read more...</a>
 		
@@ -78,7 +91,9 @@
 	
 	<div class="container">
 		Sold on 6/21/15 for $120 to a Mike from Ashburn, VA Well I made backups of the little bit of stuff I still had on the old server and am now going to list them for sale on craigslist.
-Baltimore AdWashington Ad3 Dell Poweredge SC1425 Servers - $120
+Baltimore Ad
+Washington Ad
+3 Dell Poweredge SC1425 Servers - $120
 Take all 3 servers for $120, server 1 was my main workhorse for the better part of a year as I learned VMWare ESXi, I had it running 6 or 7 Linux VM&rsquo;s without a hiccup.
 		
 			<a href="https://mikeder.net/blog/archive/1431015954-selling-the-old-dell-servers/">Read more...</a>
@@ -92,7 +107,7 @@ Take all 3 servers for $120, server 1 was my main workhorse for the better part 
 	<time>05.05.2015 17:57</time>
 	
 	<div class="container">
-		
+		 
 		
 	</div>
 </article>
@@ -103,7 +118,7 @@ Take all 3 servers for $120, server 1 was my main workhorse for the better part 
 	<time>05.05.2015 17:50</time>
 	
 	<div class="container">
-		UMF15 Weekend 2 timelapse   
+		UMF15 Weekend 2 timelapse 
 		
 	</div>
 </article>
@@ -128,7 +143,7 @@ Take all 3 servers for $120, server 1 was my main workhorse for the better part 
 	
 	<div class="container">
 		This is a customized version of the Tornado blog example, customization includes:
- Bootswatch Cyborg theme Navbar /auth/create disabled after first user is created Day light savings handling More that I forgot..  Installing the blog:
+Bootswatch Cyborg theme Navbar /auth/create disabled after first user is created Day light savings handling More that I forgot.. Installing the blog:
 $ apt-get install mysql-server python-dev libmysqlclient-dev libffi-dev git python-pip $ pip install bcrypt mysql-python torndb tornado markdown futures $ mkdir /opt/blog $ cd /opt $ git clone http://github.com/mikeder/blog $ cd blog $ mysql -u root -p mysql&gt; CREATE DATABASE blog; mysql&gt; GRANT ALL PRIVILEGES ON blog.
 		
 			<a href="https://mikeder.net/blog/archive/1430650459-customized-tornado-blog/">Read more...</a>

@@ -27,25 +27,24 @@
         <h5>12.10.2016 14:00</h5>
         <div class="container">
             <p><a href="https://www.unicoda.com/?p=1624">https://www.unicoda.com/?p=1624</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install python-dev python-pip postgresql ruby
-sudo pip install ecdsa fabric pycrypto
-git clone https://github.com/lincolnloop/cabot.git
-cd cabot
-cp conf/production.env.example conf/production.env
-<span style="color:#75715e"># Add at least graphite url and login to config</span>
-nano env/production.env
-fab provision -H root@localhost
-fab deploy -H ubuntu@localhost
-
-su - ubuntu
-source /home/ubuntu/venv/bin/activate
-cd cabot
-foreman start -e conf/production.env
-
-</code></pre></div><p>Modifying fabric provision/deploy for multi instance deploys:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install python-dev python-pip postgresql ruby
+</span></span><span style="display:flex;"><span>sudo pip install ecdsa fabric pycrypto
+</span></span><span style="display:flex;"><span>git clone https://github.com/lincolnloop/cabot.git
+</span></span><span style="display:flex;"><span>cd cabot
+</span></span><span style="display:flex;"><span>cp conf/production.env.example conf/production.env
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add at least graphite url and login to config</span>
+</span></span><span style="display:flex;"><span>nano env/production.env
+</span></span><span style="display:flex;"><span>fab provision -H root@localhost
+</span></span><span style="display:flex;"><span>fab deploy -H ubuntu@localhost
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>su - ubuntu
+</span></span><span style="display:flex;"><span>source /home/ubuntu/venv/bin/activate
+</span></span><span style="display:flex;"><span>cd cabot
+</span></span><span style="display:flex;"><span>foreman start -e conf/production.env
+</span></span></code></pre></div><p>Modifying fabric provision/deploy for multi instance deploys:</p>
 <ul>
 <li>Clone official repo</li>
-<li>Make new local branch - &lsquo;tesl&rsquo;</li>
+<li>Make new local branch - &rsquo;tesl'</li>
 <li>Find/replace all instances of ubuntu with tesl in fabfile.py and bin/setup_dependencies.sh</li>
 <li>EMAIL_BACKEND = &lsquo;django.core.mail.backends.smtp.EmailBackend&rsquo; in cabot/settings.py</li>
 <li>Comment out SES_ settings in conf/production.env</li>

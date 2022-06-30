@@ -28,20 +28,20 @@
         <div class="container">
             <p>I initially installed 4 HDD&rsquo;s in the prox-ve01 server that were a mix of old hard drives from other computers that were still good but not being used.</p>
 <ul>
-<li>250GB Seagate (Root filesystem &ldquo;/&quot;)</li>
+<li>250GB Seagate (Root filesystem &ldquo;/&rdquo;)</li>
 <li>300GB Seagate (Unmounted)</li>
 <li>500GB WD (Unmounted - pulled from blackarmor &ldquo;Downloads&rdquo;)</li>
 <li>500GB WD (Unmounted - pulled from blackarmor &ldquo;Storage&rdquo;)</li>
 </ul>
 <p>I&rsquo;m in the process of saving anything I may need off the 2 500GB drives and converting them to local storage for proxmox vm&rsquo;s and containers. As these drives were both in a Windows 7 machine in a prior life they need to be converted to linux partitions and filesystems from NTFS. This can be done via fdisk/cfdisk and mkfs commands.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Delete partitions and create a new Linux partition</span>
-root@prox-ve01$ fdisk /dev/sdc
-<span style="color:#75715e"># Follow prompts to delete old partitions and create a new one of the Linux type.</span>
-<span style="color:#75715e"># Make new file system of type ext4 on the new Linux partition with label &#34;storage-1&#34;</span>
-<span style="color:#75715e"># -c Check the device for bad blocks before creating the file system.</span>
-<span style="color:#75715e"># If this option is specified twice, then a slower read-write test is used instead of a fast read-only test.</span>
-root@prox-ve01$ mkfs.ext4 -c -c -L /storage-1 /dev/sdc1
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Delete partitions and create a new Linux partition</span>
+</span></span><span style="display:flex;"><span>root@prox-ve01$ fdisk /dev/sdc
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Follow prompts to delete old partitions and create a new one of the Linux type.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make new file system of type ext4 on the new Linux partition with label &#34;storage-1&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -c Check the device for bad blocks before creating the file system.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># If this option is specified twice, then a slower read-write test is used instead of a fast read-only test.</span>
+</span></span><span style="display:flex;"><span>root@prox-ve01$ mkfs.ext4 -c -c -L /storage-1 /dev/sdc1
+</span></span></code></pre></div>
         </div>
          
         <div>

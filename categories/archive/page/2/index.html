@@ -48,8 +48,8 @@
 	
 	<div class="container">
 		This database migration or promotion allows for moving of data between two hosts in separate networks. We open an SSH tunnel from our local machine to a bastion or &ldquo;jumpbox&rdquo; within the same network of each database and then mysqldump the data from one host to another via local ports.
-  Setup HISTCONTROL
-root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# # commands starting with a space will no longer show up in history   SSH Tunnel to both database hosts
+Setup HISTCONTROL
+root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# # commands starting with a space will no longer show up in history SSH Tunnel to both database hosts
 		
 			<a href="https://mikeder.net/blog/archive/1535507378-more-better-database-migration/">Read more...</a>
 		
@@ -62,7 +62,7 @@ root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# #
 	<time>13.07.2018 01:37</time>
 	
 	<div class="container">
-		find . -type f -iname \*.JPG -print0 | xargs -0 -I '{}' /bin/mv &quot;{}&quot; ../JPG/ will overwrite your shit if filenames are the same!
+		find . -type f -iname \*.JPG -print0 | xargs -0 -I &#39;{}&#39; /bin/mv &#34;{}&#34; ../JPG/ will overwrite your shit if filenames are the same!
 		
 	</div>
 </article>
@@ -108,7 +108,7 @@ root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# #
 	<div class="container">
 		Setting up an old Acer Aspire One 722-0473
 Edit /etc/apt/sources.list - add contrib and non-free packages
-deb http://httpredir.debian.org/debian/ stretch main contrib non-free  Update and install drivers apt-get update apt-get install firmware-amd-graphics  Add touchpad config Edit /usr/share/X11/xorg.conf.d/50-touchpad.conf - add below section
+deb http://httpredir.debian.org/debian/ stretch main contrib non-free Update and install drivers apt-get update apt-get install firmware-amd-graphics Add touchpad config Edit /usr/share/X11/xorg.conf.d/50-touchpad.conf - add below section
 Section &quot;InputClass&quot; Identifier &quot;touchpad catchall&quot; Driver &quot;synaptics&quot; MatchIsTouchpad &quot;on&quot; Option &quot;TapButton1&quot; &quot;1&quot; Option &quot;TapButton1&quot; &quot;3&quot; EndSection 
 		
 	</div>
@@ -135,7 +135,7 @@ First I spun up a new Debian VM, as is tradition, and after updating and upgradi
 	
 	<div class="container">
 		alias docker-nuke='docker kill $(docker ps -q); docker rm $(docker ps -aq); docker rmi -f $(docker images -aq); docker volume prune -f'
- deletes and force removes all containers, images, and volumes.  
+deletes and force removes all containers, images, and volumes. 
 		
 	</div>
 </article>

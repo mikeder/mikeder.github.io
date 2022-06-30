@@ -30,24 +30,24 @@
 <ol>
 <li>
 <p>Setup <code>HISTCONTROL</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    root@DESKTOP-VFK848F:~# export HISTCONTROL<span style="color:#f92672">=</span>ignorespace
-    root@DESKTOP-VFK848F:~# <span style="color:#75715e"># commands starting with a space will no longer show up in history</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    root@DESKTOP-VFK848F:~# export HISTCONTROL<span style="color:#f92672">=</span>ignorespace
+</span></span><span style="display:flex;"><span>    root@DESKTOP-VFK848F:~# <span style="color:#75715e"># commands starting with a space will no longer show up in history</span>
+</span></span></code></pre></div></li>
 <li>
 <p>SSH Tunnel to both database hosts</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#75715e"># Setup local port forward to remote database 1</span>
-    root@DESKTOP-VFK848F:~# ssh -L localhost:localport:db_host_1:db_port_1 user@jumpbox
-    root@DESKTOP-VFK848F:~# ssh -L localhost:3307:mysql-01.tsnet:3306 meder@pve-1.tsnet
-    meder@pve-1:~$ <span style="color:#75715e"># leave this window open</span>
-    <span style="color:#75715e"># Setup local port forward to remote database 2</span>
-    root@DESKTOP-VFK848F:~# ssh -L localhost:3308:mysql-02.tsnet:3306 meder@pve-1.tsnet
-    meder@pve-1:~$ <span style="color:#75715e"># leave this window open</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    <span style="color:#75715e"># Setup local port forward to remote database 1</span>
+</span></span><span style="display:flex;"><span>    root@DESKTOP-VFK848F:~# ssh -L localhost:localport:db_host_1:db_port_1 user@jumpbox
+</span></span><span style="display:flex;"><span>    root@DESKTOP-VFK848F:~# ssh -L localhost:3307:mysql-01.tsnet:3306 meder@pve-1.tsnet
+</span></span><span style="display:flex;"><span>    meder@pve-1:~$ <span style="color:#75715e"># leave this window open</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Setup local port forward to remote database 2</span>
+</span></span><span style="display:flex;"><span>    root@DESKTOP-VFK848F:~# ssh -L localhost:3308:mysql-02.tsnet:3306 meder@pve-1.tsnet
+</span></span><span style="display:flex;"><span>    meder@pve-1:~$ <span style="color:#75715e"># leave this window open</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Dump from database 1 to 2</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#75715e"># The passwords have to be in line, so remember the extra space before the command to exclude it from history</span>
-    root@DESKTOP-VFK848F:~#  mysqldump --single-transaction -h 127.0.0.1 -P <span style="color:#ae81ff">3307</span> -u root -p<span style="color:#e6db74">&#39;db1password&#39;</span> | mysql -h 127.0.0.1 -P <span style="color:#ae81ff">3308</span> -u root -p<span style="color:#e6db74">&#39;db2password&#39;</span>         
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    <span style="color:#75715e"># The passwords have to be in line, so remember the extra space before the command to exclude it from history</span>
+</span></span><span style="display:flex;"><span>    root@DESKTOP-VFK848F:~#  mysqldump --single-transaction -h 127.0.0.1 -P <span style="color:#ae81ff">3307</span> -u root -p<span style="color:#e6db74">&#39;db1password&#39;</span> | mysql -h 127.0.0.1 -P <span style="color:#ae81ff">3308</span> -u root -p<span style="color:#e6db74">&#39;db2password&#39;</span>         
+</span></span></code></pre></div></li>
 </ol>
 
         </div>
