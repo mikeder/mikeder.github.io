@@ -1,5 +1,5 @@
 ---
-title: "Docker Vm Replacement"
+title: "Docker VM Replacement"
 date: 2022-01-01T11:23:07-05:00
 draft: true
 ---
