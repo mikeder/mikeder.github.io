@@ -32,6 +32,24 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/grpc-webapp-template/">gRPC WebApp Example</a></h1>
+	<time>30.06.2022 15:43</time>
+	
+	<div class="container">
+		Notes for developing a gRPC based web application, for fun and learning.
+Use connect-go for server/client transport.
+supports gRPC, JSON REST and Connect no need for JSON REST translation proxy Use connect-grpcreflect-go for reflection.
+Use OAuth2 with GitHub provider to start. Use React frontend.
+Use GitHub actions for linting, building and publishing packages.
+golangci-lint go build/test go sematic release GH packages release ( docker image to ghcr.io ) Deploy to AWS or Azure, scripts to use CLI to provision resources.
+		
+			<a href="https://mikeder.net/blog/grpc-webapp-template/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/jupiter-6-issues-2022/">Jupiter 6 Issues 2022</a></h1>
 	<time>12.03.2022 19:41</time>
 	
@@ -148,19 +166,6 @@ Well, I tried to update this post but apparently my token went invalid while I w
 	<div class="container">
 		At the point where rewritten functionality needs some upgrading. Login, db models/mgmt stuff, etc. all needs improving over what is in place in the Python code.
 JWT login db models/mgmt featured/favorite cards 
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1580346038-go-rewrite-load/">Go Rewrite - Load</a></h1>
-	<time>30.01.2020 01:00</time>
-	
-	<div class="container">
-		GOMAXPROCS=2 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 37.13ms 45.17ms 398.89ms 84.51% Req/Sec 1.13k 226.65 1.99k 71.67% 67708 requests in 15.01s, 289.02MB read Requests/sec: 4511.45 Transfer/sec: 19.26MB GOMAXPROX=4 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 24.
-		
-			<a href="https://mikeder.net/blog/archive/1580346038-go-rewrite-load/">Read more...</a>
 		
 	</div>
 </article>

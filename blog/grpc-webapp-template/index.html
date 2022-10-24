@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Minecraft Again</title>
+    <title>gRPC WebApp Example</title>
      
     <link rel="stylesheet" href='/css/style.css'> 
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
@@ -23,21 +23,33 @@
 </header> 
 <main id="content" class="content">
     <article class="content-chunk">
-        <h1>Minecraft Again</h1>
-        <h5>11.12.2019 03:42</h5>
+        <h1>gRPC WebApp Example</h1>
+        <h5>30.06.2022 15:43</h5>
         <div class="container">
-            <p><a href="https://minecraft-mp.com/server-s239994">server link</a></p>
-<p>
-
-
-
-
-
-
-<div class="md__image">
-    <img id="[106 178 202 284 398 362]" src="https://minecraft-mp.com/banner-239994-5.png" onclick="openModal(this.id)" alt="img"  />
-</div></p>
-<p>Map: <a href="http://sqweeb.net:4444">http://sqweeb.net:4444</a></p>
+            <p>Notes for developing a gRPC based web application, for fun and learning.</p>
+<p>Use <a href="https://github.com/bufbuild/connect-go">connect-go</a> for server/client transport.</p>
+<ul>
+<li>supports gRPC, JSON REST and Connect</li>
+<li>no need for JSON REST translation proxy</li>
+</ul>
+<p>Use <a href="https://github.com/bufbuild/connect-grpcreflect-go">connect-grpcreflect-go</a> for reflection.</p>
+<p>Use OAuth2 with GitHub provider to start.
+Use React frontend.</p>
+<p>Use GitHub actions for linting, building and publishing packages.</p>
+<ul>
+<li><a href="https://github.com/golangci/golangci-lint-action">golangci-lint</a></li>
+<li>go build/test</li>
+<li>go sematic release</li>
+<li>GH packages release ( docker image to ghcr.io )</li>
+</ul>
+<p>Deploy to AWS or Azure, scripts to use CLI to provision resources.</p>
+<h2 id="functionality-considerations">Functionality Considerations</h2>
+<ol>
+<li>Auth via OAuth2 login.</li>
+<li>User generated public and private lists.</li>
+<li>Share option for lists w/ shortcode/QR code generation.</li>
+<li>Tracing and Metrics emitted via OpenTelemetry.</li>
+</ol>
 
         </div>
          
@@ -89,7 +101,7 @@
 
 <footer id="site-footer">
     <p>
-        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:1d81109</p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:4ac320e</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

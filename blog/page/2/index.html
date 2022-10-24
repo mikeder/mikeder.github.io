@@ -32,6 +32,19 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1580346038-go-rewrite-load/">Go Rewrite - Load</a></h1>
+	<time>30.01.2020 01:00</time>
+	
+	<div class="container">
+		GOMAXPROCS=2 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 37.13ms 45.17ms 398.89ms 84.51% Req/Sec 1.13k 226.65 1.99k 71.67% 67708 requests in 15.01s, 289.02MB read Requests/sec: 4511.45 Transfer/sec: 19.26MB GOMAXPROX=4 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 24.
+		
+			<a href="https://mikeder.net/blog/archive/1580346038-go-rewrite-load/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1580267021-go-rewrite/">Go Rewrite</a></h1>
 	<time>29.01.2020 03:03</time>
 	
@@ -136,20 +149,6 @@ root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# #
 	
 	<div class="container">
 		I tried the recommended method here without luck. When done from the UniFi controller the upgrade would just not happen, no error given as to why. I then tried it directly on the AP and found that it wasn&rsquo;t able to verify the SSL cert from UBNT&rsquo;s site.
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1507860924-debian-9-stretch-laptop-setup/">Debian 9 (Stretch) Laptop Setup</a></h1>
-	<time>13.10.2017 02:15</time>
-	
-	<div class="container">
-		Setting up an old Acer Aspire One 722-0473
-Edit /etc/apt/sources.list - add contrib and non-free packages
-deb http://httpredir.debian.org/debian/ stretch main contrib non-free Update and install drivers apt-get update apt-get install firmware-amd-graphics Add touchpad config Edit /usr/share/X11/xorg.conf.d/50-touchpad.conf - add below section
-Section &quot;InputClass&quot; Identifier &quot;touchpad catchall&quot; Driver &quot;synaptics&quot; MatchIsTouchpad &quot;on&quot; Option &quot;TapButton1&quot; &quot;1&quot; Option &quot;TapButton1&quot; &quot;3&quot; EndSection 
 		
 	</div>
 </article>

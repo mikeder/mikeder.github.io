@@ -32,6 +32,20 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1507860924-debian-9-stretch-laptop-setup/">Debian 9 (Stretch) Laptop Setup</a></h1>
+	<time>13.10.2017 02:15</time>
+	
+	<div class="container">
+		Setting up an old Acer Aspire One 722-0473
+Edit /etc/apt/sources.list - add contrib and non-free packages
+deb http://httpredir.debian.org/debian/ stretch main contrib non-free Update and install drivers apt-get update apt-get install firmware-amd-graphics Add touchpad config Edit /usr/share/X11/xorg.conf.d/50-touchpad.conf - add below section
+Section &quot;InputClass&quot; Identifier &quot;touchpad catchall&quot; Driver &quot;synaptics&quot; MatchIsTouchpad &quot;on&quot; Option &quot;TapButton1&quot; &quot;1&quot; Option &quot;TapButton1&quot; &quot;3&quot; EndSection 
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1506201857-moving-blog-to-docker/">Moving blog database</a></h1>
 	<time>23.09.2017 21:24</time>
 	
@@ -154,21 +168,6 @@ Before: defaults,noatime,nodiratime,barrier=1,data=ordered,errors=remount-ro Aft
 root@pve-01:~# pveperf / CPU BOGOMIPS: 19244.00 REGEX/SECOND: 959888 HD SIZE: 27.19 GB (/dev/dm-0) BUFFERED READS: 195.02 MB/sec AVERAGE SEEK TIME: 0.26 ms FSYNCS/SECOND: 301.31 DNS EXT: 93.93 ms DNS INT: 93.76 ms (sqweeb.net) root@pve-01:~# pveperf /var/lib/vz CPU BOGOMIPS: 19244.00 REGEX/SECOND: 978722 HD SIZE: 178.85 GB (/dev/mapper/pve-data) BUFFERED READS: 197.73 MB/sec AVERAGE SEEK TIME: 0.20 ms FSYNCS/SECOND: 316.08 DNS EXT: 84.80 ms DNS INT: 107.
 		
 			<a href="https://mikeder.net/blog/archive/1472578134-troubleshooting-large-iowait-spikes/">Read more...</a>
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1472570020-rust-server-info/">Rust Server Info</a></h1>
-	<time>30.08.2016 15:13</time>
-	
-	<div class="container">
-		[tS] Rusty Noobs Server turned off (9/22/16)
-I&rsquo;ve decided to turn off the server for now, due to lack of traffic. The virtual machine will be backed up and stored in its current state but will remain powered off until its needed again. Server Update, Map Wipe, Performance Increases! (9/1/16)
-The server was updated and map wiped today, the map size was increased from 3000 to 3555 Server tick rate was increased from 30 to 60 An underlying storage issue was resolved resulting in lower server load and faster loading times Come noob out with us on a fresh server!
-		
-			<a href="https://mikeder.net/blog/archive/1472570020-rust-server-info/">Read more...</a>
 		
 	</div>
 </article>
