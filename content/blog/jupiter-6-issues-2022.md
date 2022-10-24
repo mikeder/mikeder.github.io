@@ -37,3 +37,4 @@ Other similar threads:
     * Post by sqweebking » Fri Dec 09, 2016 3:29 am
 * [my jupiter 6 is having pretty weird issues](https://gearspace.com/board/electronic-music-instruments-and-electronic-music-production/653154-my-jupiter-6-having-pretty-weird-issues.html)
     *  29th September 2011
+* [Jupiter 6 Frozen](https://gearspace.com/board/electronic-music-instruments-and-electronic-music-production/1265717-jupiter-6-frozen.html)
