@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://mikeder.net/</loc>
+    <lastmod>2022-10-24T22:05:36-04:00</lastmod>
+  </url><url>
     <loc>https://mikeder.net/blog/</loc>
-    <lastmod>2022-10-23T21:54:32-04:00</lastmod>
+    <lastmod>2022-10-24T10:44:44-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/grpc-webapp-template/</loc>
     <lastmod>2022-10-23T21:40:31-04:00</lastmod>
   </url><url>
-    <loc>https://mikeder.net/</loc>
-    <lastmod>2022-10-23T21:54:32-04:00</lastmod>
-  </url><url>
     <loc>https://mikeder.net/blog/jupiter-6-issues-2022/</loc>
-    <lastmod>2022-10-23T21:54:32-04:00</lastmod>
+    <lastmod>2022-10-24T10:44:44-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/docker-vm-replacement/</loc>
     <lastmod>2022-06-30T16:42:38-04:00</lastmod>
@@ -28,6 +28,9 @@
   </url><url>
     <loc>https://mikeder.net/blog/archive/1616464472-vm-restore/</loc>
     <lastmod>2022-06-14T21:31:18-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/synthesizers/roland/jx10/</loc>
+    <lastmod>2022-10-24T22:05:41-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/projects/music/</loc>
     <lastmod>2021-01-20T13:37:39-05:00</lastmod>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mikeder.net</title>
+    <title>Home on mikeder.net</title>
     <link>https://mikeder.net/</link>
-    <description>Recent content on mikeder.net</description>
+    <description>Recent content in Home on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jun 2022 15:43:17 -0400</lastBuildDate><atom:link href="https://mikeder.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Oct 2022 21:13:07 -0400</lastBuildDate><atom:link href="https://mikeder.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>gRPC WebApp Example</title>
       <link>https://mikeder.net/blog/grpc-webapp-template/</link>
@@ -62,6 +62,16 @@ Battery life went to shit, have to enable low power mode on battery. Bitwig and 
       
       <guid>https://mikeder.net/blog/archive/1616464472-vm-restore/</guid>
       <description>Restoring VM&amp;rsquo;s after a host SSD gets cooked. When I went to power my homelab server back on, after sitting idle for 8 months while we moved house, it displayed some concerning ata device warnings on boot. After a reboot it failed an automatic run of fsck -a and recommended performing a manual run. The root device /dev/mapper/pve-root was corrupted and after performing several manual filesystem checks the system could no longer boot.</description>
+    </item>
+    
+    <item>
+      <title>Roland JX10</title>
+      <link>https://mikeder.net/synthesizers/roland/jx10/</link>
+      <pubDate>Thu, 17 Sep 2020 22:12:13 -0400</pubDate>
+      
+      <guid>https://mikeder.net/synthesizers/roland/jx10/</guid>
+      <description>I originally purchased my JX10 from Jeffrey Koepper, an ambient synthesizer music artist from Baltimore, MD. I had no idea who he was at the time. When I got home and looked him up, I was pleasantly surprised to learn that he was not only producing awesome synthesizer music but he had been doing so for quite a long time. I immediately purchased all of his albums as inspiration.
+The JX10 is a massive polyphonic synthesizer, supposedly the last &amp;ldquo;flagship&amp;rdquo; analog poly synth Roland made.</description>
     </item>
     
     <item>
