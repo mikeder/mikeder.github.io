@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "mikeder.net"
 date: 2022-10-24T21:13:07-04:00
 draft: false
 ---
