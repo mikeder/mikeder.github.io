@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Asset Test</title>
+    <title>Blogs</title>
      
     <link rel="stylesheet" href='/css/style.css'> 
+    <link rel="alternate" type="application/rss+xml" href="/blog/index.xml" title="mikeder.net">
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
 </head>
 
@@ -21,41 +22,41 @@
         <a href="/synthesizers/">Synthesizers</a>  
     </div>
 </header> 
-<main id="content" class="content">
-    <article class="content-chunk">
-        <h1>Asset Test</h1>
-        <h5>13.04.2020 00:20</h5>
-        <div class="container">
-            <p>I&rsquo;ve setup a CloudFront distribution to serve some static assets and media files for this domain. This will make load times faster and allow me to serve content from AWS&rsquo;s edge locations instead of from a single container instance of this &ldquo;blog&rdquo;.</p>
-<p>Testing some random image embeds here:</p>
-<p>
+	<main class="content">
+		
+		<div class="content-chunk">
+			<h1>Blogs</h1>
+			<hr>
+			
+		
 
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1430650459-customized-tornado-blog/">Customized Tornado Blog</a></h1>
+	<time>03.05.2015 10:54</time>
+	
+	<div class="container">
+		This is a customized version of the Tornado blog example, customization includes:
+Bootswatch Cyborg theme Navbar /auth/create disabled after first user is created Day light savings handling More that I forgot.. Installing the blog:
+$ apt-get install mysql-server python-dev libmysqlclient-dev libffi-dev git python-pip $ pip install bcrypt mysql-python torndb tornado markdown futures $ mkdir /opt/blog $ cd /opt $ git clone http://github.com/mikeder/blog $ cd blog $ mysql -u root -p mysql&gt; CREATE DATABASE blog; mysql&gt; GRANT ALL PRIVILEGES ON blog.
+		
+			<a href="https://mikeder.net/blog/archive/1430650459-customized-tornado-blog/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+		<div>
 
+	<a href="/blog/page/5/">Previous Page</a>
 
+6 of 6
 
-
-
-<div class="md__image">
-    <img id="[19 246 206 392 370 284]" src="https://assets.sqweeb.net/images/minecraft/screenshots/2019-09-15_19.14.38.png" onclick="openModal(this.id)" alt="shaded downtown"  />
 </div>
 
 
-
-
-
-
-
-<div class="md__image">
-    <img id="[319 151 493 261 12 407]" src="https://assets.sqweeb.net/images/minecraft/screenshots/2020-04-05_21.03.43.png" onclick="openModal(this.id)" alt="new server build"  />
-</div></p>
-
-        </div>
-         
-        <div>
-            <a href="javascript:history.back()">Go Back</a>
-        </div>
-    </article>
-</main>
+		</div>
+	</main>
  
 
 
@@ -95,11 +96,11 @@
         document.getElementById("site-footer").style.display = "block";
     }
     closeModal()
-</script>    
+</script>  
 
 <footer id="site-footer">
     <p>
-        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:1d81109</p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:latest</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

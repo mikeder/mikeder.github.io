@@ -29,7 +29,7 @@
             <p>Jupiter 6 w/ Europa fails to boot, shows code F6.</p>
 <p>Opened it up, reseated all connectors around main boards and problem went away.</p>
 <p>Will revist at another time, if its working, its working.</p>
-<h3 id="update-2022-10-23">Update 2022-10-23</h3>
+<h3 id="update-october-23-2022">Update October 23, 2022</h3>
 <p>The JP-6 was acting up again tonight. At this point I think I&rsquo;ll contact <a href="https://belltonesynthworks.com/contact/">BellToneSynthWorks</a> in Philadelphia, PA to see if they can help. Before I do that I want to collect my notes on previous attempts to address the issues that have been plaguing this synth since I bought it.</p>
 <p>I found an old <a href="https://forum.vintagesynth.com/viewtopic.php?t=96637#p787192">VSE thread</a> from 12/09/2016 where I was taking a look at the reset circuit in the synth. In the end it seemed the reset was working as it should, but I&rsquo;m going to copy some excerpts here because some of the pictures are already gone from the thread.</p>
 <blockquote>
@@ -47,7 +47,7 @@
 
 
 <div class="md__image">
-    <img id="[122 389 266 147 104 279]" src="/img/jp6/reset-sig1.jpg" onclick="openModal(this.id)" alt="reset-scope"  />
+    <img id="[375 4 193 475 184 410]" src="/img/jp6/reset-sig1.jpg" onclick="openModal(this.id)" alt="reset-scope"  />
 </div></p>
 <p>Other similar threads:</p>
 <ul>
@@ -76,12 +76,42 @@
 <li>29th September 2011</li>
 </ul>
 </li>
+<li><a href="https://gearspace.com/board/electronic-music-instruments-and-electronic-music-production/1235196-sickly-jupiter-6-thoughts.html">Sickly Jupiter-6; thoughts?</a>
+<ul>
+<li>21st October 2018</li>
+</ul>
+</li>
 <li><a href="https://gearspace.com/board/electronic-music-instruments-and-electronic-music-production/1265717-jupiter-6-frozen.html">Jupiter 6 Frozen</a>
 <ul>
 <li>21st May 2019</li>
 </ul>
 </li>
 </ul>
+<h3 id="update-november-3-2022">Update November 3, 2022</h3>
+<p>I was reading through the threads above and the this one stuck out to me - <a href="https://gearspace.com/board/electronic-music-instruments-and-electronic-music-production/1235196-sickly-jupiter-6-thoughts.html">Sickly Jupiter-6; thoughts?</a>. The issues reported by &ldquo;eruptionchaser&rdquo; sound almost identical to the behaviors of my JP6.</p>
+<blockquote>
+<p>It has the Europa mod, and the fault is intermittent; a fair bit of the time, it works and plays beautifully. Intermittently, it shows the following symptoms:</p>
+<ul>
+<li>it goes out of tune</li>
+<li>one or two voices stop sounding, or buzz and click</li>
+<li>pressing the &rsquo;tune&rsquo; button locks the instrument up</li>
+<li>rebooting produces a Europa F6 error which means &lsquo;voice board not responding to controller&rsquo;</li>
+<li>rebooting into Roland firmware by holding down the &rsquo;tape&rsquo; button often, but not always, works - sometimes that reboot produces a frozen instrument.</li>
+<li>leaving it a while, perhaps overnight, after one of these episodes generally results in it rebooting normally.</li>
+</ul>
+</blockquote>
+<p>A user who goes by &ldquo;Synthbuilder&rdquo; replies, mentioning that there are several components used in the JP6 which tend to slowly degrade and prone to fail. They suggest to replace several transistors ( to address some noise ) and to replace the orange polystyrene capacitors in the VCO and VCF circuits, stating that these are prone to intermittent failure and can cause issues during the auto tune procedure.</p>
+<blockquote>
+<p>I believe there are also the same transistors on the CPU board, as well as three PNP devices on each of the voice cards which deal with the VCO balance VCAs.</p>
+</blockquote>
+<blockquote>
+<p>You can replace the NPNs with BC182L and the PNPs with BC212L. Take care to match the pin out from the old devices with the new ones. For the PSU the new devices can just match up with the legend on the PCB.</p>
+</blockquote>
+<blockquote>
+<p>If your JP-6 has orange polystyrene capacitors (four for each filter, and one for each VCO) these too can intermittently fail. The VCO ones can cause Autotune to fail as well as silencing the VCO completely. The VCF ones tend to make the filter noisy before finally making the voice fail completely. The capacitors can be replaced by 5mm C0G ceramic capacitors of the same value as the original devices. 330pF and 1nF for the VCF and VCO respectively. If one of the capacitors has failed you may as well replace all of them.</p>
+</blockquote>
+<p>I&rsquo;m going to have a look at these caps in my synth to determine if they are 1) still original and 2) can be easily measured for their performance. I&rsquo;m less concerned about the transistor replacements at the moment, since when my synth is working I have not noticed any noise.</p>
+<p>A couple other users in the thread have reported cap replacement solving similar issues for them, so I think it may be a decent thing to check.</p>
 
         </div>
          
@@ -133,7 +163,7 @@
 
 <footer id="site-footer">
     <p>
-        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:51a09ff</p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:eb71ee5</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

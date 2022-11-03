@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Roland Juno 6 Repairs 2022</title>
+     
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>Roland Juno 6 Repairs 2022</h1>
+        <h5>03.11.2022 07:10</h5>
+        <div class="container">
+            <p>I&rsquo;ve finally gotten around to starting, and finishing, some long overdue repairs to my Roland Juno 6.</p>
+<p>When I purchased the synth, it had a broken bender lever. This is a pretty common thing and replacements can be found fairly cheaply - I purchased mine from <a href="https://syntaur.com/Part-4023-Bender-lever-Roland">Syntaur</a>. It also had a missing slider cap at the time, which I also found a replacement for from <a href="https://syntaur.com/Part-4367-Slider-knob-Roland">Syntaur</a>.</p>
+<p>After owning the synth for a while, I discovered that the PWM control was non-functional. This meant that the pulse wave oscillator was stuck at a certain duty cycle regardless of LFO or manual control of the PWM. Years ago I attempted a fix by simply replacing the entire panel PCB that contained the PWM controls, this didn&rsquo;t work, and I just left it for several more years.</p>
+<p>At some point, probably just after I finished refurbishing and calibrating a Juno 60 that I sold, I took a closer look at the PWM control circuit. I noticed that beyond the front panel controls there was a 4051 multiplexer being used as a de-multiplexer.</p>
+<p>The service manual gives a nice description of this circuit which lead me to look at this chip initially. ( This ultimately prompted me to buy a <a href="https://syntaur.com/Part-4319-IC-4051-multiplexer-chip">replacement 4051</a> back in 2019, as I suspected it to be a likely culprit. )</p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[216 467 384 398 428 253]" src="/img/ju6/pwm-desc.png" onclick="openModal(this.id)" alt="variable pulse width"  />
+</div></p>
+<p>I first measured the input CV on pin 3, I found that it was changing as expected between <code>-.5V</code> and <code>-6.8V</code> as I changed the front panel PWM slider.</p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[400 444 474 447 269 481]" src="/img/ju6/pwm-circuit.png" onclick="openModal(this.id)" alt="pwm circuit"  />
+</div></p>
+<p>I then measured a couple of the output pins and there was a distinct sawtooth waveform but it had a fair amount of noise to it and was unaffected by the front panel control changes. I also confirmed at TR2 of a couple of the voices that the resulting pulse wave was unchanged while moving the PWM slider.</p>
+<p>With this evidence I went ahead and replaced the 4051 with the chip I had purchased previously. After replacement I again checked TR2 and confirmed that the pulse duty cycle WAS in fact changing with the front panel changes! I did a quick calibration per the service manual, up to the chorus bias section and buttoned it back up.</p>
+<p>I&rsquo;ll revisit the chorus chips and do a front panel overhaul at a later date, I wanted to jam.</p>
+<p>In hindsight this was a very simple repair, I&rsquo;m not sure what took me so long. I ordered parts to perform these repairs three years ago!</p>
+<table>
+<thead>
+<tr>
+<th>Item Number</th>
+<th>Description</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4023</td>
+<td>Bender lever, Roland</td>
+<td>16.95</td>
+<td>1</td>
+<td>$16.95</td>
+</tr>
+<tr>
+<td>4367</td>
+<td>Slider knob, Roland</td>
+<td>4.95</td>
+<td>1</td>
+<td>$4.95</td>
+</tr>
+<tr>
+<td>4319</td>
+<td>IC, 4051 multiplexer chip</td>
+<td>2.95</td>
+<td>1</td>
+<td>$2.95</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+         
+        <div>
+            <a href="javascript:history.back()">Go Back</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()" style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:1621b67</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>
