@@ -2,6 +2,10 @@
 title: "Jupiter 6 Issues 2022"
 date: 2022-03-12T19:41:15-05:00
 draft: false
+tags:
+- Vintage
+- Synthesizer
+- Repair
 ---
 
 Jupiter 6 w/ Europa fails to boot, shows code F6.

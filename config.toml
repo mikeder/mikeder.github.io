@@ -4,6 +4,10 @@ title = "mikeder.net"
 sectionPagesMenu = "main"
 enableGitInfo = true
 
+
+[taxonomies]
+  tag = 'tags'
+
 [params]
     bandcampuser = "mikeder"
     githubuser = "mikeder"

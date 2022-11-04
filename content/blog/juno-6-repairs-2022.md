@@ -2,6 +2,10 @@
 title: "Roland Juno 6 Repairs 2022"
 date: 2022-11-03T07:10:59-04:00
 draft: false
+tags:
+- Vintage
+- Synthesizer
+- Repair
 ---
 
 I've finally gotten around to starting, and finishing, some long overdue repairs to my Roland Juno 6.
