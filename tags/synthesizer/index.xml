@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Synthesizer on mikeder.net</title>
+    <link>https://mikeder.net/tags/synthesizer/</link>
+    <description>Recent content in Synthesizer on mikeder.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 03 Nov 2022 07:10:59 -0400</lastBuildDate><atom:link href="https://mikeder.net/tags/synthesizer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Roland Juno 6 Repairs 2022</title>
+      <link>https://mikeder.net/blog/juno-6-repairs-2022/</link>
+      <pubDate>Thu, 03 Nov 2022 07:10:59 -0400</pubDate>
+      
+      <guid>https://mikeder.net/blog/juno-6-repairs-2022/</guid>
+      <description>I&amp;rsquo;ve finally gotten around to starting, and finishing, some long overdue repairs to my Roland Juno 6.
+When I purchased the synth, it had a broken bender lever. This is a pretty common thing and replacements can be found fairly cheaply - I purchased mine from Syntaur. It also had a missing slider cap at the time, which I also found a replacement for from Syntaur.
+After owning the synth for a while, I discovered that the PWM control was non-functional.</description>
+    </item>
+    
+    <item>
+      <title>Jupiter 6 Issues 2022</title>
+      <link>https://mikeder.net/blog/jupiter-6-issues-2022/</link>
+      <pubDate>Sat, 12 Mar 2022 19:41:15 -0500</pubDate>
+      
+      <guid>https://mikeder.net/blog/jupiter-6-issues-2022/</guid>
+      <description>Jupiter 6 w/ Europa fails to boot, shows code F6.
+Opened it up, reseated all connectors around main boards and problem went away.
+Will revist at another time, if its working, its working.
+Update October 23, 2022 The JP-6 was acting up again tonight. At this point I think I&amp;rsquo;ll contact BellToneSynthWorks in Philadelphia, PA to see if they can help. Before I do that I want to collect my notes on previous attempts to address the issues that have been plaguing this synth since I bought it.</description>
+    </item>
+    
+  </channel>
+</rss>

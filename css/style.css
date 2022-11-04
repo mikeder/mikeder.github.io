@@ -9,6 +9,28 @@ body {
     /* color: rgb(131, 123, 123); */
 }
 
+blockquote {
+    /* background: #f9f9f9; */
+    color: rgb(136, 218, 214);
+    border-left: 2px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    /* quotes: "\201C""\201D""\2018""\2019"; */
+}
+
+blockquote:before {
+    color: lightcyan;
+    /* content: open-quote; */
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote p {
+    display: inline;
+}
+
 audio {
     border: black;
 }
@@ -142,7 +164,7 @@ hr {
 }
 
 img {
-    width: 100%;
+    max-width: 80%;
     height: auto;
 }
 
@@ -196,11 +218,13 @@ img {
     body {
         width: 90%;
     }
+
     .nav a {
         float: none;
         display: block;
         text-align: left;
     }
+
     .nav-right {
         float: none;
     }
@@ -329,6 +353,7 @@ img {
     from {
         opacity: .4
     }
+
     to {
         opacity: 1
     }
@@ -338,6 +363,7 @@ img {
     from {
         opacity: .4
     }
+
     to {
         opacity: 1
     }
@@ -413,6 +439,7 @@ img[src$='#float-right-vert'] {
 }
 
 @media (min-width: 650px) {
+
     img[src$='#float-left'],
     img[src$='#float-right'] {
         max-width: 45%;
@@ -420,6 +447,7 @@ img[src$='#float-right-vert'] {
 }
 
 @media (min-width: 800px) {
+
     img[src$='#float-left'],
     img[src$='#float-right'] {
         max-width: 40%;
