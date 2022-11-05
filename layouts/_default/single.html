@@ -7,18 +7,18 @@
             {{ .Content }}
         </div>
         {{ with .Params.tags }}
+        Tags:
         <div>
-            <ul id="tags">
-                {{ range . }}
-                <li><a href="{{ " /tags/ " | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
-                {{ end }}
-            </ul>
+            {{ range . }}
+            <a href={{ "/tags/" | relLangURL }}{{- . | urlize -}}>{{ . }}</a>
+            {{ end }}
         </div>
         {{ end }} {{ with .Site.DisqusShortname }}
         <div>
             {{ template "_internal/disqus.html" . }}
         </div>
         {{ end }}
+        <br>
         <div>
             <a href="javascript:history.back()">Go Back</a>
         </div>
