@@ -2,6 +2,11 @@
 title: "MBA Monterey"
 date: 2021-12-07T21:55:33-05:00
 draft: false
+tags:
+- Apple
+- macOS
+- M1
+- computing
 ---
 
 Issues after upgrading my 2020 Macbook Air (m1) to macOS Monterey:

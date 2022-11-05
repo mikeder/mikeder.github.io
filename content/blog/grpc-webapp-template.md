@@ -2,6 +2,11 @@
 title: "gRPC WebApp Example"
 date: 2022-06-30T15:43:17-04:00
 draft: false
+tags:
+- Go
+- gRPC
+- server
+- programming
 ---
 
 Notes for developing a gRPC based web application, for fun and learning.
