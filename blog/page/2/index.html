@@ -37,7 +37,7 @@
 	
 	<div class="container">
 		At the point where rewritten functionality needs some upgrading. Login, db models/mgmt stuff, etc. all needs improving over what is in place in the Python code.
-JWT login db models/mgmt featured/favorite cards 
+JWT login db models/mgmt featured/favorite cards
 		
 	</div>
 </article>
@@ -50,7 +50,7 @@ JWT login db models/mgmt featured/favorite cards
 	<div class="container">
 		GOMAXPROCS=2 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 37.13ms 45.17ms 398.89ms 84.51% Req/Sec 1.13k 226.65 1.99k 71.67% 67708 requests in 15.01s, 289.02MB read Requests/sec: 4511.45 Transfer/sec: 19.26MB GOMAXPROX=4 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 24.
 		
-			<a href="https://mikeder.net/blog/archive/1580346038-go-rewrite-load/">Read more...</a>
+		<a href="https://mikeder.net/blog/archive/1580346038-go-rewrite-load/">Read more...</a>
 		
 	</div>
 </article>
@@ -61,11 +61,11 @@ JWT login db models/mgmt featured/favorite cards
 	<time>29.01.2020 03:03</time>
 	
 	<div class="container">
-		I&rsquo;m rewriting this old blog in Go for a couple reasons:
+		I’m rewriting this old blog in Go for a couple reasons:
 Updating the old Python container was getting to be a pain in the ass. Due to the tornado-blog project being based on Python 2.7 and just being janky as fuck otherwise, I figured it would be easier to rewrite it in Go.
-There are some aspects of the Go standard library that I didn&rsquo;t have much exposure to yet. Serving static files and dynamic template pages is always useful to know how to do, so I wanted to look at &quot;html/template&quot; and some other facets of &quot;net/http&quot;.
+There are some aspects of the Go standard library that I didn’t have much exposure to yet. Serving static files and dynamic template pages is always useful to know how to do, so I wanted to look at &quot;html/template&quot; and some other facets of &quot;net/http&quot;.
 		
-			<a href="https://mikeder.net/blog/archive/1580267021-go-rewrite/">Read more...</a>
+		<a href="https://mikeder.net/blog/archive/1580267021-go-rewrite/">Read more...</a>
 		
 	</div>
 </article>
@@ -77,7 +77,7 @@ There are some aspects of the Go standard library that I didn&rsquo;t have much 
 	
 	<div class="container">
 		server link
-Map: http://sqweeb.net:4444
+Map: <a href="http://sqweeb.net:4444">http://sqweeb.net:4444</a>
 		
 	</div>
 </article>
@@ -88,9 +88,9 @@ Map: http://sqweeb.net:4444
 	<time>19.10.2018 01:23</time>
 	
 	<div class="container">
-		 Download AWS appliance .ova
+		Download AWS appliance .ova
 Unpack .ova:
-meder@pve:~$ tar xvf AWS-Appliance-2018-09-26-1537973163.ova AWS-Appliance-2018-09-26-1537973163.ovf AWS-Appliance-2018-09-26-1537973163.mf AWS-Appliance-2018-09-26-1537973163-disk1.vmdk Import .ovf: root@pve:~# qm importovf 110 /home/meder/AWS-Appliance-2018-09-26-1537973163.ovf local-lvm Import VM image .vmdk: root@pve:/# qm importdisk 110 /home/meder/AWS-Appliance-2018-09-26-1537973163-disk1.vmdk local-lvm Using default stripesize 64.00 KiB. Logical volume &#34;vm-110-disk-1&#34; created. (100.00/100%) Change disk1 driver to VirtIO Add additional VirtIO disk2 to allocate to cache. Add network adapter. Adjust memory to fit on your host, minimum recommended is 16GB. 
+meder@pve:~$ tar xvf AWS-Appliance-2018-09-26-1537973163.ova AWS-Appliance-2018-09-26-1537973163.ovf AWS-Appliance-2018-09-26-1537973163.mf AWS-Appliance-2018-09-26-1537973163-disk1.vmdk Import .ovf: root@pve:~# qm importovf 110 /home/meder/AWS-Appliance-2018-09-26-1537973163.ovf local-lvm Import VM image .vmdk: root@pve:/# qm importdisk 110 /home/meder/AWS-Appliance-2018-09-26-1537973163-disk1.vmdk local-lvm Using default stripesize 64.00 KiB. Logical volume &quot;vm-110-disk-1&quot; created. (100.00/100%) Change disk1 driver to VirtIO Add additional VirtIO disk2 to allocate to cache. Add network adapter. Adjust memory to fit on your host, minimum recommended is 16GB.
 		
 	</div>
 </article>
@@ -101,7 +101,7 @@ meder@pve:~$ tar xvf AWS-Appliance-2018-09-26-1537973163.ova AWS-Appliance-2018-
 	<time>17.10.2018 01:58</time>
 	
 	<div class="container">
-		sudo apt-get update &amp;&amp; \ sudo apt-get install git -y &amp;&amp; \ git clone https://github.com/mikeder/.dotfiles.git &amp;&amp; \ cd .dotfiles/ &amp;&amp; rm -rf .git/ &amp;&amp; cp -r .[!.]* .. &amp;&amp; \ cd ~ 
+		sudo apt-get update &amp;&amp; \ sudo apt-get install git -y &amp;&amp; \ git clone <a href="https://github.com/mikeder/.dotfiles.git">https://github.com/mikeder/.dotfiles.git</a> &amp;&amp; \ cd .dotfiles/ &amp;&amp; rm -rf .git/ &amp;&amp; cp -r .[!.]* .. &amp;&amp; \ cd ~
 		
 	</div>
 </article>
@@ -112,11 +112,11 @@ meder@pve:~$ tar xvf AWS-Appliance-2018-09-26-1537973163.ova AWS-Appliance-2018-
 	<time>29.08.2018 01:49</time>
 	
 	<div class="container">
-		This database migration or promotion allows for moving of data between two hosts in separate networks. We open an SSH tunnel from our local machine to a bastion or &ldquo;jumpbox&rdquo; within the same network of each database and then mysqldump the data from one host to another via local ports.
+		This database migration or promotion allows for moving of data between two hosts in separate networks. We open an SSH tunnel from our local machine to a bastion or “jumpbox” within the same network of each database and then mysqldump the data from one host to another via local ports.
 Setup HISTCONTROL
 root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# # commands starting with a space will no longer show up in history SSH Tunnel to both database hosts
 		
-			<a href="https://mikeder.net/blog/archive/1535507378-more-better-database-migration/">Read more...</a>
+		<a href="https://mikeder.net/blog/archive/1535507378-more-better-database-migration/">Read more...</a>
 		
 	</div>
 </article>
@@ -127,7 +127,7 @@ root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# #
 	<time>13.07.2018 01:37</time>
 	
 	<div class="container">
-		find . -type f -iname \*.JPG -print0 | xargs -0 -I &#39;{}&#39; /bin/mv &#34;{}&#34; ../JPG/ will overwrite your shit if filenames are the same!
+		find . -type f -iname *.JPG -print0 | xargs -0 -I '{}' /bin/mv &quot;{}&quot; ../JPG/ will overwrite your shit if filenames are the same!
 		
 	</div>
 </article>
@@ -138,7 +138,7 @@ root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# #
 	<time>02.02.2018 02:56</time>
 	
 	<div class="container">
-		configure set service dhcp-server use-dnsmasq enable commit save exit https://help.ubnt.com/hc/en-us/articles/115002673188-EdgeRouter-Using-dnsmasq-for-DHCP-Server
+		configure set service dhcp-server use-dnsmasq enable commit save exit <a href="https://help.ubnt.com/hc/en-us/articles/115002673188-EdgeRouter-Using-dnsmasq-for-DHCP-Server">https://help.ubnt.com/hc/en-us/articles/115002673188-EdgeRouter-Using-dnsmasq-for-DHCP-Server</a>
 		
 	</div>
 </article>

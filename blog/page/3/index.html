@@ -36,7 +36,7 @@
 	<time>18.10.2017 02:09</time>
 	
 	<div class="container">
-		I tried the recommended method here without luck. When done from the UniFi controller the upgrade would just not happen, no error given as to why. I then tried it directly on the AP and found that it wasn&rsquo;t able to verify the SSL cert from UBNT&rsquo;s site.
+		I tried the recommended method here without luck. When done from the UniFi controller the upgrade would just not happen, no error given as to why. I then tried it directly on the AP and found that it wasn’t able to verify the SSL cert from UBNT’s site.
 		
 	</div>
 </article>
@@ -49,8 +49,8 @@
 	<div class="container">
 		Setting up an old Acer Aspire One 722-0473
 Edit /etc/apt/sources.list - add contrib and non-free packages
-deb http://httpredir.debian.org/debian/ stretch main contrib non-free Update and install drivers apt-get update apt-get install firmware-amd-graphics Add touchpad config Edit /usr/share/X11/xorg.conf.d/50-touchpad.conf - add below section
-Section &quot;InputClass&quot; Identifier &quot;touchpad catchall&quot; Driver &quot;synaptics&quot; MatchIsTouchpad &quot;on&quot; Option &quot;TapButton1&quot; &quot;1&quot; Option &quot;TapButton1&quot; &quot;3&quot; EndSection 
+deb <a href="http://httpredir.debian.org/debian/">http://httpredir.debian.org/debian/</a> stretch main contrib non-free Update and install drivers apt-get update apt-get install firmware-amd-graphics Add touchpad config Edit /usr/share/X11/xorg.conf.d/50-touchpad.conf - add below section
+Section &quot;InputClass&quot; Identifier &quot;touchpad catchall&quot; Driver &quot;synaptics&quot; MatchIsTouchpad &quot;on&quot; Option &quot;TapButton1&quot; &quot;1&quot; Option &quot;TapButton1&quot; &quot;3&quot; EndSection
 		
 	</div>
 </article>
@@ -61,10 +61,10 @@ Section &quot;InputClass&quot; Identifier &quot;touchpad catchall&quot; Driver &
 	<time>23.09.2017 21:24</time>
 	
 	<div class="container">
-		Working on some of the initial steps to moving this blog to docker today. Since containers aren&rsquo;t exactly presistent I have to get the database migrated to a dedicated mysql node. Once that is done I can move the blog into a python2.7 container and onto a new docker host.
+		Working on some of the initial steps to moving this blog to docker today. Since containers aren’t exactly presistent I have to get the database migrated to a dedicated mysql node. Once that is done I can move the blog into a python2.7 container and onto a new docker host.
 First I spun up a new Debian VM, as is tradition, and after updating and upgrading, I installed mysql-server 5.5.
 		
-			<a href="https://mikeder.net/blog/archive/1506201857-moving-blog-to-docker/">Read more...</a>
+		<a href="https://mikeder.net/blog/archive/1506201857-moving-blog-to-docker/">Read more...</a>
 		
 	</div>
 </article>
@@ -75,8 +75,8 @@ First I spun up a new Debian VM, as is tradition, and after updating and upgradi
 	<time>12.07.2017 18:38</time>
 	
 	<div class="container">
-		alias docker-nuke='docker kill $(docker ps -q); docker rm $(docker ps -aq); docker rmi -f $(docker images -aq); docker volume prune -f'
-deletes and force removes all containers, images, and volumes. 
+		alias docker-nuke=&lsquo;docker kill $(docker ps -q); docker rm $(docker ps -aq); docker rmi -f $(docker images -aq); docker volume prune -f&rsquo;
+deletes and force removes all containers, images, and volumes.
 		
 	</div>
 </article>
@@ -87,12 +87,12 @@ deletes and force removes all containers, images, and volumes.
 	<time>29.11.2016 16:10</time>
 	
 	<div class="container">
-		CPU acting very erratic, front panel sometimes doesn&rsquo;t boot, other times will go completly haywire (See Video) Initially thought PSU ripple due to age of caps and reported behavior of CPU when the PSU isn&rsquo;t clean.
+		CPU acting very erratic, front panel sometimes doesn’t boot, other times will go completly haywire (See Video) Initially thought PSU ripple due to age of caps and reported behavior of CPU when the PSU isn’t clean.
 Confirmed PSU ripple not the cause, after confirming correct scope settings on FB group.
 Started suspecting CPU itself was bad, asked around for replacements, as well as eprom.
-Europa is &ldquo;taking a hiatus&rdquo; as of 11/18/16, no good
+Europa is “taking a hiatus” as of 11/18/16, no good
 		
-			<a href="https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/">Read more...</a>
+		<a href="https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/">Read more...</a>
 		
 	</div>
 </article>
@@ -103,10 +103,10 @@ Europa is &ldquo;taking a hiatus&rdquo; as of 11/18/16, no good
 	<time>23.11.2016 20:29</time>
 	
 	<div class="container">
-		Cache Proxy in front of https://mc-map.sqweeb.net
-Add another 32g disk to the proxy VM - proxy-02 Format, make file system and mount new disk at /mnt/cache/ Add line to /etc/fstab to mount disk on boot: /dev/vda1 /mnt/cache ext4 defaults 0 2 Add the following snippet to /etc/nginx/snippets/proxy-defaults.conf: proxy_cache_path /mnt/cache levels=1:2 keys_zone=my_cache:10m max_size=20g inactive=60m; Update /etc/nginx/sites-available/mc-map.sqweeb.net to use the cache: server { ... proxy_cache my_cache; proxy_cache_valid 200 302 10m; add_header X-Cache-Status $upstream_cache_status; .
+		Cache Proxy in front of <a href="https://mc-map.sqweeb.net">https://mc-map.sqweeb.net</a>
+Add another 32g disk to the proxy VM - proxy-02 Format, make file system and mount new disk at /mnt/cache/ Add line to /etc/fstab to mount disk on boot: /dev/vda1 /mnt/cache ext4 defaults 0 2 Add the following snippet to /etc/nginx/snippets/proxy-defaults.conf: proxy_cache_path /mnt/cache levels=1:2 keys_zone=my_cache:10m max_size=20g inactive=60m; Update /etc/nginx/sites-available/mc-map.sqweeb.net to use the cache: server { &hellip; proxy_cache my_cache; proxy_cache_valid 200 302 10m; add_header X-Cache-Status $upstream_cache_status; .
 		
-			<a href="https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/">Read more...</a>
+		<a href="https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/">Read more...</a>
 		
 	</div>
 </article>
@@ -122,7 +122,7 @@ Add another 32g disk to the proxy VM - proxy-02 Format, make file system and mou
 ###Minecraft List
 ###Minecraft Server List
 Plugins:
-dynmap Essentials EssentialsProtect EssentialsSpawn EssentialsGeoIP EssentialsChat EssentialsAntiBuild Factions FactionsDynmap MassiveCore Vault 
+dynmap Essentials EssentialsProtect EssentialsSpawn EssentialsGeoIP EssentialsChat EssentialsAntiBuild Factions FactionsDynmap MassiveCore Vault
 		
 	</div>
 </article>
@@ -133,11 +133,11 @@ dynmap Essentials EssentialsProtect EssentialsSpawn EssentialsGeoIP EssentialsCh
 	<time>12.10.2016 14:00</time>
 	
 	<div class="container">
-		https://www.unicoda.com/?p=1624
-sudo apt-get install python-dev python-pip postgresql ruby sudo pip install ecdsa fabric pycrypto git clone https://github.com/lincolnloop/cabot.git cd cabot cp conf/production.env.example conf/production.env # Add at least graphite url and login to config nano env/production.env fab provision -H root@localhost fab deploy -H ubuntu@localhost su - ubuntu source /home/ubuntu/venv/bin/activate cd cabot foreman start -e conf/production.env Modifying fabric provision/deploy for multi instance deploys:
-Clone official repo Make new local branch - &rsquo;tesl' Find/replace all instances of ubuntu with tesl in fabfile.
+		<a href="https://www.unicoda.com/?p=1624">https://www.unicoda.com/?p=1624</a>
+sudo apt-get install python-dev python-pip postgresql ruby sudo pip install ecdsa fabric pycrypto git clone <a href="https://github.com/lincolnloop/cabot.git">https://github.com/lincolnloop/cabot.git</a> cd cabot cp conf/production.env.example conf/production.env # Add at least graphite url and login to config nano env/production.env fab provision -H root@localhost fab deploy -H ubuntu@localhost su - ubuntu source /home/ubuntu/venv/bin/activate cd cabot foreman start -e conf/production.env Modifying fabric provision/deploy for multi instance deploys:
+Clone official repo Make new local branch - ’tesl&rsquo; Find/replace all instances of ubuntu with tesl in fabfile.
 		
-			<a href="https://mikeder.net/blog/archive/1476280837-installing-cabot-on-debian-8/">Read more...</a>
+		<a href="https://mikeder.net/blog/archive/1476280837-installing-cabot-on-debian-8/">Read more...</a>
 		
 	</div>
 </article>
@@ -148,10 +148,10 @@ Clone official repo Make new local branch - &rsquo;tesl' Find/replace all instan
 	<time>24.09.2016 01:18</time>
 	
 	<div class="container">
-		I realized I didn&#39;t want to have a single SSL cert covering *all* of my subdomains here @ sqweeb.net So I set out on rebuilding my reverse proxy from the ground up.
+		I realized I didn't want to have a single SSL cert covering <em>all</em> of my subdomains here @ sqweeb.net So I set out on rebuilding my reverse proxy from the ground up.
 I first spun up a fresh Debian 8 virtual machine, patched it up and installed nginx and the Lets Encrypt cert bot. Once the default server was up and running and I had the root certificate in place I made an ssl-defaults config file that would be included in default/root config.
 		
-			<a href="https://mikeder.net/blog/archive/1474679928-nginx-reverse-proxy-2-0/">Read more...</a>
+		<a href="https://mikeder.net/blog/archive/1474679928-nginx-reverse-proxy-2-0/">Read more...</a>
 		
 	</div>
 </article>

@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Archive on mikeder.net</title>
+    <link>https://mikeder.net/categories/archive/</link>
+    <description>Recent content in Archive on mikeder.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Mar 2021 01:54:32 +0000</lastBuildDate><atom:link href="https://mikeder.net/categories/archive/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VM Restore</title>
+      <link>https://mikeder.net/blog/archive/1616464472-vm-restore/</link>
+      <pubDate>Tue, 23 Mar 2021 01:54:32 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1616464472-vm-restore/</guid>
+      <description>Restoring VM&amp;rsquo;s after a host SSD gets cooked. When I went to power my homelab server back on, after sitting idle for 8 months while we moved house, it displayed some concerning ata device warnings on boot. After a reboot it failed an automatic run of fsck -a and recommended performing a manual run. The root device /dev/mapper/pve-root was corrupted and after performing several manual filesystem checks the system could no longer boot.</description>
+    </item>
+    
+    <item>
+      <title>TTSH v4 Build Part 1</title>
+      <link>https://mikeder.net/blog/archive/1587229792-ttsh-v4-build-part-1/</link>
+      <pubDate>Sat, 18 Apr 2020 17:09:52 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1587229792-ttsh-v4-build-part-1/</guid>
+      <description>The TTSH (TwoThousandSixHundred) v4 is the latest incarnation of a DIY clone of the now infamous ARP 2600 synthesizer from the early 1970&amp;rsquo;s. The TTSH project was originally started by The Human Comparator in 2013, it has gone through many revisions and bug fixes to the main PCB since then. Originally launched it was sold as &amp;ldquo;The Kit&amp;rdquo; that came with the powder coated and screen printed front panel, main PCB and 3 VCO PCB&amp;rsquo;s for $620 USD.</description>
+    </item>
+    
+    <item>
+      <title>Asset Test</title>
+      <link>https://mikeder.net/blog/archive/1586737241-chicken-tamer/</link>
+      <pubDate>Mon, 13 Apr 2020 00:20:41 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1586737241-chicken-tamer/</guid>
+      <description>I&amp;rsquo;ve setup a CloudFront distribution to serve some static assets and media files for this domain. This will make load times faster and allow me to serve content from AWS&amp;rsquo;s edge locations instead of from a single container instance of this &amp;ldquo;blog&amp;rdquo;.
+Testing some random image embeds here:</description>
+    </item>
+    
+    <item>
+      <title>Minecraft Status</title>
+      <link>https://mikeder.net/blog/archive/1584392748-minecraft-status/</link>
+      <pubDate>Mon, 16 Mar 2020 21:05:48 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1584392748-minecraft-status/</guid>
+      <description>I spent the better part of the day yesterday working on a Minecraft status checker package for the site. The Minecraft query protocol is somewhat tricky to implement for a novice like me but apparently it changes a bit when there are plugins involved on the server. I&amp;rsquo;ll update this post later with some of my findings.
+For now, there is a neat, albeit somewhat basic status page here
+Well, I tried to update this post but apparently my token went invalid while I was typing it and I lost it all when I hit &amp;ldquo;Save&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Mobile test 2</title>
+      <link>https://mikeder.net/blog/archive/1582767092-mobile-test-post/</link>
+      <pubDate>Thu, 27 Feb 2020 01:31:32 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1582767092-mobile-test-post/</guid>
+      <description>Compose from the phone?</description>
+    </item>
+    
+    <item>
+      <title>Go Rewrite - UPGRAYEDD&#39;s</title>
+      <link>https://mikeder.net/blog/archive/1582337266-go-rewrite-upgrayedd-s/</link>
+      <pubDate>Sat, 22 Feb 2020 02:07:46 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1582337266-go-rewrite-upgrayedd-s/</guid>
+      <description>At the point where rewritten functionality needs some upgrading. Login, db models/mgmt stuff, etc. all needs improving over what is in place in the Python code.
+JWT login db models/mgmt featured/favorite cards </description>
+    </item>
+    
+    <item>
+      <title>Go Rewrite - Load</title>
+      <link>https://mikeder.net/blog/archive/1580346038-go-rewrite-load/</link>
+      <pubDate>Thu, 30 Jan 2020 01:00:38 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1580346038-go-rewrite-load/</guid>
+      <description>GOMAXPROCS=2 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 37.13ms 45.17ms 398.89ms 84.51% Req/Sec 1.13k 226.65 1.99k 71.67% 67708 requests in 15.01s, 289.02MB read Requests/sec: 4511.45 Transfer/sec: 19.26MB GOMAXPROX=4 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 24.</description>
+    </item>
+    
+    <item>
+      <title>Go Rewrite</title>
+      <link>https://mikeder.net/blog/archive/1580267021-go-rewrite/</link>
+      <pubDate>Wed, 29 Jan 2020 03:03:41 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1580267021-go-rewrite/</guid>
+      <description>I&amp;rsquo;m rewriting this old blog in Go for a couple reasons:
+Updating the old Python container was getting to be a pain in the ass. Due to the tornado-blog project being based on Python 2.7 and just being janky as fuck otherwise, I figured it would be easier to rewrite it in Go.
+There are some aspects of the Go standard library that I didn&amp;rsquo;t have much exposure to yet. Serving static files and dynamic template pages is always useful to know how to do, so I wanted to look at &amp;quot;html/template&amp;quot; and some other facets of &amp;quot;net/http&amp;quot;.</description>
+    </item>
+    
+    <item>
+      <title>Minecraft Again</title>
+      <link>https://mikeder.net/blog/archive/1576035770-minecraft-again/</link>
+      <pubDate>Wed, 11 Dec 2019 03:42:50 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1576035770-minecraft-again/</guid>
+      <description>server link
+Map: http://sqweeb.net:4444</description>
+    </item>
+    
+    <item>
+      <title>Proxmox - Storage Gateway</title>
+      <link>https://mikeder.net/blog/archive/1539912236-proxmox-storage-gateway/</link>
+      <pubDate>Fri, 19 Oct 2018 01:23:56 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1539912236-proxmox-storage-gateway/</guid>
+      <description> Download AWS appliance .ova
+Unpack .ova:
+meder@pve:~$ tar xvf AWS-Appliance-2018-09-26-1537973163.ova AWS-Appliance-2018-09-26-1537973163.ovf AWS-Appliance-2018-09-26-1537973163.mf AWS-Appliance-2018-09-26-1537973163-disk1.vmdk Import .ovf: root@pve:~# qm importovf 110 /home/meder/AWS-Appliance-2018-09-26-1537973163.ovf local-lvm Import VM image .vmdk: root@pve:/# qm importdisk 110 /home/meder/AWS-Appliance-2018-09-26-1537973163-disk1.vmdk local-lvm Using default stripesize 64.00 KiB. Logical volume &amp;#34;vm-110-disk-1&amp;#34; created. (100.00/100%) Change disk1 driver to VirtIO Add additional VirtIO disk2 to allocate to cache. Add network adapter. Adjust memory to fit on your host, minimum recommended is 16GB. </description>
+    </item>
+    
+    <item>
+      <title>.dotfiles</title>
+      <link>https://mikeder.net/blog/archive/1539741496-dotfiles/</link>
+      <pubDate>Wed, 17 Oct 2018 01:58:16 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1539741496-dotfiles/</guid>
+      <description>sudo apt-get update &amp;amp;&amp;amp; \ sudo apt-get install git -y &amp;amp;&amp;amp; \ git clone https://github.com/mikeder/.dotfiles.git &amp;amp;&amp;amp; \ cd .dotfiles/ &amp;amp;&amp;amp; rm -rf .git/ &amp;amp;&amp;amp; cp -r .[!.]* .. &amp;amp;&amp;amp; \ cd ~ </description>
+    </item>
+    
+    <item>
+      <title>More advanced database migration</title>
+      <link>https://mikeder.net/blog/archive/1535507378-more-better-database-migration/</link>
+      <pubDate>Wed, 29 Aug 2018 01:49:38 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1535507378-more-better-database-migration/</guid>
+      <description>This database migration or promotion allows for moving of data between two hosts in separate networks. We open an SSH tunnel from our local machine to a bastion or &amp;ldquo;jumpbox&amp;rdquo; within the same network of each database and then mysqldump the data from one host to another via local ports.
+Setup HISTCONTROL
+root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# # commands starting with a space will no longer show up in history SSH Tunnel to both database hosts</description>
+    </item>
+    
+    <item>
+      <title>Photo sorting is dangerous business</title>
+      <link>https://mikeder.net/blog/archive/1531445851-photo-sorting/</link>
+      <pubDate>Fri, 13 Jul 2018 01:37:31 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1531445851-photo-sorting/</guid>
+      <description>find . -type f -iname \*.JPG -print0 | xargs -0 -I &amp;#39;{}&amp;#39; /bin/mv &amp;#34;{}&amp;#34; ../JPG/ will overwrite your shit if filenames are the same!</description>
+    </item>
+    
+    <item>
+      <title>Edgerouter dnsmasq setup</title>
+      <link>https://mikeder.net/blog/archive/1517540169-edgerouter-dnsmasq-setup/</link>
+      <pubDate>Fri, 02 Feb 2018 02:56:09 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1517540169-edgerouter-dnsmasq-setup/</guid>
+      <description>configure set service dhcp-server use-dnsmasq enable commit save exit https://help.ubnt.com/hc/en-us/articles/115002673188-EdgeRouter-Using-dnsmasq-for-DHCP-Server</description>
+    </item>
+    
+    <item>
+      <title>Unfunk VBox Guest Additions</title>
+      <link>https://mikeder.net/blog/archive/1508342029-unfunk-vbox-guest-additions/</link>
+      <pubDate>Wed, 18 Oct 2017 15:53:49 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1508342029-unfunk-vbox-guest-additions/</guid>
+      <description>/opt/VBoxGuestAdditions-5.1.28/init/vboxadd setup</description>
+    </item>
+    
+    <item>
+      <title>Patching KRACK WPA2 Vuln. on UniFi AP-AC-Lite</title>
+      <link>https://mikeder.net/blog/archive/1508292541-patching-krack-wpa2-vuln-on-unifi-ap-ac-lite/</link>
+      <pubDate>Wed, 18 Oct 2017 02:09:01 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1508292541-patching-krack-wpa2-vuln-on-unifi-ap-ac-lite/</guid>
+      <description>I tried the recommended method here without luck. When done from the UniFi controller the upgrade would just not happen, no error given as to why. I then tried it directly on the AP and found that it wasn&amp;rsquo;t able to verify the SSL cert from UBNT&amp;rsquo;s site.</description>
+    </item>
+    
+    <item>
+      <title>Debian 9 (Stretch) Laptop Setup</title>
+      <link>https://mikeder.net/blog/archive/1507860924-debian-9-stretch-laptop-setup/</link>
+      <pubDate>Fri, 13 Oct 2017 02:15:24 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1507860924-debian-9-stretch-laptop-setup/</guid>
+      <description>Setting up an old Acer Aspire One 722-0473
+Edit /etc/apt/sources.list - add contrib and non-free packages
+deb http://httpredir.debian.org/debian/ stretch main contrib non-free Update and install drivers apt-get update apt-get install firmware-amd-graphics Add touchpad config Edit /usr/share/X11/xorg.conf.d/50-touchpad.conf - add below section
+Section &amp;quot;InputClass&amp;quot; Identifier &amp;quot;touchpad catchall&amp;quot; Driver &amp;quot;synaptics&amp;quot; MatchIsTouchpad &amp;quot;on&amp;quot; Option &amp;quot;TapButton1&amp;quot; &amp;quot;1&amp;quot; Option &amp;quot;TapButton1&amp;quot; &amp;quot;3&amp;quot; EndSection </description>
+    </item>
+    
+    <item>
+      <title>Moving blog database</title>
+      <link>https://mikeder.net/blog/archive/1506201857-moving-blog-to-docker/</link>
+      <pubDate>Sat, 23 Sep 2017 21:24:17 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1506201857-moving-blog-to-docker/</guid>
+      <description>Working on some of the initial steps to moving this blog to docker today. Since containers aren&amp;rsquo;t exactly presistent I have to get the database migrated to a dedicated mysql node. Once that is done I can move the blog into a python2.7 container and onto a new docker host.
+First I spun up a new Debian VM, as is tradition, and after updating and upgrading, I installed mysql-server 5.5.</description>
+    </item>
+    
+    <item>
+      <title>Docker Shit</title>
+      <link>https://mikeder.net/blog/archive/1499884703-docker-shit/</link>
+      <pubDate>Wed, 12 Jul 2017 18:38:23 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1499884703-docker-shit/</guid>
+      <description>alias docker-nuke=&#39;docker kill $(docker ps -q); docker rm $(docker ps -aq); docker rmi -f $(docker images -aq); docker volume prune -f&#39;
+deletes and force removes all containers, images, and volumes. </description>
+    </item>
+    
+    <item>
+      <title>Roland Jupiter 6 Troubleshooting</title>
+      <link>https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/</link>
+      <pubDate>Tue, 29 Nov 2016 16:10:18 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/</guid>
+      <description>CPU acting very erratic, front panel sometimes doesn&amp;rsquo;t boot, other times will go completly haywire (See Video) Initially thought PSU ripple due to age of caps and reported behavior of CPU when the PSU isn&amp;rsquo;t clean.
+Confirmed PSU ripple not the cause, after confirming correct scope settings on FB group.
+Started suspecting CPU itself was bad, asked around for replacements, as well as eprom.
+Europa is &amp;ldquo;taking a hiatus&amp;rdquo; as of 11/18/16, no good</description>
+    </item>
+    
+    <item>
+      <title>Minecraft Server Tweaks</title>
+      <link>https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/</link>
+      <pubDate>Wed, 23 Nov 2016 20:29:57 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/</guid>
+      <description>Cache Proxy in front of https://mc-map.sqweeb.net
+Add another 32g disk to the proxy VM - proxy-02 Format, make file system and mount new disk at /mnt/cache/ Add line to /etc/fstab to mount disk on boot: /dev/vda1 /mnt/cache ext4 defaults 0 2 Add the following snippet to /etc/nginx/snippets/proxy-defaults.conf: proxy_cache_path /mnt/cache levels=1:2 keys_zone=my_cache:10m max_size=20g inactive=60m; Update /etc/nginx/sites-available/mc-map.sqweeb.net to use the cache: server { ... proxy_cache my_cache; proxy_cache_valid 200 302 10m; add_header X-Cache-Status $upstream_cache_status; .</description>
+    </item>
+    
+    <item>
+      <title>Minecraft Server Info</title>
+      <link>https://mikeder.net/blog/archive/1479507653-minecraft-server/</link>
+      <pubDate>Fri, 18 Nov 2016 22:20:53 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1479507653-minecraft-server/</guid>
+      <description>Dynmap w/ Factions: Here
+###Minecraft Multiplayer
+###Minecraft List
+###Minecraft Server List
+Plugins:
+dynmap Essentials EssentialsProtect EssentialsSpawn EssentialsGeoIP EssentialsChat EssentialsAntiBuild Factions FactionsDynmap MassiveCore Vault </description>
+    </item>
+    
+    <item>
+      <title>Installing Cabot on Debian 8</title>
+      <link>https://mikeder.net/blog/archive/1476280837-installing-cabot-on-debian-8/</link>
+      <pubDate>Wed, 12 Oct 2016 14:00:37 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1476280837-installing-cabot-on-debian-8/</guid>
+      <description>https://www.unicoda.com/?p=1624
+sudo apt-get install python-dev python-pip postgresql ruby sudo pip install ecdsa fabric pycrypto git clone https://github.com/lincolnloop/cabot.git cd cabot cp conf/production.env.example conf/production.env # Add at least graphite url and login to config nano env/production.env fab provision -H root@localhost fab deploy -H ubuntu@localhost su - ubuntu source /home/ubuntu/venv/bin/activate cd cabot foreman start -e conf/production.env Modifying fabric provision/deploy for multi instance deploys:
+Clone official repo Make new local branch - &amp;rsquo;tesl&#39; Find/replace all instances of ubuntu with tesl in fabfile.</description>
+    </item>
+    
+    <item>
+      <title>NGINX Reverse Proxy 2.0</title>
+      <link>https://mikeder.net/blog/archive/1474679928-nginx-reverse-proxy-2-0/</link>
+      <pubDate>Sat, 24 Sep 2016 01:18:48 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1474679928-nginx-reverse-proxy-2-0/</guid>
+      <description>I realized I didn&amp;#39;t want to have a single SSL cert covering *all* of my subdomains here @ sqweeb.net So I set out on rebuilding my reverse proxy from the ground up.
+I first spun up a fresh Debian 8 virtual machine, patched it up and installed nginx and the Lets Encrypt cert bot. Once the default server was up and running and I had the root certificate in place I made an ssl-defaults config file that would be included in default/root config.</description>
+    </item>
+    
+    <item>
+      <title>Installing Turtl on Debian 8</title>
+      <link>https://mikeder.net/blog/archive/1474654243-installing-turtl-on-debian-8/</link>
+      <pubDate>Fri, 23 Sep 2016 18:10:43 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1474654243-installing-turtl-on-debian-8/</guid>
+      <description>Installation Doc
+Google Group Installation Guide</description>
+    </item>
+    
+    <item>
+      <title>Troubleshooting large IOWait spikes</title>
+      <link>https://mikeder.net/blog/archive/1472578134-troubleshooting-large-iowait-spikes/</link>
+      <pubDate>Tue, 30 Aug 2016 17:28:54 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1472578134-troubleshooting-large-iowait-spikes/</guid>
+      <description>changed mount options:
+Before: defaults,noatime,nodiratime,barrier=1,data=ordered,errors=remount-ro After: relatime,barrier=0,errors=remount-ro pveperf before:
+root@pve-01:~# pveperf / CPU BOGOMIPS: 19244.00 REGEX/SECOND: 959888 HD SIZE: 27.19 GB (/dev/dm-0) BUFFERED READS: 195.02 MB/sec AVERAGE SEEK TIME: 0.26 ms FSYNCS/SECOND: 301.31 DNS EXT: 93.93 ms DNS INT: 93.76 ms (sqweeb.net) root@pve-01:~# pveperf /var/lib/vz CPU BOGOMIPS: 19244.00 REGEX/SECOND: 978722 HD SIZE: 178.85 GB (/dev/mapper/pve-data) BUFFERED READS: 197.73 MB/sec AVERAGE SEEK TIME: 0.20 ms FSYNCS/SECOND: 316.08 DNS EXT: 84.80 ms DNS INT: 107.</description>
+    </item>
+    
+    <item>
+      <title>Rust Server Info</title>
+      <link>https://mikeder.net/blog/archive/1472570020-rust-server-info/</link>
+      <pubDate>Tue, 30 Aug 2016 15:13:40 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1472570020-rust-server-info/</guid>
+      <description>[tS] Rusty Noobs Server turned off (9/22/16)
+I&amp;rsquo;ve decided to turn off the server for now, due to lack of traffic. The virtual machine will be backed up and stored in its current state but will remain powered off until its needed again. Server Update, Map Wipe, Performance Increases! (9/1/16)
+The server was updated and map wiped today, the map size was increased from 3000 to 3555 Server tick rate was increased from 30 to 60 An underlying storage issue was resolved resulting in lower server load and faster loading times Come noob out with us on a fresh server!</description>
+    </item>
+    
+    <item>
+      <title>Finding the source of excessive inode usage</title>
+      <link>https://mikeder.net/blog/archive/1468841522-finding-the-source-of-excessive-inode-usage/</link>
+      <pubDate>Mon, 18 Jul 2016 11:32:02 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1468841522-finding-the-source-of-excessive-inode-usage/</guid>
+      <description>Determine if lack of disks space is an inode problem:
+df -ih Filesystem Inodes IUsed IFree IUse% Mounted on /dev/sda1 1000K 105K 896K 100% / tmpfs 480K 8 480K 1% /dev/shm Find folders with large number of inodes:
+for i in /*; do echo $i; find $i |wc -l; done Change to the directory with the highest number, in my case this morning it was /var.
+Find specific folder w/ large number of inodes:</description>
+    </item>
+    
+    <item>
+      <title>Splunk Light Install</title>
+      <link>https://mikeder.net/blog/archive/1468497010-splunk-light-install/</link>
+      <pubDate>Thu, 14 Jul 2016 11:50:10 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1468497010-splunk-light-install/</guid>
+      <description>wget -O splunklight-6.4.2-00f5bb3fa822-linux-2.6-amd64.deb &amp;lsquo;https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&amp;amp;platform=linux&amp;amp;version=6.4.2&amp;amp;product=splunk_light&amp;amp;filename=splunklight-6.4.2-00f5bb3fa822-linux-2.6-amd64.deb&amp;amp;wget=true&#39;</description>
+    </item>
+    
+    <item>
+      <title>Proxmox Backup Plan</title>
+      <link>https://mikeder.net/blog/archive/1464570052-proxmox-backup-plan/</link>
+      <pubDate>Mon, 30 May 2016 01:00:52 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1464570052-proxmox-backup-plan/</guid>
+      <description> Immediately start backups on /etc/pve/lxc (DONE) Do some other things.. </description>
+    </item>
+    
+    <item>
+      <title>Mounting Linux Raid Arrays At Boot</title>
+      <link>https://mikeder.net/blog/archive/1464569592-mounting-linux-raid-arrays-at-boot/</link>
+      <pubDate>Mon, 30 May 2016 00:53:12 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1464569592-mounting-linux-raid-arrays-at-boot/</guid>
+      <description>I have been having issues on reboot ever since I put together this newest server. I have 2 new Linux raid arrays (/dev/md0 and /dev/md1) both in a raid 1 consisting of 2 disks each:
+lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT fd0 2:0 1 4K 0 disk sda 8:0 0 111.8G 0 disk ├─sda1 8:1 0 1007K 0 part ├─sda2 8:2 0 127M 0 part └─sda3 8:3 0 111.</description>
+    </item>
+    
+    <item>
+      <title>Current SEDS Mod List</title>
+      <link>https://mikeder.net/blog/archive/1454955404-current-seds-mod-list/</link>
+      <pubDate>Mon, 08 Feb 2016 18:16:44 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1454955404-current-seds-mod-list/</guid>
+      <description>Full list of the mods we&amp;rsquo;re running on teamSqweeb Space Engineers Dedicated Server:
+Active Id = 436025957, Name = &amp;lsquo;(DX11) Kolt - Command Console Pack&amp;rsquo; Id = 298550266, Name = &amp;lsquo;(DX11)Letters Mod&amp;rsquo; Id = 536696922, Name = &amp;lsquo;(DX11)Rover Cockpit&amp;rsquo; Id = 598415416, Name = &amp;lsquo;Gravel Ore Separator&amp;rsquo; Id = 305329302, Name = &amp;lsquo;Small Ship Mega Mod Pack [100% DX-11 Ready]&amp;rsquo; Id = 401901602, Name = &amp;lsquo;LordChicken Aerospace: No Edges (DX11)&amp;rsquo; Id = 490036307, Name = &amp;lsquo;Reworked Armor Ramps Mod~(DX-11 Ready)&amp;rsquo; Id = 303959338, Name = &amp;lsquo;Concrete Armor Blocks (DX11)&amp;rsquo; Id = 441277694, Name = &amp;lsquo;Extreme Lights&amp;rsquo; Id = 481012219, Name = &amp;lsquo;Industrial Sized (DX11)&amp;rsquo; Id = 349431610, Name = &amp;lsquo;DK Earthbreaker Drill (DX11)&amp;rsquo; Id = 475375953, Name = &amp;lsquo;[Mexpex] Heavy Mining Drill&amp;rsquo; Id = 611420971, Name = &amp;lsquo;Corner LCD&amp;rsquo; Id = 343014073, Name = &amp;lsquo;Maglock Surface MkII (DX11)&amp;rsquo; Id = 561827211, Name = &amp;lsquo;Custom Sound Block Sounds&amp;rsquo; Id = 438226588, Name = &amp;lsquo;Hangar Gates (DX 11)&amp;rsquo; Id = 551854023, Name = &amp;lsquo;Warbros ModLabs Long Ramps&amp;rsquo; Id = 473306528, Name = &amp;lsquo;S - Interior Walls - DX11&amp;rsquo; Id = 521994963, Name = &amp;lsquo;Holographic Projector (DX11)&amp;rsquo; Id = 556092142, Name = &amp;lsquo;(DX11) Tiered Atmospheric Engines&amp;rsquo; Id = 445980520, Name = &amp;lsquo;Button Panels (8,4-1) (DX11)&amp;rsquo; Id = 402341075, Name = &amp;lsquo;(DX11) Tiered Thruster Pack&amp;rsquo; Id = 618982571, Name = &amp;lsquo;(DX11) Tiered Armor Hydrogen Engines&amp;rsquo; Id = 609020322, Name = &amp;lsquo;(DX11) Tiered Armor Atmospheric Engines&amp;rsquo; Id = 405182053, Name = &amp;lsquo;(DX11) Tiered Armor Thrusters&amp;rsquo; Id = 570766073, Name = &amp;lsquo;Midspace&amp;rsquo;s Small Ship Speed 300 mod&amp;rsquo; Id = 570767247, Name = &amp;lsquo;Midspace&amp;rsquo;s Large Ship Speed 300 mod&amp;rsquo; Id = 346482476, Name = &amp;lsquo;Accessible Conveyors /w DX11&amp;rsquo; Id = 563055135, Name = &amp;lsquo;&amp;ldquo;Dusty&amp;rdquo; Conveyor System (DX9 / DX11)&amp;rsquo; Id = 565446909, Name = &amp;lsquo;ShadowFlux Catwalk Pack (DX 11)&amp;rsquo; Id = 577079238, Name = &amp;lsquo;&amp;ldquo;Skyblade&amp;rdquo; Helicopter Propellers&amp;rsquo; Id = 506964853, Name = &amp;lsquo;Advanced Doors Mod Pack~(DX-11 Ready)&amp;rsquo; Id = 517675282, Name = &amp;lsquo;Projector Preview - miniature blueprint display &amp;amp; damage status&amp;rsquo; Id = 605086856, Name = &amp;lsquo;Holographic Radar&amp;rsquo; Id = 584639195, Name = &amp;lsquo;(Beta) Power Transmitters&amp;rsquo; Id = 587688734, Name = &amp;lsquo;Captain Control Seat &amp;amp; Passenger Seat&amp;rsquo; Id = 294555339, Name = &amp;lsquo;(DX11)Titan Engine&amp;rsquo; Id = 530693136, Name = &amp;lsquo;Corner Lights&amp;rsquo; Id = 295394554, Name = &amp;lsquo;(DX11)Hydroponic&amp;rsquo; Id = 419588209, Name = &amp;lsquo;MWI - Main Battleship Cannon Mk3 (DX11)&amp;rsquo; Id = 636314268, Name = &amp;lsquo;[MP FIXED] Manipulation Tool&amp;rsquo; Id = 312976851, Name = &amp;lsquo;(DX11) Eikesters Decorations and more - Part I&amp;rsquo; Id = 451486869, Name = &amp;lsquo;Hammerman decoration pack (DX11)&amp;rsquo; Removed Id = 532433982, Name = &amp;lsquo;RB Compact Battery [DX11]&amp;rsquo; Id = 396679430, Name = &amp;lsquo;(DX11) Concrete Tool - placing voxels in survival [Click-ability Update!</description>
+    </item>
+    
+    <item>
+      <title>Enabling HTTPS with Lets Encrypt</title>
+      <link>https://mikeder.net/blog/archive/1450139113-enabling-https-with-lets-encrypt/</link>
+      <pubDate>Tue, 15 Dec 2015 00:25:13 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1450139113-enabling-https-with-lets-encrypt/</guid>
+      <description>Lets Encrypt has made it super simple to create and install ssl certificates so I decided to finally make the jump to https. They have developed an auto installer client that is already working for Apache but apparently the NGINX installer is still under development. They also give you the option of just generating certs and installing them manually so that&amp;rsquo;s what I opted to do.
+First I cloned the Lets Encrypt GitHub repo to my NGINX proxy box and then generate a certificate chain for each of my sub-domain&amp;rsquo;s.</description>
+    </item>
+    
+    <item>
+      <title>Subsonic streaming</title>
+      <link>https://mikeder.net/blog/archive/1443875285-test-post-please-ignore/</link>
+      <pubDate>Sat, 03 Oct 2015 12:28:05 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1443875285-test-post-please-ignore/</guid>
+      <description>Cherrymusic is out and Subsonic is in. An issue thread came up on the Cherrymusic github that asked if there was a good android client to use with cherrymusic, and there isn&amp;rsquo;t. There is a wrapper that only sort of half-ass works and then a shitty mobile implementation when using Chrome. Someone in the comments suggested an existing app for Subsonic be used as a guide or starting point for a Cherrymusic app.</description>
+    </item>
+    
+    <item>
+      <title>Replacing squid3 w/ nginx</title>
+      <link>https://mikeder.net/blog/archive/1435495427-reverse-proxy-replacing-squid3-w-nginx/</link>
+      <pubDate>Sun, 28 Jun 2015 12:43:47 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1435495427-reverse-proxy-replacing-squid3-w-nginx/</guid>
+      <description>When I was using the squid3 package in pfSense it came configured ready to use SSL and you could just import your cert&amp;rsquo;s or let it generate one for you and it just worked. Then I decided to swap out pfSense for a basic squid3 proxy, which at first was great. Configuration was super simple and I had it up and running in a matter of minutes, for most of my backend anyway.</description>
+    </item>
+    
+    <item>
+      <title>Basic CherryMusic App</title>
+      <link>https://mikeder.net/blog/archive/1434296001-basic-cherrymusic-app/</link>
+      <pubDate>Sun, 14 Jun 2015 15:33:21 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1434296001-basic-cherrymusic-app/</guid>
+      <description>Found this posted to the CherryMusic github project page. It is a basic wrapper that functions just like the regular Web app but contained in an android app that can save login creds and may work as a Chrome and Mozilla alternative.
+Download App Here may require that you allow app installation from unknown sources but should be fine to allow. Once installed goto settings and put this url in the address bar: http://cherry.</description>
+    </item>
+    
+    <item>
+      <title>Fixing CherryMusic filename decoding errors</title>
+      <link>https://mikeder.net/blog/archive/1432980910-fixing-cherrymusic-filename-decoding-errors/</link>
+      <pubDate>Sat, 30 May 2015 10:15:10 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1432980910-fixing-cherrymusic-filename-decoding-errors/</guid>
+      <description>I recently came across a strange problem with the CherryMusic server that only appeared when it was started via an /etc/init.d script. In certain folders the tracks would not show, although the folder showed that there were files within, when you clicked on the folder it would just open an empty list. This condition would also be accompanied by the following error in the logs:
+UnicodeEncodeError: &amp;#39;utf-8&amp;#39; codec can&amp;#39;t encode character &amp;#39;\udce2&amp;#39; in position 29: surrogates not allowed Doing some quick Google-Fu I came across this page which states that this is caused by a bug in Python3, but the bug has apparently already been fixed.</description>
+    </item>
+    
+    <item>
+      <title>Ditching pfSense for a simpler approach</title>
+      <link>https://mikeder.net/blog/archive/1432315893-ditching-pfsense-for-a-simpler-approach/</link>
+      <pubDate>Fri, 22 May 2015 17:31:33 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1432315893-ditching-pfsense-for-a-simpler-approach/</guid>
+      <description>I decided to just get rid of the pfSense firewall/router in my setup up in favor of just a plain squid3 reverse proxy. While pfSense does provide a nice WebUI for administering the firewall and all of the add-on&amp;rsquo;s available it ended up being overly complicated for what I was trying to accomplish. Mainly I just wanted to use the reverse proxy functionality provided by the squid3 package and while it was easy to setup and get going I found that if I made one incorrect firewall rule I could easily lock myself out of the GUI and lose access to all of the servers behind the proxy.</description>
+    </item>
+    
+    <item>
+      <title>Adding logging to CherryMusic service</title>
+      <link>https://mikeder.net/blog/archive/1432220666-adding-logging-to-cherrymusic-service/</link>
+      <pubDate>Thu, 21 May 2015 15:04:26 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1432220666-adding-logging-to-cherrymusic-service/</guid>
+      <description>This morning I added some logging functionality to the cherrymusic service script that lives in /etc/init.d/cherrymusic. I have a couple issues going on with the music server that are going to require some log digging. One of which I&amp;rsquo;ve already fixed: Some of the Web Rips sub directories would open up empty. Upon review the logs when accessing those folders I found this:
+[150521-14:10] ERROR : [21/May/2015:14:10:41] HTTP Traceback (most recent call last): File &amp;#34;/home/cherrymusic/cherrymusic-devel/cherrypy/_cprequest.</description>
+    </item>
+    
+    <item>
+      <title>Airtime, Icecast and pfSense</title>
+      <link>https://mikeder.net/blog/archive/1431626827-airtime-icecast-and-pfsense/</link>
+      <pubDate>Thu, 14 May 2015 18:07:07 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1431626827-airtime-icecast-and-pfsense/</guid>
+      <description>Taking another look streaming internet radio along with more robust firewall and DNS control. I found a real nice Open Source radio backend called Airtime that re-kindled the idea of running an internet radio stream. Getting Airtime installed took a few tries, eventually I decided to just use their easy-install script. One thing to note is that the server locale needs to be set to US-UTF8 before postgresql is installed, otherwise the airtime installer will complain that the database was made with the wrong format and will error out.</description>
+    </item>
+    
+    <item>
+      <title>Adding storage to prox-ve01</title>
+      <link>https://mikeder.net/blog/archive/1431151502-adding-storage-to-prox-ve01/</link>
+      <pubDate>Sat, 09 May 2015 06:05:02 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1431151502-adding-storage-to-prox-ve01/</guid>
+      <description>I initially installed 4 HDD&amp;rsquo;s in the prox-ve01 server that were a mix of old hard drives from other computers that were still good but not being used.
+250GB Seagate (Root filesystem &amp;ldquo;/&amp;rdquo;) 300GB Seagate (Unmounted) 500GB WD (Unmounted - pulled from blackarmor &amp;ldquo;Downloads&amp;rdquo;) 500GB WD (Unmounted - pulled from blackarmor &amp;ldquo;Storage&amp;rdquo;) I&amp;rsquo;m in the process of saving anything I may need off the 2 500GB drives and converting them to local storage for proxmox vm&amp;rsquo;s and containers.</description>
+    </item>
+    
+    <item>
+      <title>Selling the old Dell Servers</title>
+      <link>https://mikeder.net/blog/archive/1431015954-selling-the-old-dell-servers/</link>
+      <pubDate>Thu, 07 May 2015 16:25:54 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1431015954-selling-the-old-dell-servers/</guid>
+      <description>Sold on 6/21/15 for $120 to a Mike from Ashburn, VA Well I made backups of the little bit of stuff I still had on the old server and am now going to list them for sale on craigslist.
+Baltimore Ad
+Washington Ad
+3 Dell Poweredge SC1425 Servers - $120
+Take all 3 servers for $120, server 1 was my main workhorse for the better part of a year as I learned VMWare ESXi, I had it running 6 or 7 Linux VM&amp;rsquo;s without a hiccup.</description>
+    </item>
+    
+    <item>
+      <title>Imgur embed testing</title>
+      <link>https://mikeder.net/blog/archive/1430848672-imgur-embed-testing/</link>
+      <pubDate>Tue, 05 May 2015 17:57:52 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1430848672-imgur-embed-testing/</guid>
+      <description> </description>
+    </item>
+    
+    <item>
+      <title>YouTube embed testing</title>
+      <link>https://mikeder.net/blog/archive/1430848205-youtube-embed-testing/</link>
+      <pubDate>Tue, 05 May 2015 17:50:05 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1430848205-youtube-embed-testing/</guid>
+      <description>UMF15 Weekend 2 timelapse </description>
+    </item>
+    
+    <item>
+      <title>Site plan and next steps</title>
+      <link>https://mikeder.net/blog/archive/1430763355-site-plan-and-next-steps/</link>
+      <pubDate>Mon, 04 May 2015 18:15:55 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1430763355-site-plan-and-next-steps/</guid>
+      <description>I plan on this blog being an on going project that will evolve into a portal of sorts for my personal coding projects. Step one was getting the blog up and running to have a place to document my work and also have a starting point from which to branch out into the custom website I have envisioned. Here i will tie together the small programming projects that I come up with and provide them with a decent looking front end as so far i have really only dealt with the server side and command line aspect.</description>
+    </item>
+    
+    <item>
+      <title>Customized Tornado Blog</title>
+      <link>https://mikeder.net/blog/archive/1430650459-customized-tornado-blog/</link>
+      <pubDate>Sun, 03 May 2015 10:54:19 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1430650459-customized-tornado-blog/</guid>
+      <description>This is a customized version of the Tornado blog example, customization includes:
+Bootswatch Cyborg theme Navbar /auth/create disabled after first user is created Day light savings handling More that I forgot.. Installing the blog:
+$ apt-get install mysql-server python-dev libmysqlclient-dev libffi-dev git python-pip $ pip install bcrypt mysql-python torndb tornado markdown futures $ mkdir /opt/blog $ cd /opt $ git clone http://github.com/mikeder/blog $ cd blog $ mysql -u root -p mysql&amp;gt; CREATE DATABASE blog; mysql&amp;gt; GRANT ALL PRIVILEGES ON blog.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>M1 on mikeder.net</title>
+    <link>https://mikeder.net/tags/m1/</link>
+    <description>Recent content in M1 on mikeder.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Dec 2021 21:55:33 -0500</lastBuildDate><atom:link href="https://mikeder.net/tags/m1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MBA Monterey</title>
+      <link>https://mikeder.net/blog/mba-monterey/</link>
+      <pubDate>Tue, 07 Dec 2021 21:55:33 -0500</pubDate>
+      
+      <guid>https://mikeder.net/blog/mba-monterey/</guid>
+      <description>Issues after upgrading my 2020 Macbook Air (m1) to macOS Monterey:
+Battery life went to shit, have to enable low power mode on battery. Bitwig and SoundCraft MTK 12 mixer no longer cooperate. Issue #1 I don&amp;rsquo;t have a whole lot of evidence to support but it did feel like the battery life on my brand new Macbook Air M1 had gotten a lot worse after the upgrade to Monterey (12.</description>
+    </item>
+    
+  </channel>
+</rss>
