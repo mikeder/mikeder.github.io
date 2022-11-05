@@ -1,0 +1,18 @@
+baseURL: https://mikeder.net/
+languageCode: en-us
+title: mikeder.net
+sectionPagesMenu: main
+enableGitInfo: true
+
+
+taxonomies:
+  category: categories
+  tag: tags
+
+params:
+  bandcampuser: mikeder
+  githubuser: mikeder
+  instagramuser: sqweebking
+  soundclouduser: sqweebking
+  youtubeuser: synthatik
+  dockerhubuser: mikeder
