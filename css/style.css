@@ -82,6 +82,10 @@ pre code {
     text-align: left;
 }
 
+.table-wrapper {
+    overflow: scroll;
+}
+
 .content {
     padding-top: 35px;
     opacity: 1.0;
