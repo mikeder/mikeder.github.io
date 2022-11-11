@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jupiter 6 Repairs 2022</title>
+     
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>Jupiter 6 Repairs 2022</h1>
+        <h5>09.11.2022 19:48</h5>
+        <div class="container">
+            <p>I&rsquo;ve begun to address the <a href="/blog/jupiter-6-issues-2022">issues</a> with my Jupiter 6 so I figured I&rsquo;d start a new post specific to this repair attempt.</p>
+<p>Also to note, the serial number of this synth is 322280, making it one of the later runs as far as the notes in the service manual suggest. It was previously sold or serviced by Pi Keyboards &amp; Audio Inc in Cleveland Ohio (216)-741-2211. <del>I&rsquo;ll have to try contacting them to see if they still have a record of what was done previously.</del> Looks like they&rsquo;re gone, possibly went out of business in 1992.</p>
+<p>Since I had already confirmed the PSU and all the power rails to be within spec, I decided to move forward with replacing these apparently problematic capacitors.</p>
+<p>I bought replacement ceramic caps from Digi-Key to replace the orange polystyrene caps in the VCO and VCF circuits.</p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Quantity</th>
+<th>Part Number</th>
+<th>Manufacturer Part Number</th>
+<th>Description</th>
+<th>Unit Price</th>
+<th>Extended Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>40</td>
+<td>445-180761-1-ND</td>
+<td>FA28C0G2E331JNU06</td>
+<td>CAP CER 330PF 250V C0G RADIAL</td>
+<td>0.26300</td>
+<td>$10.52</td>
+</tr>
+<tr>
+<td>2</td>
+<td>18</td>
+<td>445-173558-1-ND</td>
+<td>FG28C0G2E102JNT06</td>
+<td>CAP CER 1000PF 250V C0G RADIAL</td>
+<td>0.23300</td>
+<td>$4.19</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Here are the locations of these caps on the 2 and 4 voice boards within the JP6:</p>
+<p><strong>Two Voice Board</strong>
+
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[218 7 441 489 140 122]" src="JP6-two-voice-board.jpeg" onclick="openModal(this.id)" alt="2 voice board"  />
+</div></p>
+<p><strong>Four Voice Board</strong>
+
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[235 294 177 64 336 343]" src="JP6-four-voice-board.jpeg" onclick="openModal(this.id)" alt="4 voice board"  />
+</div></p>
+<h2 id="factory-board-mods">Factory Board Mods</h2>
+<p>Once I had the voice boards out I found there had been a couple, apparently factory, board modifications made. The <a href="https://www.synthxl.com/wp-content/uploads/2018/02/Roland-Jupiter-6-jp6-Service-Manual.pdf">service manual</a> describes a &ldquo;Reducting LFO leakage&rdquo; countermeasure where a trace is cut and bypassed with a piece of wire.</p>
+<blockquote>
+<p>LFO leakage can be audible with VCA LFO at 10.
+This preventative modification is at the factory with SN 301700. This modification is also effective on early products.
+Related pattern areas remain the same, even PCBs revised.</p>
+</blockquote>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[13 64 103 242 453 22]" src="JP6-LFO-leakage-mod.png" onclick="openModal(this.id)" alt="lfo leakage mod"  />
+</div></p>
+<p><strong>Two Voice Board Mods</strong>
+
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[378 365 397 61 473 262]" src="JP6-two-voice-mods.jpeg" onclick="openModal(this.id)" alt="2v-mods"  />
+</div></p>
+<p><strong>Four Voice Board Mods</strong>
+
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[47 279 208 20 188 379]" src="JP6-four-voice-mods.jpeg" onclick="openModal(this.id)" alt="4v-mods"  />
+</div></p>
+<p>The second board modification was a 330Ω resistor between pin 9 of IC16 and pin 4 of IC23 (2v and 4v) and pin 9 of IC18 and pin 4 of IC25 (4v). The 4 voice board also has a jumper on VCO 2 between pin 1 of RA-5A and pin 10 of IC36A (CEM 3340).</p>
+<h2 id="replacing-the-caps">Replacing the caps</h2>
+<p>Removing the old caps from these boards was a little tricky, it took a combination of vacuum de-soldering and solder wicking braid to get them out. I had to be especially careful in the VCO section as the board is pretty densely populated with parts literally touching each other. There are also the original CEM 3340 VCO chips in this section that I had to be careful not to overheat. Overall it took about 3hrs to get all the old caps out and get the pads cleaned up in prep for soldering the new caps in. I managed to get them all removed w/o damaging any of the reportedly fragile solder pads, which was great.</p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[50 27 135 8 158 72]" src="JP6-new-caps-2.jpeg" onclick="openModal(this.id)" alt="new-caps-2"  />
+</div></p>
+<p>I tested every one of the old caps as I pulled them out, they all tested within spec&hellip;but maybe they do fail intermittently or under load. /shrug</p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[330 375 442 133 321 454]" src="JP6-old-caps-pile.jpeg" onclick="openModal(this.id)" alt="old-caps-pile"  />
+</div></p>
+<h2 id="calibration">Calibration</h2>
+<p>After replacing the caps and reinstalling the voice boards I performed a full calibration of the JP6. Since this is a Europa mod JP6, in order to get it into &ldquo;JIG&rdquo; mode for calibration, you have to boot it into Roland code first.</p>
+<ol>
+<li>Start with JP6 powered OFF.</li>
+<li>Set the JIG switch on the main CPU board to &ldquo;JIG&rdquo;.</li>
+<li>Power switch ON.</li>
+<li>Set the JIG switch to &ldquo;NORM&rdquo; and then back to &ldquo;JIG&rdquo;.</li>
+</ol>
+<p>THEN you can select calibration programs as required by the service manual.</p>
+<p>Once I located the calibration process test points and scope settings, everything was a breeze to calibrate. I had no issues getting things back within spec, the DC balance was a little wonky but ultimately I think I got it set as good as it gets.</p>
+<p>Thankfully, <a href="https://belltonesynthworks.com/2017/05/09/roland-jupiter-6/">Bell Tone Synth Works had some notes</a> on calibrating this synth, that helped me get going and confirm some suspicions along the way. The tests that suggest using the output jack or some random resistor on the JACK board are silly. There is a clearly marked OUT and GND on the voice boards where you can perform those tests without a ton of extra noise.</p>
+<blockquote>
+<p>When you are doing filter calibrations, use the test point on the upper left corner of the module board that is labeled “OUT.” It works much better than using the main output as the service manual for the other versions suggests; the main output seems to have a lot of supersonic noise on it that will make it hard to read the scope.</p>
+</blockquote>
+<blockquote>
+<p>Use test points 2A and 2B for pulse waveform adjustments. They will be almost impossible to do from the output, as the manual once again suggests.</p>
+</blockquote>
+<blockquote>
+<p>Also, I saw several posts from people saying that they were reading voltages like 3-4V on the DA offset test points (where it should be very close to 0 V) even though everything else seemed to be working normally.  I will admit that the reason I was reading these posts is that I myself was briefly confused. But the DA offset test points will not read 0V until you switch the synth over to test mode by moving the tiny switch on the center of the left edge of the CPU board to the “Jig” position, and THEN load program A1.  They do NOT read 0V normally.</p>
+</blockquote>
+<h2 id="testing">Testing</h2>
+<p>Firstly, the synth still has some work left on it - for sure. I didn&rsquo;t actually solve all of its problems yet, but its symptoms definitely seem improved. I still have a little buttoning up to do with zip ties and maybe some new PSU caps and <em>maybe</em> some new slider dust covers.</p>
+<p>Otherwise, I haven&rsquo;t encountered the Europa F6 boot failure code again yet. The synth plays and sounds great as I&rsquo;d expect but it does still fail to boot if you turn it off and back on &ldquo;a little too quickly&rdquo;. I think there may still be some caps around the main CPU or PSU that need checking&hellip;</p>
+<p><a href="/blog/jupiter-6-issues-2022">Go to issues post.</a></p>
+<p><a href="#top">Top</a></p>
+
+        </div>
+        
+        <div>
+            Tags:
+            
+            <a href=/tags/vintage>Vintage</a>
+            
+            <a href=/tags/synthesizer>Synthesizer</a>
+            
+            <a href=/tags/repair>Repair</a>
+            
+        </div>
+         
+        <br>
+        <div>
+            <a href="javascript:history.back()">
+                &lt;&lt; Back</a>
+                    <a href="#top">Top ^^</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()" style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:cc3240f</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" rel="me" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>
