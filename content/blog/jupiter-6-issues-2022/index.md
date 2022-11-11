@@ -71,4 +71,4 @@ I'm going to have a look at these caps in my synth to determine if they are 1) s
 
 A couple other users in the thread have reported cap replacement solving similar issues for them, so I think it may be a decent thing to check.
 
-[Go to repair attempt post](/blog/jupiter-6-repair-2022).
+[Go to repair attempt post](/blog/jupiter-6-repairs-2022).

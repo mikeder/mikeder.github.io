@@ -8,7 +8,12 @@ tags:
 - Repair
 ---
 
-I've begun to address the [issues](/blog/jupiter-6-issues-2022) with my Jupiter 6 so I figured I'd start a new post specific to this repair attempt. 
+I've begun to address the [issues](/blog/jupiter-6-issues-2022) with my Jupiter 6 so I figured I'd start a new post specific to this repair attempt.
+
+- [Factory Board Mods](#factory-board-mods)
+- [Replacing the caps](#replacing-the-caps)
+- [Calibration](#calibration)
+- [Testing](#testing)
 
 Also to note, the serial number of this synth is 322280, making it one of the later runs as far as the notes in the service manual suggest. It was previously sold or serviced by Pi Keyboards & Audio Inc in Cleveland Ohio (216)-741-2211. ~~I'll have to try contacting them to see if they still have a record of what was done previously.~~ Looks like they're gone, possibly went out of business in 1992. 
 
@@ -83,5 +88,3 @@ Otherwise, I haven't encountered the Europa F6 boot failure code again yet. The 
 
 
 [Go to issues post.](/blog/jupiter-6-issues-2022)
-
-[Top](#top)
