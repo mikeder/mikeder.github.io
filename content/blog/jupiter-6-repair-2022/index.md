@@ -16,11 +16,7 @@ Since I had already confirmed the PSU and all the power rails to be within spec,
 
 I bought replacement ceramic caps from Digi-Key to replace the orange polystyrene caps in the VCO and VCF circuits.
 
-| Index | Quantity | Part Number     | Manufacturer Part Number | Description                    | Unit Price | Extended Price |
-| ----- | -------- | --------------- | ------------------------ | ------------------------------ | ---------- | -------------- |
-| 1     | 40       | 445-180761-1-ND | FA28C0G2E331JNU06        | CAP CER 330PF 250V C0G RADIAL  | 0.26300    | $10.52         |
-| 2     | 18       | 445-173558-1-ND | FG28C0G2E102JNT06        | CAP CER 1000PF 250V C0G RADIAL | 0.23300    | $4.19          |
-|       |          |                 |                          |                                |            |
+[Digi-Key Replacement Caps CSV](digikey-caps.csv)
 
 Here are the locations of these caps on the 2 and 4 voice boards within the JP6:
 
