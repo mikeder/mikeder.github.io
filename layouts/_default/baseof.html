@@ -2,6 +2,15 @@
 <html lang="{{ .Site.LanguageCode | default " en-us " }}">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJHGWQB579"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LJHGWQB579');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +19,8 @@
     <meta name="description" content="{{ . }}">{{ end }} {{ with .Site.Params.author }}
     <meta name="author" content="{{ . }}">{{ end }}
     <link rel="stylesheet" href='{{ "css/style.css"  | relURL }}'> {{ with .OutputFormats.Get "RSS" -}} {{ printf `
-    <link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }} {{- end }}
+    <link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }} {{-
+    end }}
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
 </head>
 
