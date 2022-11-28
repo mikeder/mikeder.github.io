@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 16 Sep 2020 08:32:49 -0400</lastBuildDate><atom:link href="https://mikeder.net/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>TimelineRS</title>
+      <link>https://mikeder.net/projects/timeline_rs/</link>
+      <pubDate>Mon, 28 Nov 2022 10:58:02 -0500</pubDate>
+      
+      <guid>https://mikeder.net/projects/timeline_rs/</guid>
+      <description>TimelineRS is a simple timeline creation app written in Rust. It uses egui and eframe for native and web builds with web assembly.
+Check it out here: TimelineRS
+Source Code</description>
+    </item>
+    
+    <item>
       <title>Music</title>
       <link>https://mikeder.net/projects/music/</link>
       <pubDate>Thu, 17 Sep 2020 09:47:49 -0400</pubDate>
