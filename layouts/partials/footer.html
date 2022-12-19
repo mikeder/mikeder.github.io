@@ -13,6 +13,8 @@
     <a class="fab fa-github" rel="me" style="font-size: 24px" href="https://github.com/{{.}}" target="_blank"></a>
     {{ end }} {{ with .Site.Params.instagramuser }}
     <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/{{.}}/" target="_blank"></a>
+    {{ end }} {{ with .Site.Params.mastodonURL }}
+    <a class="fab fa-mastodon" style="font-size: 24px" href="{{.}}" target="_blank"></a>
     {{ end }} {{ with .Site.Params.soundclouduser }}
     <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/{{.}}" target="_blank"></a>
     {{ end }} {{ with .Site.Params.youtubeuser}}

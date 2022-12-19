@@ -10,9 +10,13 @@ taxonomies:
   tag: tags
 
 params:
+  description: A static site built with Hugo!
+  author: Mike Eder
+
   bandcampuser: mikeder
   githubuser: mikeder
   instagramuser: sqweebking
+  mastodonURL: https://universeodon.com/@sqweebking
   soundclouduser: sqweebking
   youtubeuser: synthatik
   dockerhubuser: mikeder
