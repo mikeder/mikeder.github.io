@@ -10,7 +10,10 @@ tags:
 - fediverse
 ---
 
-The "Fediverse" migration continues - after trying out [Mastodon](https://universeodon.com/@sqweebking) for "micro blogging", I figured I'd try out [PeerTube](https://joinpeertube.org/) for my synthesizer jam videos, etc.
+The "Fediverse" migration continues - after trying out [Mastodon](https://universeodon.com/@sqweebking) for "micro blogging", I figured I'd try out [PeerTube](https://joinpeertube.org/) for my synthesizer jam videos, etc. My server and local videos will be hosted @ [https://peertube.sqweeb.net](https://peertube.sqweeb.net/videos/local).
+
+
+
 
 The PeerTube [documentation](https://docs.joinpeertube.org/install-docker) has a pretty good starting point for hosting via Docker and docker compose - I started with that. The `docker-compose.yml` file example they give you comes with a separate web server and "cert bot" container for managing SSL/TLS certificates with LetsEncrypt. I decided to use my existing [Traefik](https://traefik.io/) [setup](https://github.com/mikeder/homelab/tree/main/traefik) for proxy and certificate management instead.
 
