@@ -1,7 +1,13 @@
 ---
 title: "Self Hosting PeerTube"
 date: 2022-12-22T09:12:01-05:00
-draft: true
+draft: false
+tags:
+- peertube
+- selfhosted
+- video
+- social
+- fediverse
 ---
 
 The "Fediverse" migration continues - after trying out [Mastodon](https://universeodon.com/@sqweebking) for "micro blogging", I figured I'd try out [PeerTube](https://joinpeertube.org/) for my synthesizer jam videos, etc.
