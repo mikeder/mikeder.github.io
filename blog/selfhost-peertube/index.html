@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJHGWQB579"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LJHGWQB579');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Self Hosting PeerTube</title>
+    
+    <meta name="description" content="A static site built with Hugo!">
+    
+    
+    <meta name="author" content="Mike Eder">
+    
+
+    
+    <link rel="me" href="https://universeodon.com/@sqweebking">
+    
+
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>Self Hosting PeerTube</h1>
+        <h5>22.12.2022 09:12</h5>
+        <div class="container">
+            <p>The &ldquo;Fediverse&rdquo; migration continues - after trying out <a href="https://universeodon.com/@sqweebking">Mastodon</a> for &ldquo;micro blogging&rdquo;, I figured I&rsquo;d try out <a href="https://joinpeertube.org/">PeerTube</a> for my synthesizer jam videos, etc. My server and local videos will be hosted @ <a href="https://peertube.sqweeb.net/videos/local">https://peertube.sqweeb.net</a>.</p>
+<p>The PeerTube <a href="https://docs.joinpeertube.org/install-docker">documentation</a> has a pretty good starting point for hosting via Docker and docker compose - I started with that. The <code>docker-compose.yml</code> file example they give you comes with a separate web server and &ldquo;cert bot&rdquo; container for managing SSL/TLS certificates with LetsEncrypt. I decided to use my existing <a href="https://traefik.io/">Traefik</a> <a href="https://github.com/mikeder/homelab/tree/main/traefik">setup</a> for proxy and certificate management instead.</p>
+<p>My full implementation can be found in my <a href="https://github.com/mikeder/homelab/tree/main/peertube">homelab repo</a>.</p>
+<h2 id="modify-compose-for-traefik-v2">Modify Compose for Traefik v2</h2>
+<p>Follow the PeerTube <a href="https://docs.joinpeertube.org/install-docker">documentation</a> for Docker up to the &ldquo;Tweak the <code>docker-compose.yml</code> file according to your needs&rdquo; section.</p>
+<ol>
+<li>
+<p>Remove the <code>webserver</code> and <code>certbot</code> container sections from the provided compose file, they will be replaced by Traefik. Remove the now unused <code>certbot-www</code> volume from the <code>volumes</code> block at the bottom too.</p>
+</li>
+<li>
+<p>Remove the host port mappings for the <code>peertube</code> container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;1935&#34;</span> <span style="color:#75715e"># Comment if you don&#39;t want to use the live feature</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;9000&#34;</span> <span style="color:#75715e"># Uncomment if you use another webserver/proxy ( Traefik )</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Add the necessary Traefik labels to the <code>peertube</code> container definition:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># enable traefik ingress</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">traefik.enable=true</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">traefik.http.services.peertube.loadbalancer.server.port=9000</span> <span style="color:#75715e"># tell Traefik to use port 9000 for web server load balancing</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># http web ui</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">traefik.http.routers.peertube-http.entrypoints=http</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">traefik.http.routers.peertube-http.rule=Host(`peertube.sqweeb.net`)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">traefik.http.routers.peertube-http.middlewares=redirect-https</span> <span style="color:#75715e"># redirect http to https</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># https web ui</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">traefik.http.routers.peertube-https.tls=true</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">traefik.http.routers.peertube-https.entrypoints=https</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">traefik.http.routers.peertube-https.tls.certresolver=letsencrypt</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">traefik.http.routers.peertube-https.rule=Host(`peertube.sqweeb.net`)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Update the network block to make use of the pre-existing <code>proxy</code> network that Traefik uses to expose services to the web:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ipv4_address</span>: <span style="color:#ae81ff">172.19.0.42</span> <span style="color:#75715e"># CIDR updated to match proxy network</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Add the <code>proxy</code> network to the other containers in the stack so the <code>peertube</code> container can still communicate with them. If this is skipped it will not be able to locate the other containers by their name in the compose file. Ideally, the dependency containers would be in a separate &ldquo;private&rdquo; network outside of the &ldquo;proxy&rdquo; network but I didn&rsquo;t feel like taking the time to do this just yet. Only the services with appropriate <code>traefik</code> labels will be exposed anyway.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">postgres</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">postgres:13-alpine</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">proxy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">env_file</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">.env</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">./docker-volume/db:/var/lib/postgresql/data</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#e6db74">&#34;always&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Add the <code>proxy</code> network as an external network to the compose stack:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">external</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div></li>
+</ol>
+<p>Full <code>docker-compose.yml</code> file can be found <a href="https://github.com/mikeder/homelab/blob/main/peertube/docker-compose.yml">here</a></p>
+<h2 id="modify-env-file-for-traefik">Modify .env file for Traefik</h2>
+<p>There aren&rsquo;t necessarily Traefik specific changes in the <code>.env</code> file but I did want to mention that there are two config options that should remain commented out for this implementation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#75715e"># If you just want to test PeerTube on local</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PEERTUBE_WEBSERVER_PORT=9000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PEERTUBE_WEBSERVER_HTTPS=false</span>
+</span></span></code></pre></div><p>If <code>PEERTUBE_WEBSERVER_PORT</code> is uncommented, something I did originally, the PeerTube front end will expect to make requests to <code>HOSTNAME:9000</code> instead of just <code>HOSTNAME</code> and will result in some scary &ldquo;Failure to get oauth client ID&hellip;&rdquo; type errors.</p>
+<p>When using Traefik I just had to configure the various hostname settings to match the Traefik HTTP router rules in the compose file: <code>peertube.sqweeb.net</code> and everything worked beautifully.</p>
+<h2 id="first-login-and-configuration">First login and configuration</h2>
+<p>Follow the PeerTube documentation to retrieve the admin/root credentials from the <code>peertube</code> container and then login to the web UI to perform some configuration.</p>
+<p>The main configuration I enabled was &ldquo;Allow import with HTTP URL&rdquo; and &ldquo;Allow channel synchronization with channel of other platforms like YouTube&rdquo;.</p>
+<p>Administration -&gt; Configuration -&gt; Basic</p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[279 129 106 338 379 307]" src="pt-admin-config.png" onclick="openModal(this.id)" alt="pt-admin-config"  />
+</div></p>
+<p>After the basic configuration, I setup a non-root user to start uploading videos to the instance.</p>
+<h2 id="migrate-videos-from-youtube">Migrate videos from YouTube</h2>
+<p>Login as the new non-root user and click the &ldquo;Publish&rdquo; button. Since we have done the import/sync configuration in the admin panel there will be an import tab for &ldquo;Import with URL&rdquo;, this page also links to a remote channel synchronization option in your video library.</p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[414 364 437 296 426 411]" src="pt-user-import.png" onclick="openModal(this.id)" alt="pt-user-import"  />
+</div></p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[426 157 89 425 465 321]" src="pt-user-sync.png" onclick="openModal(this.id)" alt="pt-user-sync"  />
+</div></p>
+<p>You can check on the status of the sync and import by navigating to the &ldquo;My Imports&rdquo; page and expanding individual videos.</p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[59 252 428 465 451 498]" src="pt-user-list-imports.png" onclick="openModal(this.id)" alt="pt-user-list-imports"  />
+</div></p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[130 368 201 361 195 313]" src="pt-user-imports-list.png" onclick="openModal(this.id)" alt="pt-user-imports-list"  />
+</div></p>
+<h2 id="following-other-peopleservers">Following Other People/Servers</h2>
+<p>I <a href="https://instances.joinpeertube.org/instances/add">added my instance</a> to the public <a href="https://instances.joinpeertube.org/instances">PeerTube instance list</a>, this will make the server, and the public videos on it, discoverable by other people and servers.</p>
+<p>As a user on my server I can subscribe to other users on different servers by performing a &ldquo;remote subscription&rdquo;. Just navigate to any other account or video on the network and click the &ldquo;Subscribe&rdquo; button, which will open a model to drop in my account handle ( <code>sqweebking@peertube.sqweeb.net</code> ) to start a remote subscription.</p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[479 72 349 119 443 9]" src="pt-user-remote-subscribe.png" onclick="openModal(this.id)" alt="remote-subscribe"  />
+</div></p>
+<p>In order to federate to or follow another servers content I have to login as the admin user and use the &ldquo;Federation&rdquo; panel:</p>
+<p>Administration -&gt; Federation -&gt; Follow</p>
+<p>From there I can configure the server to follow entire other servers, which will make the followed servers videos discoverable via my own server. So far I&rsquo;ve followed <code>peertube@diode.zone</code> as that server has a bunch of synthesizer content creators on it. I&rsquo;ll probably look for more to follow in the future, I noticed in the admin panel this morning that a number of other servers have started following my own!</p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[172 54 332 63 379 378]" src="pt-admin-notifications.png" onclick="openModal(this.id)" alt="admin-notifications"  />
+</div></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The setup of this small self hosted instance was very painless. I&rsquo;ll likely keep it closed to just myself for now, since my Docker VM isn&rsquo;t configured with a lot of disk space at the moment. In the future I may move the storage to AWS/S3 and configure a CDN to serve all the content. This will save on local disk space and speed up content delivery significantly - right now its at the will of my own upload speed.</p>
+<p>In the short term I will continue uploading my own videos, definitely some upcoming #Jamuary videos, and explore other servers for interesting content to follow. I look forward to having a self curated content feed of things I&rsquo;m actually interested in instead of the YT black hole of ads and garbage click bait.</p>
+
+        </div>
+        
+        <div>
+            Tags:
+            
+            <a href=/tags/peertube>peertube</a>
+            
+            <a href=/tags/selfhosted>selfhosted</a>
+            
+            <a href=/tags/video>video</a>
+            
+            <a href=/tags/social>social</a>
+            
+            <a href=/tags/fediverse>fediverse</a>
+            
+        </div>
+         
+        <br>
+        <div>
+            <a href="javascript:history.back()">
+                &lt;&lt; Back</a>
+                    <a href="#top">Top ^^</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()"
+            style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2022 <a href="https://mikeder.net/">mikeder.net</a> v:988bad2</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" rel="me" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-mastodon" style="font-size: 24px" href="https://universeodon.com/@sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>

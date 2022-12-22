@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 24 Oct 2022 21:13:07 -0400</lastBuildDate><atom:link href="https://mikeder.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Self Hosting PeerTube</title>
+      <link>https://mikeder.net/blog/selfhost-peertube/</link>
+      <pubDate>Thu, 22 Dec 2022 09:12:01 -0500</pubDate>
+      
+      <guid>https://mikeder.net/blog/selfhost-peertube/</guid>
+      <description>The &amp;ldquo;Fediverse&amp;rdquo; migration continues - after trying out Mastodon for &amp;ldquo;micro blogging&amp;rdquo;, I figured I&amp;rsquo;d try out PeerTube for my synthesizer jam videos, etc. My server and local videos will be hosted @ https://peertube.sqweeb.net.
+The PeerTube documentation has a pretty good starting point for hosting via Docker and docker compose - I started with that. The docker-compose.yml file example they give you comes with a separate web server and &amp;ldquo;cert bot&amp;rdquo; container for managing SSL/TLS certificates with LetsEncrypt.</description>
+    </item>
+    
+    <item>
       <title>TimelineRS</title>
       <link>https://mikeder.net/projects/timeline_rs/</link>
       <pubDate>Mon, 28 Nov 2022 10:58:02 -0500</pubDate>
