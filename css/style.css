@@ -1,27 +1,22 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen, Ubuntu, Cantarell, open sans, helvetica neue, sans-serif;
-    width: 60%;
+    width: 65%;
     margin: auto;
     text-align: center;
     font-size: 15px;
     padding: 10px;
     background-color: #121212;
-    /* color: rgb(131, 123, 123); */
 }
 
 blockquote {
-    /* background: #f9f9f9; */
-    /* color: rgb(136, 218, 214); */
     background-color: #161616;
     border-left: 2px solid #ccc;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
-    /* quotes: "\201C""\201D""\2018""\2019"; */
 }
 
 blockquote:before {
     color: lightcyan;
-    /* content: open-quote; */
     font-size: 4em;
     line-height: 0.1em;
     margin-right: 0.25em;
@@ -49,17 +44,10 @@ source {
     padding-bottom: 10px;
 }
 
-pre code {
-    padding: 0;
-    margin: 0;
-    font-size: 100%;
-    background: 0 0;
-    border: 0;
-    white-space: pre-wrap;
-    -webkit-overflow-scrolling: scroll;
-    overflow: scroll;
+pre {
+    overflow-x: auto;
+    max-width: inherit;
 }
-
 
 /* On mouse-over, add a deeper shadow */
 
@@ -78,7 +66,6 @@ pre code {
 /* Add some padding inside the card container */
 
 .container {
-    display: inline-block;
     padding: 15px 16px;
     text-align: left;
 }
@@ -113,7 +100,6 @@ pre code {
     padding-top: 5px;
     padding-bottom: 5px;
     box-shadow: 0 4px 8px 0 lightseagreen;
-    overflow: auto;
 }
 
 .content-chunk h1 {
