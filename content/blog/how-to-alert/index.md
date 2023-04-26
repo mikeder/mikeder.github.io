@@ -1,7 +1,7 @@
 ---
 title: "How to Alert"
 date: 2023-01-26T08:31:59-05:00
-draft: true
+draft: false
 tags:
 - sre
 - engineering
