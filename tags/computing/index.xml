@@ -6,7 +6,16 @@
     <description>Recent content in computing on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Dec 2021 21:55:33 -0500</lastBuildDate><atom:link href="https://mikeder.net/tags/computing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Jan 2023 08:31:59 -0500</lastBuildDate><atom:link href="https://mikeder.net/tags/computing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Alert</title>
+      <link>https://mikeder.net/blog/how-to-alert/</link>
+      <pubDate>Thu, 26 Jan 2023 08:31:59 -0500</pubDate>
+      
+      <guid>https://mikeder.net/blog/how-to-alert/</guid>
+      <description>Define SLI&amp;rsquo;s and SLO&amp;rsquo;s We have to define what is successful operation of the service. Burger World example: Burger World has 3 main objectives: Serve customer orders at drive through in 3min or less. Serve customer orders at walk up counter in 5min or less. Less than 1% of orders result in corrective action. First assume that all other operations are working as designed, we only monitor and alert on deviations from the primary objectives.</description>
+    </item>
+    
     <item>
       <title>MBA Monterey</title>
       <link>https://mikeder.net/blog/mba-monterey/</link>

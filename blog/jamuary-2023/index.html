@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJHGWQB579"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LJHGWQB579');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jamuary 2023</title>
+    
+    <meta name="description" content="A static site built with Hugo!">
+    
+    
+    <meta name="author" content="Mike Eder">
+    
+
+    
+    <link rel="me" href="https://universeodon.com/@sqweebking">
+    
+
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>Jamuary 2023</h1>
+        <h5>17.01.2023 19:17</h5>
+        <div class="container">
+            <p>Some lessons learned from my studio jams during Jamuary 2023.</p>
+<ol>
+<li>Use a DAW template!
+<ol>
+<li>Setup the mixer and audio interface to work generically enough with the outboard gear you want to use.</li>
+<li>Record stems and a mixer &ldquo;main&rdquo; if you can. If the main mix is good enough great, job done. If not you have stems to &ldquo;remix&rdquo; the main performance.</li>
+<li></li>
+</ol>
+</li>
+<li>Levels are easier to correct with less noise, in the digital domain.</li>
+<li>Don&rsquo;t master to 0.0dB, leave some room, typically shoot for -1.1 to -0.3dB.</li>
+<li>Don&rsquo;t over do it. Its not easy to churn out an audio track/video/social post every day, if you&rsquo;re not enjoying it anymore or life gets in the way, thats ok!</li>
+</ol>
+
+        </div>
+        
+        <div>
+            Tags:
+            
+            <a href=/tags/music>music</a>
+            
+            <a href=/tags/production>production</a>
+            
+            <a href=/tags/tips>tips</a>
+            
+            <a href=/tags/jamuary>jamuary</a>
+            
+        </div>
+         
+        <br>
+        <div>
+            <a href="javascript:history.back()">
+                &lt;&lt; Back</a>
+                    <a href="#top">Top ^^</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()"
+            style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:f61f83a</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" rel="me" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-mastodon" style="font-size: 24px" href="https://universeodon.com/@sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>

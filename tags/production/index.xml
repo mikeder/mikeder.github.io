@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>production on mikeder.net</title>
+    <link>https://mikeder.net/tags/production/</link>
+    <description>Recent content in production on mikeder.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 17 Jan 2023 19:17:07 -0500</lastBuildDate><atom:link href="https://mikeder.net/tags/production/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jamuary 2023</title>
+      <link>https://mikeder.net/blog/jamuary-2023/</link>
+      <pubDate>Tue, 17 Jan 2023 19:17:07 -0500</pubDate>
+      
+      <guid>https://mikeder.net/blog/jamuary-2023/</guid>
+      <description>Some lessons learned from my studio jams during Jamuary 2023.
+Use a DAW template! Setup the mixer and audio interface to work generically enough with the outboard gear you want to use. Record stems and a mixer &amp;ldquo;main&amp;rdquo; if you can. If the main mix is good enough great, job done. If not you have stems to &amp;ldquo;remix&amp;rdquo; the main performance. Levels are easier to correct with less noise, in the digital domain.</description>
+    </item>
+    
+  </channel>
+</rss>

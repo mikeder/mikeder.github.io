@@ -8,6 +8,25 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 24 Oct 2022 21:13:07 -0400</lastBuildDate><atom:link href="https://mikeder.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>How to Alert</title>
+      <link>https://mikeder.net/blog/how-to-alert/</link>
+      <pubDate>Thu, 26 Jan 2023 08:31:59 -0500</pubDate>
+      
+      <guid>https://mikeder.net/blog/how-to-alert/</guid>
+      <description>Define SLI&amp;rsquo;s and SLO&amp;rsquo;s We have to define what is successful operation of the service. Burger World example: Burger World has 3 main objectives: Serve customer orders at drive through in 3min or less. Serve customer orders at walk up counter in 5min or less. Less than 1% of orders result in corrective action. First assume that all other operations are working as designed, we only monitor and alert on deviations from the primary objectives.</description>
+    </item>
+    
+    <item>
+      <title>Jamuary 2023</title>
+      <link>https://mikeder.net/blog/jamuary-2023/</link>
+      <pubDate>Tue, 17 Jan 2023 19:17:07 -0500</pubDate>
+      
+      <guid>https://mikeder.net/blog/jamuary-2023/</guid>
+      <description>Some lessons learned from my studio jams during Jamuary 2023.
+Use a DAW template! Setup the mixer and audio interface to work generically enough with the outboard gear you want to use. Record stems and a mixer &amp;ldquo;main&amp;rdquo; if you can. If the main mix is good enough great, job done. If not you have stems to &amp;ldquo;remix&amp;rdquo; the main performance. Levels are easier to correct with less noise, in the digital domain.</description>
+    </item>
+    
+    <item>
       <title>Self Hosting PeerTube</title>
       <link>https://mikeder.net/blog/selfhost-peertube/</link>
       <pubDate>Thu, 22 Dec 2022 09:12:01 -0500</pubDate>

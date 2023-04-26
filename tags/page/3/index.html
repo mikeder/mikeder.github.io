@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJHGWQB579"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LJHGWQB579');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tags</title>
+    
+    <meta name="description" content="A static site built with Hugo!">
+    
+    
+    <meta name="author" content="Mike Eder">
+    
+
+    
+    <link rel="me" href="https://universeodon.com/@sqweebking">
+    
+
+    <link rel="stylesheet" href='/css/style.css'> 
+    <link rel="alternate" type="application/rss+xml" href="/tags/index.xml" title="mikeder.net">
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+	<main class="content">
+		
+		<div class="content-chunk">
+			<h1>Tags</h1>
+			<hr>
+			
+		
+
+		
+			<article>
+	<h1><a href="https://mikeder.net/tags/apple/">Apple</a></h1>
+	<time>07.12.2021 21:55</time>
+	
+	<div class="container">
+		
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/tags/m1/">M1</a></h1>
+	<time>07.12.2021 21:55</time>
+	
+	<div class="container">
+		
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/tags/macos/">macOS</a></h1>
+	<time>07.12.2021 21:55</time>
+	
+	<div class="container">
+		
+		
+	</div>
+</article>
+<hr>
+		
+		<div>
+
+	<a href="/tags/page/2/">Previous Page</a>
+
+3 of 3
+
+</div>
+
+
+		</div>
+	</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()"
+            style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>  
+
+<footer id="site-footer">
+    <p>
+        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:latest</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" rel="me" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-mastodon" style="font-size: 24px" href="https://universeodon.com/@sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>
