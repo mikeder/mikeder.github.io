@@ -80,7 +80,7 @@
 
 
 <div class="md__image">
-    <img id="[265 480 302 253 455 420]" src="initial_concept.png" onclick="openModal(this.id)" alt="initial concept"  />
+    <img id="[108 313 489 250 170 232]" src="initial_concept.png" onclick="openModal(this.id)" alt="initial concept"  />
 </div></p>
 <h2 id="adding-multiplayer">Adding Multiplayer</h2>
 <p>When searching around for Bevy tutorials I discovered an excellent dev blog series by <a href="https://johanhelsing.studio/posts/extreme-bevy">Johan Helsing</a> in which he builds a p2p web game in rust with rollback netcode. This sounded very interesting to me, despite being totally over my head at the time. I wanted to try it out.</p>
@@ -183,12 +183,12 @@
 
 
 <div class="md__image">
-    <img id="[409 188 257 76 177 487]" src="edible_spawns.png" onclick="openModal(this.id)" alt="edible spawns"  />
+    <img id="[213 274 102 23 489 12]" src="edible_spawns.png" onclick="openModal(this.id)" alt="edible spawns"  />
 </div>
 <em>my wife also supplied me with upgraded textures :D</em></p>
 <h3 id="random-spawns-and-how-to-agree-on-their-randomness">Random spawns and how to agree on their randomness.</h3>
 <p>In order to get randomly spawning entities to spawn at the same locations on each client, all clients need to agree on how to randomly place them. I once again took to the Johan Helsing Discord server to ask folks, who are much smarter than myself, how they would approach such a thing. I got a response from <code>ThierryBerger#8164</code> who suggested that each client could send their own part of the seed and the client could combine them all to compute the final seed.</p>
-<p>I came up with a <code>AgreedRandom</code> resource that used the matchbox peer ID&rsquo;s as input to a computed hash that would then be used as the RNG seed.</p>
+<p>I came up with an <code>AgreedRandom</code> resource, which used the matchbox peer ID&rsquo;s as input to a computed hash, that would then be used as the RNG seed.</p>
 <p><code>resources.rs</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">#[derive(Resource)]</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">AgreedRandom</span> {
@@ -390,7 +390,7 @@
 
 <footer id="site-footer">
     <p>
-        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:ef39b33</p>
+        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:d8bc6cb</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
