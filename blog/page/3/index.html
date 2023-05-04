@@ -51,6 +51,17 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1539741496-dotfiles/">.dotfiles</a></h1>
+	<time>17.10.2018 01:58</time>
+	
+	<div class="container">
+		sudo apt-get update &amp;&amp; \ sudo apt-get install git -y &amp;&amp; \ git clone <a href="https://github.com/mikeder/.dotfiles.git">https://github.com/mikeder/.dotfiles.git</a> &amp;&amp; \ cd .dotfiles/ &amp;&amp; rm -rf .git/ &amp;&amp; cp -r .[!.]* .. &amp;&amp; \ cd ~
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1535507378-more-better-database-migration/">More advanced database migration</a></h1>
 	<time>29.08.2018 01:49</time>
 	
@@ -160,20 +171,6 @@ Started suspecting CPU itself was bad, asked around for replacements, as well as
 Europa is “taking a hiatus” as of 11/18/16, no good
 		
 		<a href="https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/">Read more...</a>
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/">Minecraft Server Tweaks</a></h1>
-	<time>23.11.2016 20:29</time>
-	
-	<div class="container">
-		Cache Proxy in front of <a href="https://mc-map.sqweeb.net">https://mc-map.sqweeb.net</a>
-Add another 32g disk to the proxy VM - proxy-02 Format, make file system and mount new disk at /mnt/cache/ Add line to /etc/fstab to mount disk on boot: /dev/vda1 /mnt/cache ext4 defaults 0 2 Add the following snippet to /etc/nginx/snippets/proxy-defaults.conf: proxy_cache_path /mnt/cache levels=1:2 keys_zone=my_cache:10m max_size=20g inactive=60m; Update /etc/nginx/sites-available/mc-map.sqweeb.net to use the cache: server { &hellip; proxy_cache my_cache; proxy_cache_valid 200 302 10m; add_header X-Cache-Status $upstream_cache_status; .
-		
-		<a href="https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/">Read more...</a>
 		
 	</div>
 </article>

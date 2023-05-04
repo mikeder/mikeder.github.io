@@ -51,6 +51,19 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1616464472-vm-restore/">VM Restore</a></h1>
+	<time>23.03.2021 01:54</time>
+	
+	<div class="container">
+		Restoring VM’s after a host SSD gets cooked. When I went to power my homelab server back on, after sitting idle for 8 months while we moved house, it displayed some concerning ata device warnings on boot. After a reboot it failed an automatic run of fsck -a and recommended performing a manual run. The root device /dev/mapper/pve-root was corrupted and after performing several manual filesystem checks the system could no longer boot.
+		
+		<a href="https://mikeder.net/blog/archive/1616464472-vm-restore/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1587229792-ttsh-v4-build-part-1/">TTSH v4 Build Part 1</a></h1>
 	<time>18.04.2020 17:09</time>
 	
@@ -161,17 +174,6 @@ Map: <a href="http://sqweeb.net:4444">http://sqweeb.net:4444</a>
 		Download AWS appliance .ova
 Unpack .ova:
 meder@pve:~$ tar xvf AWS-Appliance-2018-09-26-1537973163.ova AWS-Appliance-2018-09-26-1537973163.ovf AWS-Appliance-2018-09-26-1537973163.mf AWS-Appliance-2018-09-26-1537973163-disk1.vmdk Import .ovf: root@pve:~# qm importovf 110 /home/meder/AWS-Appliance-2018-09-26-1537973163.ovf local-lvm Import VM image .vmdk: root@pve:/# qm importdisk 110 /home/meder/AWS-Appliance-2018-09-26-1537973163-disk1.vmdk local-lvm Using default stripesize 64.00 KiB. Logical volume &quot;vm-110-disk-1&quot; created. (100.00/100%) Change disk1 driver to VirtIO Add additional VirtIO disk2 to allocate to cache. Add network adapter. Adjust memory to fit on your host, minimum recommended is 16GB.
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1539741496-dotfiles/">.dotfiles</a></h1>
-	<time>17.10.2018 01:58</time>
-	
-	<div class="container">
-		sudo apt-get update &amp;&amp; \ sudo apt-get install git -y &amp;&amp; \ git clone <a href="https://github.com/mikeder/.dotfiles.git">https://github.com/mikeder/.dotfiles.git</a> &amp;&amp; \ cd .dotfiles/ &amp;&amp; rm -rf .git/ &amp;&amp; cp -r .[!.]* .. &amp;&amp; \ cd ~
 		
 	</div>
 </article>

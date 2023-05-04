@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJHGWQB579"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LJHGWQB579');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Turtle Time Game Devlog 1</title>
+    
+    <meta name="description" content="A static site built with Hugo!">
+    
+    
+    <meta name="author" content="Mike Eder">
+    
+
+    
+    <link rel="me" href="https://universeodon.com/@sqweebking">
+    
+
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>Turtle Time Game Devlog 1</h1>
+        <h5>26.04.2023 10:16</h5>
+        <div class="container">
+            <p>Turtle Time is my first attempt at game development. I discovered the <a href="https://bevyengine.org/">Bevy Engine</a>, which is written in <a href="">Rust</a>, and wanted to experiment a little and learn something new outside of my usual backend server programming work.</p>
+<ul>
+<li><a href="#template-repo">Template Repo</a></li>
+<li><a href="#initial-gameplay-loop">Initial Gameplay Loop</a></li>
+<li><a href="#adding-multiplayer">Adding Multiplayer</a>
+<ul>
+<li><a href="#converting-single-player-systems-to-multiplayer">Converting single player systems to multiplayer.</a></li>
+<li><a href="#player-movement-systems-need-to-handle-movement-for-all-players">Player movement systems need to handle movement for <strong>ALL</strong> players.</a></li>
+<li><a href="#determinism---what-does-it-mean">Determinism - what does it mean?</a></li>
+<li><a href="#random-spawns-and-how-to-agree-on-their-randomness">Random spawns and how to agree on their randomness.</a></li>
+<li><a href="#ticking-timers-at-a-constant-rate---game-systems-are-fps-dependent">Ticking timers at a constant rate - game systems are FPS dependent.</a></li>
+</ul>
+</li>
+</ul>
+<p>I started with and took inspiration from some of the Bevy tutorials on YouTube:</p>
+<ol>
+<li>Logic Projects <a href="https://youtube.com/playlist?list=PLT_D88-MTFOOh_S9YifHfo6KETvEmRmYh">Bevy 0.6-0.7 Intro Videos</a> series inspired the 2D game idea. ( <a href="https://github.com/mwbryant/rpg-bevy-tutorial">reference repo</a> )</li>
+<li>Logic Projects <a href="https://youtube.com/playlist?list=PLT_D88-MTFOPPl75g4WshL1Gx2bnGTUkz">Bevy Intro Tutorials</a> series inspired a little more in-depth menu options and moving enemies and collision detection. ( <a href="https://github.com/mwbryant/bevy-tower-defense-tutorial">reference repo</a> )</li>
+<li>Johan Helsing&rsquo;s <a href="https://johanhelsing.studio/posts/extreme-bevy">Extreme Bevy</a> blog series, which introduced me to <a href="https://github.com/gschup/bevy_ggrs">bevy_ggrs</a> and <a href="https://github.com/johanhelsing/matchbox/tree/main/matchbox_server">matchbox_server</a> for peer to peer networking and matchmaking in a battle type game. ( <a href="https://github.com/johanhelsing/extreme_bevy/tree/part-1">reference repo</a> )</li>
+<li>Jacques <a href="https://youtube.com/playlist?list=PLVnntJRoP85JHGX7rGDu6LaF3fmDDbqyd">Learn Bevy Engine 0.10 Beginner Tutorial Series</a> which brought me up to speed on more movement, random entity spawns and UI using the more current Bevy <code>0.10</code>. ( <a href="https://github.com/frederickjjoubert/learn-bevy">reference repo</a> )</li>
+<li>NiklasEi&rsquo;s <a href="https://github.com/NiklasEi/bevy_game_template">bevy_game_template</a> repo got me started with a decent framework with which to layer on my components and systems.</li>
+</ol>
+<h2 id="template-repo">Template Repo</h2>
+<p>The <code>bevy_game_template</code> repo is a really nice way to start a new Bevy <code>0.10</code> project. It comes with everything you need to get started on a new game and maybe some extras that you don&rsquo;t need right away but will come in handy later down the line.</p>
+<p>The things I really appreciated were the GitHub actions for building, testing and linting the project as well as the &ldquo;deploy to GitHub pages&rdquo; action that builds a web assembly (WASM) binary and deploys it to the <code>gh-pages</code> branch of your repo. Having a game that can be built and distributed via a website in around 12 minutes is invaluable for testing your work, especially on a multiplayer game that you don&rsquo;t want to force people to download and install for each iterative fix.</p>
+<h2 id="initial-gameplay-loop">Initial Gameplay Loop</h2>
+<p>Initially I started with quite a few concepts from <code>Logic Projects</code> Bevy intro videos for building an RPG type game. I used some of his examples to spawn a 2D arena, spawn a player, a camera to follow that player, movement controls so the player can move around and wall collision checks to keep the player inside the bounds of the basic arena.</p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[265 480 302 253 455 420]" src="initial_concept.png" onclick="openModal(this.id)" alt="initial concept"  />
+</div></p>
+<h2 id="adding-multiplayer">Adding Multiplayer</h2>
+<p>When searching around for Bevy tutorials I discovered an excellent dev blog series by <a href="https://johanhelsing.studio/posts/extreme-bevy">Johan Helsing</a> in which he builds a p2p web game in rust with rollback netcode. This sounded very interesting to me, despite being totally over my head at the time. I wanted to try it out.</p>
+<p>I followed some of his examples in the <a href="https://github.com/johanhelsing/extreme_bevy/tree/part-1">extreme_bevy</a> repo to get started. After a little while I had all the pieces in place, but started running into traps for a newcomer when implementing multiplayer systems.</p>
+<h3 id="converting-single-player-systems-to-multiplayer">Converting single player systems to multiplayer.</h3>
+<p>Most of my initial game was built around a single player - multiplayer games are much different.</p>
+<p>First of all there was the problem of spawning multiple players and keeping track of which one is the &ldquo;local&rdquo; player. You need to know which player should be controlled by the local inputs and have the camera follow that person.</p>
+<p>My initial camera follow system looked like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">camera_follow</span>(
+</span></span><span style="display:flex;"><span>    player_query: <span style="color:#a6e22e">Query</span><span style="color:#f92672">&lt;&amp;</span>Transform, With<span style="color:#f92672">&lt;</span>Player<span style="color:#f92672">&gt;&gt;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">mut</span> camera_query: <span style="color:#a6e22e">Query</span><span style="color:#f92672">&lt;&amp;</span><span style="color:#66d9ef">mut</span> Transform, (Without<span style="color:#f92672">&lt;</span>Player<span style="color:#f92672">&gt;</span>, With<span style="color:#f92672">&lt;</span>Camera2d<span style="color:#f92672">&gt;</span>)<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> player_transform <span style="color:#f92672">=</span> player_query.single();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> camera_transform <span style="color:#f92672">=</span> camera_query.single_mut();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    camera_transform.translation.x <span style="color:#f92672">=</span> player_transform.translation.x;
+</span></span><span style="display:flex;"><span>    camera_transform.translation.y <span style="color:#f92672">=</span> player_transform.translation.y;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>There are several problems to address when adapting this to a multiplayer game. First the <code>player_query.single()</code> line will <code>panic</code> if there is more than one player. Second, we have no way to know which player returned in that query is the local player.</p>
+<p>In order to make this work I needed to add an optional <code>LocalHandle</code> resource to keep track of the local player handle. This can get inserted from 2 systems, either the &ldquo;local&rdquo; play <code>SyncTestSession</code> or in the online &ldquo;lobby system&rdquo; which adds all the peers to a <code>P2PSession</code> once they&rsquo;ve all connected.</p>
+<p>Local Sync Session:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">create_synctest_session</span>(commands: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> Commands, num_players: <span style="color:#66d9ef">usize</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> sess_build <span style="color:#f92672">=</span> SessionBuilder::<span style="color:#f92672">&lt;</span>GGRSConfig<span style="color:#f92672">&gt;</span>::new()
+</span></span><span style="display:flex;"><span>        .with_num_players(num_players)
+</span></span><span style="display:flex;"><span>        .with_max_prediction_window(MAX_PREDICTION)
+</span></span><span style="display:flex;"><span>        .with_fps(FPS)
+</span></span><span style="display:flex;"><span>        .expect(<span style="color:#e6db74">&#34;Invalid FPS&#34;</span>)
+</span></span><span style="display:flex;"><span>        .with_input_delay(INPUT_DELAY)
+</span></span><span style="display:flex;"><span>        .with_check_distance(CHECK_DISTANCE);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> peer_ids <span style="color:#f92672">=</span> Vec::new();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">..</span>num_players {
+</span></span><span style="display:flex;"><span>        sess_build <span style="color:#f92672">=</span> sess_build
+</span></span><span style="display:flex;"><span>            .add_player(PlayerType::Local, i)
+</span></span><span style="display:flex;"><span>            .expect(<span style="color:#e6db74">&#34;Could not add local player&#34;</span>);
+</span></span><span style="display:flex;"><span>        peer_ids.push(PeerId(Uuid::new_v4()))
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> sess <span style="color:#f92672">=</span> sess_build.start_synctest_session().expect(<span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    commands.insert_resource(Session::SyncTestSession(sess));
+</span></span><span style="display:flex;"><span>    commands.insert_resource(LocalHandle(<span style="color:#ae81ff">0</span>)); <span style="color:#75715e">// &lt;-- Set local handle to 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Updated camera follow system can now make use of the <code>LocalHandle</code> resource so the local user is centered on the screen at all times.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">camera_follow</span>(
+</span></span><span style="display:flex;"><span>    player_handle: Option<span style="color:#f92672">&lt;</span>Res<span style="color:#f92672">&lt;</span>LocalHandle<span style="color:#f92672">&gt;&gt;</span>, <span style="color:#75715e">// &lt;-- Use optional LocalHandle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    player_query: <span style="color:#a6e22e">Query</span><span style="color:#f92672">&lt;</span>(<span style="color:#f92672">&amp;</span>Transform, <span style="color:#f92672">&amp;</span>Player), Without<span style="color:#f92672">&lt;</span>Fireball<span style="color:#f92672">&gt;&gt;</span>, <span style="color:#75715e">// &lt;-- Include Player in query results to compare to LocalHandle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">mut</span> camera_query: <span style="color:#a6e22e">Query</span><span style="color:#f92672">&lt;&amp;</span><span style="color:#66d9ef">mut</span> Transform, (Without<span style="color:#f92672">&lt;</span>Player<span style="color:#f92672">&gt;</span>, With<span style="color:#f92672">&lt;</span>Camera<span style="color:#f92672">&gt;</span>)<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> player_handle <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> player_handle {
+</span></span><span style="display:flex;"><span>        Some(handle) <span style="color:#f92672">=&gt;</span> handle.<span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>        None <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">return</span>, <span style="color:#75715e">// Session hasn&#39;t started yet
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (player_transform, player) <span style="color:#66d9ef">in</span> player_query.iter() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> player.handle <span style="color:#f92672">!=</span> player_handle { <span style="color:#75715e">// &lt;-- Ensure we follow the local player
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> pos <span style="color:#f92672">=</span> player_transform.translation;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">mut</span> transform <span style="color:#66d9ef">in</span> camera_query.iter_mut() { <span style="color:#75715e">// &lt;-- There should only be 1 camera anyway
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            transform.translation.x <span style="color:#f92672">=</span> pos.x;
+</span></span><span style="display:flex;"><span>            transform.translation.y <span style="color:#f92672">=</span> pos.y;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="player-movement-systems-need-to-handle-movement-for-__all__-players">Player movement systems need to handle movement for <strong>ALL</strong> players.</h3>
+<p>Similar to the camera follow system, the player movement system needs to handle more than one player. This seems obvious at first, but its very easy to overlook a very simple problem when converting a single player movement system to a multiplayer system.</p>
+<p>Working on the movement system is when something clicked for me; This type of multiplayer game, where only the player inputs are sent over the network, needs to be responsible for simulating ALL of the players in the game, not just the local player.</p>
+<p>Initially, I had a naive movement system that attempted to return early if certain player conditions suggested that no work was to be done:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">move_players</span>(
+</span></span><span style="display:flex;"><span>    inputs: <span style="color:#a6e22e">Res</span><span style="color:#f92672">&lt;</span>PlayerInputs<span style="color:#f92672">&lt;</span>GgrsConfig<span style="color:#f92672">&gt;&gt;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">mut</span> player_query: <span style="color:#a6e22e">Query</span><span style="color:#f92672">&lt;</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> Player, <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> Transform, <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> TextureAtlasSprite)<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>    wall_query: <span style="color:#a6e22e">Query</span><span style="color:#f92672">&lt;&amp;</span>Transform, (With<span style="color:#f92672">&lt;</span>TileCollider<span style="color:#f92672">&gt;</span>, Without<span style="color:#f92672">&lt;</span>Player<span style="color:#f92672">&gt;</span>)<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">mut</span> player, <span style="color:#66d9ef">mut</span> transform, <span style="color:#66d9ef">mut</span> sprite) <span style="color:#66d9ef">in</span> player_query.iter_mut() {
+</span></span><span style="display:flex;"><span>        player.just_moved <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">!</span>player.active {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>; <span style="color:#75715e">// &lt;-- This is problematic, we need to continue instead.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This issue took me longer than I would like to admit to resolve. I reached out to Johan Helsing on his <a href="https://discord.gg/hP39naaq">Discord server</a> and got some great pointers but ultimately it took me staring at this code for a while to realize my mistake - I just needed to <code>continue</code> instead of <code>returning</code>. 🤦</p>
+<h3 id="determinism---what-does-it-mean">Determinism - what does it mean?</h3>
+<p>Building on the &ldquo;aha moment&rdquo; I had in the movement system, I soon realized that the game had to behave <strong>exactly</strong> the same on all clients in order to keep in sync. I had seen people talk about determinism but honestly didn&rsquo;t fully understand it until now.</p>
+<p>The game has to be as close to 100% deterministic as possible in order for all simulated possibilities to end in the same result on all clients.</p>
+<p>What exactly does this mean for a fresh game dev?</p>
+<p>If there is some game entity that can have an affect on a player, a pickup that increases player speed for example, that entity has to spawn at the same time, at the same location and have the same effect on speed on all of the clients.</p>
+<p>This really started to sync-in now that I was spawning random edibles in my game. If a strawberry spawned on 1 screen just a few frames before it spawned on another screen, a player that picked it up would immediately be desynced from their peers.</p>
+<p>
+
+
+
+
+
+
+<div class="md__image">
+    <img id="[409 188 257 76 177 487]" src="edible_spawns.png" onclick="openModal(this.id)" alt="edible spawns"  />
+</div>
+<em>my wife also supplied me with upgraded textures :D</em></p>
+<h3 id="random-spawns-and-how-to-agree-on-their-randomness">Random spawns and how to agree on their randomness.</h3>
+<p>In order to get randomly spawning entities to spawn at the same locations on each client, all clients need to agree on how to randomly place them. I once again took to the Johan Helsing Discord server to ask folks, who are much smarter than myself, how they would approach such a thing. I got a response from <code>ThierryBerger#8164</code> who suggested that each client could send their own part of the seed and the client could combine them all to compute the final seed.</p>
+<p>I came up with a <code>AgreedRandom</code> resource that used the matchbox peer ID&rsquo;s as input to a computed hash that would then be used as the RNG seed.</p>
+<p><code>resources.rs</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">#[derive(Resource)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">AgreedRandom</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> rng: <span style="color:#a6e22e">StdRng</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> AgreedRandom {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(peers: Vec<span style="color:#f92672">&lt;</span>PeerId<span style="color:#f92672">&gt;</span>) -&gt; <span style="color:#a6e22e">AgreedRandom</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> tmp <span style="color:#f92672">=</span> peers.clone();
+</span></span><span style="display:flex;"><span>        tmp.sort();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> seed <span style="color:#f92672">=</span> tmp.iter().fold(String::new(), <span style="color:#f92672">|</span><span style="color:#66d9ef">mut</span> a, b<span style="color:#f92672">|</span> {
+</span></span><span style="display:flex;"><span>            a.reserve(b.<span style="color:#ae81ff">0.</span>to_string().len() <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>            a.push_str(b.<span style="color:#ae81ff">0.</span>to_string().as_str());
+</span></span><span style="display:flex;"><span>            a.push_str(<span style="color:#e6db74">&#34; &#34;</span>);
+</span></span><span style="display:flex;"><span>            a.trim_end().to_string()
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> rng: <span style="color:#a6e22e">StdRng</span> <span style="color:#f92672">=</span> Seeder::from(seed).make_rng();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        AgreedRandom { rng }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>lobby.rs</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">lobby_system</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">mut</span> commands: <span style="color:#a6e22e">Commands</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">mut</span> socket: <span style="color:#a6e22e">ResMut</span><span style="color:#f92672">&lt;</span>MatchboxSocket<span style="color:#f92672">&lt;</span>SingleChannel<span style="color:#f92672">&gt;&gt;</span>,
+</span></span><span style="display:flex;"><span>){ <span style="color:#75715e">// abbreviated for example
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// set final player list
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> players <span style="color:#f92672">=</span> socket.players();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> peers <span style="color:#f92672">=</span> Vec::new();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> p <span style="color:#66d9ef">in</span> players.clone() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">match</span> p {
+</span></span><span style="display:flex;"><span>            PlayerType::Remote(id) <span style="color:#f92672">=&gt;</span> peers.push(id),
+</span></span><span style="display:flex;"><span>            PlayerType::Spectator(id) <span style="color:#f92672">=&gt;</span> peers.push(id),
+</span></span><span style="display:flex;"><span>            PlayerType::Local <span style="color:#f92672">=&gt;</span> (), <span style="color:#75715e">// local player id retrieved below
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// if we made it here we should have a local peer ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">match</span> socket.id() {
+</span></span><span style="display:flex;"><span>        Some(id) <span style="color:#f92672">=&gt;</span> peers.push(id),
+</span></span><span style="display:flex;"><span>        None <span style="color:#f92672">=&gt;</span> (), <span style="color:#75715e">// TODO: something more reliable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    };
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    commands.insert_resource(AgreedRandom::new(peers));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>This could then be used when picking a location on the map to spawn entities. If done with the right timing, this will place entities in a deterministic fashion, on each clients screen.</p>
+<p><code>systems.rs</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">spawn_strawberry_over_time</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">mut</span> commands: <span style="color:#a6e22e">Commands</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">mut</span> agreed_seed: <span style="color:#a6e22e">ResMut</span><span style="color:#f92672">&lt;</span>AgreedRandom<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">mut</span> rip: <span style="color:#a6e22e">ResMut</span><span style="color:#f92672">&lt;</span>RollbackIdProvider<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>    asset_server: <span style="color:#a6e22e">Res</span><span style="color:#f92672">&lt;</span>TextureAssets<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>    timer: <span style="color:#a6e22e">Res</span><span style="color:#f92672">&lt;</span>EdibleSpawnTimer<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>    spawner_query: <span style="color:#a6e22e">Query</span><span style="color:#f92672">&lt;&amp;</span>Transform, With<span style="color:#f92672">&lt;</span>EncounterSpawner<span style="color:#f92672">&gt;&gt;</span>,
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> timer.strawberry_timer.finished() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> spawn_area: Vec<span style="color:#f92672">&lt;&amp;</span>Transform<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> spawner_query.iter().collect();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// pick a random spawn location from spawner transforms
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">let</span> idx <span style="color:#f92672">=</span> agreed_seed.rng.gen_range(<span style="color:#ae81ff">0</span><span style="color:#f92672">..</span>spawn_area.len());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> pos <span style="color:#f92672">=</span> spawn_area[idx];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        commands.spawn((
+</span></span><span style="display:flex;"><span>            Name::new(<span style="color:#e6db74">&#34;Strawberry&#34;</span>),
+</span></span><span style="display:flex;"><span>            Strawberry {},
+</span></span><span style="display:flex;"><span>            RoundComponent {},
+</span></span><span style="display:flex;"><span>            SpriteBundle {
+</span></span><span style="display:flex;"><span>                transform: <span style="color:#a6e22e">Transform</span>::from_xyz(pos.translation.x, pos.translation.y, <span style="color:#ae81ff">1.0</span>),
+</span></span><span style="display:flex;"><span>                texture: <span style="color:#a6e22e">asset_server</span>.texture_strawberry.clone(),
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">..</span>Default::default()
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            rip.next(),
+</span></span><span style="display:flex;"><span>        ));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Johan noted that using matchbox peer ID&rsquo;s works well enough, but there are probably better ways to do this if you need to debug the resulting RNG. For my use, I really only needed to confirm that the concatenated peer ID string going into the seeder, was always in the same order.</p>
+<h3 id="ticking-timers-at-a-constant-rate---game-systems-are-fps-dependent">Ticking timers at a constant rate - game systems are FPS dependent.</h3>
+<p>There are timers involved in when to spawn and despawn entities. For a multiplayer game that relies on consistent and exact simulations to occur on each players computer, you have to start, stop and increment these timers in a deterministic way.</p>
+<p>At first I was focused on <em>when</em> to place the <code>EdibleSpawnTimer</code> resource into the world. I figured if I could start the timer at the same instant on all clients, perhaps the edibles would spawn in sync and therefore players would behave consistently.</p>
+<p>The problem wasn&rsquo;t when to spawn and start the timer though, it was when and how to tick the timers. I was ticking them using the Bevy provided <code>Time</code> resource and passing a <code>time.delta()</code> to my tickers. The problem with this approach is twofold:</p>
+<ol>
+<li>The time between each frame returned from <code>time.delta(0)</code> is dependant on frame rate.</li>
+<li>The system doing the ticking can be run at different times on each client.</li>
+</ol>
+<p>This meant that each client would almost instantly become out of sync no matter when spawn or start ticking the timers.</p>
+<p>The solution, again suggested by Johan - tick the timers using a fixed duration, as part of the <code>GGRSSchedule</code> rollback system and register the timer as a rollback resource. Which looked like this:</p>
+<p><code>main.rs</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> app <span style="color:#f92672">=</span> App::new();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    GGRSPlugin::<span style="color:#f92672">&lt;</span>GGRSConfig<span style="color:#f92672">&gt;</span>::new()
+</span></span><span style="display:flex;"><span>        .with_update_frequency(FPS)
+</span></span><span style="display:flex;"><span>        .with_input_system(input)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .register_rollback_resource::<span style="color:#f92672">&lt;</span>EdibleSpawnTimer<span style="color:#f92672">&gt;</span>()
+</span></span><span style="display:flex;"><span>        .build(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> app);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>resources.rs</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">#[derive(Resource, Reflect)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[reflect(Resource)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">EdibleSpawnTimer</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> chili_pepper_timer: <span style="color:#a6e22e">Timer</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> strawberry_timer: <span style="color:#a6e22e">Timer</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> lettuce_timer: <span style="color:#a6e22e">Timer</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>systems.rs</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">tick_edible_timer</span>(<span style="color:#66d9ef">mut</span> edible_spawn_timer: <span style="color:#a6e22e">ResMut</span><span style="color:#f92672">&lt;</span>EdibleSpawnTimer<span style="color:#f92672">&gt;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// use fixed duration tick delta to keep in sync with GGRSSchedule
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> fixed_tick <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1000</span> <span style="color:#f92672">/</span> FPS) <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u64</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    edible_spawn_timer
+</span></span><span style="display:flex;"><span>        .chili_pepper_timer
+</span></span><span style="display:flex;"><span>        .tick(Duration::from_millis(fixed_tick));
+</span></span><span style="display:flex;"><span>    edible_spawn_timer
+</span></span><span style="display:flex;"><span>        .strawberry_timer
+</span></span><span style="display:flex;"><span>        .tick(Duration::from_millis(fixed_tick));
+</span></span><span style="display:flex;"><span>    edible_spawn_timer
+</span></span><span style="display:flex;"><span>        .lettuce_timer
+</span></span><span style="display:flex;"><span>        .tick(Duration::from_millis(fixed_tick));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>With the timers ticking at the same, fixed duration, all players could now see edibles spawning in at the exact (or very close to it) instant. I could debug the timer and see it ticking at the same intervals by eye but haven&rsquo;t attempted to check it programmatically. In a future update I will be adding a debug console to check network stats and world checksums to help confirm things are staying in sync.</p>
+<p>I think this post is getting kind of long now, so I will save the following topics for the next post:</p>
+<ul>
+<li>Tearing down peer-to-peer sessions without panic.</li>
+<li>Multiple game state states, how to control flow and run conditions.</li>
+<li>Despawning SyncTestSession rollback components.</li>
+</ul>
+
+        </div>
+        
+        <div>
+            Tags:
+            
+            <a href=/tags/gamedev>gamedev</a>
+            
+            <a href=/tags/programming>programming</a>
+            
+            <a href=/tags/rust>rust</a>
+            
+            <a href=/tags/bevy>bevy</a>
+            
+            <a href=/tags/networking>networking</a>
+            
+        </div>
+         
+        <br>
+        <div>
+            <a href="javascript:history.back()">
+                &lt;&lt; Back</a>
+                    <a href="#top">Top ^^</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()"
+            style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:ef39b33</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" rel="me" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-mastodon" style="font-size: 24px" href="https://universeodon.com/@sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>

@@ -51,6 +51,20 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1464569592-mounting-linux-raid-arrays-at-boot/">Mounting Linux Raid Arrays At Boot</a></h1>
+	<time>30.05.2016 00:53</time>
+	
+	<div class="container">
+		I have been having issues on reboot ever since I put together this newest server. I have 2 new Linux raid arrays (/dev/md0 and /dev/md1) both in a raid 1 consisting of 2 disks each:
+lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT fd0 2:0 1 4K 0 disk sda 8:0 0 111.8G 0 disk ├─sda1 8:1 0 1007K 0 part ├─sda2 8:2 0 127M 0 part └─sda3 8:3 0 111.
+		
+		<a href="https://mikeder.net/blog/archive/1464569592-mounting-linux-raid-arrays-at-boot/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1454955404-current-seds-mod-list/">Current SEDS Mod List</a></h1>
 	<time>08.02.2016 18:16</time>
 	
@@ -167,20 +181,6 @@ UnicodeEncodeError: 'utf-8' codec can't encode character '\udce2' in position 29
 		Taking another look streaming internet radio along with more robust firewall and DNS control. I found a real nice Open Source radio backend called Airtime that re-kindled the idea of running an internet radio stream. Getting Airtime installed took a few tries, eventually I decided to just use their easy-install script. One thing to note is that the server locale needs to be set to US-UTF8 before postgresql is installed, otherwise the airtime installer will complain that the database was made with the wrong format and will error out.
 		
 		<a href="https://mikeder.net/blog/archive/1431626827-airtime-icecast-and-pfsense/">Read more...</a>
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1431151502-adding-storage-to-prox-ve01/">Adding storage to prox-ve01</a></h1>
-	<time>09.05.2015 06:05</time>
-	
-	<div class="container">
-		I initially installed 4 HDD’s in the prox-ve01 server that were a mix of old hard drives from other computers that were still good but not being used.
-250GB Seagate (Root filesystem “/”) 300GB Seagate (Unmounted) 500GB WD (Unmounted - pulled from blackarmor “Downloads”) 500GB WD (Unmounted - pulled from blackarmor “Storage”) I’m in the process of saving anything I may need off the 2 500GB drives and converting them to local storage for proxmox vm’s and containers.
-		
-		<a href="https://mikeder.net/blog/archive/1431151502-adding-storage-to-prox-ve01/">Read more...</a>
 		
 	</div>
 </article>

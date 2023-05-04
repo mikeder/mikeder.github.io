@@ -51,6 +51,20 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/">Minecraft Server Tweaks</a></h1>
+	<time>23.11.2016 20:29</time>
+	
+	<div class="container">
+		Cache Proxy in front of <a href="https://mc-map.sqweeb.net">https://mc-map.sqweeb.net</a>
+Add another 32g disk to the proxy VM - proxy-02 Format, make file system and mount new disk at /mnt/cache/ Add line to /etc/fstab to mount disk on boot: /dev/vda1 /mnt/cache ext4 defaults 0 2 Add the following snippet to /etc/nginx/snippets/proxy-defaults.conf: proxy_cache_path /mnt/cache levels=1:2 keys_zone=my_cache:10m max_size=20g inactive=60m; Update /etc/nginx/sites-available/mc-map.sqweeb.net to use the cache: server { &hellip; proxy_cache my_cache; proxy_cache_valid 200 302 10m; add_header X-Cache-Status $upstream_cache_status; .
+		
+		<a href="https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1479507653-minecraft-server/">Minecraft Server Info</a></h1>
 	<time>18.11.2016 22:20</time>
 	
@@ -170,20 +184,6 @@ Find specific folder w/ large number of inodes:
 	
 	<div class="container">
 		Immediately start backups on /etc/pve/lxc (DONE) Do some other things..
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1464569592-mounting-linux-raid-arrays-at-boot/">Mounting Linux Raid Arrays At Boot</a></h1>
-	<time>30.05.2016 00:53</time>
-	
-	<div class="container">
-		I have been having issues on reboot ever since I put together this newest server. I have 2 new Linux raid arrays (/dev/md0 and /dev/md1) both in a raid 1 consisting of 2 disks each:
-lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT fd0 2:0 1 4K 0 disk sda 8:0 0 111.8G 0 disk ├─sda1 8:1 0 1007K 0 part ├─sda2 8:2 0 127M 0 part └─sda3 8:3 0 111.
-		
-		<a href="https://mikeder.net/blog/archive/1464569592-mounting-linux-raid-arrays-at-boot/">Read more...</a>
 		
 	</div>
 </article>
