@@ -177,7 +177,7 @@ This really started to sync-in now that I was spawning random edibles in my game
 
 In order to get randomly spawning entities to spawn at the same locations on each client, all clients need to agree on how to randomly place them. I once again took to the Johan Helsing Discord server to ask folks, who are much smarter than myself, how they would approach such a thing. I got a response from `ThierryBerger#8164` who suggested that each client could send their own part of the seed and the client could combine them all to compute the final seed. 
 
-I came up with a `AgreedRandom` resource that used the matchbox peer ID's as input to a computed hash that would then be used as the RNG seed.
+I came up with an `AgreedRandom` resource, which used the matchbox peer ID's as input to a computed hash, that would then be used as the RNG seed.
 
 `resources.rs`
 ```rust
