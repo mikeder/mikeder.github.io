@@ -2,7 +2,8 @@
 title: Mounting Linux Raid Arrays At Boot
 date: 2016-05-30 00:53:12
 updated: 2016-05-29 21:21:49
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 

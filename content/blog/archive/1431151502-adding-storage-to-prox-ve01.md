@@ -2,7 +2,8 @@
 title: Adding storage to prox-ve01
 date: 2015-05-09 06:05:02
 updated: 2015-05-09 02:23:52
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 

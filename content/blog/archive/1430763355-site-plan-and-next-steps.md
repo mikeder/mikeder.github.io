@@ -2,7 +2,8 @@
 title: Site plan and next steps
 date: 2015-05-04 18:15:55
 updated: 2015-05-09 02:19:27
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 

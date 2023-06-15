@@ -2,7 +2,8 @@
 title: Ditching pfSense for a simpler approach
 date: 2015-05-22 17:31:33
 updated: 2015-05-27 11:07:57
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 

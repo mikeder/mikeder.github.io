@@ -2,7 +2,8 @@
 title: Minecraft Server Tweaks
 date: 2016-11-23 20:29:57
 updated: 2016-11-23 16:05:01
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 

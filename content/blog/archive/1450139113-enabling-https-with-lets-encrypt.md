@@ -2,7 +2,8 @@
 title: Enabling HTTPS with Lets Encrypt
 date: 2015-12-15 00:25:13
 updated: 2016-02-11 07:10:19
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 
@@ -10,14 +11,14 @@ draft: false
 
 First I cloned the [Lets Encrypt GitHub](https://github.com/letsencrypt/letsencrypt) repo to my NGINX proxy box and then generate a certificate chain for each of my sub-domain's.
 
-<pre class='prettyprint'>
+```bash
 root@proxy-01:~# git clone https://github.com/letsencrypt/letsencrypt
 root@proxy-01:~# cd letsencrypt/
 ./letsencrypt-auto certonly --standalone -d sqweeb.net -d git.sqweeb.net -d subsonic.sqweeb.net -d wekan.sqweeb.net -d cherry.sqweeb.net -d www.sqweeb.net
 ```
 
 This gave me an error that port 80 was already in use:
-<pre class='prettyprint'>
+```bash
 The program nginx (process ID 4510) is already listening on TCP port x
    x 80. This will prevent us from binding to that port. Please stop the  x
    x nginx program temporarily and then try again.
@@ -26,19 +27,19 @@ The program nginx (process ID 4510) is already listening on TCP port x
 It is required to stop the web server or in this case, proxy, to get around this error: 
 
 (note: this may not be necessary in the future once the NGINX installer is finished as I don't think it is necessary for the Apache installer)
-<pre class='prettyprint'>
+```bash
 root@proxy-01:~/letsencrypt# service nginx stop
 Stopping nginx: nginx.
 ```
 
 Rerun the letsencrypt script:
-<pre class='prettyprint'>
+```bash
 ./letsencrypt-auto certonly --standalone -d sqweeb.net -d git.sqweeb.net -d subsonic.sqweeb.net -d wekan.sqweeb.net -d cherry.sqweeb.net -d www.sqweeb.net
 ```
 
 This will put the certificate chain in /etc/letsencrypt/live/sqweeb.net ready to be used by NGINX. From here it is just a matter of swapping out the self signed certificate I was using for this newly generated cert.
 
-<pre class='prettyprint'>
+```bash
 #/etc/nginx/sites-available/sqweebnet
 
 ## SSL server settings
@@ -55,7 +56,7 @@ ssl_prefer_server_ciphers on;
 
 I also enabled a HTTP -> HTTPS redirect so all of the requests to upstream servers handled by this proxy would now be using SSL, instead of a select few that require it.
 
-<pre class='prettyprint'>
+```bash
 #/etc/nginx/sites-available/sqweebnet
 
 # HTTP -> HTTPS Redirect

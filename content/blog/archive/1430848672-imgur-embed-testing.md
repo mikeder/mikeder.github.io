@@ -2,7 +2,8 @@
 title: Imgur embed testing
 date: 2015-05-05 17:57:52
 updated: 2015-05-05 15:13:07
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 

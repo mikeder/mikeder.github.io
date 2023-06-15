@@ -2,7 +2,8 @@
 title: Minecraft Again
 date: 2019-12-11 03:42:50
 updated: 2020-06-24 13:09:39
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 

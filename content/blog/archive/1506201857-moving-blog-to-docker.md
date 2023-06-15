@@ -2,7 +2,8 @@
 title: Moving blog database
 date: 2017-09-23 21:24:17
 updated: 2017-09-23 17:41:49
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 

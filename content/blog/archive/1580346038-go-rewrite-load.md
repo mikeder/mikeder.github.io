@@ -2,7 +2,8 @@
 title: Go Rewrite - Load
 date: 2020-01-30 01:00:38
 updated: 2020-01-29 22:16:55
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 

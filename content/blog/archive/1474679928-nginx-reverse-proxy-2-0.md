@@ -2,7 +2,8 @@
 title: NGINX Reverse Proxy 2.0
 date: 2016-09-24 01:18:48
 updated: 2016-09-24 22:45:58
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 
@@ -187,7 +188,7 @@ sqweebking@proxy-02:~$ sudo service nginx reload
 ```
 
 
-[NGINX Reverse Proxy 1.0](https://sqweeb.net/entry/enabling-https-with-lets-encrypt)
+[NGINX Reverse Proxy 1.0](/blog/archive/1450139113-enabling-https-with-lets-encrypt/)
 
 
 [1]: https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04 "NGINX and Lets Encrypt"

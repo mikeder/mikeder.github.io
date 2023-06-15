@@ -2,7 +2,8 @@
 title: Splunk Light Install
 date: 2016-07-14 11:50:10
 updated: 2016-07-14 07:50:10
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 

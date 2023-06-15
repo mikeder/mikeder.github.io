@@ -10,7 +10,7 @@
         <div>
             Tags:
             {{ range . }}
-            <a href={{ "/tags/" | relLangURL }}{{- . | urlize -}}>{{ . }}</a>
+            <a href={{ "/tags/" | relLangURL }}{{- . | urlize -}}>{{ . }}</a> |
             {{ end }}
         </div>
         {{ end }} {{ with .Site.DisqusShortname }}

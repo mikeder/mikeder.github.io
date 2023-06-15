@@ -2,7 +2,8 @@
 title: Adding logging to CherryMusic service
 date: 2015-05-21 15:04:26
 updated: 2015-05-30 08:18:54
-categories: ["Archive"]
+tags:
+- archive
 draft: false
 ---
 
