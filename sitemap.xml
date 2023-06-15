@@ -9,7 +9,7 @@
     <lastmod>2023-05-04T09:36:30-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/tags/gamedev/</loc>
     <lastmod>2023-05-04T09:36:30-04:00</lastmod>
@@ -24,7 +24,7 @@
     <lastmod>2023-05-04T09:36:30-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/tags/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/turtletime-devlog-1/</loc>
     <lastmod>2023-05-04T09:36:30-04:00</lastmod>
@@ -129,10 +129,16 @@
     <lastmod>2022-11-05T13:21:38-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/tags/archive/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/categories/archive/</loc>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/categories/</loc>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1616464472-vm-restore/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/synthesizers/roland/jx10/</loc>
     <lastmod>2022-10-24T22:05:41-04:00</lastmod>
@@ -165,143 +171,141 @@
     <lastmod>2022-06-14T22:11:21-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1587229792-ttsh-v4-build-part-1/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1586737241-chicken-tamer/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1584392748-minecraft-status/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1582767092-mobile-test-post/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1582337266-go-rewrite-upgrayedd-s/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1580346038-go-rewrite-load/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1580267021-go-rewrite/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1576035770-minecraft-again/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/about/resume/</loc>
     <lastmod>2022-06-14T22:11:21-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1539912236-proxmox-storage-gateway/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1539741496-dotfiles/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1535507378-more-better-database-migration/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1531445851-photo-sorting/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1517540169-edgerouter-dnsmasq-setup/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1508342029-unfunk-vbox-guest-additions/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1508292541-patching-krack-wpa2-vuln-on-unifi-ap-ac-lite/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1507860924-debian-9-stretch-laptop-setup/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1506201857-moving-blog-to-docker/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1499884703-docker-shit/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1479507653-minecraft-server/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1476280837-installing-cabot-on-debian-8/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1474679928-nginx-reverse-proxy-2-0/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1474654243-installing-turtl-on-debian-8/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1472578134-troubleshooting-large-iowait-spikes/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1472570020-rust-server-info/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1468841522-finding-the-source-of-excessive-inode-usage/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1468497010-splunk-light-install/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1464570052-proxmox-backup-plan/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1464569592-mounting-linux-raid-arrays-at-boot/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1454955404-current-seds-mod-list/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1450139113-enabling-https-with-lets-encrypt/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1443875285-test-post-please-ignore/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1435495427-reverse-proxy-replacing-squid3-w-nginx/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1434296001-basic-cherrymusic-app/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1432980910-fixing-cherrymusic-filename-decoding-errors/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1432315893-ditching-pfsense-for-a-simpler-approach/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1432220666-adding-logging-to-cherrymusic-service/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1431626827-airtime-icecast-and-pfsense/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1431151502-adding-storage-to-prox-ve01/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1431015954-selling-the-old-dell-servers/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1430848672-imgur-embed-testing/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1430848205-youtube-embed-testing/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1430763355-site-plan-and-next-steps/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/archive/1430650459-customized-tornado-blog/</loc>
-    <lastmod>2023-06-15T16:18:25-04:00</lastmod>
-  </url><url>
-    <loc>https://mikeder.net/categories/</loc>
+    <lastmod>2023-06-15T16:20:27-04:00</lastmod>
   </url>
 </urlset>
