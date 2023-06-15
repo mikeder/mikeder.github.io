@@ -46,8 +46,102 @@
         <h5>28.06.2015 12:43</h5>
         <div class="container">
             <p>When I was using the squid3 package in pfSense it came configured ready to use SSL and you could just import your cert&rsquo;s or let it generate one for you and it just worked. Then I decided to swap out pfSense for a basic squid3 proxy, which at first was great. Configuration was super simple and I had it up and running in a matter of minutes, for most of my backend anyway. I quickly realized that squid3 did not come compiled with SSL support and this meant I couldn&rsquo;t proxy to servers running on HTTPS (airtime, proxmox, etc). No problem, there is plenty of documentation out there on how to recompile with SSL support and where to put certs and all that. Problem was, I couldn&rsquo;t for the life of me get it to work. I would compile and recompile and squid would never end up with SSL support.</p>
-<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@proxy:~# squid3 -v | grep ssl                                                          
+</span></span><span style="display:flex;"><span>root@proxy:~# 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Nothing?!</span>
+</span></span></code></pre></div><p>So I set out to find another option, I knew that nginx could perform reverse proxy functions but at first look it looked more complicated than squid. Having another look it didn&rsquo;t seem so bad, and I was bored at work tonight, so I figured I&rsquo;d give it a shot. I set up a fresh Debian 7 container and went through the normal procedure of setting up DHCP, reserving the address on the router and updating packages. I roughly followed <!-- raw HTML omitted -->this tutorial<!-- raw HTML omitted --> to get nginx installed and a new SSL cert in place.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@proxy:~# apt-get install nginx
+</span></span><span style="display:flex;"><span>root@proxy:~# cd /etc/nginx
+</span></span><span style="display:flex;"><span>root@proxy:~# sudo openssl req -x509 -nodes -days <span style="color:#ae81ff">365</span> -newkey rsa:2048 -keyout /etc/nginx/cert.key -out /etc/nginx/cert.crt
+</span></span></code></pre></div><p>Once nginx was installed it was just a matter of creating a new site file in /etc/nginx/sites-availalable with my configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># /etc/nginx/sites-available/sqweebnet</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Reverse proxy settings</span>
+</span></span><span style="display:flex;"><span>proxy_redirect off;
+</span></span><span style="display:flex;"><span>proxy_set_header Host $host;
+</span></span><span style="display:flex;"><span>proxy_set_header X-Real-IP $remote_addr;
+</span></span><span style="display:flex;"><span>proxy_set_header X-Forwarded-For $remote_addr;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## List upstream servers ##</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Airtme server</span>
+</span></span><span style="display:flex;"><span>upstream airtime <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    server airtime.sqweeb.net:443;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Blog server</span>
+</span></span><span style="display:flex;"><span>upstream blog <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    server blog.sqweeb.net:8888;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># CherryMusic server</span>
+</span></span><span style="display:flex;"><span>upstream cherrym <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    server cherrym.sqweeb.net:8080;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># DHT sensor</span>
+</span></span><span style="display:flex;"><span>upstream dht <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    server dht.sqweeb.net;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># GitLab server</span>
+</span></span><span style="display:flex;"><span>upstream gitlab <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    server git.sqweeb.net;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>                                                                                                                                                                                                                                 <span style="color:#75715e"># Begin server definitions #</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    listen <span style="color:#ae81ff">443</span> ssl;
+</span></span><span style="display:flex;"><span>    server_name airtime.sqweeb.net;
+</span></span><span style="display:flex;"><span>    ssl_certificate /etc/nginx/cert.crt;
+</span></span><span style="display:flex;"><span>    ssl_certificate_key /etc/nginx/cert.key;
+</span></span><span style="display:flex;"><span>    ssl on;
+</span></span><span style="display:flex;"><span>    ssl_session_cache builtin:1000 shared:SSL:10m;
+</span></span><span style="display:flex;"><span>    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+</span></span><span style="display:flex;"><span>    ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
+</span></span><span style="display:flex;"><span>    ssl_prefer_server_ciphers on;
+</span></span><span style="display:flex;"><span>    location / <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        proxy_ssl_session_reuse off;
+</span></span><span style="display:flex;"><span>        proxy_set_header X-Forwarded-Proto $scheme;
+</span></span><span style="display:flex;"><span>        proxy_pass https://airtime;
+</span></span><span style="display:flex;"><span>        proxy_read_timeout 90;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    listen 80;
+</span></span><span style="display:flex;"><span>    server_name www.sqweeb.net;
+</span></span><span style="display:flex;"><span>    location / <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        proxy_pass http://blog;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    listen 80;
+</span></span><span style="display:flex;"><span>    server_name git.sqweeb.net;
+</span></span><span style="display:flex;"><span>    location / <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        proxy_pass http://git;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    listen 80;
+</span></span><span style="display:flex;"><span>    server_name cherry.sqweeb.net;
+</span></span><span style="display:flex;"><span>    location / <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        proxy_pass http://cherrym;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    listen 80;
+</span></span><span style="display:flex;"><span>    server_name dht.sqweeb.net;
+</span></span><span style="display:flex;"><span>    location / <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        proxy_pass http://dht;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>            
+</span></span></code></pre></div><p>After the config is in place I just make a symbolic link to the /sites-enabled folder and restart nginx.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@nginx-proxy:~# ln -s /etc/nginx/sites-available/sqweebnet /etc/nginx/sites-enabled/sqweebnet
+</span></span><span style="display:flex;"><span>root@nginx-proxy:~# service nginx restart
+</span></span><span style="display:flex;"><span>Restarting nginx: nginx.
+</span></span></code></pre></div><p>This whole process was fairly painless, and shockingly it worked right off the bat, no troubleshooting required. I&rsquo;m not sure if my config is 100% correct w/ regards to the reverse proxy settings at the top but everything seems to work as expected. Also as a nice side effect, nginx happens to use about 1/2 the memory that squid did, even while serving request through SSL encryption, that and the fact that it worked without any headache what so ever make me wonder why I didn&rsquo;t try this earlier. Now that I can proxy to HTTPS enabled servers I can start using Airtime again, so the <!-- raw HTML omitted -->radio page<!-- raw HTML omitted --> is working again! :D</p>
 
+        </div>
+        
+        <div>
+            Tags:
+            
+            <a href=/tags/archive>archive</a> |
+            
         </div>
          
         <br>
@@ -102,7 +196,7 @@
 
 <footer id="site-footer">
     <p>
-        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:7ba9364</p>
+        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:40ce18b</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

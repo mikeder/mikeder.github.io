@@ -47,8 +47,56 @@
         <div class="container">
             <p><a href="https://letsencrypt.org/">Lets Encrypt</a> has made it super simple to create and install ssl certificates so I decided to finally make the jump to https. They have developed an auto installer client that is already working for Apache but apparently the NGINX installer is still under development. They also give you the option of just generating certs and installing them manually so that&rsquo;s what I opted to do.</p>
 <p>First I cloned the <a href="https://github.com/letsencrypt/letsencrypt">Lets Encrypt GitHub</a> repo to my NGINX proxy box and then generate a certificate chain for each of my sub-domain&rsquo;s.</p>
-<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@proxy-01:~# git clone https://github.com/letsencrypt/letsencrypt
+</span></span><span style="display:flex;"><span>root@proxy-01:~# cd letsencrypt/
+</span></span><span style="display:flex;"><span>./letsencrypt-auto certonly --standalone -d sqweeb.net -d git.sqweeb.net -d subsonic.sqweeb.net -d wekan.sqweeb.net -d cherry.sqweeb.net -d www.sqweeb.net
+</span></span></code></pre></div><p>This gave me an error that port 80 was already in use:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>The program nginx <span style="color:#f92672">(</span>process ID 4510<span style="color:#f92672">)</span> is already listening on TCP port x
+</span></span><span style="display:flex;"><span>   x 80. This will prevent us from binding to that port. Please stop the  x
+</span></span><span style="display:flex;"><span>   x nginx program temporarily and <span style="color:#66d9ef">then</span> try again.
+</span></span></code></pre></div><p>It is required to stop the web server or in this case, proxy, to get around this error:</p>
+<p>(note: this may not be necessary in the future once the NGINX installer is finished as I don&rsquo;t think it is necessary for the Apache installer)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@proxy-01:~/letsencrypt# service nginx stop
+</span></span><span style="display:flex;"><span>Stopping nginx: nginx.
+</span></span></code></pre></div><p>Rerun the letsencrypt script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./letsencrypt-auto certonly --standalone -d sqweeb.net -d git.sqweeb.net -d subsonic.sqweeb.net -d wekan.sqweeb.net -d cherry.sqweeb.net -d www.sqweeb.net
+</span></span></code></pre></div><p>This will put the certificate chain in /etc/letsencrypt/live/sqweeb.net ready to be used by NGINX. From here it is just a matter of swapping out the self signed certificate I was using for this newly generated cert.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#/etc/nginx/sites-available/sqweebnet</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## SSL server settings</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">############################</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ssl on;</span>
+</span></span><span style="display:flex;"><span>ssl_certificate /etc/letsencrypt/live/sqweeb.net/fullchain.pem;
+</span></span><span style="display:flex;"><span>ssl_certificate_key /etc/letsencrypt/live/sqweeb.net/privkey.pem;
+</span></span><span style="display:flex;"><span>ssl_session_cache builtin:1000 shared:SSL:10m;
+</span></span><span style="display:flex;"><span>ssl_protocols TLSv1.1 TLSv1.2;
+</span></span><span style="display:flex;"><span>ssl_ciphers <span style="color:#e6db74">&#39;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK&#39;</span>;
+</span></span><span style="display:flex;"><span>ssl_prefer_server_ciphers on;
+</span></span></code></pre></div><p>I also enabled a HTTP -&gt; HTTPS redirect so all of the requests to upstream servers handled by this proxy would now be using SSL, instead of a select few that require it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#/etc/nginx/sites-available/sqweebnet</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># HTTP -&gt; HTTPS Redirect</span>
+</span></span><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        error_log /var/log/nginx/error.log info;
+</span></span><span style="display:flex;"><span>        listen         80;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">301</span> https://$host$request_uri;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Once all the config changes are made, restart the nginx service:</span>
+</span></span><span style="display:flex;"><span>root@proxy-01:~# service nginx start
+</span></span><span style="display:flex;"><span>Starting nginx: nginx.
+</span></span></code></pre></div><p>Now https is working across all of my subdomains! Only gripe is the subsonic app on my phone doesn&rsquo;t seem to be able to connect to <a href="https://subsonic.sqweeb.net">https://subsonic.sqweeb.net</a> whereas my girlfriends phone can. This may require some updating of OS and/or more digging but I will update this post once its sorted out.</p>
+<p><em>Edit</em>
+I resolved the Subsonic app connection issue on my phone by updating to the latest Android OS. I can now stream over https just as I could before over http.</p>
 
+        </div>
+        
+        <div>
+            Tags:
+            
+            <a href=/tags/archive>archive</a> |
+            
         </div>
          
         <br>
@@ -103,7 +151,7 @@
 
 <footer id="site-footer">
     <p>
-        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:7ba9364</p>
+        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:40ce18b</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

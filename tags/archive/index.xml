@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Archive on mikeder.net</title>
-    <link>https://mikeder.net/categories/archive/</link>
-    <description>Recent content in Archive on mikeder.net</description>
+    <title>archive on mikeder.net</title>
+    <link>https://mikeder.net/tags/archive/</link>
+    <description>Recent content in archive on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Mar 2021 01:54:32 +0000</lastBuildDate><atom:link href="https://mikeder.net/categories/archive/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Mar 2021 01:54:32 +0000</lastBuildDate><atom:link href="https://mikeder.net/tags/archive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VM Restore</title>
       <link>https://mikeder.net/blog/archive/1616464472-vm-restore/</link>
