@@ -2,6 +2,8 @@
 title: Replacing squid3 w/ nginx
 date: 2015-06-28 12:43:47
 updated: 2015-06-29 08:02:12
+categories:
+- archive
 tags:
 - archive
 draft: false

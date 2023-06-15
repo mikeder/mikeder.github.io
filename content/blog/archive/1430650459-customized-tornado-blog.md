@@ -2,6 +2,8 @@
 title: Customized Tornado Blog
 date: 2015-05-03 10:54:19
 updated: 2015-05-09 02:19:56
+categories:
+- archive
 tags:
 - archive
 draft: false

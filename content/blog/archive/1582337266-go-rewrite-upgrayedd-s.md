@@ -2,6 +2,8 @@
 title: Go Rewrite - UPGRAYEDD's
 date: 2020-02-22 02:07:46
 updated: 2020-02-27 00:30:24
+categories:
+- archive
 tags:
 - archive
 draft: false

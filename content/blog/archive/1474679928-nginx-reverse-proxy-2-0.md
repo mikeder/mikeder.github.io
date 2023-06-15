@@ -2,6 +2,8 @@
 title: NGINX Reverse Proxy 2.0
 date: 2016-09-24 01:18:48
 updated: 2016-09-24 22:45:58
+categories:
+- archive
 tags:
 - archive
 draft: false

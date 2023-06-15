@@ -2,6 +2,8 @@
 title: Fixing CherryMusic filename decoding errors
 date: 2015-05-30 10:15:10
 updated: 2015-06-01 15:46:25
+categories:
+- archive
 tags:
 - archive
 draft: false

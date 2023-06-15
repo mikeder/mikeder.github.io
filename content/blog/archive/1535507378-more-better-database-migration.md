@@ -2,6 +2,8 @@
 title: More advanced database migration
 date: 2018-08-29 01:49:38
 updated: 2020-05-05 16:37:37
+categories:
+- archive
 tags:
 - archive
 draft: false

@@ -2,6 +2,8 @@
 title: Patching KRACK WPA2 Vuln. on UniFi AP-AC-Lite
 date: 2017-10-18 02:09:01
 updated: 2017-10-17 22:41:48
+categories:
+- archive
 tags:
 - archive
 draft: false

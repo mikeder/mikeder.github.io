@@ -2,6 +2,8 @@
 title: Finding the source of excessive inode usage
 date: 2016-07-18 11:32:02
 updated: 2016-11-23 10:10:57
+categories:
+- archive
 tags:
 - archive
 draft: false

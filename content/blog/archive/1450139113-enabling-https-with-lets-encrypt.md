@@ -2,6 +2,8 @@
 title: Enabling HTTPS with Lets Encrypt
 date: 2015-12-15 00:25:13
 updated: 2016-02-11 07:10:19
+categories:
+- archive
 tags:
 - archive
 draft: false
