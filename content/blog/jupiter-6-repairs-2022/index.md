@@ -3,9 +3,9 @@ title: "Jupiter 6 Repairs 2022"
 date: 2022-11-09T19:48:40-05:00
 draft: false
 tags:
-- Vintage
-- Synthesizer
-- Repair
+- vintage
+- synthesizer
+- repair
 ---
 
 I've begun to address the [issues](/blog/jupiter-6-issues-2022) with my Jupiter 6 so I figured I'd start a new post specific to this repair attempt.

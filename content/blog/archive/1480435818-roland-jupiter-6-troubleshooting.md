@@ -6,6 +6,9 @@ categories:
 - archive
 tags:
 - archive
+- vintage
+- synthesizer
+- repair
 draft: false
 ---
 
