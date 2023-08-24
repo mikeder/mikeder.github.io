@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vintage on mikeder.net</title>
+    <title>vintage on mikeder.net</title>
     <link>https://mikeder.net/tags/vintage/</link>
-    <description>Recent content in Vintage on mikeder.net</description>
+    <description>Recent content in vintage on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 09 Nov 2022 19:48:40 -0500</lastBuildDate><atom:link href="https://mikeder.net/tags/vintage/index.xml" rel="self" type="application/rss+xml" />
@@ -38,6 +38,18 @@ After owning the synth for a while, I discovered that the PWM control was non-fu
 Opened it up, reseated all connectors around main boards and problem went away.
 Will revist at another time, if its working, its working.
 Update October 23, 2022 The JP-6 was acting up again tonight. At this point I think I&amp;rsquo;ll contact BellToneSynthWorks in Philadelphia, PA to see if they can help. Before I do that I want to collect my notes on previous attempts to address the issues that have been plaguing this synth since I bought it.</description>
+    </item>
+    
+    <item>
+      <title>Roland Jupiter 6 Troubleshooting</title>
+      <link>https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/</link>
+      <pubDate>Tue, 29 Nov 2016 16:10:18 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/</guid>
+      <description>CPU acting very erratic, front panel sometimes doesn&amp;rsquo;t boot, other times will go completly haywire (See Video) Initially thought PSU ripple due to age of caps and reported behavior of CPU when the PSU isn&amp;rsquo;t clean.
+Confirmed PSU ripple not the cause, after confirming correct scope settings on FB group.
+Started suspecting CPU itself was bad, asked around for replacements, as well as eprom.
+Europa is &amp;ldquo;taking a hiatus&amp;rdquo; as of 11/18/16, no good</description>
     </item>
     
   </channel>
