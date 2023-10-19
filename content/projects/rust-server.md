@@ -13,8 +13,8 @@ Wipe Schedule: Monthly, every 3rd Thursday
 
 ## Wipe Stats
 
-| #   | Start    | End      | Unique Players | Map Info                                |
-| --- | -------- | -------- | -------------- | --------------------------------------- |
-| 1   | 9/21/23  | 10/19/23 | 49             | https://rustmaps.com/map/4250_66972398  |
-| 2   | 10/19/23 | TBD      |                | https://rustmaps.com/map/3000_550627922 |
-| 3   |          |          |                |                                         |
+| #   | Start    | End      | Unique Players | Map Info                                 |
+| --- | -------- | -------- | -------------- | ---------------------------------------- |
+| 1   | 9/21/23  | 10/19/23 | 49             | https://rustmaps.com/map/4250_66972398   |
+| 2   | 10/19/23 | TBD      |                | https://rustmaps.com/map/3500_1393213226 |
+| 3   |          |          |                |                                          |
