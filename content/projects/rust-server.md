@@ -4,9 +4,11 @@ date: 2023-10-19T11:51:30-04:00
 draft: false
 ---
 
-Self hosting a Rust dedicated server to learn and screw around on. Map wipe schedule may change depending on server performance and force wipe schedule, blueprints will not wipe unless forced by Facepunch.
+Self hosting a Rust dedicated server to learn and screw around on. 
+Map wipe schedule may change depending on server performance and force wipe schedule, blueprints will not wipe unless forced by Facepunch.
 
 Name: [tS] Iron Oxide - US | Low Upkeep
+
 Wipe Schedule: Monthly, every 3rd Thursday
 
 ## Wipe Stats
