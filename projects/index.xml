@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 16 Sep 2020 08:32:49 -0400</lastBuildDate><atom:link href="https://mikeder.net/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Rust Server</title>
+      <link>https://mikeder.net/projects/rust-server/</link>
+      <pubDate>Thu, 19 Oct 2023 11:51:30 -0400</pubDate>
+      
+      <guid>https://mikeder.net/projects/rust-server/</guid>
+      <description>Self hosting a Rust dedicated server to learn and screw around on. Map wipe schedule may change depending on server performance and force wipe schedule, blueprints will not wipe unless forced by Facepunch.
+Name: [tS] Iron Oxide - US | Low Upkeep Wipe Schedule: Monthly, every 3rd Thursday
+Wipe Stats # Start End Unique Players Map Info 1 9/21/23 10/19/23 49 https://rustmaps.com/map/4250_66972398 2 10/19/23 TBD https://rustmaps.com/map/3000_550627922 3 </description>
+    </item>
+    
+    <item>
       <title>Turtle Time</title>
       <link>https://mikeder.net/projects/turtletime/</link>
       <pubDate>Thu, 27 Apr 2023 10:25:06 -0400</pubDate>
