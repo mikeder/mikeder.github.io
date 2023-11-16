@@ -1,7 +1,7 @@
 ---
 title: "Apple Photos Export"
 date: 2023-11-10T11:01:23-05:00
-draft: true
+draft: false
 ---
 
 It took me a few attempts to figure out a good way to backup photos from an iPhone and Macbook to a proper format on an external NAS, so I figured I'd write it down.
