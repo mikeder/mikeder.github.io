@@ -51,6 +51,25 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1539912236-proxmox-storage-gateway/">Proxmox - Storage Gateway</a></h1>
+	<time>19.10.2018 01:23</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		Download AWS appliance .ova
+Unpack .ova:
+meder@pve:~$ tar xvf AWS-Appliance-2018-09-26-1537973163.ova AWS-Appliance-2018-09-26-1537973163.ovf AWS-Appliance-2018-09-26-1537973163.mf AWS-Appliance-2018-09-26-1537973163-disk1.vmdk Import .ovf: root@pve:~# qm importovf 110 /home/meder/AWS-Appliance-2018-09-26-1537973163.ovf local-lvm Import VM image .vmdk: root@pve:/# qm importdisk 110 /home/meder/AWS-Appliance-2018-09-26-1537973163-disk1.vmdk local-lvm Using default stripesize 64.00 KiB. Logical volume &quot;vm-110-disk-1&quot; created. (100.00/100%) Change disk1 driver to VirtIO Add additional VirtIO disk2 to allocate to cache. Add network adapter. Adjust memory to fit on your host, minimum recommended is 16GB.
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1539741496-dotfiles/">.dotfiles</a></h1>
 	<time>17.10.2018 01:58</time>
 	
@@ -209,34 +228,6 @@ First I spun up a new Debian VM, as is tradition, and after updating and upgradi
 	<div class="container">
 		alias docker-nuke=&lsquo;docker kill $(docker ps -q); docker rm $(docker ps -aq); docker rmi -f $(docker images -aq); docker volume prune -f&rsquo;
 deletes and force removes all containers, images, and volumes.
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/">Roland Jupiter 6 Troubleshooting</a></h1>
-	<time>29.11.2016 16:10</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/archive>archive</a>
-	
-	<a href=/tags/vintage>vintage</a>
-	
-	<a href=/tags/synthesizer>synthesizer</a>
-	
-	<a href=/tags/repair>repair</a>
-	
-	
-	<div class="container">
-		CPU acting very erratic, front panel sometimes doesn’t boot, other times will go completly haywire (See Video) Initially thought PSU ripple due to age of caps and reported behavior of CPU when the PSU isn’t clean.
-Confirmed PSU ripple not the cause, after confirming correct scope settings on FB group.
-Started suspecting CPU itself was bad, asked around for replacements, as well as eprom.
-Europa is “taking a hiatus” as of 11/18/16, no good
-		
-		<a href="https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/">Read more...</a>
 		
 	</div>
 </article>

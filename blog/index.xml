@@ -6,7 +6,18 @@
     <description>Recent content in Blogs on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Apr 2023 10:16:08 -0400</lastBuildDate><atom:link href="https://mikeder.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Nov 2023 11:01:23 -0500</lastBuildDate><atom:link href="https://mikeder.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apple Photos Export</title>
+      <link>https://mikeder.net/blog/apple-photos-export/</link>
+      <pubDate>Fri, 10 Nov 2023 11:01:23 -0500</pubDate>
+      
+      <guid>https://mikeder.net/blog/apple-photos-export/</guid>
+      <description>It took me a few attempts to figure out a good way to backup photos from an iPhone and Macbook to a proper format on an external NAS, so I figured I&amp;rsquo;d write it down.
+First, import all the photos from your iPhone(s) onto the Macbook. This should put them in your local Photos library, and will probably start tagging them with &amp;ldquo;Memories&amp;rdquo; and location information.
+Once all the photos are imported into the Photos app, go to the &amp;ldquo;Library&amp;rdquo; tab on the left.</description>
+    </item>
+    
     <item>
       <title>Turtle Time Game Devlog 1</title>
       <link>https://mikeder.net/blog/turtletime-devlog-1/</link>

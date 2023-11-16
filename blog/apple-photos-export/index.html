@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TTSH v4 Build Part 1</title>
+    <title>Apple Photos Export</title>
     
     <meta name="description" content="A static site built with Hugo!">
     
@@ -42,14 +42,25 @@
 </header> 
 <main id="content" class="content">
     <article class="content-chunk">
-        <h1>TTSH v4 Build Part 1</h1>
-        <h5>18.04.2020 17:09</h5>
+        <h1>Apple Photos Export</h1>
+        <h5>10.11.2023 11:01</h5>
         <div class="container">
-            <p>The TTSH (TwoThousandSixHundred) v4 is the latest incarnation of a DIY clone of the now infamous ARP 2600 synthesizer from the early 1970&rsquo;s. The TTSH project was originally started by <a href="http://thehumancomparator.net">The Human Comparator</a> in 2013, it has gone through many revisions and bug fixes to the main PCB since then. Originally launched it was sold as &ldquo;The Kit&rdquo; that came with the powder coated and screen printed front panel, main PCB and 3 VCO PCB&rsquo;s for <!-- raw HTML omitted -->$620<!-- raw HTML omitted --> USD. You were still responsible for sourcing the rest of the BOM (bill of materials), the &ldquo;rare parts kit&rdquo; from Thonk.de or eBay and building a case for it all to fit into once done. This was a bar of entry a bit too high for me at the time and I withheld my order in hopes of a more complete kit in the future.</p>
-<p>This latest version - v4 (rev. 8 main board) included a number of bug fixes and was made available as a complete kit by <a href="https://synthcube.com/cart/ttsh-v4">SynthCube</a> on June 4th 2019.</p>
-<p>I made a deal with my wife that night; I&rsquo;d buy 2 of the full kits, and once completed, I&rsquo;d sell one of them to &ldquo;pay back&rdquo; the original up front cost. On June 5th 2019 I pre-ordered 2 of the full kits, with all of the available upgrades ( all PCB&rsquo;s, components, metal cases, slider caps, gate booster mods, midi implants ) for a total of <code>$3,791.23</code>. SynthCube were also selling assembled and tested units for <code>$3499</code>, so I figured I would have no problem selling a modded/upgraded unit for at least as much and make most if not all of my money back.</p>
-<p>Then started the waiting game, this was a &ldquo;pre-order&rdquo; after all, SynthCube gave somewhat regular updates on the progress of the panels and sourcing all of the parts. It wasn&rsquo;t until October 13 2019 when the kits were shipped, the first shipment only came with the panels, PCB&rsquo;s and parts boxes. The cases, midi implant and slider caps were still owed but I had enough to get started on the builds.</p>
-<p>Build process to be continued&hellip;</p>
+            <p>It took me a few attempts to figure out a good way to backup photos from an iPhone and Macbook to a proper format on an external NAS, so I figured I&rsquo;d write it down.</p>
+<p>First, import all the photos from your iPhone(s) onto the Macbook. This should put them in your local Photos library, and will probably start tagging them with &ldquo;Memories&rdquo; and location information.</p>
+<p>Once all the photos are imported into the Photos app, go to the &ldquo;Library&rdquo; tab on the left. Select all of the photos with Edit -&gt; Select All or (CMD + A). Then export all the photos by going to File -&gt; Export -&gt; Export # Items ( not the unmodified option, this will export in the original HEIC format that is useless outside of a Mac ).</p>
+<p>In the export prompt, select the following options:</p>
+<ul>
+<li>Image Kind: <code>JPEG</code></li>
+<li>Movie Quality: <code>4K</code></li>
+<li>Include:
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Title, Keywords, Caption</li>
+<li><input checked="" disabled="" type="checkbox"> Location Information</li>
+</ul>
+</li>
+<li>File Name: <code>Use File Name</code></li>
+<li>Subfolder Format: <code>Moment Name</code></li>
+</ul>
 <p>
 
 
@@ -58,8 +69,10 @@
 
 
 <div class="md__image">
-    <img id="[127 241 348 353 89 188]" src="https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0001.jpg" onclick="openModal(this.id)" alt="The Start."  />
+    <img id="[38 300 293 403 326 385]" src="export-prompt.png" onclick="openModal(this.id)" alt="prompt"  />
 </div></p>
+<p>I pick a local folder on my desktop for the initial export, to double check the formats and naming convention and then copy it over to the external network storage.</p>
+<p>You can check the progress of the export in the Photos app, next to the zoom slider.</p>
 <p>
 
 
@@ -68,26 +81,9 @@
 
 
 <div class="md__image">
-    <img id="[283 71 372 242 73 316]" src="https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0002.jpg" onclick="openModal(this.id)" alt="Matching Transistors"  />
-</div></p>
-<p>
-
-
-
-
-
-
-<div class="md__image">
-    <img id="[342 226 115 72 207 334]" src="https://assets.sqweeb.net/images/synthesizers/TTSH/TTSHv4_DIY_Synthesizer_Build_2020_0004.jpg" onclick="openModal(this.id)" alt="First round of VCO boards."  />
+    <img id="[385 128 150 157 136 478]" src="progress.png" onclick="openModal(this.id)" alt="progress"  />
 </div></p>
 
-        </div>
-        
-        <div>
-            Tags:
-            
-            <a href=/tags/archive>archive</a>
-            
         </div>
          
         <br>
@@ -142,7 +138,7 @@
 
 <footer id="site-footer">
     <p>
-        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:6cc2fda</p>
+        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:033a89b</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://mikeder.net/blog/apple-photos-export/</loc>
+    <lastmod>2023-11-15T20:57:35-05:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/blog/</loc>
+    <lastmod>2023-11-15T20:57:35-05:00</lastmod>
+  </url><url>
     <loc>https://mikeder.net/projects/rust-server/</loc>
     <lastmod>2023-11-02T15:58:01-04:00</lastmod>
   </url><url>
@@ -10,9 +16,6 @@
   </url><url>
     <loc>https://mikeder.net/tags/bevy/</loc>
     <lastmod>2023-05-04T09:36:30-04:00</lastmod>
-  </url><url>
-    <loc>https://mikeder.net/blog/</loc>
-    <lastmod>2023-08-24T11:30:19-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/tags/gamedev/</loc>
     <lastmod>2023-05-04T09:36:30-04:00</lastmod>
