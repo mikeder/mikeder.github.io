@@ -6,7 +6,7 @@
     <description>Recent content in Projects on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 08:32:49 -0400</lastBuildDate><atom:link href="https://mikeder.net/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Oct 2023 11:51:30 -0400</lastBuildDate><atom:link href="https://mikeder.net/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rust Server</title>
       <link>https://mikeder.net/projects/rust-server/</link>
@@ -48,9 +48,8 @@ Source Code</description>
       <pubDate>Thu, 17 Sep 2020 09:47:49 -0400</pubDate>
       
       <guid>https://mikeder.net/projects/music/</guid>
-      <description>Sometimes I record synthesizer jams and upload them to SoundCloud, YouTube or Bandcamp.
-Juxtaposition by Mike Eder Twosyn by Mike Eder
-Gerp9 by Mike Eder</description>
+      <description>Sometimes I record synthesizer jams and upload them to SoundCloud, YouTube, Bandcamp, or my personal music server Navidrome
+Jamuary 2023 Playlist Bandcamp Albums Juxtaposition by Mike Eder Bandcamp Tracks Twosyn by Mike Eder Gerp9 by Mike Eder </description>
     </item>
     
     <item>

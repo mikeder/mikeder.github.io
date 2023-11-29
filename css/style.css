@@ -50,21 +50,18 @@ pre {
 }
 
 /* On mouse-over, add a deeper shadow */
-
 .card:hover {
     box-shadow: 0 8px 16px 0 lightseagreen;
 }
 
 
 /* On click, add a deeper PINK shadow */
-
 .card:active {
     box-shadow: 0 8px 16px 0 hotpink;
 }
 
 
 /* Add some padding inside the card container */
-
 .container {
     padding: 15px 16px;
     text-align: left;
@@ -104,6 +101,11 @@ pre {
 
 .content-chunk h1 {
     color: lightseagreen;
+}
+
+.content-chunk h2 {
+    color: lightseagreen;
+    text-align: center;
 }
 
 div.center {
