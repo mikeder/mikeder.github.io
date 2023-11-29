@@ -1,3 +1,12 @@
-<iframe style="border: 0; width: auto; height: 450px;"
-src="https://bandcamp.com/EmbeddedPlayer/track={{ .Get "id" }}/size=large/bgcol=333333/linkcol=0f91ff/tracklist=false/transparent=true/"
-seamless><a href="{{ .Get "link" }}">{{ .Get "title" }}</a></iframe><br>
+{{- $id := .Get "id" | default (.Get 0) -}}
+{{- $class := .Get "class" | default "" }}
+{{- $title := .Get "title" | default "Bandcamp Track" }}
+{{- $link := .Get "link" | default "Bandcamp Track" }}
+<div {{ with $class }}class="{{ . }}" {{ end }}>
+    <iframe style="border: 0; width: auto; height: 450px;"
+        src="https://bandcamp.com/EmbeddedPlayer/track={{ $id }}/size=large/bgcol=333333/linkcol=0f91ff/tracklist=false/transparent=true/"
+        seamless>
+        <a href="{{ $link }}">{{ $title }}</a>
+    </iframe>
+    <br>
+</div>

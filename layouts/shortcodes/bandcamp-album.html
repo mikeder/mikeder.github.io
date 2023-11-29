@@ -1,7 +1,11 @@
-<iframe 
-    style="border: 0; width: auto; height: 450px;"
-    src='https://bandcamp.com/EmbeddedPlayer/album={{ .Get "id" }}/size=large/bgcol=333333/linkcol=0f91ff/tracklist=false/transparent=true/'
->
-<a href='{{ .Get "link" }}'>{{ .Get "title" }}</a>
-</iframe>
-<br>
+{{- $id := .Get "id" | default (.Get 0) -}}
+{{- $class := .Get "class" | default "" }}
+{{- $title := .Get "title" | default "Bandcamp Album" }}
+{{- $link := .Get "link" | default "Bandcamp Album" }}
+<div {{ with $class }}class="{{ . }}" {{ end }}>
+    <iframe style="border: 0; width: auto; height: 450px;"
+        src='https://bandcamp.com/EmbeddedPlayer/album={{ $id }}/size=large/bgcol=333333/linkcol=0f91ff/tracklist=false/transparent=true/'>
+        <a href='{{ $link }}'>{{ $title }}</a>
+    </iframe>
+    <br>
+</div>
