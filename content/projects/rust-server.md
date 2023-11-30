@@ -19,4 +19,13 @@ Wipe Schedule: Monthly, every 3rd Thursday
 | --- | -------- | -------- | -------------- | ---------------------------------------- |
 | 1   | 9/21/23  | 10/19/23 | 49             | https://rustmaps.com/map/4250_66972398   |
 | 2   | 10/19/23 | 11/02/23 | 50             | https://rustmaps.com/map/3500_1393213226 |
-| 3   | 11/02/23 | TBD      |                | https://rustmaps.com/map/3700_325381121  |
+| 3   | 11/02/23 | 11/30/23 | 132            | https://rustmaps.com/map/3700_325381121  |
+| 4   | 11/30/23 | TBD      |                | https://rustmaps.com/map/3700_132977593  |
+
+
+## Map Candidates
+
+https://rustmaps.com/map/4000_1008938238
+https://rustmaps.com/map/3700_132977593
+https://rustmaps.com/map/3500_1512592980
+https://rustmaps.com/map/3500_1840583110
