@@ -24,8 +24,8 @@ Map wipe schedule may change depending on server performance and force wipe sche
 | 1   | 9/21/23  | 10/19/23 | 49             | https://rustmaps.com/map/4250_66972398   |
 | 2   | 10/19/23 | 11/02/23 | 50             | https://rustmaps.com/map/3500_1393213226 |
 | 3   | 11/02/23 | 12/07/23 | 133            | https://rustmaps.com/map/3700_325381121  |
-| 4   | 12/07/23 | TBD      | TBD            | https://rustmaps.com/map/3700_132977593  |
-
+| 4   | 12/07/23 | 01/04/24 | 210            | https://rustmaps.com/map/3700_132977593  |
+| 5   | 01/04/24 | 02/01/24 | TBD            | https://rustmaps.com/map/3500_1512592980 |
 
 
 ## Notes
@@ -38,5 +38,5 @@ A [new server](https://www.battlemetrics.com/servers/rust/24761720) was picked u
 
 * https://rustmaps.com/map/4000_1008938238
 * https://rustmaps.com/map/3700_132977593 ( Wipe 4 )
-* https://rustmaps.com/map/3500_1512592980
+* https://rustmaps.com/map/3500_1512592980 ( Wipe 5 )
 * https://rustmaps.com/map/3500_1840583110
