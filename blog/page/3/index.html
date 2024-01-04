@@ -51,6 +51,64 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1580346038-go-rewrite-load/">Go Rewrite - Load</a></h1>
+	<time>30.01.2020 01:00</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		GOMAXPROCS=2 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 37.13ms 45.17ms 398.89ms 84.51% Req/Sec 1.13k 226.65 1.99k 71.67% 67708 requests in 15.01s, 289.02MB read Requests/sec: 4511.45 Transfer/sec: 19.26MB GOMAXPROX=4 meder@devb0x:wrk$ wrk http://localhost:3000 -c 100 -d 15s -t 4 Running 15s test @ http://localhost:3000 4 threads and 100 connections Thread Stats Avg Stdev Max +/- Stdev Latency 24.
+		
+		<a href="https://mikeder.net/blog/archive/1580346038-go-rewrite-load/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1580267021-go-rewrite/">Go Rewrite</a></h1>
+	<time>29.01.2020 03:03</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		I’m rewriting this old blog in Go for a couple reasons:
+Updating the old Python container was getting to be a pain in the ass. Due to the tornado-blog project being based on Python 2.7 and just being janky as fuck otherwise, I figured it would be easier to rewrite it in Go.
+There are some aspects of the Go standard library that I didn’t have much exposure to yet. Serving static files and dynamic template pages is always useful to know how to do, so I wanted to look at &quot;html/template&quot; and some other facets of &quot;net/http&quot;.
+		
+		<a href="https://mikeder.net/blog/archive/1580267021-go-rewrite/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1576035770-minecraft-again/">Minecraft Again</a></h1>
+	<time>11.12.2019 03:42</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		server link
+Map: <a href="http://sqweeb.net:4444">http://sqweeb.net:4444</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1539912236-proxmox-storage-gateway/">Proxmox - Storage Gateway</a></h1>
 	<time>19.10.2018 01:23</time>
 	
@@ -175,64 +233,6 @@ root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# #
 </article>
 <hr>
 		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1507860924-debian-9-stretch-laptop-setup/">Debian 9 (Stretch) Laptop Setup</a></h1>
-	<time>13.10.2017 02:15</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/archive>archive</a>
-	
-	
-	<div class="container">
-		Setting up an old Acer Aspire One 722-0473
-Edit /etc/apt/sources.list - add contrib and non-free packages
-deb <a href="http://httpredir.debian.org/debian/">http://httpredir.debian.org/debian/</a> stretch main contrib non-free Update and install drivers apt-get update apt-get install firmware-amd-graphics Add touchpad config Edit /usr/share/X11/xorg.conf.d/50-touchpad.conf - add below section
-Section &quot;InputClass&quot; Identifier &quot;touchpad catchall&quot; Driver &quot;synaptics&quot; MatchIsTouchpad &quot;on&quot; Option &quot;TapButton1&quot; &quot;1&quot; Option &quot;TapButton1&quot; &quot;3&quot; EndSection
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1506201857-moving-blog-to-docker/">Moving blog database</a></h1>
-	<time>23.09.2017 21:24</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/archive>archive</a>
-	
-	
-	<div class="container">
-		Working on some of the initial steps to moving this blog to docker today. Since containers aren’t exactly presistent I have to get the database migrated to a dedicated mysql node. Once that is done I can move the blog into a python2.7 container and onto a new docker host.
-First I spun up a new Debian VM, as is tradition, and after updating and upgrading, I installed mysql-server 5.5.
-		
-		<a href="https://mikeder.net/blog/archive/1506201857-moving-blog-to-docker/">Read more...</a>
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1499884703-docker-shit/">Docker Shit</a></h1>
-	<time>12.07.2017 18:38</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/archive>archive</a>
-	
-	
-	<div class="container">
-		alias docker-nuke=&lsquo;docker kill $(docker ps -q); docker rm $(docker ps -aq); docker rmi -f $(docker images -aq); docker volume prune -f&rsquo;
-deletes and force removes all containers, images, and volumes.
-		
-	</div>
-</article>
-<hr>
-		
 		<div>
 
 	<a href="/blog/page/2/">Previous Page</a>
@@ -290,7 +290,7 @@ deletes and force removes all containers, images, and volumes.
 
 <footer id="site-footer">
     <p>
-        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:latest</p>
+        &copy; 2024 <a href="https://mikeder.net/">mikeder.net</a> v:latest</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

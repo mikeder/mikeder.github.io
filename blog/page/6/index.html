@@ -51,6 +51,65 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1432980910-fixing-cherrymusic-filename-decoding-errors/">Fixing CherryMusic filename decoding errors</a></h1>
+	<time>30.05.2015 10:15</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		I recently came across a strange problem with the CherryMusic server that only appeared when it was started via an /etc/init.d script. In certain folders the tracks would not show, although the folder showed that there were files within, when you clicked on the folder it would just open an empty list. This condition would also be accompanied by the following error in the logs:
+UnicodeEncodeError: 'utf-8' codec can't encode character '\udce2' in position 29: surrogates not allowed Doing some quick Google-Fu I came across this page which states that this is caused by a bug in Python3, but the bug has apparently already been fixed.
+		
+		<a href="https://mikeder.net/blog/archive/1432980910-fixing-cherrymusic-filename-decoding-errors/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1432315893-ditching-pfsense-for-a-simpler-approach/">Ditching pfSense for a simpler approach</a></h1>
+	<time>22.05.2015 17:31</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		I decided to just get rid of the pfSense firewall/router in my setup up in favor of just a plain squid3 reverse proxy. While pfSense does provide a nice WebUI for administering the firewall and all of the add-on’s available it ended up being overly complicated for what I was trying to accomplish. Mainly I just wanted to use the reverse proxy functionality provided by the squid3 package and while it was easy to setup and get going I found that if I made one incorrect firewall rule I could easily lock myself out of the GUI and lose access to all of the servers behind the proxy.
+		
+		<a href="https://mikeder.net/blog/archive/1432315893-ditching-pfsense-for-a-simpler-approach/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1432220666-adding-logging-to-cherrymusic-service/">Adding logging to CherryMusic service</a></h1>
+	<time>21.05.2015 15:04</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		This morning I added some logging functionality to the cherrymusic service script that lives in /etc/init.d/cherrymusic. I have a couple issues going on with the music server that are going to require some log digging. One of which I’ve already fixed: Some of the Web Rips sub directories would open up empty. Upon review the logs when accessing those folders I found this:
+[150521-14:10] ERROR : [21/May/2015:14:10:41] HTTP Traceback (most recent call last): File &quot;/home/cherrymusic/cherrymusic-devel/cherrypy/_cprequest.
+		
+		<a href="https://mikeder.net/blog/archive/1432220666-adding-logging-to-cherrymusic-service/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1431626827-airtime-icecast-and-pfsense/">Airtime, Icecast and pfSense</a></h1>
 	<time>14.05.2015 18:07</time>
 	
@@ -241,7 +300,7 @@ $ apt-get install mysql-server python-dev libmysqlclient-dev libffi-dev git pyth
 
 <footer id="site-footer">
     <p>
-        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:latest</p>
+        &copy; 2024 <a href="https://mikeder.net/">mikeder.net</a> v:latest</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

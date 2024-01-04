@@ -51,6 +51,64 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1507860924-debian-9-stretch-laptop-setup/">Debian 9 (Stretch) Laptop Setup</a></h1>
+	<time>13.10.2017 02:15</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		Setting up an old Acer Aspire One 722-0473
+Edit /etc/apt/sources.list - add contrib and non-free packages
+deb <a href="http://httpredir.debian.org/debian/">http://httpredir.debian.org/debian/</a> stretch main contrib non-free Update and install drivers apt-get update apt-get install firmware-amd-graphics Add touchpad config Edit /usr/share/X11/xorg.conf.d/50-touchpad.conf - add below section
+Section &quot;InputClass&quot; Identifier &quot;touchpad catchall&quot; Driver &quot;synaptics&quot; MatchIsTouchpad &quot;on&quot; Option &quot;TapButton1&quot; &quot;1&quot; Option &quot;TapButton1&quot; &quot;3&quot; EndSection
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1506201857-moving-blog-to-docker/">Moving blog database</a></h1>
+	<time>23.09.2017 21:24</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		Working on some of the initial steps to moving this blog to docker today. Since containers aren’t exactly presistent I have to get the database migrated to a dedicated mysql node. Once that is done I can move the blog into a python2.7 container and onto a new docker host.
+First I spun up a new Debian VM, as is tradition, and after updating and upgrading, I installed mysql-server 5.5.
+		
+		<a href="https://mikeder.net/blog/archive/1506201857-moving-blog-to-docker/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1499884703-docker-shit/">Docker Shit</a></h1>
+	<time>12.07.2017 18:38</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		alias docker-nuke=&lsquo;docker kill $(docker ps -q); docker rm $(docker ps -aq); docker rmi -f $(docker images -aq); docker volume prune -f&rsquo;
+deletes and force removes all containers, images, and volumes.
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1480435818-roland-jupiter-6-troubleshooting/">Roland Jupiter 6 Troubleshooting</a></h1>
 	<time>29.11.2016 16:10</time>
 	
@@ -200,66 +258,6 @@ root@pve-01:~# pveperf / CPU BOGOMIPS: 19244.00 REGEX/SECOND: 959888 HD SIZE: 27
 </article>
 <hr>
 		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1472570020-rust-server-info/">Rust Server Info</a></h1>
-	<time>30.08.2016 15:13</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/archive>archive</a>
-	
-	
-	<div class="container">
-		[tS] Rusty Noobs Server turned off (9/22/16)
-I’ve decided to turn off the server for now, due to lack of traffic. The virtual machine will be backed up and stored in its current state but will remain powered off until its needed again. Server Update, Map Wipe, Performance Increases! (9/1/16)
-The server was updated and map wiped today, the map size was increased from 3000 to 3555 Server tick rate was increased from 30 to 60 An underlying storage issue was resolved resulting in lower server load and faster loading times Come noob out with us on a fresh server!
-		
-		<a href="https://mikeder.net/blog/archive/1472570020-rust-server-info/">Read more...</a>
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1468841522-finding-the-source-of-excessive-inode-usage/">Finding the source of excessive inode usage</a></h1>
-	<time>18.07.2016 11:32</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/archive>archive</a>
-	
-	
-	<div class="container">
-		Determine if lack of disks space is an inode problem:
-df -ih Filesystem Inodes IUsed IFree IUse% Mounted on /dev/sda1 1000K 105K 896K 100% / tmpfs 480K 8 480K 1% /dev/shm Find folders with large number of inodes:
-for i in /*; do echo $i; find $i |wc -l; done Change to the directory with the highest number, in my case this morning it was /var.
-Find specific folder w/ large number of inodes:
-		
-		<a href="https://mikeder.net/blog/archive/1468841522-finding-the-source-of-excessive-inode-usage/">Read more...</a>
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1468497010-splunk-light-install/">Splunk Light Install</a></h1>
-	<time>14.07.2016 11:50</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/archive>archive</a>
-	
-	
-	<div class="container">
-		wget -O splunklight-6.4.2-00f5bb3fa822-linux-2.6-amd64.deb ‘https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&amp;platform=linux&amp;version=6.4.2&amp;product=splunk_light&amp;filename=splunklight-6.4.2-00f5bb3fa822-linux-2.6-amd64.deb&amp;wget=true'
-		
-	</div>
-</article>
-<hr>
-		
 		<div>
 
 	<a href="/blog/page/3/">Previous Page</a>
@@ -317,7 +315,7 @@ Find specific folder w/ large number of inodes:
 
 <footer id="site-footer">
     <p>
-        &copy; 2023 <a href="https://mikeder.net/">mikeder.net</a> v:latest</p>
+        &copy; 2024 <a href="https://mikeder.net/">mikeder.net</a> v:latest</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
