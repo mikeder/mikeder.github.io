@@ -26,7 +26,7 @@ Map wipe schedule may change depending on server performance and force wipe sche
 | 3   | 11/02/23 | 12/07/23 | 133            | https://rustmaps.com/map/3700_325381121  |
 | 4   | 12/07/23 | 01/04/24 | 210            | https://rustmaps.com/map/3700_132977593  |
 | 5   | 01/04/24 | 02/01/24 | 254            | https://rustmaps.com/map/3500_1512592980 |
-| 6   | 02/01/24 | 02/01/24 | TBD            | https://rustmaps.com/map/3500_1423566289 |
+| 6   | 02/01/24 | 03/07/24 | TBD            | https://rustmaps.com/map/3500_1423566289 |
 
 
 ## Notes
