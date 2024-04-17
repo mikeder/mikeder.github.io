@@ -51,6 +51,25 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/m1-mac-wasm/">M1 Macs, Rust &amp; WASM</a></h1>
+	<time>17.04.2024 13:35</time>
+	
+	<div class="container">
+		Getting setup for compiling Rust to WASM and serving w/ Trunk on M1 Mac.
+Install wasm32-unknown-unknown target with rustup
+$ rustup target add wasm32-unknown-unknown Install wasm-bindgen-cli
+$ cargo install &ndash;locked wasm-bindgen-cli Test compiling a project w/ the new wasm target
+$ cargo build &ndash;target wasm32-unknown-unknown If this fails due to No available targets are compatible with triple “wasm32-unknown-unknown” #103, install an updated version of clang via Homebrew.
+Original version:
+$ clang &ndash;version Apple clang version 15.
+		
+		<a href="https://mikeder.net/blog/m1-mac-wasm/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/profiling-rust-with-tracy/">Profiling Rust With Tracy</a></h1>
 	<time>09.04.2024 09:54</time>
 	
@@ -222,30 +241,6 @@ Use a DAW template! Setup the mixer and audio interface to work generically enou
 The PeerTube documentation has a pretty good starting point for hosting via Docker and docker compose - I started with that. The docker-compose.yml file example they give you comes with a separate web server and “cert bot” container for managing SSL/TLS certificates with LetsEncrypt.
 		
 		<a href="https://mikeder.net/blog/selfhost-peertube/">Read more...</a>
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/jupiter-6-repairs-2022/">Jupiter 6 Repairs 2022</a></h1>
-	<time>09.11.2022 19:48</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/vintage>vintage</a>
-	
-	<a href=/tags/synthesizer>synthesizer</a>
-	
-	<a href=/tags/repair>repair</a>
-	
-	
-	<div class="container">
-		I’ve begun to address the issues with my Jupiter 6 so I figured I’d start a new post specific to this repair attempt.
-Factory Board Mods Replacing the caps Calibration Testing Also to note, the serial number of this synth is 322280, making it one of the later runs as far as the notes in the service manual suggest. It was previously sold or serviced by Pi Keyboards &amp; Audio Inc in Cleveland Ohio (216)-741-2211.
-		
-		<a href="https://mikeder.net/blog/jupiter-6-repairs-2022/">Read more...</a>
 		
 	</div>
 </article>

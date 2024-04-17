@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJHGWQB579"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LJHGWQB579');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>M1 Macs, Rust &amp; WASM</title>
+    
+    <meta name="description" content="A static site built with Hugo!">
+    
+    
+    <meta name="author" content="Mike Eder">
+    
+
+    
+    <link rel="me" href="https://universeodon.com/@sqweebking">
+    
+
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1>M1 Macs, Rust &amp; WASM</h1>
+        <h5>17.04.2024 13:35</h5>
+        <div class="container">
+            <p>Getting setup for compiling Rust to WASM and serving w/ Trunk on M1 Mac.</p>
+<ol>
+<li>
+<p>Install <code>wasm32-unknown-unknown</code> target with <code>rustup</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rustup target add wasm32-unknown-unknown
+</span></span></code></pre></div></li>
+<li>
+<p>Install <code>wasm-bindgen-cli</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cargo install --locked wasm-bindgen-cli
+</span></span></code></pre></div></li>
+<li>
+<p>Test compiling a project w/ the new wasm target</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cargo build --target wasm32-unknown-unknown
+</span></span></code></pre></div><p>If this fails due to <a href="https://github.com/rust-lang/libz-sys/issues/103">No available targets are compatible with triple &ldquo;wasm32-unknown-unknown&rdquo; #103</a>, install an updated version of <code>clang</code> via Homebrew.</p>
+<p>Original version:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ clang --version
+</span></span><span style="display:flex;"><span>Apple clang version 15.0.0 <span style="color:#f92672">(</span>clang-1500.3.9.4<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Target: arm64-apple-darwin23.1.0
+</span></span><span style="display:flex;"><span>Thread model: posix
+</span></span><span style="display:flex;"><span>InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+</span></span></code></pre></div><p>Update via Homebrew</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ brew install llvm
+</span></span></code></pre></div><p>Use newer version from Brew</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/opt/homebrew/opt/llvm/bin:</span>$PATH<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>export CC<span style="color:#f92672">=</span>/opt/homebrew/opt/llvm/bin/clang
+</span></span><span style="display:flex;"><span>export AR<span style="color:#f92672">=</span>/opt/homebrew/opt/llvm/bin/llvm-ar
+</span></span></code></pre></div><p>Updated version:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ clang --version
+</span></span><span style="display:flex;"><span>Homebrew clang version 17.0.6
+</span></span><span style="display:flex;"><span>Target: arm64-apple-darwin23.1.0
+</span></span><span style="display:flex;"><span>Thread model: posix
+</span></span><span style="display:flex;"><span>InstalledDir: /opt/homebrew/opt/llvm/bin
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="references">References</h2>
+<p><a href="https://trunkrs.dev/">Trunk</a></p>
+<p><a href="https://github.com/rust-lang/libz-sys/issues/103">No available targets are compatible with triple &ldquo;wasm32-unknown-unknown&rdquo; #103</a></p>
+<p><a href="https://learn.sapio-lang.org/ch01-01-installation.html">Unrelated project installation w/ notes on LLVM/Clang install</a></p>
+
+        </div>
+         
+        <br>
+        <div>
+            <a href="javascript:history.back()">
+                &lt;&lt; Back</a>
+                    <a href="#top">Top ^^</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()"
+            style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2024 <a href="https://mikeder.net/">mikeder.net</a> v:10dc649</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" rel="me" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-mastodon" style="font-size: 24px" href="https://universeodon.com/@sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>

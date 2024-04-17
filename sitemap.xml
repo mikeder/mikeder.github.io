@@ -3,7 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://mikeder.net/blog/</loc>
-    <lastmod>2024-04-09T09:59:00-04:00</lastmod>
+    <lastmod>2024-04-17T13:52:35-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/blog/m1-mac-wasm/</loc>
+    <lastmod>2024-04-17T13:52:35-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/profiling-rust-with-tracy/</loc>
     <lastmod>2024-04-09T09:59:00-04:00</lastmod>
