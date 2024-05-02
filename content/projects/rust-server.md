@@ -28,7 +28,8 @@ Map wipe schedule may change depending on server performance and force wipe sche
 | 5   | 01/04/24 | 02/01/24 | 254            | https://rustmaps.com/map/3500_1512592980 |
 | 6   | 02/01/24 | 03/07/24 | 679            | https://rustmaps.com/map/3500_1423566289 |
 | 7   | 03/07/24 | 04/04/24 | 845            | https://rustmaps.com/map/3500_1684990273 |
-| 8   | 04/04/24 | 05/02/24 | TBD            | https://rustmaps.com/map/3500_480540019  |
+| 8   | 04/04/24 | 05/02/24 | 404            | https://rustmaps.com/map/3500_480540019  |
+| 9   | 05/02/24 | 06/06/24 | TBD            | https://rustmaps.com/map/4000_38977098   |
 
 
 ## Notes
@@ -37,9 +38,13 @@ IP change killed the BattleMetrics integration for the [original server](https:/
 
 A [new server](https://www.battlemetrics.com/servers/rust/24761720) was picked up by BattleMetrics and is the current server as of wipe 4.
 
+Wipe 8 "Unique Players" seems to have taken a dive due to BattleMetrics leaderboard rollover, or something. It was a fairly popular wipe, some folks even deciding to team up for next wipe.
+
 ### Map Candidates
 
 * https://rustmaps.com/map/4000_1008938238
 * https://rustmaps.com/map/3700_132977593 ( Wipe 4 )
 * https://rustmaps.com/map/3500_1512592980 ( Wipe 5 )
 * https://rustmaps.com/map/3500_1840583110
+* https://rustmaps.com/map/4000_2098199338
+* https://rustmaps.com/map/4000_38977098
