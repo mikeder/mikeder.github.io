@@ -378,7 +378,7 @@ Map: http://sqweeb.net:4444</description>
       <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://mikeder.net/about/resume/</guid>
-      <description>Michael W. Eder http://mikeder.net https://github.com/mikeder emailme@mikeder.net Work Experience Tech Lead Staff Engineer / Commerce &amp;amp; Identity, Bethesda.net Aug. 2019 - Current Tech lead for excavate team that migrated 300k+ BNET accounts, games, and wallets to STEAM. Lead Golang language migration effort for E-Commerce team. Provide end-to-end gRPC and REST microservice implementations. Work closely with in-house and contract engineers to promote development and engineering best practices. SRE Lead / Live Engineering, Bethesda.</description>
+      <description>Michael W. Eder http://mikeder.net https://github.com/mikeder emailme@mikeder.net Work Experience Tech Lead Staff Engineer / Live Operations, Zenimax Central Services July 2023 - Current Lead migration of a large Ruby codebase to Golang and Typescript + React. Lead Golang migration and sunset efforts for several legacy Python applications. Coordinate and co-develop with game studio partners to facilitate customer support of live games. Architect and implement an open source &amp;ldquo;component detector&amp;rdquo; tool to scan and submit OSS manifests to MSFT, for legal compliance.</description>
     </item>
     
     <item>
