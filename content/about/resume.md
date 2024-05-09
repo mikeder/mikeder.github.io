@@ -13,7 +13,14 @@ layout: resume
 
 ## Work Experience
 
-### Tech Lead Staff Engineer / Commerce & Identity, Bethesda.net `Aug. 2019 - Current`
+### Tech Lead Staff Engineer / Live Operations, Zenimax Central Services `July 2023 - Current`
+
+- Lead migration of a large Ruby codebase to Golang and Typescript + React.
+- Lead Golang migration and sunset efforts for several legacy Python applications.
+- Coordinate and co-develop with game studio partners to facilitate customer support of live games.
+- Architect and implement an open source "component detector" tool to scan and submit OSS manifests to MSFT, for legal compliance.
+
+### Tech Lead Staff Engineer / Commerce & Identity, Bethesda.net `Aug. 2019 - July 2023`
 
 - Tech lead for excavate team that migrated 300k+ BNET accounts, games, and wallets to STEAM.
 - Lead Golang language migration effort for E-Commerce team.
