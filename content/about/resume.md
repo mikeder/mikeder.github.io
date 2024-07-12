@@ -82,18 +82,68 @@ Operations and Development support for various game studios within the Bethesda/
 
 ### Game Credits
 
-- Rage 2 (2019) Bethesda.net Engineering Team
-- Fallout 76 (2018) Bethesda.net Engineering Team
-- Prey: Mooncrash (2018) Bethesda.net Engineering Team
-- Dishonored: Death of the Outsider (2017) Bethesda.net Engineering Team
-- The Evil Within 2 (2017) Bethesda.net Engineering Team
-- Prey (2017) Bethesda.net Engineering Team
-- The Elder Scrolls: Legends - Heroes of Skyrim (2017) Operations Systems Admins
-- The Elder Scrolls Online: Morrowind (2017) Bethesda.net Engineering Team
-- Quake: Champions (Early Access Edition) (2017) Operations Systems Admins
-- Dishonored 2 (2016) Tools Admin
-- DOOM (2016) Live Operations Systems Admins
-- The Elder Scrolls V: Skyrim - Special Edition (2016) Tools Admin
-- Fallout 4 (2015) Operations Systems Admins
+#### 2023
+
+- Starfield (Windows) 	Engineering
+- Quake II (Windows) 	Engineering
+- The Elder Scrolls Online: Necrom (Windows) 	Engineers
+- Redfall (Windows) 	Engineering
+- Hi-Fi Rush (Windows) 	Engineers
+
+#### 2022
+
+- The Elder Scrolls Online: High Isle (Windows) 	Engineers
+- Ghostwire: Tokyo (PlayStation 5) 	Engineers
+- Ghostwire: Tokyo - Prelude: The Corrupted Casefile (PlayStation 5) 	Engineers
+
+#### 2021
+
+- Deathloop (Windows) 	Engineers
+- The Elder Scrolls Online: Blackwood (Windows) 	Engineering Managers
+- Doom Eternal: The Ancient Gods - Part Two (Windows) 	Engineers
+- Quake (Windows) 	Engineering
+
+#### 2020
+
+- Doom Eternal: The Ancient Gods - Part One (Windows) 	Engineers
+- The Elder Scrolls Online: Greymoor (Windows) 	Engineers
+- Doom 64 (Windows) 	Engineers
+- Doom Eternal (Windows) 	Engineers
+
+#### 2019
+
+- Wolfenstein: Cyberpilot (PlayStation 4) 	Engineers (possibly partially incorrect)
+- Doom³ (PlayStation 4) 	Engineers
+- Doom II (PlayStation 4) 	Engineers
+- The Ultimate Doom (PlayStation 4) 	Engineers
+- Wolfenstein: Youngblood (Windows) 	Engineers
+- Rage 2 (PlayStation 4) 	Bethesda.net Engineering Team
+
+#### 2018
+
+- The Elder Scrolls: Blades (iPhone) 	Bethesda.net Engineering Team
+- Fallout 76 (Windows) 	Bethesda.net Engineering Team
+- Prey: Typhon Hunter (Windows) 	Bethesda.net Engineering Team
+- Prey: Mooncrash (Windows) 	Bethesda.net Engineering Team
+- The Elder Scrolls Online: Summerset (Windows) 	Bethesda.net Engineering Team
+
+#### 2017
+
+- The Elder Scrolls V: Skyrim - Special Edition (Nintendo Switch) 	Bethesda.net Engineering Team
+- The Evil Within 2 (Windows) 	Bethesda.net Engineering Team
+- Dishonored: Death of the Outsider (Windows) 	Bethesda.net Engineering Team
+- Prey (Windows) 	Bethesda.net Engineering Team
+- Quake: Champions (Windows) 	Operations Systems Admins
+- The Elder Scrolls Online: Morrowind (Windows) 	Bethesda.net Engineering Team
+- The Elder Scrolls: Legends - Heroes of Skyrim (Windows) 	Operations Systems Admins
+
+#### 2016
+
+- Dishonored 2 (Windows) 	Tools Admin
+- The Elder Scrolls V: Skyrim - Special Edition (Windows) 	Tools Admin
+- Doom (Windows) 	Live Operations Systems Admins
+
+#### 2015
+- Fallout 4 (PlayStation 4) 	Operations Systems Admins
 
 [MobyGames Profile](https://www.mobygames.com/developer/sheet/view/developerId,767199)
