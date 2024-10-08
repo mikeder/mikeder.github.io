@@ -48,3 +48,52 @@ Wipe 8 "Unique Players" seems to have taken a dive due to BattleMetrics leaderbo
 * https://rustmaps.com/map/3500_1840583110
 * https://rustmaps.com/map/4000_2098199338
 * https://rustmaps.com/map/4000_38977098
+
+### Creative Mode Notes
+
+Console toggles for creative mode, prefix w/ `sv` if using in the F1 console.
+
+```shell
+# Toggle creative mode for all users
+creative.allusers 
+# Toggle creative mode for a specific user
+creative.toggleCreativeModeUser (username)
+# Repair buildings without resource cost
+creative.freeRepair
+# Build without resource cost
+creative.freeBuild
+# Build without placement checks, can build outside of terrain
+creative.freePlacement
+# Unknown
+creative.unlimitedIo
+```
+
+### Custom Settings
+
+
+`~/serverfiles/server/rustserver/cfg/server.cfg`
+
+```shell
+#  A text description of your server. For a new line add:  \n
+server.description "A low pop Rust server for to learn on, but not always friendly.\n\nWipe Schedule:\nMonthly, 1st Thursday force wipe."
+
+# A URL to the image which shows up on the server details screen (dimensions are 512x256).
+server.headerimage "https://git.io/JYdmK"
+
+# The URL to your servers website.
+server.url "https://linuxgsm.com/"
+
+# Slower Decay
+decay.upkeep_period_minutes 7200 # default 1440
+
+# Creative Mode
+creative.allusers true
+creative.freeBuild true
+creative.freeRepair true
+
+# Tags are additional bits of information that describe Rust servers.
+# Up to three of them will be displayed on the Rust server browser and filtering will be supported one day.
+# Supported Tags can be found here:
+# https://wiki.facepunch.com/rust/server-browser-tags
+server.tags monthly,vanilla,NA,rs0003e0rAi4000/q
+```
