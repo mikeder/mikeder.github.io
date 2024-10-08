@@ -46,7 +46,7 @@ Map wipe schedule may change depending on server performance and force wipe sche
 
 
 <div class="md__image">
-    <img id="[41 96 108 127 123 419]" src="https://cdn.battlemetrics.com/b/horizontal500x80px/24761720.png?foreground=%23EEEEEE&amp;background=%23222222&amp;lines=%23333333&amp;linkColor=%231185ec&amp;chartColor=%23FF0700" onclick="openModal(this.id)" alt="[tS] Iron Oxide - US | Low Upkeep"  />
+    <img id="[435 386 14 99 371 382]" src="https://cdn.battlemetrics.com/b/horizontal500x80px/24761720.png?foreground=%23EEEEEE&amp;background=%23222222&amp;lines=%23333333&amp;linkColor=%231185ec&amp;chartColor=%23FF0700" onclick="openModal(this.id)" alt="[tS] Iron Oxide - US | Low Upkeep"  />
 </div></a></p>
 <h2 id="server-name">Server Name</h2>
 <ul>
@@ -146,7 +146,45 @@ Map wipe schedule may change depending on server performance and force wipe sche
 <li><a href="https://rustmaps.com/map/4000_2098199338">https://rustmaps.com/map/4000_2098199338</a></li>
 <li><a href="https://rustmaps.com/map/4000_38977098">https://rustmaps.com/map/4000_38977098</a></li>
 </ul>
-
+<h3 id="creative-mode-notes">Creative Mode Notes</h3>
+<p>Console toggles for creative mode, prefix w/ <code>sv</code> if using in the F1 console.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># Toggle creative mode for all users</span>
+</span></span><span style="display:flex;"><span>creative.allusers 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Toggle creative mode for a specific user</span>
+</span></span><span style="display:flex;"><span>creative.toggleCreativeModeUser <span style="color:#f92672">(</span>username<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Repair buildings without resource cost</span>
+</span></span><span style="display:flex;"><span>creative.freeRepair
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build without resource cost</span>
+</span></span><span style="display:flex;"><span>creative.freeBuild
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build without placement checks, can build outside of terrain</span>
+</span></span><span style="display:flex;"><span>creative.freePlacement
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Unknown</span>
+</span></span><span style="display:flex;"><span>creative.unlimitedIo
+</span></span></code></pre></div><h3 id="custom-settings">Custom Settings</h3>
+<p><code>~/serverfiles/server/rustserver/cfg/server.cfg</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#  A text description of your server. For a new line add:  \n</span>
+</span></span><span style="display:flex;"><span>server.description <span style="color:#e6db74">&#34;A low pop Rust server for to learn on, but not always friendly.\n\nWipe Schedule:\nMonthly, 1st Thursday force wipe.&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># A URL to the image which shows up on the server details screen (dimensions are 512x256).</span>
+</span></span><span style="display:flex;"><span>server.headerimage <span style="color:#e6db74">&#34;https://git.io/JYdmK&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The URL to your servers website.</span>
+</span></span><span style="display:flex;"><span>server.url <span style="color:#e6db74">&#34;https://linuxgsm.com/&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Slower Decay</span>
+</span></span><span style="display:flex;"><span>decay.upkeep_period_minutes <span style="color:#ae81ff">7200</span> <span style="color:#75715e"># default 1440</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Creative Mode</span>
+</span></span><span style="display:flex;"><span>creative.allusers true
+</span></span><span style="display:flex;"><span>creative.freeBuild true
+</span></span><span style="display:flex;"><span>creative.freeRepair true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Tags are additional bits of information that describe Rust servers.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Up to three of them will be displayed on the Rust server browser and filtering will be supported one day.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Supported Tags can be found here:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://wiki.facepunch.com/rust/server-browser-tags</span>
+</span></span><span style="display:flex;"><span>server.tags monthly,vanilla,NA,rs0003e0rAi4000/q
+</span></span></code></pre></div>
         </div>
          
         <br>
@@ -201,7 +239,7 @@ Map wipe schedule may change depending on server performance and force wipe sche
 
 <footer id="site-footer">
     <p>
-        &copy; 2024 <a href="https://mikeder.net/">mikeder.net</a> v:d1c4021</p>
+        &copy; 2024 <a href="https://mikeder.net/">mikeder.net</a> v:04c6b6e</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
