@@ -59,13 +59,13 @@ Console toggles for creative mode, prefix w/ `sv` if using in the F1 console.
 creative.allusers 
 # Toggle creative mode for a specific user
 creative.toggleCreativeModeUser (username)
-# Repair buildings without resource cost
+# Repair structures without consuming resources or waiting for cooldowns. Keep building without interruptions!
 creative.freeRepair
-# Build without resource cost
+# Build structures and upgrade or downgrade them using the Hammer for free. Experiment with different grades of materials effortlessly.
 creative.freeBuild
-# Build without placement checks, can build outside of terrain
+# Place objects without the usual restrictions. Build within building blocked zones, overlap with other objects, and place in TC zones more freely.
 creative.freePlacement
-# Unknown
+# Unlimited IO line points. Extend wiring distances up to 200m and utilize a new invisible color option on the color wheel.
 creative.unlimitedIo
 ```
 
