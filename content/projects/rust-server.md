@@ -7,7 +7,9 @@ draft: false
 Self hosting a Rust dedicated server to learn and screw around on. 
 Map wipe schedule may change depending on server performance and force wipe schedule, blueprints will not wipe unless forced by Facepunch.
 
-[![[tS] Iron Oxide - US | Low Upkeep](https://cdn.battlemetrics.com/b/horizontal500x80px/24761720.png?foreground=%23EEEEEE&background=%23222222&lines=%23333333&linkColor=%231185ec&chartColor=%23FF0700)](https://www.battlemetrics.com/servers/rust/24761720)
+<!-- [![[tS] Iron Oxide - US | Low Upkeep](https://cdn.battlemetrics.com/b/horizontal500x80px/24761720.png?foreground=%23EEEEEE&background=%23222222&lines=%23333333&linkColor=%231185ec&chartColor=%23FF0700)](https://www.battlemetrics.com/servers/rust/24761720) -->
+
+![[tS] Iron Oxide | Creative/Free Build/Low Upkeep | Monthly US-E](https://cdn.battlemetrics.com/b/horizontal500x80px/29842867.png?foreground=%23EEEEEE&background=%23222222&lines=%23333333&linkColor=%231185ec&chartColor=%23FF0700)
 
 ## Server Name
 
@@ -30,7 +32,8 @@ Map wipe schedule may change depending on server performance and force wipe sche
 | 7   | 03/07/24 | 04/04/24 | 845            | https://rustmaps.com/map/3500_1684990273 |
 | 8   | 04/04/24 | 05/02/24 | 404            | https://rustmaps.com/map/3500_480540019  |
 | 9   | 05/02/24 | 06/06/24 | TBD            | https://rustmaps.com/map/4000_38977098   |
-| 10  | 11/07/24 | TBD      | 166            | https://rustmaps.com/map/4000_1052569440 |
+| 10  | 11/07/24 | 12/04/24 | 298            | https://rustmaps.com/map/4000_1052569440 |
+| 11  | 12/04/24 | TBD      | TBD            | https://rustmaps.com/map/4250_1219710478 |
 
 
 ## Notes
@@ -41,6 +44,9 @@ A [new server](https://www.battlemetrics.com/servers/rust/24761720) was picked u
 
 Wipe 8 "Unique Players" seems to have taken a dive due to BattleMetrics leaderboard rollover, or something. It was a fairly popular wipe, some folks even deciding to team up for next wipe.
 
+
+Wipe 10 is when I started with the "creative" settings enabled. Most people that joined were confused that there weren't free build plugins and all blueprints unlocked.
+
 ### Map Candidates
 
 * https://rustmaps.com/map/4000_1008938238
@@ -49,6 +55,7 @@ Wipe 8 "Unique Players" seems to have taken a dive due to BattleMetrics leaderbo
 * https://rustmaps.com/map/3500_1840583110
 * https://rustmaps.com/map/4000_2098199338
 * https://rustmaps.com/map/4000_38977098
+* https://rustmaps.com/map/4250_1219710478
 
 ### Creative Mode Notes
 
