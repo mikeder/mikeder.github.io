@@ -7,13 +7,11 @@ draft: false
 Self hosting a Rust dedicated server to learn and screw around on. 
 Map wipe schedule may change depending on server performance and force wipe schedule, blueprints will not wipe unless forced by Facepunch.
 
-<!-- [![[tS] Iron Oxide - US | Low Upkeep](https://cdn.battlemetrics.com/b/horizontal500x80px/24761720.png?foreground=%23EEEEEE&background=%23222222&lines=%23333333&linkColor=%231185ec&chartColor=%23FF0700)](https://www.battlemetrics.com/servers/rust/24761720) -->
-
-![[tS] Iron Oxide | Creative/Free Build/Low Upkeep | Monthly US-E](https://cdn.battlemetrics.com/b/horizontal500x80px/29842867.png?foreground=%23EEEEEE&background=%23222222&lines=%23333333&linkColor=%231185ec&chartColor=%23FF0700)
+[![[tS] Iron Oxide | Creative/Free Build/Low Upkeep | Monthly US-E](https://cdn.battlemetrics.com/b/horizontal500x80px/29842867.png?foreground=%23EEEEEE&background=%23222222&lines=%23333333&linkColor=%231185ec&chartColor=%23FF0700)]((https://www.battlemetrics.com/servers/rust/29842867))
 
 ## Server Name
 
-- `[tS] Iron Oxide | Low Upkeep | Monthly US East`
+- `[tS] Iron Oxide | Creative/Free Build/Low Upkeep | Monthly US-E`
 
 ## Wipe Schedule
 
@@ -83,7 +81,7 @@ creative.unlimitedIo
 
 ```shell
 #  A text description of your server. For a new line add:  \n
-server.description "A low pop Rust server for to learn on, but not always friendly.\n\nWipe Schedule:\nMonthly, 1st Thursday force wipe."
+server.description "Low pop, creative, Rust server to learn on. Is not not always friendly. \n Settings: \n - creative.allusers: Apply creative mode to the entire server (True) \n - creative.freebuild: Build and upgrade blocks for free (True) \n - creative.freerepair: Bypass the 30s repair cooldown when repairing objects (True) \n  \n Wipe Schedule: \n - Monthly, 1st Thursday force wipe. \n "
 
 # A URL to the image which shows up on the server details screen (dimensions are 512x256).
 server.headerimage "https://git.io/JYdmK"
