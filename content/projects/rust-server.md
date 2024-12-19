@@ -81,7 +81,7 @@ creative.unlimitedIo
 
 ```shell
 #  A text description of your server. For a new line add:  \n
-server.description "Low pop, creative, Rust server to learn on. Is not not always friendly. \n Settings: \n - creative.allusers: Apply creative mode to the entire server (True) \n - creative.freebuild: Build and upgrade blocks for free (True) \n - creative.freerepair: Bypass the 30s repair cooldown when repairing objects (True) \n  \n Wipe Schedule: \n - Monthly, 1st Thursday force wipe. \n "
+server.description "Free build, low upkeep and otherwise vanilla server. \n Craft building plan and hammer so you can build and upgrade for free. \n TC is still required if you don't want your base to decay! \n Once crafted or found, deployables are unlimited! \n Wipes first Thursday of every month."
 
 # A URL to the image which shows up on the server details screen (dimensions are 512x256).
 server.headerimage "https://git.io/JYdmK"
