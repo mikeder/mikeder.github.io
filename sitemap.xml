@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://mikeder.net/projects/homelab/</loc>
+    <lastmod>2024-12-31T15:06:47-05:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/projects/</loc>
+    <lastmod>2024-12-31T15:06:47-05:00</lastmod>
+  </url><url>
     <loc>https://mikeder.net/blog/</loc>
     <lastmod>2024-11-07T12:43:41-05:00</lastmod>
   </url><url>
@@ -25,9 +31,6 @@
   </url><url>
     <loc>https://mikeder.net/blog/apple-photos-export/</loc>
     <lastmod>2023-11-15T20:57:35-05:00</lastmod>
-  </url><url>
-    <loc>https://mikeder.net/projects/</loc>
-    <lastmod>2024-12-19T14:20:15-05:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/projects/rust-server/</loc>
     <lastmod>2024-12-19T14:20:15-05:00</lastmod>

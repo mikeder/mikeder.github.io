@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Apple Photos Export</title>
+    <title>Homelab</title>
     
     <meta name="description" content="A static site built with Hugo!">
     
@@ -33,47 +33,31 @@
 </header> 
 <main id="content" class="content">
     <article class="content-chunk">
-        <h1>Apple Photos Export</h1>
-        <h5>10.11.2023 11:01</h5>
+        <h1>Homelab</h1>
+        <h5>31.12.2024 14:12</h5>
         <div class="container">
-            <p>It took me a few attempts to figure out a good way to backup photos from an iPhone and Macbook to a proper format on an external NAS, so I figured I&rsquo;d write it down.</p>
-<p>First, import all the photos from your iPhone(s) onto the Macbook. This should put them in your local Photos library, and will probably start tagging them with &ldquo;Memories&rdquo; and location information.</p>
-<p>Once all the photos are imported into the Photos app, go to the &ldquo;Library&rdquo; tab on the left. Select all of the photos with Edit -&gt; Select All or (CMD + A). Then export all the photos by going to File -&gt; Export -&gt; Export # Items ( not the unmodified option, this will export in the original HEIC format that is useless outside of a Mac ).</p>
-<p>In the export prompt, select the following options:</p>
+            <h2 id="proxmox-host">Proxmox Host</h2>
 <ul>
-<li>Image Kind: <code>JPEG</code></li>
-<li>Movie Quality: <code>4K</code></li>
-<li>Include:
+<li>CPU: AMD Ryzen 3 2200G @ 2528 MHz</li>
+<li>Memory: 14GB DDR4</li>
+<li>Storage:
 <ul>
-<li><input checked="" disabled="" type="checkbox"> Title, Keywords, Caption</li>
-<li><input checked="" disabled="" type="checkbox"> Location Information</li>
+<li>Disks:
+<ul>
+<li>1x 120G SanDisk SDSSDA12 (Proxmox LVM boot disk)</li>
+<li>2x 1TB WD Black WDC WD1003FZEX-0 (Proxmox ISO/VM storage)</li>
+<li>5x 2TB WD Red WDC WD20EFRX-68E (Passthru to Freenas VM)</li>
 </ul>
 </li>
-<li>File Name: <code>Use File Name</code></li>
-<li>Subfolder Format: <code>Moment Name</code></li>
+<li>HBA: LSI Logic / Symbios Logic SAS2308 PCI-Express Fusion-MPT SAS-2 (rev 05)</li>
 </ul>
-<p>
-
-
-
-
-
-
-<div class="md__image">
-    <img id="[131 464 137 166 340 244]" src="export-prompt.png" onclick="openModal(this.id)" alt="prompt"  />
-</div></p>
-<p>I pick a local folder on my desktop for the initial export, to double check the formats and naming convention and then copy it over to the external network storage.</p>
-<p>You can check the progress of the export in the Photos app, next to the zoom slider.</p>
-<p>
-
-
-
-
-
-
-<div class="md__image">
-    <img id="[347 414 360 234 231 270]" src="progress.png" onclick="openModal(this.id)" alt="progress"  />
-</div></p>
+</li>
+</ul>
+<h2 id="virtual-machines">Virtual Machines</h2>
+<ol>
+<li>Docker</li>
+<li>FreeNAS/TrueNAS</li>
+</ol>
 
         </div>
          
@@ -129,7 +113,7 @@
 
 <footer id="site-footer">
     <p>
-        &copy; 2024 <a href="https://mikeder.net/">mikeder.net</a> v:033a89b</p>
+        &copy; 2024 <a href="https://mikeder.net/">mikeder.net</a> v:d1adeef</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

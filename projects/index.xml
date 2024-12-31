@@ -6,7 +6,16 @@
     <description>Recent content in Projects on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Oct 2023 11:51:30 -0400</lastBuildDate><atom:link href="https://mikeder.net/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 Dec 2024 14:12:57 -0500</lastBuildDate><atom:link href="https://mikeder.net/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Homelab</title>
+      <link>https://mikeder.net/projects/homelab/</link>
+      <pubDate>Tue, 31 Dec 2024 14:12:57 -0500</pubDate>
+      
+      <guid>https://mikeder.net/projects/homelab/</guid>
+      <description>Proxmox Host CPU: AMD Ryzen 3 2200G @ 2528 MHz Memory: 14GB DDR4 Storage: Disks: 1x 120G SanDisk SDSSDA12 (Proxmox LVM boot disk) 2x 1TB WD Black WDC WD1003FZEX-0 (Proxmox ISO/VM storage) 5x 2TB WD Red WDC WD20EFRX-68E (Passthru to Freenas VM) HBA: LSI Logic / Symbios Logic SAS2308 PCI-Express Fusion-MPT SAS-2 (rev 05) Virtual Machines Docker FreeNAS/TrueNAS </description>
+    </item>
+    
     <item>
       <title>Rust Server</title>
       <link>https://mikeder.net/projects/rust-server/</link>
