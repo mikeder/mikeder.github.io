@@ -103,3 +103,12 @@ creative.freeRepair true
 # https://wiki.facepunch.com/rust/server-browser-tags
 server.tags monthly,vanilla,NA,rs0003e0rAi4000/q
 ```
+
+### Crontab Entries
+
+Useful crontab entries for keeping the server alive and updated:
+
+```bash
+*/5 * * * *  /home/rustserver/rustserver monitor > monitor.log 2>&1
+*/15 * * * * /home/rustserver/rustserver update > update.log 2>&1
+```
