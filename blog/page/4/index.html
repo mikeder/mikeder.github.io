@@ -42,6 +42,23 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1531445851-photo-sorting/">Photo sorting is dangerous business</a></h1>
+	<time>13.07.2018 01:37</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		find . -type f -iname *.JPG -print0 | xargs -0 -I '{}' /bin/mv &quot;{}&quot; ../JPG/ will overwrite your shit if filenames are the same!
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1517540169-edgerouter-dnsmasq-setup/">Edgerouter dnsmasq setup</a></h1>
 	<time>02.02.2018 02:56</time>
 	
@@ -215,27 +232,6 @@ Add another 32g disk to the proxy VM - proxy-02 Format, make file system and mou
 ###Minecraft Server List
 Plugins:
 dynmap Essentials EssentialsProtect EssentialsSpawn EssentialsGeoIP EssentialsChat EssentialsAntiBuild Factions FactionsDynmap MassiveCore Vault
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1476280837-installing-cabot-on-debian-8/">Installing Cabot on Debian 8</a></h1>
-	<time>12.10.2016 14:00</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/archive>archive</a>
-	
-	
-	<div class="container">
-		<a href="https://www.unicoda.com/?p=1624">https://www.unicoda.com/?p=1624</a>
-sudo apt-get install python-dev python-pip postgresql ruby sudo pip install ecdsa fabric pycrypto git clone <a href="https://github.com/lincolnloop/cabot.git">https://github.com/lincolnloop/cabot.git</a> cd cabot cp conf/production.env.example conf/production.env # Add at least graphite url and login to config nano env/production.env fab provision -H root@localhost fab deploy -H ubuntu@localhost su - ubuntu source /home/ubuntu/venv/bin/activate cd cabot foreman start -e conf/production.env Modifying fabric provision/deploy for multi instance deploys:
-Clone official repo Make new local branch - ’tesl&rsquo; Find/replace all instances of ubuntu with tesl in fabfile.
-		
-		<a href="https://mikeder.net/blog/archive/1476280837-installing-cabot-on-debian-8/">Read more...</a>
 		
 	</div>
 </article>

@@ -6,7 +6,17 @@
     <description>Recent content in Blogs on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Nov 2024 09:50:10 -0500</lastBuildDate><atom:link href="https://mikeder.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Apr 2025 20:52:46 -0400</lastBuildDate><atom:link href="https://mikeder.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Software Engineering Etiquette</title>
+      <link>https://mikeder.net/blog/swetiquette/</link>
+      <pubDate>Wed, 23 Apr 2025 20:52:46 -0400</pubDate>
+      
+      <guid>https://mikeder.net/blog/swetiquette/</guid>
+      <description>Building things that people can depend on requires a degree of planning and a willingness to stick to best practices, despite minor upfront timeline inconveniences. When things change, those changes should be documented and communicated to those people that rely on it, quickly and reliably.
+I had a conversation at work today about a piece of software my team was integrating with, suddenly failing to return results to a request our server was making.</description>
+    </item>
+    
     <item>
       <title>Election 2024</title>
       <link>https://mikeder.net/blog/election-2024/</link>
