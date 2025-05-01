@@ -1,7 +1,12 @@
 ---
 title: "Renet to Lightyear 1"
 date: 2024-04-12T14:44:48-04:00
-draft: true
+draft: false
+tags:
+- rust
+- bevy
+- networking
+- unfinished
 ---
 
 Notes from my effort to replace `bevy_renet` with `lightyear` in my "WIP" game.
