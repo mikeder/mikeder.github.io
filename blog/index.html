@@ -45,6 +45,20 @@
 	<h1><a href="https://mikeder.net/blog/swetiquette/">Software Engineering Etiquette</a></h1>
 	<time>23.04.2025 20:52</time>
 	
+	<br>
+	Tags:
+	
+	<a href=/tags/software>software</a>
+	
+	<a href=/tags/engineering>engineering</a>
+	
+	<a href=/tags/grpc>gRPC</a>
+	
+	<a href=/tags/server>server</a>
+	
+	<a href=/tags/programming>programming</a>
+	
+	
 	<div class="container">
 		Building things that people can depend on requires a degree of planning and a willingness to stick to best practices, despite minor upfront timeline inconveniences. When things change, those changes should be documented and communicated to those people that rely on it, quickly and reliably.
 I had a conversation at work today about a piece of software my team was integrating with, suddenly failing to return results to a request our server was making.
@@ -84,6 +98,32 @@ Original version:
 $ clang &ndash;version Apple clang version 15.
 		
 		<a href="https://mikeder.net/blog/m1-mac-wasm/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
+	<h1><a href="https://mikeder.net/blog/renet-to-lightyear-1/">Renet to Lightyear 1</a></h1>
+	<time>12.04.2024 14:44</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/rust>rust</a>
+	
+	<a href=/tags/bevy>bevy</a>
+	
+	<a href=/tags/networking>networking</a>
+	
+	<a href=/tags/unfinished>unfinished</a>
+	
+	
+	<div class="container">
+		Notes from my effort to replace bevy_renet with lightyear in my “WIP” game.
+Renet is a popular server authoritative networking library for the Bevy game engine. I started using it for a new game I’m working on and really liked its simplicity from the start. Eventually though, I realized I wanted to target WASM for my game and Renet does not currently support websockets or webtransport. Another up and coming library is lightyear - its got a very active main contributor/maintainer in the Bevy Discord and it comes with support for WASM via websockets or webtransport and also supports crossplay between protocols as well as advanced replication features like client side prediction, rollback and snapshot interpolation, and many more!
+		
+		<a href="https://mikeder.net/blog/renet-to-lightyear-1/">Read more...</a>
 		
 	</div>
 </article>
@@ -182,31 +222,6 @@ Once all the photos are imported into the Photos app, go to the “Library” ta
 Template Repo Initial Gameplay Loop Adding Multiplayer Converting single player systems to multiplayer. Player movement systems need to handle movement for ALL players. Determinism - what does it mean? Random spawns and how to agree on their randomness.
 		
 		<a href="https://mikeder.net/blog/turtletime-devlog-1/">Read more...</a>
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/how-to-alert/">How to Alert</a></h1>
-	<time>26.01.2023 08:31</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/sre>sre</a>
-	
-	<a href=/tags/engineering>engineering</a>
-	
-	<a href=/tags/alerting>alerting</a>
-	
-	<a href=/tags/computing>computing</a>
-	
-	
-	<div class="container">
-		Define SLI’s and SLO’s We have to define what is successful operation of the service. Burger World example: Burger World has 3 main objectives: Serve customer orders at drive through in 3min or less. Serve customer orders at walk up counter in 5min or less. Less than 1% of orders result in corrective action. First assume that all other operations are working as designed, we only monitor and alert on deviations from the primary objectives.
-		
-		<a href="https://mikeder.net/blog/how-to-alert/">Read more...</a>
 		
 	</div>
 </article>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>rust on mikeder.net</title>
-    <link>https://mikeder.net/tags/rust/</link>
-    <description>Recent content in rust on mikeder.net</description>
+    <title>unfinished on mikeder.net</title>
+    <link>https://mikeder.net/tags/unfinished/</link>
+    <description>Recent content in unfinished on mikeder.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Apr 2024 14:44:48 -0400</lastBuildDate><atom:link href="https://mikeder.net/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Apr 2024 14:44:48 -0400</lastBuildDate><atom:link href="https://mikeder.net/tags/unfinished/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Renet to Lightyear 1</title>
       <link>https://mikeder.net/blog/renet-to-lightyear-1/</link>
@@ -15,16 +15,6 @@
       <guid>https://mikeder.net/blog/renet-to-lightyear-1/</guid>
       <description>Notes from my effort to replace bevy_renet with lightyear in my &amp;ldquo;WIP&amp;rdquo; game.
 Renet is a popular server authoritative networking library for the Bevy game engine. I started using it for a new game I&amp;rsquo;m working on and really liked its simplicity from the start. Eventually though, I realized I wanted to target WASM for my game and Renet does not currently support websockets or webtransport. Another up and coming library is lightyear - its got a very active main contributor/maintainer in the Bevy Discord and it comes with support for WASM via websockets or webtransport and also supports crossplay between protocols as well as advanced replication features like client side prediction, rollback and snapshot interpolation, and many more!</description>
-    </item>
-    
-    <item>
-      <title>Turtle Time Game Devlog 1</title>
-      <link>https://mikeder.net/blog/turtletime-devlog-1/</link>
-      <pubDate>Wed, 26 Apr 2023 10:16:08 -0400</pubDate>
-      
-      <guid>https://mikeder.net/blog/turtletime-devlog-1/</guid>
-      <description>Turtle Time is my first attempt at game development. I discovered the Bevy Engine, which is written in Rust, and wanted to experiment a little and learn something new outside of my usual backend server programming work.
-Template Repo Initial Gameplay Loop Adding Multiplayer Converting single player systems to multiplayer. Player movement systems need to handle movement for ALL players. Determinism - what does it mean? Random spawns and how to agree on their randomness.</description>
     </item>
     
   </channel>

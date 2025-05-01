@@ -3,10 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://mikeder.net/blog/</loc>
-    <lastmod>2025-05-01T11:18:51-04:00</lastmod>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/engineering/</loc>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/grpc/</loc>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/programming/</loc>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/server/</loc>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/software/</loc>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/swetiquette/</loc>
-    <lastmod>2025-05-01T11:18:51-04:00</lastmod>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/</loc>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/projects/homelab/</loc>
     <lastmod>2024-12-31T15:06:47-05:00</lastmod>
@@ -19,6 +37,21 @@
   </url><url>
     <loc>https://mikeder.net/blog/m1-mac-wasm/</loc>
     <lastmod>2024-04-17T13:52:35-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/bevy/</loc>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/networking/</loc>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/blog/renet-to-lightyear-1/</loc>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/rust/</loc>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/unfinished/</loc>
+    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/profiling-rust-with-tracy/</loc>
     <lastmod>2024-04-09T09:59:00-04:00</lastmod>
@@ -41,23 +74,8 @@
     <loc>https://mikeder.net/projects/turtletime/</loc>
     <lastmod>2023-04-27T12:15:47-04:00</lastmod>
   </url><url>
-    <loc>https://mikeder.net/tags/bevy/</loc>
-    <lastmod>2023-05-04T09:36:30-04:00</lastmod>
-  </url><url>
     <loc>https://mikeder.net/tags/gamedev/</loc>
     <lastmod>2023-05-04T09:36:30-04:00</lastmod>
-  </url><url>
-    <loc>https://mikeder.net/tags/networking/</loc>
-    <lastmod>2023-05-04T09:36:30-04:00</lastmod>
-  </url><url>
-    <loc>https://mikeder.net/tags/programming/</loc>
-    <lastmod>2023-05-04T09:36:30-04:00</lastmod>
-  </url><url>
-    <loc>https://mikeder.net/tags/rust/</loc>
-    <lastmod>2023-05-04T09:36:30-04:00</lastmod>
-  </url><url>
-    <loc>https://mikeder.net/tags/</loc>
-    <lastmod>2023-08-24T11:30:19-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/turtletime-devlog-1/</loc>
     <lastmod>2023-05-04T09:36:30-04:00</lastmod>
@@ -66,9 +84,6 @@
     <lastmod>2023-04-26T10:14:48-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/tags/computing/</loc>
-    <lastmod>2023-04-26T10:14:48-04:00</lastmod>
-  </url><url>
-    <loc>https://mikeder.net/tags/engineering/</loc>
     <lastmod>2023-04-26T10:14:48-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/how-to-alert/</loc>
@@ -134,13 +149,7 @@
     <loc>https://mikeder.net/tags/go/</loc>
     <lastmod>2022-11-05T13:21:38-04:00</lastmod>
   </url><url>
-    <loc>https://mikeder.net/tags/grpc/</loc>
-    <lastmod>2022-11-05T13:21:38-04:00</lastmod>
-  </url><url>
     <loc>https://mikeder.net/blog/grpc-webapp-template/</loc>
-    <lastmod>2022-11-05T13:21:38-04:00</lastmod>
-  </url><url>
-    <loc>https://mikeder.net/tags/server/</loc>
     <lastmod>2022-11-05T13:21:38-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/jupiter-6-issues-2022/</loc>

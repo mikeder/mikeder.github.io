@@ -42,6 +42,27 @@
 
 		
 			<article>
+	<h1><a href="https://mikeder.net/blog/archive/1535507378-more-better-database-migration/">More advanced database migration</a></h1>
+	<time>29.08.2018 01:49</time>
+	
+	<br>
+	Tags:
+	
+	<a href=/tags/archive>archive</a>
+	
+	
+	<div class="container">
+		This database migration or promotion allows for moving of data between two hosts in separate networks. We open an SSH tunnel from our local machine to a bastion or “jumpbox” within the same network of each database and then mysqldump the data from one host to another via local ports.
+Setup HISTCONTROL
+root@DESKTOP-VFK848F:~# export HISTCONTROL=ignorespace root@DESKTOP-VFK848F:~# # commands starting with a space will no longer show up in history SSH Tunnel to both database hosts
+		
+		<a href="https://mikeder.net/blog/archive/1535507378-more-better-database-migration/">Read more...</a>
+		
+	</div>
+</article>
+<hr>
+		
+			<article>
 	<h1><a href="https://mikeder.net/blog/archive/1531445851-photo-sorting/">Photo sorting is dangerous business</a></h1>
 	<time>13.07.2018 01:37</time>
 	
@@ -210,28 +231,6 @@ Europa is “taking a hiatus” as of 11/18/16, no good
 Add another 32g disk to the proxy VM - proxy-02 Format, make file system and mount new disk at /mnt/cache/ Add line to /etc/fstab to mount disk on boot: /dev/vda1 /mnt/cache ext4 defaults 0 2 Add the following snippet to /etc/nginx/snippets/proxy-defaults.conf: proxy_cache_path /mnt/cache levels=1:2 keys_zone=my_cache:10m max_size=20g inactive=60m; Update /etc/nginx/sites-available/mc-map.sqweeb.net to use the cache: server { &hellip; proxy_cache my_cache; proxy_cache_valid 200 302 10m; add_header X-Cache-Status $upstream_cache_status; .
 		
 		<a href="https://mikeder.net/blog/archive/1479932997-minecraft-server-tweaks/">Read more...</a>
-		
-	</div>
-</article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/archive/1479507653-minecraft-server/">Minecraft Server Info</a></h1>
-	<time>18.11.2016 22:20</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/archive>archive</a>
-	
-	
-	<div class="container">
-		Dynmap w/ Factions: Here
-###Minecraft Multiplayer
-###Minecraft List
-###Minecraft Server List
-Plugins:
-dynmap Essentials EssentialsProtect EssentialsSpawn EssentialsGeoIP EssentialsChat EssentialsAntiBuild Factions FactionsDynmap MassiveCore Vault
 		
 	</div>
 </article>

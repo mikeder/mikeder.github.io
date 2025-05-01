@@ -44,6 +44,16 @@ $ clang --version Apple clang version 15.</description>
     </item>
     
     <item>
+      <title>Renet to Lightyear 1</title>
+      <link>https://mikeder.net/blog/renet-to-lightyear-1/</link>
+      <pubDate>Fri, 12 Apr 2024 14:44:48 -0400</pubDate>
+      
+      <guid>https://mikeder.net/blog/renet-to-lightyear-1/</guid>
+      <description>Notes from my effort to replace bevy_renet with lightyear in my &amp;ldquo;WIP&amp;rdquo; game.
+Renet is a popular server authoritative networking library for the Bevy game engine. I started using it for a new game I&amp;rsquo;m working on and really liked its simplicity from the start. Eventually though, I realized I wanted to target WASM for my game and Renet does not currently support websockets or webtransport. Another up and coming library is lightyear - its got a very active main contributor/maintainer in the Bevy Discord and it comes with support for WASM via websockets or webtransport and also supports crossplay between protocols as well as advanced replication features like client side prediction, rollback and snapshot interpolation, and many more!</description>
+    </item>
+    
+    <item>
       <title>Profiling Rust With Tracy</title>
       <link>https://mikeder.net/blog/profiling-rust-with-tracy/</link>
       <pubDate>Tue, 09 Apr 2024 09:54:14 -0400</pubDate>

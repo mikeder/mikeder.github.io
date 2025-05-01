@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>software on mikeder.net</title>
+    <link>https://mikeder.net/tags/software/</link>
+    <description>Recent content in software on mikeder.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Apr 2025 20:52:46 -0400</lastBuildDate><atom:link href="https://mikeder.net/tags/software/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Software Engineering Etiquette</title>
+      <link>https://mikeder.net/blog/swetiquette/</link>
+      <pubDate>Wed, 23 Apr 2025 20:52:46 -0400</pubDate>
+      
+      <guid>https://mikeder.net/blog/swetiquette/</guid>
+      <description>Building things that people can depend on requires a degree of planning and a willingness to stick to best practices, despite minor upfront timeline inconveniences. When things change, those changes should be documented and communicated to those people that rely on it, quickly and reliably.
+I had a conversation at work today about a piece of software my team was integrating with, suddenly failing to return results to a request our server was making.</description>
+    </item>
+    
+  </channel>
+</rss>
