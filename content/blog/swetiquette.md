@@ -1,7 +1,7 @@
 ---
 title: "Software Engineering Etiquette"
 date: 2025-04-23T20:52:46-04:00
-draft: true
+draft: false
 ---
 
 Building things that people can depend on requires a degree of planning and a willingness to stick to best practices, despite minor upfront timeline inconveniences. When things change, those changes should be documented and communicated to those people that rely on it, quickly and reliably.
