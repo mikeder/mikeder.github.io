@@ -20,3 +20,17 @@ draft: false
 1. Docker
 2. FreeNAS/TrueNAS
 
+## Main Gaming PC
+
+* CPU: AMD Ryzen 9 7950X3d @ 4.2GHz
+* Memory: G.Skill 32GB DDR5
+* Motherboard: Gigabyte B650 Gaming X AX
+* GPU: NVIDIA GeForce RTX 4070 Ti
+* Storage:
+  * 1x Samsung 980 1TB
+  * 1x Samsung 980 PRO 2TB
+
+## Laptop
+
+* Apple M1 PRO 16GB
+* 14in Display
