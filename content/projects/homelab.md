@@ -20,6 +20,8 @@ draft: false
 1. Docker
 2. FreeNAS/TrueNAS
 
+
+
 ## Main Gaming PC
 
 * CPU: AMD Ryzen 9 7950X3d @ 4.2GHz
