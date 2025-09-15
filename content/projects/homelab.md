@@ -20,7 +20,19 @@ draft: false
 1. Docker
 2. FreeNAS/TrueNAS
 
+## Linux Server 1 (liquidwhite)
 
+* CPU: Intel Core i7-4790k @ 4.00GHz
+* Memory: 16GB DDR3
+* Storage:
+  * /dev/sda - SanDisk Ultra II 500GB
+  * /dev/sdb - SanDisk SDSSDA24 240GB
+
+## Linux Server 2 (devb0x)
+
+* CPU: Intel Core i5
+* Memory: 8GB
+* Storage: ???
 
 ## Main Gaming PC
 
