@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 24 Oct 2022 21:13:07 -0400</lastBuildDate><atom:link href="https://mikeder.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Local Coding LLM - Initial Setup</title>
+      <link>https://mikeder.net/blog/local-llm-pdd/initial/</link>
+      <pubDate>Fri, 06 Mar 2026 09:32:15 -0500</pubDate>
+      
+      <guid>https://mikeder.net/blog/local-llm-pdd/initial/</guid>
+      <description>Exploring options for running an AI coding assistant at home, using hardware I already have. My initial research gave me a couple interesting options to try out:
+llama.cpp - llama-server can run GGUF format models, supports downloading directly from HuggingFace and provides a basic chat interface built into the server. Can run inference directly on the CPU but would perform better with GPU access. lmstudio - can run models of various formats, comes with a nice GUI for browsing, downloading and running models.</description>
+    </item>
+    
+    <item>
       <title>Software Engineering Etiquette</title>
       <link>https://mikeder.net/blog/swetiquette/</link>
       <pubDate>Wed, 23 Apr 2025 20:52:46 -0400</pubDate>
@@ -798,22 +808,23 @@ $ apt-get install mysql-server python-dev libmysqlclient-dev libffi-dev git pyth
     
     <item>
       <title></title>
-      <link>https://mikeder.net/blog/local-llm-pdd/prompt-results/attempt-1/</link>
+      <link>https://mikeder.net/blog/local-llm-pdd/results/attempt-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://mikeder.net/blog/local-llm-pdd/prompt-results/attempt-1/</guid>
-      <description>First Attempt Prompt I want to build an app that can be used by electronics/synthesizer technicians to share technical documents and fixes for common repairs. Can you help me plan the development of this app, using a typescript and react frontend and golang backend?
+      <guid>https://mikeder.net/blog/local-llm-pdd/results/attempt-1/</guid>
+      <description>Prompt I want to build an app that can be used by electronics/synthesizer technicians to share technical documents and fixes for common repairs. Can you help me plan the development of this app, using a typescript and react frontend and golang backend?
 &amp;laquo;&amp;lt;reasoning_content_start&amp;raquo;&amp;gt;This is a great project idea! Let me help plan this thoroughly. An app for electronics/synthesizer technicians to share technical documents and repair solutions would be very valuable to the community.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://mikeder.net/blog/local-llm-pdd/prompt-results/attempt-2/</link>
+      <link>https://mikeder.net/blog/local-llm-pdd/results/attempt-2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://mikeder.net/blog/local-llm-pdd/prompt-results/attempt-2/</guid>
-      <description>Sure, I can help you plan the development of your app. Here are the steps you can follow:
-Define the app&amp;rsquo;s features: Before you start coding, you need to define the features you want your app to have. For your app, you might want to include features like: A document library where technicians can upload, search, and share documents. A repair fix library where technicians can share common repair fixes. A chat feature where technicians can communicate with each other.</description>
+      <guid>https://mikeder.net/blog/local-llm-pdd/results/attempt-2/</guid>
+      <description>Prompt I want to build an app that can be used by electronics/synthesizer technicians to share technical documents and fixes for common repairs. Can you help me plan the development of this app, using a typescript and react frontend and golang backend?
+Sure, I can help you plan the development of your app. Here are the steps you can follow:
+Define the app&amp;rsquo;s features: Before you start coding, you need to define the features you want your app to have.</description>
     </item>
     
   </channel>

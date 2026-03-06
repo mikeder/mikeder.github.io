@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Apple Photos Export</title>
+    <title>Local Coding LLM - Initial Setup</title>
     
     <meta name="description" content="A static site built with Hugo!">
     
@@ -33,47 +33,40 @@
 </header> 
 <main id="content" class="content">
     <article class="content-chunk">
-        <h1>Apple Photos Export</h1>
-        <h5>10.11.2023 11:01</h5>
+        <h1>Local Coding LLM - Initial Setup</h1>
+        <h5>06.03.2026 09:32</h5>
         <div class="container">
-            <p>It took me a few attempts to figure out a good way to backup photos from an iPhone and Macbook to a proper format on an external NAS, so I figured I&rsquo;d write it down.</p>
-<p>First, import all the photos from your iPhone(s) onto the Macbook. This should put them in your local Photos library, and will probably start tagging them with &ldquo;Memories&rdquo; and location information.</p>
-<p>Once all the photos are imported into the Photos app, go to the &ldquo;Library&rdquo; tab on the left. Select all of the photos with Edit -&gt; Select All or (CMD + A). Then export all the photos by going to File -&gt; Export -&gt; Export # Items ( not the unmodified option, this will export in the original HEIC format that is useless outside of a Mac ).</p>
-<p>In the export prompt, select the following options:</p>
+            <p>Exploring options for running an AI coding assistant at home, using hardware I already have. My initial research gave me a couple interesting options to try out:</p>
+<ol>
+<li>llama.cpp - llama-server can run GGUF format models, supports downloading directly from HuggingFace and provides a basic chat interface built into the server. Can run inference directly on the CPU but would perform better with GPU access.</li>
+<li>lmstudio - can run models of various formats, comes with a nice GUI for browsing, downloading and running models. Will make use of available GPU by default (doesn&rsquo;t require custom compilation like llama.cpp).</li>
+</ol>
+<h2 id="attempt-1">Attempt 1</h2>
+<p>Executor: llama.cpp
+Model: TeichAI/Qwen3-14B-Claude-4.5-Opus-High-Reasoning-Distill-GGUF:Q4_K_M
+Hardware: Intel i7 4790k, 16GB DDR3 1600</p>
+<p>Command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>meder@liquidwhite:bin$ ./llama-server -hf TeichAI/Qwen3-14B-Claude-4.5-Opus-High-Reasoning-Distill-GGUF:Q4_K_M --host 0.0.0.0
+</span></span></code></pre></div><p>Result:</p>
 <ul>
-<li>Image Kind: <code>JPEG</code></li>
-<li>Movie Quality: <code>4K</code></li>
-<li>Include:
+<li>Tokens: 10,492 tokens</li>
+<li>Time: 1h 41min 42s</li>
+<li>1.72 t/s (avg. started ~3-4 t/s)</li>
+</ul>
+<p><a href="../results/attempt-1">Result Output</a></p>
+<h2 id="attempt-2">Attempt 2</h2>
+<p>Executor: llama.cpp
+Model: TeichAI/Qwen3-14B-Claude-4.5-Opus-High-Reasoning-Distill-GGUF:Q4_K_M
+Hardware: Intel i7 4790k, 16GB DDR3 1600</p>
+<p>Command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>meder@liquidwhite:bin$ ./llama-server -hf Qwen/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M --host 0.0.0.0
+</span></span></code></pre></div><p>Result:</p>
 <ul>
-<li><input checked="" disabled="" type="checkbox"> Title, Keywords, Caption</li>
-<li><input checked="" disabled="" type="checkbox"> Location Information</li>
+<li>Tokens: 446 tokens</li>
+<li>Time: 1min 4s</li>
+<li>6.94 t/s</li>
 </ul>
-</li>
-<li>File Name: <code>Use File Name</code></li>
-<li>Subfolder Format: <code>Moment Name</code></li>
-</ul>
-<p>
-
-
-
-
-
-
-<div class="md__image">
-    <img id="[371 228 233 83 187 298]" src="export-prompt.png" onclick="openModal(this.id)" alt="prompt"  />
-</div></p>
-<p>I pick a local folder on my desktop for the initial export, to double check the formats and naming convention and then copy it over to the external network storage.</p>
-<p>You can check the progress of the export in the Photos app, next to the zoom slider.</p>
-<p>
-
-
-
-
-
-
-<div class="md__image">
-    <img id="[30 320 168 393 306 461]" src="progress.png" onclick="openModal(this.id)" alt="progress"  />
-</div></p>
+<p><a href="../results/attempt-2">Result Output</a></p>
 
         </div>
          
@@ -129,7 +122,7 @@
 
 <footer id="site-footer">
     <p>
-        &copy; 2026 <a href="https://mikeder.net/">mikeder.net</a> v:033a89b</p>
+        &copy; 2026 <a href="https://mikeder.net/">mikeder.net</a> v:925e476</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
