@@ -796,5 +796,25 @@ Bootswatch Cyborg theme Navbar /auth/create disabled after first user is created
 $ apt-get install mysql-server python-dev libmysqlclient-dev libffi-dev git python-pip $ pip install bcrypt mysql-python torndb tornado markdown futures $ mkdir /opt/blog $ cd /opt $ git clone http://github.com/mikeder/blog $ cd blog $ mysql -u root -p mysql&amp;gt; CREATE DATABASE blog; mysql&amp;gt; GRANT ALL PRIVILEGES ON blog.</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://mikeder.net/blog/local-llm-pdd/prompt-results/attempt-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/local-llm-pdd/prompt-results/attempt-1/</guid>
+      <description>First Attempt Prompt I want to build an app that can be used by electronics/synthesizer technicians to share technical documents and fixes for common repairs. Can you help me plan the development of this app, using a typescript and react frontend and golang backend?
+&amp;laquo;&amp;lt;reasoning_content_start&amp;raquo;&amp;gt;This is a great project idea! Let me help plan this thoroughly. An app for electronics/synthesizer technicians to share technical documents and repair solutions would be very valuable to the community.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://mikeder.net/blog/local-llm-pdd/prompt-results/attempt-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mikeder.net/blog/local-llm-pdd/prompt-results/attempt-2/</guid>
+      <description>Sure, I can help you plan the development of your app. Here are the steps you can follow:
+Define the app&amp;rsquo;s features: Before you start coding, you need to define the features you want your app to have. For your app, you might want to include features like: A document library where technicians can upload, search, and share documents. A repair fix library where technicians can share common repair fixes. A chat feature where technicians can communicate with each other.</description>
+    </item>
+    
   </channel>
 </rss>

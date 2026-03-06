@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    
+    <meta name="description" content="A static site built with Hugo!">
+    
+    
+    <meta name="author" content="Mike Eder">
+    
+
+    
+    <link rel="me" href="https://universeodon.com/@sqweebking">
+    
+
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1></h1>
+        <h5>01.01.0001 00:00</h5>
+        <div class="container">
+            <p>Sure, I can help you plan the development of your app. Here are the steps you can follow:</p>
+<ol>
+<li>Define the app&rsquo;s features: Before you start coding, you need to define the features you want your app to have. For your app, you might want to include features like:</li>
+</ol>
+<ul>
+<li>A document library where technicians can upload, search, and share documents.</li>
+<li>A repair fix library where technicians can share common repair fixes.</li>
+<li>A chat feature where technicians can communicate with each other.</li>
+</ul>
+<ol start="2">
+<li>
+<p>Choose a backend framework: For your backend, you can use Golang. Golang is a popular language for building high-performance web servers and is known for its simplicity and efficiency.</p>
+</li>
+<li>
+<p>Choose a frontend framework: For your frontend, you can use React. React is a popular JavaScript library for building user interfaces. It is known for its simplicity and flexibility.</p>
+</li>
+<li>
+<p>Set up your development environment: To set up your development environment, you will need to install Node.js, Golang, and a code editor like Visual Studio Code.</p>
+</li>
+<li>
+<p>Create the backend: Create a Golang server that will handle the app&rsquo;s backend logic. This will include features like uploading and searching documents, storing and retrieving repair fixes, and handling user authentication.</p>
+</li>
+<li>
+<p>Create the frontend: Create a React app that will handle the app&rsquo;s frontend logic. This will include features like displaying documents and repair fixes, searching for documents and repair fixes, and communicating with the backend server.</p>
+</li>
+<li>
+<p>Test your app: Test your app thoroughly to ensure that it is working as expected. This will include unit testing, integration testing, and user acceptance testing.</p>
+</li>
+<li>
+<p>Deploy your app: Once your app is working, you can deploy it to a server so that other technicians can use it. You can use platforms like AWS, Google Cloud, or Heroku to deploy your app.</p>
+</li>
+<li>
+<p>Maintain and update your app: After your app is deployed, you will need to maintain and update it as needed. This will include fixing bugs, adding new features, and updating the app to keep up with changes in technology.</p>
+</li>
+</ol>
+<p>I hope this helps you plan the development of your app. Let me know if you have any questions or if you need more information.</p>
+
+        </div>
+         
+        <br>
+        <div>
+            <a href="javascript:history.back()">
+                &lt;&lt; Back</a>
+                    <a href="#top">Top ^^</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()"
+            style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2026 <a href="https://mikeder.net/">mikeder.net</a> v:d9a6859</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" rel="me" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-mastodon" style="font-size: 24px" href="https://universeodon.com/@sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    
+    <meta name="description" content="A static site built with Hugo!">
+    
+    
+    <meta name="author" content="Mike Eder">
+    
+
+    
+    <link rel="me" href="https://universeodon.com/@sqweebking">
+    
+
+    <link rel="stylesheet" href='/css/style.css'> 
+    <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="site-header">
+    <div class="nav">
+        <a href="https://mikeder.net/">Home</a>  
+        <a href="/about/">Abouts</a> 
+        <a href="/blog/">Blogs</a> 
+        <a href="/projects/">Projects</a> 
+        <a href="/synthesizers/">Synthesizers</a>  
+    </div>
+</header> 
+<main id="content" class="content">
+    <article class="content-chunk">
+        <h1></h1>
+        <h5>01.01.0001 00:00</h5>
+        <div class="container">
+            <h1 id="first-attempt">First Attempt</h1>
+<h2 id="prompt">Prompt</h2>
+<blockquote>
+<p>I want to build an app that can be used by electronics/synthesizer technicians to share technical documents and fixes for common repairs. Can you help me plan the development of this app, using a typescript and react frontend and golang backend?</p>
+</blockquote>
+<p>&laquo;&lt;reasoning_content_start&raquo;&gt;This is a great project idea! Let me help plan this thoroughly. An app for electronics/synthesizer technicians to share technical documents and repair solutions would be very valuable to the community.</p>
+<p>Let me think through the requirements, features, architecture, and development plan:</p>
+<p><strong>Core Features:</strong></p>
+<ol>
+<li>User authentication (sign up/login) - technicians need accounts to post and access private content</li>
+<li>Document sharing - upload and share technical manuals, repair guides, schematics</li>
+<li>Repair solutions database - technicians can submit and search for common repair solutions</li>
+<li>Community forum - discussion boards for specific synth models or repair topics</li>
+<li>Search functionality - powerful search across documents and solutions</li>
+<li>Categories/tags - organize content by synth brand/model, problem type, etc.</li>
+<li>Private vs public content - some technicians may want to share solutions privately with peers</li>
+<li>Reputation system - encourage quality contributions</li>
+<li>Notifications - when someone responds to your post or mentions you</li>
+<li>Profile system - technicians can build their reputation and share their expertise</li>
+</ol>
+<p><strong>Data Model:</strong></p>
+<ul>
+<li>Users (technicians)</li>
+<li>Documents (manuals, guides, schematics)</li>
+<li>RepairSolutions (specific fixes to problems)</li>
+<li>Categories/Tags (brands, models, problem types)</li>
+<li>Forums/Threads (discussion)</li>
+<li>Comments/Replies</li>
+<li>Votes/Reputation</li>
+</ul>
+<p><strong>Backend (Golang):</strong></p>
+<ul>
+<li>REST/GRPC API</li>
+<li>Authentication/JWT</li>
+<li>Database (PostgreSQL with JSON support for rich data)</li>
+<li>File storage (either local or cloud storage with URLs)</li>
+<li>Search (either database queries or Elasticsearch)</li>
+<li>Websockets for real-time notifications</li>
+</ul>
+<p><strong>Frontend (TypeScript + React):</strong></p>
+<ul>
+<li>Authentication screens</li>
+<li>Dashboard with recent activity</li>
+<li>Document browser/search</li>
+<li>Repair solutions browser/search</li>
+<li>Forum sections</li>
+<li>User profiles</li>
+<li>Upload/create forms</li>
+<li>Notifications panel</li>
+<li>Admin dashboard (moderation tools)</li>
+</ul>
+<p>Let me create a comprehensive plan:&laquo;&lt;reasoning_content_end&raquo;&gt;# Comprehensive Plan for SynthTech - Electronics/Synthesizer Technician App</p>
+<h2 id="project-overview">Project Overview</h2>
+<h3 id="problem-statement">Problem Statement</h3>
+<p>Electronics and synthesizer technicians often face challenges finding reliable repair information, sharing proprietary knowledge, and documenting solutions in a centralized, searchable format.</p>
+<h3 id="solution">Solution</h3>
+<p>A community-driven platform where technicians can:</p>
+<ul>
+<li>Share technical documents and repair guides</li>
+<li>Discover solutions to common problems</li>
+<li>Collaborate and discuss repairs</li>
+<li>Build their professional reputation</li>
+</ul>
+<hr>
+<h2 id="technical-architecture">Technical Architecture</h2>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                                     FRONTEND                                        │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│                        React + TypeScript                                         │
+│                              │                                                    │
+│    ┌─────────────┐          │          ┌────────────────────────────┐              │
+│    │  Auth UI    │          ▼          │      Main App              │              │
+│    │  Forms      │        ┌─────┐       │                          │              │
+│    │  Modals     │        │ Router│       │  ┌─────────────┐        │              │
+│    │  Error      │        │       │       │  │  Dashboard  │        │              │
+│    └─────────────┘        │       │       │  │  Documents  │        │              │
+│                           │       │       │  │  Solutions  │        │              │
+│    ┌─────────────┐        │       │       │  │  Forum      │        │              │
+│    │  Navigation │        ▼       ▼       │  │  Profile    │        │              │
+│    │  Sidebar    │    ┌─────┐ ┌─────┐     │  │  Search     │        │              │
+│    │  Breadcrumbs│    │Home │ │Docs │     │  └─────────────┘        │              │
+│    └─────────────┘    │     │ └─────┘                                 │              │
+│                       │     │                                           │              │
+│                       ▼     ▼                                           │              │
+│                  ┌──────┴──────┐                                        │              │
+│                  │  API Calls  │                                        │              │
+│                  │  WebSocket  │                                        │              │
+│                  └─────────────┘                                        │              │
+│                           │                                            │              │
+│                           ▼                                            │              │
+│                    ┌────────────────┐                                   │              │
+│                    │    Backend     │                                   │              │
+│                    └────────────────┘                                   │              │
+│                             │                                            │              │
+│                             ▼                                            │              │
+│            ┌─────────────────────────────────────────────┐               │              │
+│            │              DATABASE                        │               │              │
+│            │   PostgreSQL + JSONB + Attachments           │               │              │
+│            └─────────────────────────────────────────────┘               │              │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+</code></pre><hr>
+<h2 id="backend-golang-detailed-specification">Backend (Golang) Detailed Specification</h2>
+<h3 id="project-structure">Project Structure</h3>
+<pre tabindex="0"><code>synthtech-backend/
+├── cmd/
+│   └── synthtech/
+│       └── main.go
+├── internal/
+│   ├── auth/
+│   │   ├── service.go
+│   │   ├── handler.go
+│   │   └── jwt.go
+│   ├── document/
+│   │   ├── model.go
+│   │   ├── service.go
+│   │   └── handler.go
+│   ├── repair/
+│   │   ├── model.go
+│   │   ├── service.go
+│   │   └── handler.go
+│   ├── forum/
+│   │   ├── model.go
+│   │   ├── service.go
+│   │   └── handler.go
+│   ├── user/
+│   │   ├── model.go
+│   │   ├── service.go
+│   │   └── handler.go
+│   ├── search/
+│   │   └── elastic.go
+│   └── cache/
+│       └── redis.go
+├── pkg/
+│   ├── middleware/
+│   │   ├── auth.go
+│   │   ├── cors.go
+│   │   └── rate_limit.go
+│   ├── filestorage/
+│   │   ├── local.go
+│   │   └── interface.go
+│   ├── notify/
+│   │   └── websocket.go
+│   └── utils/
+│       ├── validator.go
+│       └── slug.go
+├── proto/
+│   └── synthtech.proto
+├── migrations/
+│   └── postgres/
+│       └── migrations.yaml
+├── go.mod
+├── go.sum
+└── Dockerfile
+</code></pre><h3 id="core-apis">Core APIs</h3>
+<p><strong>Authentication Service</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// auth.proto
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">service</span> <span style="color:#a6e22e">AuthService</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rpc</span> <span style="color:#a6e22e">Register</span>(<span style="color:#a6e22e">RegisterRequest</span>) <span style="color:#a6e22e">returns</span> (<span style="color:#a6e22e">AuthResponse</span>) {}
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rpc</span> <span style="color:#a6e22e">Login</span>(<span style="color:#a6e22e">LoginRequest</span>) <span style="color:#a6e22e">returns</span> (<span style="color:#a6e22e">AuthResponse</span>) {}
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rpc</span> <span style="color:#a6e22e">Refresh</span>(<span style="color:#a6e22e">RefreshRequest</span>) <span style="color:#a6e22e">returns</span> (<span style="color:#a6e22e">AuthResponse</span>) {}
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rpc</span> <span style="color:#a6e22e">VerifyEmail</span>(<span style="color:#a6e22e">VerifyEmailRequest</span>) <span style="color:#a6e22e">returns</span> (<span style="color:#a6e22e">Empty</span>) {}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">message</span> <span style="color:#a6e22e">RegisterRequest</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">email</span> = <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">password</span> = <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">firstName</span> = <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">lastName</span> = <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">profession</span> = <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">message</span> <span style="color:#a6e22e">AuthResponse</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">accessToken</span> = <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">refreshToken</span> = <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">userId</span> = <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">userEmail</span> = <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int64</span> <span style="color:#a6e22e">expiresAt</span> = <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Document Service</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// document.proto
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">service</span> <span style="color:#a6e22e">DocumentService</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rpc</span> <span style="color:#a6e22e">CreateDocument</span>(<span style="color:#a6e22e">CreateDocumentRequest</span>) <span style="color:#a6e22e">returns</span> (<span style="color:#a6e22e">DocumentResponse</span>) {}
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rpc</span> <span style="color:#a6e22e">GetDocument</span>(<span style="color:#a6e22e">GetDocumentRequest</span>) <span style="color:#a6e22e">returns</span> (<span style="color:#a6e22e">DocumentResponse</span>) {}
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rpc</span> <span style="color:#a6e22e">ListDocuments</span>(<span style="color:#a6e22e">ListDocumentsRequest</span>) <span style="color:#a6e22e">returns</span> (<span style="color:#a6e22e">DocumentsResponse</span>) {}
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rpc</span> <span style="color:#a6e22e">UpdateDocument</span>(<span style="color:#a6e22e">UpdateDocumentRequest</span>) <span style="color:#a6e22e">returns</span> (<span style="color:#a6e22e">DocumentResponse</span>) {}
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rpc</span> <span style="color:#a6e22e">DeleteDocument</span>(<span style="color:#a6e22e">DeleteDocumentRequest</span>) <span style="color:#a6e22e">returns</span> (<span style="color:#a6e22e">Empty</span>) {}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">message</span> <span style="color:#a6e22e">CreateDocumentRequest</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">title</span> = <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">description</span> = <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">contentType</span> = <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">bytes</span> <span style="color:#a6e22e">content</span> = <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">repeated</span> <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">categories</span> = <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">map</span>&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">string</span>&gt; <span style="color:#a6e22e">metadata</span> = <span style="color:#ae81ff">6</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">message</span> <span style="color:#a6e22e">DocumentResponse</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">id</span> = <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">title</span> = <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">description</span> = <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">url</span> = <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">thumbnailUrl</span> = <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">authorId</span> = <span style="color:#ae81ff">6</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">repeated</span> <span style="color:#66d9ef">string</span> <span style="color:#a6e22e">categories</span> = <span style="color:#ae81ff">7</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">map</span>&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">string</span>&gt; <span style="color:#a6e22e">metadata</span> = <span style="color:#ae81ff">8</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int64</span> <span style="color:#a6e22e">createdAt</span> = <span style="color:#ae81ff">9</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int64</span> <span style="color:#a6e22e">updatedAt</span> = <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="database-schema">Database Schema</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- documents table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> documents (
+</span></span><span style="display:flex;"><span>    id UUID <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>    title TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    description TEXT,
+</span></span><span style="display:flex;"><span>    url TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    thumbnail_url TEXT,
+</span></span><span style="display:flex;"><span>    content_type TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    file_size INT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    author_id UUID <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    is_private BOOLEAN <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>,
+</span></span><span style="display:flex;"><span>    expires_at TIMESTAMPTZ,
+</span></span><span style="display:flex;"><span>    created_at TIMESTAMPTZ <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    updated_at TIMESTAMPTZ <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- Indexes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">INDEX</span> idx_documents_title (title),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">INDEX</span> idx_documents_categories (categories),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (author_id) <span style="color:#66d9ef">REFERENCES</span> users(id)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- repair_solutions table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> repair_solutions (
+</span></span><span style="display:flex;"><span>    id UUID <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>    title TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    problem_description TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    solution_steps TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    warning_notes TEXT,
+</span></span><span style="display:flex;"><span>    tags TEXT[],
+</span></span><span style="display:flex;"><span>    author_id UUID <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    synth_model TEXT,
+</span></span><span style="display:flex;"><span>    difficulty_level INT <span style="color:#66d9ef">CHECK</span> (difficulty_level <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">5</span>),
+</span></span><span style="display:flex;"><span>    estimated_time TEXT,
+</span></span><span style="display:flex;"><span>    created_at TIMESTAMPTZ <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    updated_at TIMESTAMPTZ <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">INDEX</span> idx_repair_solutions_tags (tags),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (author_id) <span style="color:#66d9ef">REFERENCES</span> users(id)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- forum_threads table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> forum_threads (
+</span></span><span style="display:flex;"><span>    id UUID <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>    title TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    content TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    author_id UUID <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    category TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    views INT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    is_pinned BOOLEAN <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>,
+</span></span><span style="display:flex;"><span>    created_at TIMESTAMPTZ <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    updated_at TIMESTAMPTZ <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">INDEX</span> idx_forum_category (category),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (author_id) <span style="color:#66d9ef">REFERENCES</span> users(id)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- comments table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> comments (
+</span></span><span style="display:flex;"><span>    id UUID <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>    content TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    author_id UUID <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    post_id UUID <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    parent_comment_id UUID,
+</span></span><span style="display:flex;"><span>    created_at TIMESTAMPTZ <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (author_id) <span style="color:#66d9ef">REFERENCES</span> users(id),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (post_id) <span style="color:#66d9ef">REFERENCES</span> forum_threads(id),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (parent_comment_id) <span style="color:#66d9ef">REFERENCES</span> comments(id)
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><h3 id="websocket-notifications">Websocket Notifications</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// notify/websocket.go
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">NotificationService</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">broadcaster</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">broadcaster</span>.<span style="color:#a6e22e">Broadcaster</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">NotificationService</span>) <span style="color:#a6e22e">HandleWebSocket</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">upgrader</span>.<span style="color:#a6e22e">Upgrade</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">r</span>, <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#e6db74">&#34;Failed to upgrade&#34;</span>, <span style="color:#e6db74">&#34;error&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">userID</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Context</span>().<span style="color:#a6e22e">Value</span>(<span style="color:#e6db74">&#34;userID&#34;</span>).(<span style="color:#66d9ef">string</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">userID</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">broadcaster</span>.<span style="color:#a6e22e">AddConnection</span>(<span style="color:#a6e22e">userID</span>, <span style="color:#a6e22e">conn</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">broadcaster</span>.<span style="color:#a6e22e">RemoveConnection</span>(<span style="color:#a6e22e">userID</span>, <span style="color:#a6e22e">conn</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">ReadMessage</span>()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Handle incoming messages
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>    }()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">NotificationService</span>) <span style="color:#a6e22e">Broadcast</span>(<span style="color:#a6e22e">event</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">payload</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">broadcaster</span>.<span style="color:#a6e22e">Broadcast</span>(<span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">payload</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="frontend-typescript--react-detailed-specification">Frontend (TypeScript + React) Detailed Specification</h2>
+<h3 id="project-structure-1">Project Structure</h3>
+<pre tabindex="0"><code>synthtech-frontend/
+├── src/
+│   ├── types/
+│   │   ├── api.d.ts
+│   │   ├── document.d.ts
+│   │   ├── repair.d.ts
+│   │   └── forum.d.ts
+│   ├── contexts/
+│   │   ├── AuthContext.tsx
+│   │   ├── DocumentContext.tsx
+│   │   └── NotificationContext.tsx
+│   ├── components/
+│   │   ├── ui/
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   ├── Input.tsx
+│   │   │   ├── Select.tsx
+│   │   │   ├── TextArea.tsx
+│   │   │   └── Toast.tsx
+│   │   ├── documents/
+│   │   │   ├── DocumentCard.tsx
+│   │   │   ├── DocumentDetail.tsx
+│   │   │   └── DocumentUpload.tsx
+│   │   ├── repair/
+│   │   │   ├── SolutionCard.tsx
+│   │   │   ├── SolutionForm.tsx
+│   │   │   └── SolutionList.tsx
+│   │   ├── forum/
+│   │   │   ├── ThreadCard.tsx
+│   │   │   ├── ThreadDetail.tsx
+│   │   │   └── PostForm.tsx
+│   │   └── shared/
+│   │       ├── CategoryFilter.tsx
+│   │       ├── SearchBar.tsx
+│   │       ├── TagsInput.tsx
+│   │       └── StatsCard.tsx
+│   ├── pages/
+│   │   ├── Dashboard.tsx
+│   │   ├── Documents.tsx
+│   │   ├── Repairs.tsx
+│   │   ├── Forum.tsx
+│   │   ├── Document/[id].tsx
+│   │   ├── Repair/[id].tsx
+│   │   ├── Thread/[id].tsx
+│   │   ├── Profile/[id].tsx
+│   │   ├── Search.tsx
+│   │   └── Auth/
+│   │       ├── Login.tsx
+│   │       ├── Register.tsx
+│   │       └── VerifyEmail.tsx
+│   ├── hooks/
+│   │   ├── useAuth.ts
+│   │   ├── useDocument.ts
+│   │   ├── useRepair.ts
+│   │   ├── useForum.ts
+│   │   └── useNotification.ts
+│   ├── services/
+│   │   ├── api.ts
+│   │   └── fileStorage.ts
+│   └── App.tsx
+├── styles/
+│   ├── variables.css
+│   ├── mixins.css
+│   └── theme.css
+├── AppRouter.tsx
+├── main.tsx
+└── vite.config.ts
+</code></pre><h3 id="core-components">Core Components</h3>
+<p><strong>Document Upload Component</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#75715e">// components/documents/DocumentUpload.tsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span>, <span style="color:#a6e22e">useCallback</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useDocument</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../hooks/useDocument&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Button</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./ui/Button&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Input</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./ui/Input&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Textarea</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./ui/Textarea&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Select</span>, <span style="color:#a6e22e">SelectContent</span>, <span style="color:#a6e22e">SelectItem</span>, <span style="color:#a6e22e">SelectTrigger</span>, <span style="color:#a6e22e">SelectValue</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./ui/Select&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">DocumentUpload() {</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">title</span>, <span style="color:#a6e22e">setTitle</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">description</span>, <span style="color:#a6e22e">setDescription</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">file</span>, <span style="color:#a6e22e">setFile</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>&lt;<span style="color:#f92672">File</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">null</span>&gt;(<span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">categories</span>, <span style="color:#a6e22e">setCategories</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>&lt;<span style="color:#f92672">string</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt;([]);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">isLoading</span>, <span style="color:#a6e22e">setIsLoading</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">error</span>, <span style="color:#a6e22e">setError</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">createDocument</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">useDocument</span>();
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handleFileChange</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useCallback</span>((<span style="color:#a6e22e">e</span>: <span style="color:#66d9ef">React.ChangeEvent</span>&lt;<span style="color:#f92672">HTMLInputElement</span>&gt;) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">files</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">files</span>[<span style="color:#ae81ff">0</span>]) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setFile</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">files</span>[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }, []);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handleSubmit</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">e</span>: <span style="color:#66d9ef">React.FormEvent</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">preventDefault</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setError</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setIsLoading</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">title</span>.<span style="color:#a6e22e">trim</span>()) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setError</span>(<span style="color:#e6db74">&#39;Title is required&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">file</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setError</span>(<span style="color:#e6db74">&#39;File is required&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formData</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormData</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">formData</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;title&#39;</span>, <span style="color:#a6e22e">title</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">formData</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;description&#39;</span>, <span style="color:#a6e22e">description</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">formData</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;file&#39;</span>, <span style="color:#a6e22e">file</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">formData</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;categories&#39;</span>, <span style="color:#a6e22e">categories</span>.<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;,&#39;</span>));
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">createDocument</span>(<span style="color:#a6e22e">formData</span>);
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Success handling
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;Document uploaded successfully!&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Reset form
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">setTitle</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setDescription</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setFile</span>(<span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setCategories</span>([]);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setError</span>(<span style="color:#e6db74">&#39;Failed to upload document. Please try again.&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setIsLoading</span>(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;max-w-4xl mx-auto p-4&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">h2</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-2xl font-bold mb-6&#34;</span>&gt;<span style="color:#a6e22e">Upload</span> <span style="color:#a6e22e">New</span> <span style="color:#a6e22e">Document</span>&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">error</span> <span style="color:#f92672">&amp;&amp;</span> &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mb-4 text-red-500&#34;</span>&gt;{<span style="color:#a6e22e">error</span>}&lt;/<span style="color:#f92672">div</span>&gt;}
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">onSubmit</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleSubmit</span>} <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;space-y-4&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">htmlFor</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;block text-sm font-medium mb-1&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Document</span> <span style="color:#a6e22e">Title</span>
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">Input</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">title</span>}
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">e</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">setTitle</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>)}
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;e.g., Roland JD-XA Service Manual&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">required</span>
+</span></span><span style="display:flex;"><span>          /&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">htmlFor</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;description&#34;</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;block text-sm font-medium mb-1&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Description</span>
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">Textarea</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;description&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">description</span>}
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">e</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">setDescription</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>)}
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Provide a brief description of this document...&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">rows</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">4</span>}
+</span></span><span style="display:flex;"><span>          /&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">htmlFor</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;block text-sm font-medium mb-1&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Upload</span> <span style="color:#a6e22e">File</span>
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex items-center gap-2&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">Input</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleFileChange</span>}
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file:cursor-pointer file:bg-blue-500 file:text-white file:px-4 file:py-2 file:rounded-md&#34;</span>
+</span></span><span style="display:flex;"><span>            /&gt;
+</span></span><span style="display:flex;"><span>            {<span style="color:#a6e22e">file</span> <span style="color:#f92672">&amp;&amp;</span> (
+</span></span><span style="display:flex;"><span>              &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-sm text-gray-500&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">Selected</span><span style="color:#f92672">:</span> {<span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">name</span>} ({(<span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">size</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1024</span>).<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>)} <span style="color:#a6e22e">KB</span>)
+</span></span><span style="display:flex;"><span>              &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>            )}
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;block text-sm font-medium mb-1&#34;</span>&gt;<span style="color:#a6e22e">Categories</span>&lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">Select</span> <span style="color:#a6e22e">onValueChange</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">setCategories</span>(<span style="color:#a6e22e">prev</span> <span style="color:#f92672">=&gt;</span> [...<span style="color:#a6e22e">prev</span>, <span style="color:#a6e22e">value</span>])}&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">SelectTrigger</span>&gt;
+</span></span><span style="display:flex;"><span>              &lt;<span style="color:#f92672">SelectValue</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Select categories&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">SelectTrigger</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">SelectContent</span>&gt;
+</span></span><span style="display:flex;"><span>              &lt;<span style="color:#f92672">SelectItem</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;synthesizers&#34;</span>&gt;<span style="color:#a6e22e">Synthesizers</span>&lt;/<span style="color:#f92672">SelectItem</span>&gt;
+</span></span><span style="display:flex;"><span>              &lt;<span style="color:#f92672">SelectItem</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;effects&#34;</span>&gt;<span style="color:#a6e22e">Effects</span> <span style="color:#a6e22e">Units</span>&lt;/<span style="color:#f92672">SelectItem</span>&gt;
+</span></span><span style="display:flex;"><span>              &lt;<span style="color:#f92672">SelectItem</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;amplifiers&#34;</span>&gt;<span style="color:#a6e22e">Amplifiers</span>&lt;/<span style="color:#f92672">SelectItem</span>&gt;
+</span></span><span style="display:flex;"><span>              &lt;<span style="color:#f92672">SelectItem</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mixers&#34;</span>&gt;<span style="color:#a6e22e">Mixers</span>&lt;/<span style="color:#f92672">SelectItem</span>&gt;
+</span></span><span style="display:flex;"><span>              &lt;<span style="color:#f92672">SelectItem</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;recording&#34;</span>&gt;<span style="color:#a6e22e">Recording</span> <span style="color:#a6e22e">Equipment</span>&lt;/<span style="color:#f92672">SelectDefined</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">SelectContent</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">Select</span>&gt;
+</span></span><span style="display:flex;"><span>          {<span style="color:#a6e22e">categories</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> (
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mt-2 flex flex-wrap gap-2&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>              {<span style="color:#a6e22e">categories</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">cat</span>, <span style="color:#a6e22e">i</span>) <span style="color:#f92672">=&gt;</span> (
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">i</span>} <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                  {<span style="color:#a6e22e">cat</span>.<span style="color:#a6e22e">charAt</span>(<span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">toUpperCase</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">cat</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">1</span>)}
+</span></span><span style="display:flex;"><span>                  &lt;<span style="color:#f92672">button</span> 
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> 
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">setCategories</span>(<span style="color:#a6e22e">categories</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">cat</span>))}
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ml-2 text-blue-500 hover:text-blue-700&#34;</span>
+</span></span><span style="display:flex;"><span>                  &gt;
+</span></span><span style="display:flex;"><span>                    <span style="color:#960050;background-color:#1e0010">×</span>
+</span></span><span style="display:flex;"><span>                  &lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>              ))}
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>          )}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">isLoading</span>}&gt;
+</span></span><span style="display:flex;"><span>          {<span style="color:#a6e22e">isLoading</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;Uploading...&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Upload Document&#39;</span>}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">Button</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Document Card Component</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#75715e">// components/documents/DocumentCard.tsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Card</span>, <span style="color:#a6e22e">CardHeader</span>, <span style="color:#a6e22e">CardTitle</span>, <span style="color:#a6e22e">CardContent</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./ui/Card&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Button</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./ui/Button&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Download</span>, <span style="color:#a6e22e">Eye</span>, <span style="color:#a6e22e">Edit</span>, <span style="color:#a6e22e">Trash</span>, <span style="color:#a6e22e">Lock</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;lucide-react&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#66d9ef">type</span> { <span style="color:#a6e22e">Document</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../types/document&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">DocumentCardProps</span> {
+</span></span><span style="display:flex;"><span>  document<span style="color:#f92672">:</span> <span style="color:#a6e22e">Document</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">onEdit</span><span style="color:#f92672">?:</span> (document<span style="color:#f92672">:</span> <span style="color:#a6e22e">Document</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">onDelete</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">DocumentCard</span>({ document, <span style="color:#a6e22e">onEdit</span>, <span style="color:#a6e22e">onDelete</span> }<span style="color:#f92672">:</span> <span style="color:#a6e22e">DocumentCardProps</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">isPrivate</span>, <span style="color:#a6e22e">setIsPrivate</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(document.<span style="color:#a6e22e">is_private</span>);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">Card</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;overflow-hidden&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">CardHeader</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bg-gradient-to-r from-blue-500 to-purple-600 text-white&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">CardTitle</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex items-center justify-between&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">span</span>&gt;{document.<span style="color:#a6e22e">title</span>}&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>          {document.<span style="color:#a6e22e">is_private</span> <span style="color:#f92672">?</span> (
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">Lock</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w-5 h-5&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>          ) <span style="color:#f92672">:</span> (
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">Eye</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w-5 h-5&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>          )}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">CardTitle</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">CardHeader</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">CardContent</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mb-4&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-sm text-gray-600 line-clamp-2&#34;</span>&gt;{document.<span style="color:#a6e22e">description</span>}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex flex-wrap gap-2 mb-4&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>          {document.<span style="color:#a6e22e">categories</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">category</span>, <span style="color:#a6e22e">i</span>) <span style="color:#f92672">=&gt;</span> (
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">i</span>} <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>              {<span style="color:#a6e22e">category</span>}
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>          ))}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex justify-between items-center&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-sm text-gray-500&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">By</span> {document.<span style="color:#a6e22e">author</span>.<span style="color:#a6e22e">name</span>} <span style="color:#960050;background-color:#1e0010">•</span> {document.<span style="color:#a6e22e">file_size</span>} <span style="color:#a6e22e">KB</span>
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>          
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex gap-2&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">variant</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ghost&#34;</span> <span style="color:#a6e22e">size</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;icon&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>              &lt;<span style="color:#f92672">Download</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w-4 h-4&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">Button</span>&gt;
+</span></span><span style="display:flex;"><span>            {<span style="color:#a6e22e">onEdit</span> <span style="color:#f92672">&amp;&amp;</span> (
+</span></span><span style="display:flex;"><span>              &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">variant</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ghost&#34;</span> <span style="color:#a6e22e">size</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;icon&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">Edit</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w-4 h-4&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>              &lt;/<span style="color:#f92672">Button</span>&gt;
+</span></span><span style="display:flex;"><span>            )}
+</span></span><span style="display:flex;"><span>            {<span style="color:#a6e22e">onDelete</span> <span style="color:#f92672">&amp;&amp;</span> (
+</span></span><span style="display:flex;"><span>              &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">variant</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ghost&#34;</span> <span style="color:#a6e22e">size</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;icon&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">Trash</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w-4 h-4&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>              &lt;/<span style="color:#f92672">Button</span>&gt;
+</span></span><span style="display:flex;"><span>            )}
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">CardContent</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">Card</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="frontend-state-management">Frontend State Management</h2>
+<h3 id="auth-context">Auth Context</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#75715e">// contexts/AuthContext.tsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createContext</span>, <span style="color:#a6e22e">useContext</span>, <span style="color:#a6e22e">useState</span>, <span style="color:#a6e22e">useEffect</span>, <span style="color:#a6e22e">useCallback</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">authService</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../services/api&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AuthState</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">User</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">isAuthenticated</span>: <span style="color:#66d9ef">boolean</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">isLoading</span>: <span style="color:#66d9ef">boolean</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">error</span>: <span style="color:#66d9ef">string</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AuthContextType</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">AuthState</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">login</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">void</span>&gt;;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">register</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">data</span>: <span style="color:#66d9ef">RegisterRequest</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">void</span>&gt;;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">logout</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">refresh</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">void</span>&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">AuthContext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createContext</span>&lt;<span style="color:#f92672">AuthContextType</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">undefined</span>&gt;(<span style="color:#66d9ef">undefined</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">AuthProvider</span>({ <span style="color:#a6e22e">children</span> }<span style="color:#f92672">:</span> { <span style="color:#a6e22e">children</span>: <span style="color:#66d9ef">React.ReactNode</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">setState</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>&lt;<span style="color:#f92672">AuthState</span>&gt;({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isAuthenticated</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isLoading</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">error</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">login</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useCallback</span>(<span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">authService</span>.<span style="color:#a6e22e">login</span>({ <span style="color:#a6e22e">email</span>, <span style="color:#a6e22e">password</span> });
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Save tokens to localStorage/sessionStorage
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// Update state
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">setState</span>({
+</span></span><span style="display:flex;"><span>        ...<span style="color:#a6e22e">state</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">response.user</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">isAuthenticated</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">isLoading</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setState</span>({
+</span></span><span style="display:flex;"><span>        ...<span style="color:#a6e22e">state</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Login failed. Please check your credentials.&#39;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }, [<span style="color:#a6e22e">state</span>]);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">register</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useCallback</span>(<span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">data</span>: <span style="color:#66d9ef">RegisterRequest</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">authService</span>.<span style="color:#a6e22e">register</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Auto-login after registration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">email</span>, <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">password</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setState</span>({
+</span></span><span style="display:flex;"><span>        ...<span style="color:#a6e22e">state</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Registration failed. Please try again.&#39;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }, [<span style="color:#a6e22e">login</span>, <span style="color:#a6e22e">state</span>]);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">logout</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useCallback</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Clear tokens
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">setState</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">isAuthenticated</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">isLoading</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">error</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }, []);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">refresh</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useCallback</span>(<span style="color:#66d9ef">async</span> () <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Check token validity and refresh if needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }, []);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Check auth token on app load
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#39;accessToken&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">token</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Verify token and fetch user data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>  }, []);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">AuthContext.Provider</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{{ ...<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">login</span>, <span style="color:#a6e22e">register</span>, <span style="color:#a6e22e">logout</span>, <span style="color:#a6e22e">refresh</span> }}&gt;
+</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">children</span>}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">AuthContext.Provider</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">useAuth() {</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useContext</span>(<span style="color:#a6e22e">AuthContext</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">context</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;useAuth must be used within an AuthProvider&#39;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">context</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="search-functionality">Search Functionality</h2>
+<h3 id="search-service-backend">Search Service (Backend)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// internal/search/elastic.go
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">search</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;context&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;encoding/json&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;github.com/olivere/elastic/v7&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ElasticsearchService</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">client</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">elastic</span>.<span style="color:#a6e22e">Client</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">index</span>  <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewElasticsearchService</span>() (<span style="color:#f92672">*</span><span style="color:#a6e22e">ElasticsearchService</span>, <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">elastic</span>.<span style="color:#a6e22e">NewClient</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">elastic</span>.<span style="color:#a6e22e">SetURL</span>(<span style="color:#e6db74">&#34;http://localhost:9200&#34;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">elastic</span>.<span style="color:#a6e22e">SetBasicAuth</span>(<span style="color:#e6db74">&#34;elastic&#34;</span>, <span style="color:#e6db74">&#34;your_password&#34;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">elastic</span>.<span style="color:#a6e22e">SetSniff</span>(<span style="color:#66d9ef">false</span>),
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;failed to create Elasticsearch client: %w&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Check if index exists, create if not
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">exists</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">IndexExists</span>(<span style="color:#e6db74">&#34;synthtech_search&#34;</span>).<span style="color:#a6e22e">Do</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>())
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;failed to check index: %w&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">exists</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">mapping</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;settings&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;number_of_shards&#34;: 1,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;number_of_replicas&#34;: 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;mappings&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;properties&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &#34;title&#34;: {&#34;type&#34;: &#34;text&#34;, &#34;analyzer&#34;: &#34;standard&#34;},
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &#34;content&#34;: {&#34;type&#34;: &#34;text&#34;, &#34;analyzer&#34;: &#34;standard&#34;},
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &#34;description&#34;: {&#34;type&#34;: &#34;text&#34;, &#34;analyzer&#34;: &#34;standard&#34;},
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &#34;categories&#34;: {&#34;type&#34;: &#34;keyword&#34;},
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &#34;tags&#34;: {&#34;type&#34;: &#34;keyword&#34;},
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &#34;author&#34;: {&#34;type&#34;: &#34;keyword&#34;},
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &#34;created_at&#34;: {&#34;type&#34;: &#34;date&#34;},
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &#34;document_id&#34;: {&#34;type&#34;: &#34;keyword&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        `</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">CreateIndex</span>(<span style="color:#e6db74">&#34;synthtech_search&#34;</span>).<span style="color:#a6e22e">BodyString</span>(<span style="color:#a6e22e">mapping</span>).<span style="color:#a6e22e">Do</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>())
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;failed to create index: %w&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">ElasticsearchService</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">client</span>: <span style="color:#a6e22e">client</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">index</span>:  <span style="color:#e6db74">&#34;synthtech_search&#34;</span>,
+</span></span><span style="display:flex;"><span>    }, <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ElasticsearchService</span>) <span style="color:#a6e22e">IndexDocument</span>(<span style="color:#a6e22e">document</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Document</span>) <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Convert document to search index format
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">body</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Marshal</span>(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;title&#34;</span>:       <span style="color:#a6e22e">document</span>.<span style="color:#a6e22e">Title</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;content&#34;</span>:     <span style="color:#a6e22e">document</span>.<span style="color:#a6e22e">Content</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#a6e22e">document</span>.<span style="color:#a6e22e">Description</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;categories&#34;</span>:  <span style="color:#a6e22e">document</span>.<span style="color:#a6e22e">Categories</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;tags&#34;</span>:        <span style="color:#a6e22e">document</span>.<span style="color:#a6e22e">Tags</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;author&#34;</span>:      <span style="color:#a6e22e">document</span>.<span style="color:#a6e22e">Author</span>.<span style="color:#a6e22e">Username</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;created_at&#34;</span>:  <span style="color:#a6e22e">document</span>.<span style="color:#a6e22e">CreatedAt</span>.<span style="color:#a6e22e">Format</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">RFC3339</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;document_id&#34;</span>: <span style="color:#a6e22e">document</span>.<span style="color:#a6e22e">ID</span>,
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Index</span>().
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Index</span>(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">index</span>).
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Id</span>(<span style="color:#a6e22e">document</span>.<span style="color:#a6e22e">ID</span>).
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">BodyString</span>(string(<span style="color:#a6e22e">body</span>)).
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Do</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>())
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ElasticsearchService</span>) <span style="color:#a6e22e">Search</span>(<span style="color:#a6e22e">query</span> <span style="color:#66d9ef">string</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">SearchResponse</span>, <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">searchBody</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;query&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;multi_match&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &#34;query&#34;: &#34;%s&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &#34;fields&#34;: [&#34;title^2&#34;, &#34;content^1.5&#34;, &#34;description^1&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;sort&#34;: [{&#34;created_at&#34;: &#34;desc&#34;}],
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;from&#34;: 0,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;size&#34;: 10
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    `</span>, <span style="color:#a6e22e">query</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">result</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Search</span>().
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Index</span>(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">index</span>).
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">BodyString</span>(<span style="color:#a6e22e">searchBody</span>).
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Do</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>())
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;search error: %w&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">SearchResponse</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Hits</span>: <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">Hits</span>.<span style="color:#a6e22e">Hits</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Total</span>: <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">Hits</span>.<span style="color:#a6e22e">Total</span>.<span style="color:#a6e22e">Value</span>,
+</span></span><span style="display:flex;"><span>    }, <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="search-component-frontend">Search Component (Frontend)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#75715e">// components/shared/SearchBar.tsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span>, <span style="color:#a6e22e">useEffect</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useSearch</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../hooks/useSearch&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">SearchBarProps</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">onResults</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">results</span>: <span style="color:#66d9ef">SearchHit</span>[]) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SearchBar</span>({ <span style="color:#a6e22e">onResults</span> }<span style="color:#f92672">:</span> <span style="color:#a6e22e">SearchBarProps</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">query</span>, <span style="color:#a6e22e">setQuery</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">debouncedQuery</span>, <span style="color:#a6e22e">setDebouncedQuery</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">isLoading</span>, <span style="color:#a6e22e">setIsLoading</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">error</span>, <span style="color:#a6e22e">setError</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">searchDocuments</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">useSearch</span>();
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handler</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setTimeout</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setDebouncedQuery</span>(<span style="color:#a6e22e">query</span>);
+</span></span><span style="display:flex;"><span>    }, <span style="color:#ae81ff">300</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">handler</span>);
+</span></span><span style="display:flex;"><span>  }, [<span style="color:#a6e22e">query</span>]);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">debouncedQuery</span>.<span style="color:#a6e22e">trim</span>() <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;&#39;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">onResults</span>([]);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">search</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> () <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setIsLoading</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setError</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">results</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">searchDocuments</span>(<span style="color:#a6e22e">debouncedQuery</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">onResults</span>(<span style="color:#a6e22e">results</span>);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setError</span>(<span style="color:#e6db74">&#39;Failed to search. Please try again.&#39;</span>);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setIsLoading</span>(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">search</span>();
+</span></span><span style="display:flex;"><span>  }, [<span style="color:#a6e22e">debouncedQuery</span>, <span style="color:#a6e22e">onResults</span>]);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;relative&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">input</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">query</span>}
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">e</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">setQuery</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>)}
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Search documents, repairs, and forum...&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w-full p-3 pl-10 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500&#34;</span>
+</span></span><span style="display:flex;"><span>      /&gt;
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">isLoading</span> <span style="color:#f92672">&amp;&amp;</span> (
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;absolute right-3 top-1/2 transform -translate-y-1/2&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>          {<span style="color:#75715e">/* Loading spinner */</span>}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      )}
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">error</span> <span style="color:#f92672">&amp;&amp;</span> &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-red-500 text-sm mt-1&#34;</span>&gt;{<span style="color:#a6e22e">error</span>}&lt;/<span style="color:#f92672">div</span>&gt;}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="deployment--infrastructure">Deployment &amp; Infrastructure</h2>
+<h3 id="docker-compose-production">Docker Compose (Production)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">backend</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">./synthtech-backend</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;8080:8080&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">PORT=8080</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">JWT_SECRET=your-secret-key</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">DATABASE_URL=postgres://postgres:password@postgres:5432/synthtech</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">ELASTICSEARCH_URL=http://elasticsearch:9200</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">postgres</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">elasticsearch</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">frontend</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">./synthtech-frontend</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;3000:3000&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">VITE_API_URL=http://backend:8080/api</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">backend</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">postgres</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">postgres:15</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;5432:5432&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">POSTGRES_DB</span>: <span style="color:#ae81ff">synthtech</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">POSTGRES_USER</span>: <span style="color:#ae81ff">postgres</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">POSTGRES_PASSWORD</span>: <span style="color:#ae81ff">password</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">postgres_data:/var/lib/postgresql/data</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">elasticsearch</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">elasticsearch:8.10.3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;9200:9200&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;9300:9300&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ELASTICSEARCH_NODE_NAME</span>: <span style="color:#ae81ff">synthtech-es</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ELASTICSEARCH_CLUSTER_NAME</span>: <span style="color:#ae81ff">synthtech-cluster</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ELASTICSEARCH_NETWORK_HOST</span>: <span style="color:#ae81ff">0.0.0.0</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ELASTICSEARCH_DISCOVERY_TYPE</span>: <span style="color:#ae81ff">single-node</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ELASTICSEARCH_JAVA_OPTS</span>: <span style="color:#e6db74">&#34;-Xms1g -Xmx1g&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">es_data:/usr/share/elasticsearch/data</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">minio</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">minio/minio:latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;9000:9000&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;9001:9001&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">MINIO_ACCESS_KEY</span>: <span style="color:#ae81ff">minioadmin</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">MINIO_SECRET_KEY</span>: <span style="color:#ae81ff">minioadminsecret</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">server /data --console-address :9001</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">minio_data:/data</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">nginx</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginx:latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;80:80&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;443:443&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./nginx.conf:/etc/nginx/nginx.conf</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./certs:/etc/nginx/certs</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">backend</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">frontend</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">postgres_data</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">es_data</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">minio_data</span>:
+</span></span></code></pre></div><h3 id="nginx-configuration">Nginx Configuration</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#75715e"># nginx.conf
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">worker_processes</span>  <span style="color:#e6db74">auto</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">error_log</span>  <span style="color:#e6db74">/var/log/nginx/error.log</span> <span style="color:#e6db74">notice</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pid</span>        <span style="color:#e6db74">/var/run/nginx.pid</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">events</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">worker_connections</span>  <span style="color:#ae81ff">1024</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">http</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">upstream</span> <span style="color:#e6db74">backend</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">least_conn</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">server</span> backend:<span style="color:#ae81ff">8080</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">upstream</span> <span style="color:#e6db74">frontend</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">least_conn</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">server</span> frontend:<span style="color:#ae81ff">3000</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">server</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">listen</span> <span style="color:#ae81ff">80</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">server_name</span> <span style="color:#e6db74">synthtech.app</span> <span style="color:#e6db74">www.synthtech.app</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://frontend</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Host</span> $host;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Real-IP</span> $remote_addr;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-For</span> $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-Proto</span> $scheme;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">location</span> <span style="color:#e6db74">/api/</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://backend</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Host</span> $host;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Real-IP</span> $remote_addr;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-For</span> $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-Proto</span> $scheme;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">location</span> <span style="color:#e6db74">/static/</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">alias</span> <span style="color:#e6db74">/var/www/static/</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># WebSocket support
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">location</span> <span style="color:#e6db74">/ws/</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://backend</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_http_version</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">.1</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Upgrade</span> $http_upgrade;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Connection</span> <span style="color:#e6db74">&#34;upgrade&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Host</span> $host;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">error_page</span> <span style="color:#ae81ff">500</span> <span style="color:#ae81ff">502</span> <span style="color:#ae81ff">503</span> <span style="color:#ae81ff">504</span> <span style="color:#e6db74">/50x.html</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">location</span> = <span style="color:#e6db74">/50x.html</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">root</span> <span style="color:#e6db74">/usr/share/nginx/html</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">server</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">listen</span> <span style="color:#ae81ff">443</span> <span style="color:#e6db74">ssl</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">server_name</span> <span style="color:#e6db74">synthtech.app</span> <span style="color:#e6db74">www.synthtech.app</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ssl_certificate</span> <span style="color:#e6db74">/etc/nginx/certs/synthtech.crt</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ssl_certificate_key</span> <span style="color:#e6db74">/etc/nginx/certs/synthtech.key</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Same configuration as HTTP server
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">copy-config-from-http-server-here...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><hr>
+<h2 id="roadmap--iterations">Roadmap &amp; Iterations</h2>
+<h3 id="phase-1-core-features-months-1-2">Phase 1: Core Features (Months 1-2)</h3>
+<ul>
+<li><input disabled="" type="checkbox"> User authentication and accounts</li>
+<li><input disabled="" type="checkbox"> Basic document upload and storage</li>
+<li><input disabled="" type="checkbox"> Search functionality</li>
+<li><input disabled="" type="checkbox"> User profiles and reputation system</li>
+</ul>
+<h3 id="phase-2-advanced-features-months-3-4">Phase 2: Advanced Features (Months 3-4)</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Forum and community discussion</li>
+<li><input disabled="" type="checkbox"> Repair solutions database</li>
+<li><input disabled="" type="checkbox"> Categories and tags system</li>
+<li><input disabled="" type="checkbox"> Notifications and real-time updates</li>
+</ul>
+<h3 id="phase-3-community-features-months-5-6">Phase 3: Community Features (Months 5-6)</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Private document sharing</li>
+<li><input disabled="" type="checkbox"> Moderation tools</li>
+<li><input disabled="" type="checkbox"> Voting and ranking system</li>
+<li><input disabled="" type="checkbox"> Email/SMS verification</li>
+</ul>
+<h3 id="phase-4-mobile--performance-months-7-8">Phase 4: Mobile &amp; Performance (Months 7-8)</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Mobile app (React Native or PWA)</li>
+<li><input disabled="" type="checkbox"> File storage optimization</li>
+<li><input disabled="" type="checkbox"> Elasticsearch enhancements</li>
+<li><input disabled="" type="checkbox"> Analytics and insights</li>
+</ul>
+<h3 id="phase-5-ecosystem-months-9">Phase 5: Ecosystem (Months 9+)</h3>
+<ul>
+<li><input disabled="" type="checkbox"> API for external tools</li>
+<li><input disabled="" type="checkbox"> Integration with repair management software</li>
+<li><input disabled="" type="checkbox"> Premium features (advanced search, offline access)</li>
+<li><input disabled="" type="checkbox"> Community events and meetups</li>
+</ul>
+<hr>
+<h2 id="security-considerations">Security Considerations</h2>
+<h3 id="authentication--authorization">Authentication &amp; Authorization</h3>
+<pre tabindex="0"><code>auth_flow:
+    start -&gt; register -&gt; email_verification -&gt; set_password -&gt; authenticated
+    authenticated -&gt; access_control -&gt; role_based_access -&gt; authorize
+    
+roles:
+    - visitor: can read public content
+    - user: can create/edit own content
+    - moderator: can moderate content
+    - admin: full access
+    
+permissions:
+    document: { create, read, update, delete }
+    repair: { create, read, update, delete }
+    forum: { create, read, update, delete, moderate }
+</code></pre><h3 id="data-protection">Data Protection</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">security</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">encryption</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">at_rest</span>: <span style="color:#ae81ff">AES-256-GCM (PostgreSQL)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">in_transit</span>: <span style="color:#ae81ff">TLS 1.3 (Let&#39;s Encrypt)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">keys_rotation</span>: <span style="color:#ae81ff">90_days</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">hashing</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">passwords: bcrypt (cost</span>: <span style="color:#ae81ff">12</span><span style="color:#ae81ff">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">emails</span>: <span style="color:#ae81ff">Argon2id</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">access_control</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">default_policy</span>: <span style="color:#ae81ff">deny-all</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">resource</span>: <span style="color:#ae81ff">documents</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">actions</span>: [<span style="color:#e6db74">&#34;read&#34;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">effect</span>: <span style="color:#ae81ff">allow</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">conditions</span>: [<span style="color:#e6db74">&#34;is_public OR user_is_owner OR user_is_moderator&#34;</span>]
+</span></span></code></pre></div><h3 id="rate-limiting--ddos-protection">Rate Limiting &amp; DDoS Protection</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// pkg/middleware/rate_limit.go
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">middleware</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;github.com/golang-jwt/jwt/v5&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;github.com/juju/ratelimit&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">RateLimitMiddleware</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">limiter</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ratelimit</span>.<span style="color:#a6e22e">TokenBucket</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewRateLimitMiddleware</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">RateLimitMiddleware</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">RateLimitMiddleware</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">limiter</span>: <span style="color:#a6e22e">ratelimit</span>.<span style="color:#a6e22e">NewBucketWithRate</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">100</span>, <span style="color:#75715e">// 100 requests per second
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#ae81ff">100</span>, <span style="color:#75715e">// capacity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ),
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">RateLimitMiddleware</span>) <span style="color:#a6e22e">Handle</span>(<span style="color:#a6e22e">next</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Handler</span>) <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Handler</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">HandlerFunc</span>(<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Skip rate limiting for health checks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">URL</span>.<span style="color:#a6e22e">Path</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;/health&#34;</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">next</span>.<span style="color:#a6e22e">ServeHTTP</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">r</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Check if rate limit allows request
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">limiter</span>.<span style="color:#a6e22e">Allow</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">&#34;Too Many Requests&#34;</span>, <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusTooManyRequests</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">next</span>.<span style="color:#a6e22e">ServeHTTP</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">r</span>)
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="uiux-design-considerations">UI/UX Design Considerations</h2>
+<h3 id="color-scheme-for-electronics-theme">Color Scheme (for Electronics Theme)</h3>
+<pre tabindex="0"><code>Primary: #3B82F6 (Blue - represents trust and technology)
+Secondary: #6366F1 (Purple - creativity and innovation)
+Accent: #F59E0B (Yellow - attention and highlights)
+Danger: #EF4444 (Red - warnings and errors)
+Success: #10B981 (Green - success and positive)
+Background: #F8FAFC (Light gray - clean and professional)
+
+Dark Mode:
+  Primary: #A5B4FC
+  Secondary: #C7D2FE
+  Background: #0F172A
+</code></pre><h3 id="typography">Typography</h3>
+<pre tabindex="0"><code>Font: &#34;Poppins&#34;, sans-serif
+Font Weights:
+  - Thin: 300
+  - Regular: 400
+  - Medium: 500
+  - Semi-Bold: 600
+  - Bold: 700
+  
+Heading Sizes:
+  h1: 3rem (48px)
+  h2: 2.5rem (40px)
+  h3: 2rem (32px)
+  h4: 1.75rem (28px)
+  h5: 1.5rem (24px)
+  h6: 1.25rem (20px)
+  
+Body Text:
+  base: 1rem (16px)
+  lg: 1.125rem (18px)
+  md: 1rem (16px)
+  sm: 0.875rem (14px)
+</code></pre><h3 id="icon-system">Icon System</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// icons.ts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Icons</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">electronics</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">synth</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:synth-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">amplifier</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:amplifier-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">effects</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:effects-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">microphone</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:microphone-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">actions</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">upload</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:upload-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">download</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:download-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">search</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:search-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">filter</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:filter-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">notifications</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:notifications-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">active</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:active-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pending</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:pending-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">approved</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:approved-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rejected</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;svg:rejected-icon&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h2 id="testing-plan">Testing Plan</h2>
+<h3 id="backend-tests">Backend Tests</h3>
+<pre tabindex="0"><code>test_coverage:
+    target: 80%
+    suite:
+      - unit: go test ./...
+      - integration: go test -tags=integration ./...
+      - performance: locust -f locustfile.py --users=100 --spawn-rate=10
+      
+    tests:
+      auth_service:
+        - [ ] Register new user
+        - [ ] Login with valid credentials
+        - [ ] Token refresh
+        - [ ] Password reset
+        - [ ] Rate limiting
+      
+      document_service:
+        - [ ] Create new document
+        - [ ] Get document by ID
+        - [ ] List all documents
+        - [ ] Update document
+        - [ ] Delete document
+        - [ ] Search documents
+      
+      repair_service:
+        - [ ] Submit repair solution
+        - [ ] Vote on solution
+        - [ ] Accept/Reject solution
+        - [ ] Tag solution
+      
+      forum_service:
+        - [ ] Create new thread
+        - [ ] Post comment
+        - [ ] Edit comment
+        - [ ] Delete comment
+        - [ ] Subscribe to thread
+      
+      edge_cases:
+        - [ ] Unauthorized access attempts
+        - [ ] Invalid input validation
+        - [ ] Concurrent modifications
+        - [ ] Large file uploads
+        - [ ] Database failures
+</code></pre><h3 id="frontend-tests">Frontend Tests</h3>
+<pre tabindex="0"><code>testing_strategy:
+  framework: vitest + react-testing-library
+  coverage: 90%
+  
+test_suite:
+  unit_tests:
+    - [ ] All hooks
+    - [ ] Pure components
+    - [ ] Utility functions
+    
+  component_tests:
+    - [ ] Auth flow (login -&gt; dashboard)
+    - [ ] Document upload -&gt; view
+    - [ ] Search functionality
+    - [ ] Form validations
+    
+  integration_tests:
+    - [ ] Full user journey
+    - [ ] API interactions
+    - [ ] State management
+    
+  e2e_tests:
+    - [ ] Cypress tests for main flows
+    - [ ] Mobile testing
+    - [ ] Accessibility checks
+</code></pre><hr>
+<h2 id="launch-checklists">Launch Checklists</h2>
+<h3 id="pre-launch-checklist">Pre-Launch Checklist</h3>
+<pre tabindex="0"><code>deployment_checklist:
+    infrastructure:
+      [ ] Docker containers running
+      [ ] Services healthy (backend, frontend, database)
+      [ ] Load balancer configured
+      [ ] CDN set up
+      
+    configuration:
+      [ ] Environment variables set
+      [ ] Database migrated
+      [ ] Static files built
+      
+    security:
+      [ ] SSL/TLS configured
+      [ ] Security headers set
+      [ ] Vulnerability scan passed
+      [ ] Penetration test completed
+      
+    data:
+      [ ] Initial documents seeded
+      [ ] Demo content added
+      [ ] Categories/predefined tags created
+      
+    monitoring:
+      [ ] Prometheus metrics enabled
+      [ ] Alerting configured
+      [ ] Logging set up
+      [ ] Error tracking integrated
+</code></pre><h3 id="post-launch-checklist">Post-Launch Checklist</h3>
+<pre tabindex="0"><code>release_checklist:
+    announcements:
+      [ ] Launch email sent
+      [ ] Social media posts
+      [ ] Community forum announcement
+      [ ] Press release
+      
+    verification:
+      [ ] All features working
+      [ ] No critical bugs
+      [ ] Performance meets SLAs
+      [ ] Security scan passed
+      
+    follow_up:
+      [ ] Feedback collection
+      [ ] User onboarding
+      [ ] Community engagement
+      [ ] Roadmap sharing
+</code></pre><hr>
+<h2 id="community-guidelines--moderation">Community Guidelines &amp; Moderation</h2>
+<h3 id="content-guidelines">Content Guidelines</h3>
+<pre tabindex="0"><code>content_policy:
+    acceptable_use:
+      - Professional repair information
+      - Technical documentation
+      - Educational content
+      - Collaborative problem-solving
+      
+    prohibited_content:
+      - Copyright infringement (pirated manuals)
+      - Harmful instructions (dangerous procedures)
+      - Spam and promotional content
+      - Hate speech
+      - Personal attacks
+      - Illegal activities
+      
+    content_standards:
+      - Accurate information
+      - Proper attribution
+      - Constructive tone
+      - Verified expertise
+      - Respectful discourse
+</code></pre><h3 id="moderation-system">Moderation System</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// internal/moderation/service.go
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">moderation</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ModerationService</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... dependencies
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ModerationService</span>) <span style="color:#a6e22e">FlagContent</span>(<span style="color:#a6e22e">contentID</span>, <span style="color:#a6e22e">userID</span>, <span style="color:#a6e22e">reason</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Create flag record
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Notify moderators
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// If auto-moderation rules match, take action
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ModerationService</span>) <span style="color:#a6e22e">ReviewFlags</span>() ([]<span style="color:#f92672">*</span><span style="color:#a6e22e">Flag</span>, <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Return pending flags for moderation team
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ModerationService</span>) <span style="color:#a6e22e">TakeAction</span>(<span style="color:#a6e22e">contentID</span>, <span style="color:#a6e22e">action</span>, <span style="color:#a6e22e">moderatorID</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Update content status based on action
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 1 = approve, 2 = reject, 3 = remove, 4 = warn_user
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ModerationService</span>) <span style="color:#a6e22e">GetContentStatus</span>(<span style="color:#a6e22e">contentID</span> <span style="color:#66d9ef">string</span>) (<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Return current content status
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="reputation-system">Reputation System</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// frontend/src/types/user.ts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">username</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">reputation</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">level</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">experience</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">badges</span>: <span style="color:#66d9ef">string</span>[];
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ... other fields
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ReputationChange</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;upvote&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;downvote&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;accept_answer&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;publish_document&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;moderation&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">amount</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">description</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">timestamp</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="monetization-strategy-optional">Monetization Strategy (Optional)</h2>
+<h3 id="free-tier">Free Tier</h3>
+<ul>
+<li>Basic document upload (limited storage)</li>
+<li>Public forum access</li>
+<li>Search functionality</li>
+<li>Limited private documents</li>
+</ul>
+<h3 id="premium-tier">Premium Tier</h3>
+<ul>
+<li>Unlimited storage</li>
+<li>Private document sharing</li>
+<li>Advanced search filters</li>
+<li>Priority support</li>
+<li>Export capabilities</li>
+<li>Custom categories</li>
+</ul>
+<h3 id="enterprise-tier">Enterprise Tier</h3>
+<ul>
+<li>API access</li>
+<li>Internal knowledge base</li>
+<li>Custom workflows</li>
+<li>Dedicated support</li>
+<li>Security audit</li>
+<li>Custom branding</li>
+</ul>
+<h3 id="additional-revenue-streams">Additional Revenue Streams</h3>
+<ul>
+<li>Affiliate links for gear</li>
+<li>Sponsored content</li>
+<li>Premium badges/certifications</li>
+<li>Training courses</li>
+<li>Event sponsorships</li>
+</ul>
+<hr>
+<h2 id="legal--compliance">Legal &amp; Compliance</h2>
+<h3 id="terms-of-service">Terms of Service</h3>
+<ul>
+<li>User-generated content licensing</li>
+<li>Liability disclaimers</li>
+<li>Usage rights</li>
+<li>Termination policies</li>
+</ul>
+<h3 id="privacy-policy">Privacy Policy</h3>
+<ul>
+<li>Data collection (only what&rsquo;s necessary)</li>
+<li>Usage tracking</li>
+<li>Third-party disclosures</li>
+<li>User rights (access, correction, deletion)</li>
+<li>Cookie policy</li>
+</ul>
+<h3 id="license-agreement">License Agreement</h3>
+<pre tabindex="0"><code>license: MIT
+
+Copyright © 2023 SynthTech Team
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &#34;Software&#34;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of thesystem.
+</code></pre><hr>
+<p>This comprehensive plan covers all aspects of building a powerful platform for electronics/synthesizer technicians. The next steps would be to:</p>
+<ol>
+<li>Set up the project infrastructure</li>
+<li>Implement the authentication system</li>
+<li>Build the core document management features</li>
+<li>Iterate on the UI/UX</li>
+<li>Launch and gather community feedback</li>
+</ol>
+<p>Would you like me to provide actual implementation code for any specific part, or should we continue with the planning?</p>
+
+        </div>
+         
+        <br>
+        <div>
+            <a href="javascript:history.back()">
+                &lt;&lt; Back</a>
+                    <a href="#top">Top ^^</a>
+        </div>
+    </article>
+</main>
+ 
+
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()"
+            style="max-width: 100%; max-height: 80vh; margin: auto;">
+    </div>
+    <button class="modal-close" onclick="closeModal()">X</button>
+</div>
+
+<script>
+    
+    function openModal(clicked_id) {
+        var src = document.getElementById(clicked_id).src;
+        if (src.includes("#")) {
+            src = src.substring(0, src.indexOf("#"));
+        };
+        document.getElementById("modalPic").src = src;
+        document.getElementById("myModal").style.display = "block";
+        
+        
+        document.getElementById("site-header").style.display = "none";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("site-footer").style.display = "none";
+    }
+
+    
+    function closeModal() {
+        
+        document.getElementById("modalPic").src = "";
+        document.getElementById("myModal").style.display = "none";
+        
+        document.getElementById("site-header").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("site-footer").style.display = "block";
+    }
+    closeModal()
+</script>    
+
+<footer id="site-footer">
+    <p>
+        &copy; 2026 <a href="https://mikeder.net/">mikeder.net</a> v:d9a6859</p>
+
+    
+    <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-docker" style="font-size: 24px" href="https://hub.docker.com/u/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-github" rel="me" style="font-size: 24px" href="https://github.com/mikeder" target="_blank"></a>
+     
+    <a class="fab fa-instagram" style="font-size: 24px" href="https://www.instagram.com/sqweebking/" target="_blank"></a>
+     
+    <a class="fab fa-mastodon" style="font-size: 24px" href="https://universeodon.com/@sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-soundcloud" style="font-size: 24px" href="https://soundcloud.com/sqweebking" target="_blank"></a>
+     
+    <a class="fab fa-youtube" style="font-size: 24px" href="https://www.youtube.com/user/synthatik" target="_blank"></a>
+    
+</footer>
+</body>
+
+</html>
