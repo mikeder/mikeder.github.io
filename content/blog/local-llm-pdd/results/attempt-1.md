@@ -1,6 +1,3 @@
-# First Attempt
-
-
 ## Prompt
 
 > I want to build an app that can be used by electronics/synthesizer technicians to share technical documents and fixes for common repairs. Can you help me plan the development of this app, using a typescript and react frontend and golang backend?

@@ -1,7 +1,7 @@
 ---
 title: "Local Coding LLM - Initial Setup"
 date: 2026-03-06T09:32:15-05:00
-draft: true
+draft: false
 ---
 
 Exploring options for running an AI coding assistant at home, using hardware I already have. My initial research gave me a couple interesting options to try out:
@@ -28,7 +28,7 @@ Result:
 - Time: 1h 41min 42s
 - 1.72 t/s (avg. started ~3-4 t/s)
 
-[Result Output](./prompt-results/attempt-1.md)
+[Result Output](../results/attempt-1)
 
 ## Attempt 2
 
@@ -47,4 +47,4 @@ Result:
 - Time: 1min 4s
 - 6.94 t/s
 
-[Result Output](./prompt-results/attempt-2.md)
+[Result Output](../results/attempt-2)
