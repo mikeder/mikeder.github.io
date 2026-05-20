@@ -1,18 +1,17 @@
-<article>
-	<h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-	<time>{{ .Date.Format "02.01.2006 15:04" }}</time>
-	{{ with .Params.tags }}
-	<br>
-	Tags:
-	{{ range . }}
-	<a href={{ "/tags/" | relLangURL }}{{- . | urlize -}}>{{ . }}</a>
-	{{ end }}
-	{{ end }}
-	<div class="container">
-		{{ .Summary | markdownify }}
-		{{ if .Truncated }}
-		<a href="{{ .Permalink }}">Read more...</a>
-		{{ end }}
-	</div>
+<article class="post-card">
+    <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+    <time>{{ .Date.Format "02.01.2006 15:04" }}</time>
+    {{ with .Params.tags }}
+    <div class="tags">
+        {{ range . }}
+        <a href="{{ "/tags/" | relLangURL }}{{- . | urlize -}}">{{ . }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
+    <div class="container">
+        {{ .Summary | markdownify }}
+        {{ if .Truncated }}
+        <a class="read-more" href="{{ .Permalink }}">Read more</a>
+        {{ end }}
+    </div>
 </article>
-<hr>

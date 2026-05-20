@@ -1,14 +1,57 @@
 {{ define "main" }}
 <main aria-role="main" class="content">
-	<header class="homepage-header">
-		<h1>{{.Title}}</h1>
-		{{ with .Params.subtitle }}
-		<span class="subtitle">{{.}}</span>
-		{{ end }}
-	</header>
-	<div class="homepage-content">
-		<!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
-		{{.Content}}
-	</div>
+    <header class="homepage-header">
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.subtitle }}
+        <span class="subtitle">{{ . }}</span>
+        {{ end }}
+    </header>
+    <div class="homepage-content">
+        {{ .Content }}
+    </div>
+
+    {{ $posts := where .Site.RegularPages "Section" "blog" }}
+    {{ if $posts }}
+    <section class="home-section">
+        <div class="home-section-header">
+            <h2>Recent Posts</h2>
+            <a href="{{ "/blog/" | relURL }}" class="home-section-more">View all &rarr;</a>
+        </div>
+        {{ range first 5 $posts }}
+        <article class="post-card">
+            <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+            <time>{{ .Date.Format "02 Jan 2006" }}</time>
+            {{ with .Params.tags }}
+            <div class="tags">
+                {{ range . }}
+                <a href="{{ "/tags/" | relLangURL }}{{- . | urlize -}}">{{ . }}</a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </article>
+        {{ end }}
+    </section>
+    {{ end }}
+
+    {{ $projects := where .Site.RegularPages "Section" "projects" }}
+    {{ if $projects }}
+    <section class="home-section">
+        <div class="home-section-header">
+            <h2>Projects</h2>
+            <a href="{{ "/projects/" | relURL }}" class="home-section-more">View all &rarr;</a>
+        </div>
+        <div class="project-grid">
+            {{ range $projects }}
+            <article class="project-card">
+                <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                <time>{{ .Date.Format "Jan 2006" }}</time>
+                {{ with .Summary }}
+                <p>{{ . | plainify | truncate 100 }}</p>
+                {{ end }}
+            </article>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
 </main>
 {{ end }}

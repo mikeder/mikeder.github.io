@@ -1,28 +1,25 @@
 {{ define "main" }}
-<main id="content" class="content">
+<main class="content">
     <article class="content-chunk">
         <h1>{{ .Title }}</h1>
-        <h5>{{ .Date.Format "02.01.2006 15:04" }}</h5>
+        <div class="post-meta">{{ .Date.Format "02.01.2006 15:04" }}</div>
         <div class="container">
             {{ .Content }}
         </div>
         {{ with .Params.tags }}
-        <div>
-            Tags:
+        <div class="tags">
+            <span class="tag-label">tags:</span>
             {{ range . }}
-            <a href={{ "/tags/" | relLangURL }}{{- . | urlize -}}>{{ . }}</a>
+            <a href="{{ "/tags/" | relLangURL }}{{- . | urlize -}}">{{ . }}</a>
             {{ end }}
         </div>
-        {{ end }} {{ with .Site.DisqusShortname }}
-        <div>
-            {{ template "_internal/disqus.html" . }}
-        </div>
         {{ end }}
-        <br>
-        <div>
-            <a href="javascript:history.back()">
-                << Back</a>
-                    <a href="#top">Top ^^</a>
+        {{ with .Site.DisqusShortname }}
+        <div>{{ template "_internal/disqus.html" . }}</div>
+        {{ end }}
+        <div class="post-nav">
+            <a href="javascript:history.back()">&larr; Back</a>
+            <a href="#top">&#8679; Top</a>
         </div>
     </article>
 </main>

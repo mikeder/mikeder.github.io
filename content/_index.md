@@ -4,6 +4,9 @@ date: 2022-10-24T21:13:07-04:00
 draft: false
 ---
 
-Hello, this site is created with [Hugo](https://gohugo.io) - a static site generator written in Go. Its content will include information, notes and ramblings about various projects I'm working on. Software, synthesizers, electronic music production, and video games are some of the topics you may find here.
+Welcome to my site, a home for blogs on things I'm working on or just random thoughts I have. 
 
-Most pages will be pretty rough draft style, I typically write down notes and thoughts as they happen and don't really go back to edit them.
+Content here is intentionally rough draft because I don't have much time to polish things right now. Topics you may find here include; software development, music production, vintage synthesizers and occasional thoughts on current events.
+
+Check below for recent posts and project pages for things I'm working on.
+
