@@ -5,7 +5,6 @@
 	<meta name="generator" content="Hugo 0.104.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>mikeder.net</title>
     
     <meta name="description" content="A static site built with Hugo!">
@@ -13,83 +12,222 @@
     
     <meta name="author" content="Mike Eder">
     
-
     
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="stylesheet" href='/css/style.css'> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='/css/style.css'>
     <link rel="alternate" type="application/rss+xml" href="/index.xml" title="mikeder.net">
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header id="site-header">
-    <div class="nav">
-        <a href="https://mikeder.net/">Home</a>  
-        <a href="/about/">Abouts</a> 
-        <a href="/blog/">Blogs</a> 
-        <a href="/projects/">Projects</a> 
-        <a href="/synthesizers/">Synthesizers</a>  
-    </div>
-</header> 
+    <nav class="nav">
+        <a href="https://mikeder.net/" class="nav-brand">mikeder.net</a>
+        <div class="nav-links" id="nav-links">
+            
+            
+            <a href="/about/">Abouts</a>
+            
+            <a href="/blog/">Blogs</a>
+            
+            <a href="/projects/">Projects</a>
+            
+            <a href="/synthesizers/">Synthesizers</a>
+            
+            
+        </div>
+        <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+</header>
+
+    <div id="page-content" class="page-wrapper">
+        
 <main aria-role="main" class="content">
-	<header class="homepage-header">
-		<h1>mikeder.net</h1>
-		
-	</header>
-	<div class="homepage-content">
-		
-		<p>Hello, this site is created with <a href="https://gohugo.io">Hugo</a> - a static site generator written in Go. Its content will include information, notes and ramblings about various projects I&rsquo;m working on. Software, synthesizers, electronic music production, and video games are some of the topics you may find here.</p>
-<p>Most pages will be pretty rough draft style, I typically write down notes and thoughts as they happen and don&rsquo;t really go back to edit them.</p>
+    <header class="homepage-header">
+        <h1>mikeder.net</h1>
+        
+    </header>
+    <div class="homepage-content">
+        <p>Welcome to my site, a home for blogs on things I&rsquo;m working on or just random thoughts I have.</p>
+<p>Content here is intentionally rough draft because I don&rsquo;t have much time to polish things right now. Topics you may find here include; software development, music production, vintage synthesizers and occasional thoughts on current events.</p>
+<p>Check below for recent posts and project pages for things I&rsquo;m working on.</p>
 
-	</div>
+    </div>
+
+    
+    
+    <section class="home-section">
+        <div class="home-section-header">
+            <h2>Recent Posts</h2>
+            <a href="/blog/" class="home-section-more">View all &rarr;</a>
+        </div>
+        
+        <article class="post-card">
+            <h1><a href="https://mikeder.net/blog/local-llm-pdd/initial/">Local Coding LLM - Initial Setup</a></h1>
+            <time>06 Mar 2026</time>
+            
+        </article>
+        
+        <article class="post-card">
+            <h1><a href="https://mikeder.net/blog/swetiquette/">Software Engineering Etiquette</a></h1>
+            <time>23 Apr 2025</time>
+            
+            <div class="tags">
+                
+                <a href="/tags/software">software</a>
+                
+                <a href="/tags/engineering">engineering</a>
+                
+                <a href="/tags/grpc">gRPC</a>
+                
+                <a href="/tags/server">server</a>
+                
+                <a href="/tags/programming">programming</a>
+                
+            </div>
+            
+        </article>
+        
+        <article class="post-card">
+            <h1><a href="https://mikeder.net/blog/election-2024/">Election 2024</a></h1>
+            <time>07 Nov 2024</time>
+            
+        </article>
+        
+        <article class="post-card">
+            <h1><a href="https://mikeder.net/blog/m1-mac-wasm/">M1 Macs, Rust &amp; WASM</a></h1>
+            <time>17 Apr 2024</time>
+            
+        </article>
+        
+        <article class="post-card">
+            <h1><a href="https://mikeder.net/blog/renet-to-lightyear-1/">Renet to Lightyear 1</a></h1>
+            <time>12 Apr 2024</time>
+            
+            <div class="tags">
+                
+                <a href="/tags/rust">rust</a>
+                
+                <a href="/tags/bevy">bevy</a>
+                
+                <a href="/tags/networking">networking</a>
+                
+                <a href="/tags/unfinished">unfinished</a>
+                
+            </div>
+            
+        </article>
+        
+    </section>
+    
+
+    
+    
+    <section class="home-section">
+        <div class="home-section-header">
+            <h2>Projects</h2>
+            <a href="/projects/" class="home-section-more">View all &rarr;</a>
+        </div>
+        <div class="project-grid">
+            
+            <article class="project-card">
+                <h3><a href="https://mikeder.net/projects/homelab/">Homelab</a></h3>
+                <time>Dec 2024</time>
+                
+                <p>Proxmox Host CPU: AMD Ryzen 3 2200G @ 2528 MHz Memory: 14GB DDR4 Storage: Disks: 1x 120G SanDisk …</p>
+                
+            </article>
+            
+            <article class="project-card">
+                <h3><a href="https://mikeder.net/projects/rust-server/">Rust Server</a></h3>
+                <time>Oct 2023</time>
+                
+                <p>Self hosting a Rust dedicated server to learn and screw around on. Map wipe schedule may change …</p>
+                
+            </article>
+            
+            <article class="project-card">
+                <h3><a href="https://mikeder.net/projects/turtletime/">Turtle Time</a></h3>
+                <time>Apr 2023</time>
+                
+                <p>Turtle Time is a multiplayer battle game written in Rust, using the Bevy Game Engine.
+It features …</p>
+                
+            </article>
+            
+            <article class="project-card">
+                <h3><a href="https://mikeder.net/projects/timeline_rs/">TimelineRS</a></h3>
+                <time>Nov 2022</time>
+                
+                <p>TimelineRS is a simple timeline creation app written in Rust. It uses egui and eframe for native and …</p>
+                
+            </article>
+            
+            <article class="project-card">
+                <h3><a href="https://mikeder.net/projects/music/">Music</a></h3>
+                <time>Sep 2020</time>
+                
+                <p>Sometimes I record synthesizer jams and upload them to SoundCloud, YouTube, Bandcamp, or my personal …</p>
+                
+            </article>
+            
+            <article class="project-card">
+                <h3><a href="https://mikeder.net/projects/ttsh/">Two Thousand Six Hundred v4</a></h3>
+                <time>Sep 2020</time>
+                
+                <p>Some notes and pictures of my nights and weekends spent soldering two ARP 2600 clones.
+The start of …</p>
+                
+            </article>
+            
+        </div>
+    </section>
+    
 </main>
- 
 
-
-
-
-<div id="myModal" class="modal">
+    </div>
+    <div id="myModal" class="modal">
     <div class="modal-content">
-        <img class="modal-pic" id="modalPic" onclick="closeModal()"
-            style="max-width: 100%; max-height: 80vh; margin: auto;">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()">
     </div>
     <button class="modal-close" onclick="closeModal()">X</button>
 </div>
 
 <script>
-    
     function openModal(clicked_id) {
         var src = document.getElementById(clicked_id).src;
         if (src.includes("#")) {
             src = src.substring(0, src.indexOf("#"));
-        };
+        }
         document.getElementById("modalPic").src = src;
         document.getElementById("myModal").style.display = "block";
-        
-        
         document.getElementById("site-header").style.display = "none";
-        document.getElementById("content").style.display = "none";
+        document.getElementById("page-content").style.display = "none";
         document.getElementById("site-footer").style.display = "none";
     }
 
-    
     function closeModal() {
-        
         document.getElementById("modalPic").src = "";
         document.getElementById("myModal").style.display = "none";
-        
         document.getElementById("site-header").style.display = "block";
-        document.getElementById("content").style.display = "block";
+        document.getElementById("page-content").style.display = "block";
         document.getElementById("site-footer").style.display = "block";
     }
     closeModal()
-</script>    
+</script>
+
+       
 
 <footer id="site-footer">
     <p>
-        &copy; 2026 <a href="https://mikeder.net/">mikeder.net</a> v:e9814f3</p>
+        &copy; 2026 <a href="https://mikeder.net/">mikeder.net</a> v:84c62c2</p>
 
     
     <a class="fab fa-bandcamp" style="font-size: 24px" href="https://bandcamp.com/mikeder" target="_blank"></a>

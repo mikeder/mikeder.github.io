@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Roland Juno 6 Repairs 2022</title>
     
     <meta name="description" content="A static site built with Hugo!">
@@ -12,29 +11,47 @@
     
     <meta name="author" content="Mike Eder">
     
-
     
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="stylesheet" href='/css/style.css'> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='/css/style.css'>
+    
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header id="site-header">
-    <div class="nav">
-        <a href="https://mikeder.net/">Home</a>  
-        <a href="/about/">Abouts</a> 
-        <a href="/blog/">Blogs</a> 
-        <a href="/projects/">Projects</a> 
-        <a href="/synthesizers/">Synthesizers</a>  
-    </div>
-</header> 
-<main id="content" class="content">
+    <nav class="nav">
+        <a href="https://mikeder.net/" class="nav-brand">mikeder.net</a>
+        <div class="nav-links" id="nav-links">
+            
+            
+            <a href="/about/">Abouts</a>
+            
+            <a href="/blog/">Blogs</a>
+            
+            <a href="/projects/">Projects</a>
+            
+            <a href="/synthesizers/">Synthesizers</a>
+            
+            
+        </div>
+        <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+</header>
+
+    <div id="page-content" class="page-wrapper">
+        
+<main class="content">
     <article class="content-chunk">
         <h1>Roland Juno 6 Repairs 2022</h1>
-        <h5>03.11.2022 07:10</h5>
+        <div class="post-meta">03.11.2022 07:10</div>
         <div class="container">
             <p>I&rsquo;ve finally gotten around to starting, and finishing, some long overdue repairs to my Roland Juno 6.</p>
 <p>When I purchased the synth, it had a broken bender lever. This is a pretty common thing and replacements can be found fairly cheaply - I purchased mine from <a href="https://syntaur.com/Part-4023-Bender-lever-Roland">Syntaur</a>. It also had a missing slider cap at the time, which I also found a replacement for from <a href="https://syntaur.com/Part-4367-Slider-knob-Roland">Syntaur</a>.</p>
@@ -49,7 +66,7 @@
 
 
 <div class="md__image">
-    <img id="[189 53 164 167 363 337]" src="pwm-desc.png" onclick="openModal(this.id)" alt="variable pulse width"  />
+    <img id="[215 484 154 163 168 473]" src="pwm-desc.png" onclick="openModal(this.id)" alt="variable pulse width"  />
 </div></p>
 <p>I first measured the input CV on pin 3, I found that it was changing as expected between <code>-.5V</code> and <code>-6.8V</code> as I changed the front panel PWM slider.</p>
 <p>
@@ -60,7 +77,7 @@
 
 
 <div class="md__image">
-    <img id="[451 253 105 97 200 203]" src="pwm-circuit.png" onclick="openModal(this.id)" alt="pwm circuit"  />
+    <img id="[491 369 68 316 224 203]" src="pwm-circuit.png" onclick="openModal(this.id)" alt="pwm circuit"  />
 </div></p>
 <p>I then measured a couple of the output pins and there was a distinct sawtooth waveform but it had a fair amount of noise to it and was unaffected by the front panel control changes. I also confirmed at TR2 of a couple of the voices that the resulting pulse wave was unchanged while moving the PWM slider.</p>
 <p>With this evidence I went ahead and replaced the 4051 with the chip I had purchased previously. After replacement I again checked TR2 and confirmed that the pulse duty cycle WAS in fact changing with the front panel changes! I did a quick calibration per the service manual, up to the chorus bias section and buttoned it back up.</p>
@@ -103,66 +120,57 @@
 
         </div>
         
-        <div>
-            Tags:
+        <div class="tags">
+            <span class="tag-label">tags:</span>
             
-            <a href=/tags/vintage>vintage</a>
+            <a href="/tags/vintage">vintage</a>
             
-            <a href=/tags/synthesizer>synthesizer</a>
+            <a href="/tags/synthesizer">synthesizer</a>
             
-            <a href=/tags/repair>repair</a>
+            <a href="/tags/repair">repair</a>
             
         </div>
-         
-        <br>
-        <div>
-            <a href="javascript:history.back()">
-                &lt;&lt; Back</a>
-                    <a href="#top">Top ^^</a>
+        
+        
+        <div class="post-nav">
+            <a href="javascript:history.back()">&larr; Back</a>
+            <a href="#top">&#8679; Top</a>
         </div>
     </article>
 </main>
- 
 
-
-
-
-<div id="myModal" class="modal">
+    </div>
+    <div id="myModal" class="modal">
     <div class="modal-content">
-        <img class="modal-pic" id="modalPic" onclick="closeModal()"
-            style="max-width: 100%; max-height: 80vh; margin: auto;">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()">
     </div>
     <button class="modal-close" onclick="closeModal()">X</button>
 </div>
 
 <script>
-    
     function openModal(clicked_id) {
         var src = document.getElementById(clicked_id).src;
         if (src.includes("#")) {
             src = src.substring(0, src.indexOf("#"));
-        };
+        }
         document.getElementById("modalPic").src = src;
         document.getElementById("myModal").style.display = "block";
-        
-        
         document.getElementById("site-header").style.display = "none";
-        document.getElementById("content").style.display = "none";
+        document.getElementById("page-content").style.display = "none";
         document.getElementById("site-footer").style.display = "none";
     }
 
-    
     function closeModal() {
-        
         document.getElementById("modalPic").src = "";
         document.getElementById("myModal").style.display = "none";
-        
         document.getElementById("site-header").style.display = "block";
-        document.getElementById("content").style.display = "block";
+        document.getElementById("page-content").style.display = "block";
         document.getElementById("site-footer").style.display = "block";
     }
     closeModal()
-</script>    
+</script>
+
+       
 
 <footer id="site-footer">
     <p>

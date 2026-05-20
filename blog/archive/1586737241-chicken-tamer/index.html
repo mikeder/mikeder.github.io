@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Asset Test</title>
     
     <meta name="description" content="A static site built with Hugo!">
@@ -12,29 +11,47 @@
     
     <meta name="author" content="Mike Eder">
     
-
     
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="stylesheet" href='/css/style.css'> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='/css/style.css'>
+    
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header id="site-header">
-    <div class="nav">
-        <a href="https://mikeder.net/">Home</a>  
-        <a href="/about/">Abouts</a> 
-        <a href="/blog/">Blogs</a> 
-        <a href="/projects/">Projects</a> 
-        <a href="/synthesizers/">Synthesizers</a>  
-    </div>
-</header> 
-<main id="content" class="content">
+    <nav class="nav">
+        <a href="https://mikeder.net/" class="nav-brand">mikeder.net</a>
+        <div class="nav-links" id="nav-links">
+            
+            
+            <a href="/about/">Abouts</a>
+            
+            <a href="/blog/">Blogs</a>
+            
+            <a href="/projects/">Projects</a>
+            
+            <a href="/synthesizers/">Synthesizers</a>
+            
+            
+        </div>
+        <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+</header>
+
+    <div id="page-content" class="page-wrapper">
+        
+<main class="content">
     <article class="content-chunk">
         <h1>Asset Test</h1>
-        <h5>13.04.2020 00:20</h5>
+        <div class="post-meta">13.04.2020 00:20</div>
         <div class="container">
             <p>I&rsquo;ve setup a CloudFront distribution to serve some static assets and media files for this domain. This will make load times faster and allow me to serve content from AWS&rsquo;s edge locations instead of from a single container instance of this &ldquo;blog&rdquo;.</p>
 <p>Testing some random image embeds here:</p>
@@ -46,7 +63,7 @@
 
 
 <div class="md__image">
-    <img id="[152 318 366 218 238 247]" src="https://assets.sqweeb.net/images/minecraft/screenshots/2019-09-15_19.14.38.png" onclick="openModal(this.id)" alt="shaded downtown"  />
+    <img id="[369 202 15 76 12 448]" src="https://assets.sqweeb.net/images/minecraft/screenshots/2019-09-15_19.14.38.png" onclick="openModal(this.id)" alt="shaded downtown"  />
 </div>
 
 
@@ -56,67 +73,58 @@
 
 
 <div class="md__image">
-    <img id="[44 14 20 55 144 334]" src="https://assets.sqweeb.net/images/minecraft/screenshots/2020-04-05_21.03.43.png" onclick="openModal(this.id)" alt="new server build"  />
+    <img id="[223 243 109 102 88 231]" src="https://assets.sqweeb.net/images/minecraft/screenshots/2020-04-05_21.03.43.png" onclick="openModal(this.id)" alt="new server build"  />
 </div></p>
 
         </div>
         
-        <div>
-            Tags:
+        <div class="tags">
+            <span class="tag-label">tags:</span>
             
-            <a href=/tags/archive>archive</a>
+            <a href="/tags/archive">archive</a>
             
         </div>
-         
-        <br>
-        <div>
-            <a href="javascript:history.back()">
-                &lt;&lt; Back</a>
-                    <a href="#top">Top ^^</a>
+        
+        
+        <div class="post-nav">
+            <a href="javascript:history.back()">&larr; Back</a>
+            <a href="#top">&#8679; Top</a>
         </div>
     </article>
 </main>
- 
 
-
-
-
-<div id="myModal" class="modal">
+    </div>
+    <div id="myModal" class="modal">
     <div class="modal-content">
-        <img class="modal-pic" id="modalPic" onclick="closeModal()"
-            style="max-width: 100%; max-height: 80vh; margin: auto;">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()">
     </div>
     <button class="modal-close" onclick="closeModal()">X</button>
 </div>
 
 <script>
-    
     function openModal(clicked_id) {
         var src = document.getElementById(clicked_id).src;
         if (src.includes("#")) {
             src = src.substring(0, src.indexOf("#"));
-        };
+        }
         document.getElementById("modalPic").src = src;
         document.getElementById("myModal").style.display = "block";
-        
-        
         document.getElementById("site-header").style.display = "none";
-        document.getElementById("content").style.display = "none";
+        document.getElementById("page-content").style.display = "none";
         document.getElementById("site-footer").style.display = "none";
     }
 
-    
     function closeModal() {
-        
         document.getElementById("modalPic").src = "";
         document.getElementById("myModal").style.display = "none";
-        
         document.getElementById("site-header").style.display = "block";
-        document.getElementById("content").style.display = "block";
+        document.getElementById("page-content").style.display = "block";
         document.getElementById("site-footer").style.display = "block";
     }
     closeModal()
-</script>    
+</script>
+
+       
 
 <footer id="site-footer">
     <p>

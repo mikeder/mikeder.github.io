@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>video</title>
     
     <meta name="description" content="A static site built with Hugo!">
@@ -12,113 +11,120 @@
     
     <meta name="author" content="Mike Eder">
     
-
     
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="stylesheet" href='/css/style.css'> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='/css/style.css'>
     <link rel="alternate" type="application/rss+xml" href="/tags/video/index.xml" title="mikeder.net">
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header id="site-header">
-    <div class="nav">
-        <a href="https://mikeder.net/">Home</a>  
-        <a href="/about/">Abouts</a> 
-        <a href="/blog/">Blogs</a> 
-        <a href="/projects/">Projects</a> 
-        <a href="/synthesizers/">Synthesizers</a>  
+    <nav class="nav">
+        <a href="https://mikeder.net/" class="nav-brand">mikeder.net</a>
+        <div class="nav-links" id="nav-links">
+            
+            
+            <a href="/about/">Abouts</a>
+            
+            <a href="/blog/">Blogs</a>
+            
+            <a href="/projects/">Projects</a>
+            
+            <a href="/synthesizers/">Synthesizers</a>
+            
+            
+        </div>
+        <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+</header>
+
+    <div id="page-content" class="page-wrapper">
+        
+<main class="content">
+    
+    <div class="content-chunk" style="margin-bottom: 1.5rem;">
+        <h1>video</h1>
+        
     </div>
-</header> 
-	<main class="content">
-		
-		<div class="content-chunk">
-			<h1>video</h1>
-			<hr>
-			
-		
+    
 
-		
-			<article>
-	<h1><a href="https://mikeder.net/blog/selfhost-peertube/">Self Hosting PeerTube</a></h1>
-	<time>22.12.2022 09:12</time>
-	
-	<br>
-	Tags:
-	
-	<a href=/tags/peertube>peertube</a>
-	
-	<a href=/tags/selfhosted>selfhosted</a>
-	
-	<a href=/tags/video>video</a>
-	
-	<a href=/tags/social>social</a>
-	
-	<a href=/tags/fediverse>fediverse</a>
-	
-	
-	<div class="container">
-		The “Fediverse” migration continues - after trying out Mastodon for “micro blogging”, I figured I’d try out PeerTube for my synthesizer jam videos, etc. My server and local videos will be hosted @ <a href="https://peertube.sqweeb.net">https://peertube.sqweeb.net</a>.
+    
+        <article class="post-card">
+    <h1><a href="https://mikeder.net/blog/selfhost-peertube/">Self Hosting PeerTube</a></h1>
+    <time>22.12.2022 09:12</time>
+    
+    <div class="tags">
+        
+        <a href="/tags/peertube">peertube</a>
+        
+        <a href="/tags/selfhosted">selfhosted</a>
+        
+        <a href="/tags/video">video</a>
+        
+        <a href="/tags/social">social</a>
+        
+        <a href="/tags/fediverse">fediverse</a>
+        
+    </div>
+    
+    <div class="container">
+        The “Fediverse” migration continues - after trying out Mastodon for “micro blogging”, I figured I’d try out PeerTube for my synthesizer jam videos, etc. My server and local videos will be hosted @ <a href="https://peertube.sqweeb.net">https://peertube.sqweeb.net</a>.
 The PeerTube documentation has a pretty good starting point for hosting via Docker and docker compose - I started with that. The docker-compose.yml file example they give you comes with a separate web server and “cert bot” container for managing SSL/TLS certificates with LetsEncrypt.
-		
-		<a href="https://mikeder.net/blog/selfhost-peertube/">Read more...</a>
-		
-	</div>
+        
+        <a class="read-more" href="https://mikeder.net/blog/selfhost-peertube/">Read more</a>
+        
+    </div>
 </article>
-<hr>
-		
-		<div>
 
-1 of 1
-
+    
+    <div class="pagination">
+    
+    <span class="pagination-info">1 / 1</span>
+    
 </div>
 
+</main>
 
-		</div>
-	</main>
- 
-
-
-
-
-<div id="myModal" class="modal">
+    </div>
+    <div id="myModal" class="modal">
     <div class="modal-content">
-        <img class="modal-pic" id="modalPic" onclick="closeModal()"
-            style="max-width: 100%; max-height: 80vh; margin: auto;">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()">
     </div>
     <button class="modal-close" onclick="closeModal()">X</button>
 </div>
 
 <script>
-    
     function openModal(clicked_id) {
         var src = document.getElementById(clicked_id).src;
         if (src.includes("#")) {
             src = src.substring(0, src.indexOf("#"));
-        };
+        }
         document.getElementById("modalPic").src = src;
         document.getElementById("myModal").style.display = "block";
-        
-        
         document.getElementById("site-header").style.display = "none";
-        document.getElementById("content").style.display = "none";
+        document.getElementById("page-content").style.display = "none";
         document.getElementById("site-footer").style.display = "none";
     }
 
-    
     function closeModal() {
-        
         document.getElementById("modalPic").src = "";
         document.getElementById("myModal").style.display = "none";
-        
         document.getElementById("site-header").style.display = "block";
-        document.getElementById("content").style.display = "block";
+        document.getElementById("page-content").style.display = "block";
         document.getElementById("site-footer").style.display = "block";
     }
     closeModal()
-</script>  
+</script>
+
+     
 
 <footer id="site-footer">
     <p>

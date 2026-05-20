@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Projects</title>
     
     <meta name="description" content="A static site built with Hugo!">
@@ -12,164 +11,171 @@
     
     <meta name="author" content="Mike Eder">
     
-
     
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="stylesheet" href='/css/style.css'> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='/css/style.css'>
     <link rel="alternate" type="application/rss+xml" href="/projects/index.xml" title="mikeder.net">
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header id="site-header">
-    <div class="nav">
-        <a href="https://mikeder.net/">Home</a>  
-        <a href="/about/">Abouts</a> 
-        <a href="/blog/">Blogs</a> 
-        <a href="/projects/">Projects</a> 
-        <a href="/synthesizers/">Synthesizers</a>  
-    </div>
-</header> 
-	<main class="content">
-		
-		<div class="content-chunk">
-			<h1>Projects</h1>
-			<hr>
-			
-		
+    <nav class="nav">
+        <a href="https://mikeder.net/" class="nav-brand">mikeder.net</a>
+        <div class="nav-links" id="nav-links">
+            
+            
+            <a href="/about/">Abouts</a>
+            
+            <a href="/blog/">Blogs</a>
+            
+            <a href="/projects/">Projects</a>
+            
+            <a href="/synthesizers/">Synthesizers</a>
+            
+            
+        </div>
+        <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+</header>
 
-		
-			<article>
-	<h1><a href="https://mikeder.net/projects/homelab/">Homelab</a></h1>
-	<time>31.12.2024 14:12</time>
-	
-	<div class="container">
-		Proxmox Host CPU: AMD Ryzen 3 2200G @ 2528 MHz Memory: 14GB DDR4 Storage: Disks: 1x 120G SanDisk SDSSDA12 (Proxmox LVM boot disk) 2x 1TB WD Black WDC WD1003FZEX-0 (Proxmox ISO/VM storage) 5x 2TB WD Red WDC WD20EFRX-68E (Passthru to Freenas VM) HBA: LSI Logic / Symbios Logic SAS2308 PCI-Express Fusion-MPT SAS-2 (rev 05) Virtual Machines Docker FreeNAS/TrueNAS Linux Server 1 (liquidwhite) CPU: Intel Core i7-4790k @ 4.00GHz Memory: 16GB DDR3 Storage: /dev/sda - SanDisk Ultra II 500GB /dev/sdb - SanDisk SDSSDA24 240GB Linux Server 2 (devb0x) CPU: Intel Core i5 Memory: 8GB Storage: ?
-		
-		<a href="https://mikeder.net/projects/homelab/">Read more...</a>
-		
-	</div>
+    <div id="page-content" class="page-wrapper">
+        
+<main class="content">
+    
+    <div class="content-chunk" style="margin-bottom: 1.5rem;">
+        <h1>Projects</h1>
+        
+    </div>
+    
+
+    
+        <article class="post-card">
+    <h1><a href="https://mikeder.net/projects/homelab/">Homelab</a></h1>
+    <time>31.12.2024 14:12</time>
+    
+    <div class="container">
+        Proxmox Host CPU: AMD Ryzen 3 2200G @ 2528 MHz Memory: 14GB DDR4 Storage: Disks: 1x 120G SanDisk SDSSDA12 (Proxmox LVM boot disk) 2x 1TB WD Black WDC WD1003FZEX-0 (Proxmox ISO/VM storage) 5x 2TB WD Red WDC WD20EFRX-68E (Passthru to Freenas VM) HBA: LSI Logic / Symbios Logic SAS2308 PCI-Express Fusion-MPT SAS-2 (rev 05) Virtual Machines Docker FreeNAS/TrueNAS Linux Server 1 (liquidwhite) CPU: Intel Core i7-4790k @ 4.00GHz Memory: 16GB DDR3 Storage: /dev/sda - SanDisk Ultra II 500GB /dev/sdb - SanDisk SDSSDA24 240GB Linux Server 2 (devb0x) CPU: Intel Core i5 Memory: 8GB Storage: ?
+        
+        <a class="read-more" href="https://mikeder.net/projects/homelab/">Read more</a>
+        
+    </div>
 </article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/projects/rust-server/">Rust Server</a></h1>
-	<time>19.10.2023 11:51</time>
-	
-	<div class="container">
-		Self hosting a Rust dedicated server to learn and screw around on. Map wipe schedule may change depending on server performance and force wipe schedule, blueprints will not wipe unless forced by Facepunch.
+
+    
+        <article class="post-card">
+    <h1><a href="https://mikeder.net/projects/rust-server/">Rust Server</a></h1>
+    <time>19.10.2023 11:51</time>
+    
+    <div class="container">
+        Self hosting a Rust dedicated server to learn and screw around on. Map wipe schedule may change depending on server performance and force wipe schedule, blueprints will not wipe unless forced by Facepunch.
 Server Name [tS] Iron Oxide | Creative/Free Build/Low Upkeep | Monthly US-E Wipe Schedule Monthly, force wipe - 1st Thursday of the month. Wipe Stats # Start End Unique Players Map Info 1 9/21/23 10/19/23 49 <a href="https://rustmaps.com/map/4250_66972398">https://rustmaps.com/map/4250_66972398</a> 2 10/19/23 11/02/23 50 https://rustmaps.
-		
-		<a href="https://mikeder.net/projects/rust-server/">Read more...</a>
-		
-	</div>
+        
+        <a class="read-more" href="https://mikeder.net/projects/rust-server/">Read more</a>
+        
+    </div>
 </article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/projects/turtletime/">Turtle Time</a></h1>
-	<time>27.04.2023 10:25</time>
-	
-	<div class="container">
-		Turtle Time is a multiplayer battle game written in Rust, using the Bevy Game Engine.
+
+    
+        <article class="post-card">
+    <h1><a href="https://mikeder.net/projects/turtletime/">Turtle Time</a></h1>
+    <time>27.04.2023 10:25</time>
+    
+    <div class="container">
+        Turtle Time is a multiplayer battle game written in Rust, using the Bevy Game Engine.
 It features peer-to-peer networking using the bevy_ggrs crate and matchbox crate and server for matchmaking with peers.
 Play it online @ <a href="https://mikeder.net/turtletime">https://mikeder.net/turtletime</a>
 Source code Download Releases
-		
-	</div>
+        
+    </div>
 </article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/projects/timeline_rs/">TimelineRS</a></h1>
-	<time>28.11.2022 10:58</time>
-	
-	<div class="container">
-		TimelineRS is a simple timeline creation app written in Rust. It uses egui and eframe for native and web builds with web assembly.
+
+    
+        <article class="post-card">
+    <h1><a href="https://mikeder.net/projects/timeline_rs/">TimelineRS</a></h1>
+    <time>28.11.2022 10:58</time>
+    
+    <div class="container">
+        TimelineRS is a simple timeline creation app written in Rust. It uses egui and eframe for native and web builds with web assembly.
 Check it out here: TimelineRS
 Source Code
-		
-	</div>
+        
+    </div>
 </article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/projects/music/">Music</a></h1>
-	<time>17.09.2020 09:47</time>
-	
-	<div class="container">
-		Sometimes I record synthesizer jams and upload them to SoundCloud, YouTube, Bandcamp, or my personal music server Navidrome
+
+    
+        <article class="post-card">
+    <h1><a href="https://mikeder.net/projects/music/">Music</a></h1>
+    <time>17.09.2020 09:47</time>
+    
+    <div class="container">
+        Sometimes I record synthesizer jams and upload them to SoundCloud, YouTube, Bandcamp, or my personal music server Navidrome
 Jamuary 2023 Playlist Bandcamp Albums Juxtaposition by Mike Eder Bandcamp Tracks Twosyn by Mike Eder Gerp9 by Mike Eder
-		
-	</div>
+        
+    </div>
 </article>
-<hr>
-		
-			<article>
-	<h1><a href="https://mikeder.net/projects/ttsh/">Two Thousand Six Hundred v4</a></h1>
-	<time>17.09.2020 09:05</time>
-	
-	<div class="container">
-		Some notes and pictures of my nights and weekends spent soldering two ARP 2600 clones.
+
+    
+        <article class="post-card">
+    <h1><a href="https://mikeder.net/projects/ttsh/">Two Thousand Six Hundred v4</a></h1>
+    <time>17.09.2020 09:05</time>
+    
+    <div class="container">
+        Some notes and pictures of my nights and weekends spent soldering two ARP 2600 clones.
 The start of the build phase, two full kits from SynthCube.
 1 / 27 Caption 0001 2 / 27 Caption 0004 3 / 27 Caption 0005 4 / 27 Caption 0006 5 / 27 Caption 0007 6 / 27 Caption 0008 7 / 27 Caption 0009 8 / 27 Caption 0010 9 / 27 Caption 0011 10 / 27 Caption 0012 11 / 27 Caption 0013 12 / 27 Caption 0015 13 / 27 Caption 0016 14 / 27 Caption 0017 15 / 27 Caption 0018 16 / 27 Caption 0019 17 / 27 Caption 0020 18 / 27 Caption 0021 19 / 27 Caption 0022 20 / 27 Caption 0023 21 / 27 Caption 0024 22 / 27 Caption 0025 23 / 27 Caption 0026 24 / 27 Caption 0027 25 / 27 Caption 0028 26 / 27 Caption 0029 27 / 27 Caption 0030 ❮ ❯
-		
-	</div>
+        
+    </div>
 </article>
-<hr>
-		
-		<div>
 
-1 of 1
-
+    
+    <div class="pagination">
+    
+    <span class="pagination-info">1 / 1</span>
+    
 </div>
 
+</main>
 
-		</div>
-	</main>
- 
-
-
-
-
-<div id="myModal" class="modal">
+    </div>
+    <div id="myModal" class="modal">
     <div class="modal-content">
-        <img class="modal-pic" id="modalPic" onclick="closeModal()"
-            style="max-width: 100%; max-height: 80vh; margin: auto;">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()">
     </div>
     <button class="modal-close" onclick="closeModal()">X</button>
 </div>
 
 <script>
-    
     function openModal(clicked_id) {
         var src = document.getElementById(clicked_id).src;
         if (src.includes("#")) {
             src = src.substring(0, src.indexOf("#"));
-        };
+        }
         document.getElementById("modalPic").src = src;
         document.getElementById("myModal").style.display = "block";
-        
-        
         document.getElementById("site-header").style.display = "none";
-        document.getElementById("content").style.display = "none";
+        document.getElementById("page-content").style.display = "none";
         document.getElementById("site-footer").style.display = "none";
     }
 
-    
     function closeModal() {
-        
         document.getElementById("modalPic").src = "";
         document.getElementById("myModal").style.display = "none";
-        
         document.getElementById("site-header").style.display = "block";
-        document.getElementById("content").style.display = "block";
+        document.getElementById("page-content").style.display = "block";
         document.getElementById("site-footer").style.display = "block";
     }
     closeModal()
-</script>  
+</script>
+
+     
 
 <footer id="site-footer">
     <p>

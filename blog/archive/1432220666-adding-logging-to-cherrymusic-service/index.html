@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Adding logging to CherryMusic service</title>
     
     <meta name="description" content="A static site built with Hugo!">
@@ -12,29 +11,47 @@
     
     <meta name="author" content="Mike Eder">
     
-
     
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="stylesheet" href='/css/style.css'> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='/css/style.css'>
+    
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header id="site-header">
-    <div class="nav">
-        <a href="https://mikeder.net/">Home</a>  
-        <a href="/about/">Abouts</a> 
-        <a href="/blog/">Blogs</a> 
-        <a href="/projects/">Projects</a> 
-        <a href="/synthesizers/">Synthesizers</a>  
-    </div>
-</header> 
-<main id="content" class="content">
+    <nav class="nav">
+        <a href="https://mikeder.net/" class="nav-brand">mikeder.net</a>
+        <div class="nav-links" id="nav-links">
+            
+            
+            <a href="/about/">Abouts</a>
+            
+            <a href="/blog/">Blogs</a>
+            
+            <a href="/projects/">Projects</a>
+            
+            <a href="/synthesizers/">Synthesizers</a>
+            
+            
+        </div>
+        <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+</header>
+
+    <div id="page-content" class="page-wrapper">
+        
+<main class="content">
     <article class="content-chunk">
         <h1>Adding logging to CherryMusic service</h1>
-        <h5>21.05.2015 15:04</h5>
+        <div class="post-meta">21.05.2015 15:04</div>
         <div class="container">
             <p>This morning I added some logging functionality to the <!-- raw HTML omitted -->cherrymusic service script<!-- raw HTML omitted --> that lives in /etc/init.d/cherrymusic. I have a couple issues going on with the music server that are going to require some log digging. One of which I&rsquo;ve already fixed: Some of the Web Rips sub directories would open up empty. Upon review the logs when accessing those folders I found this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>150521-14:10<span style="color:#f92672">]</span> ERROR   : <span style="color:#f92672">[</span>21/May/2015:14:10:41<span style="color:#f92672">]</span> HTTP Traceback <span style="color:#f92672">(</span>most recent call last<span style="color:#f92672">)</span>:
@@ -80,62 +97,53 @@
 </span></span></code></pre></div>
         </div>
         
-        <div>
-            Tags:
+        <div class="tags">
+            <span class="tag-label">tags:</span>
             
-            <a href=/tags/archive>archive</a>
+            <a href="/tags/archive">archive</a>
             
         </div>
-         
-        <br>
-        <div>
-            <a href="javascript:history.back()">
-                &lt;&lt; Back</a>
-                    <a href="#top">Top ^^</a>
+        
+        
+        <div class="post-nav">
+            <a href="javascript:history.back()">&larr; Back</a>
+            <a href="#top">&#8679; Top</a>
         </div>
     </article>
 </main>
- 
 
-
-
-
-<div id="myModal" class="modal">
+    </div>
+    <div id="myModal" class="modal">
     <div class="modal-content">
-        <img class="modal-pic" id="modalPic" onclick="closeModal()"
-            style="max-width: 100%; max-height: 80vh; margin: auto;">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()">
     </div>
     <button class="modal-close" onclick="closeModal()">X</button>
 </div>
 
 <script>
-    
     function openModal(clicked_id) {
         var src = document.getElementById(clicked_id).src;
         if (src.includes("#")) {
             src = src.substring(0, src.indexOf("#"));
-        };
+        }
         document.getElementById("modalPic").src = src;
         document.getElementById("myModal").style.display = "block";
-        
-        
         document.getElementById("site-header").style.display = "none";
-        document.getElementById("content").style.display = "none";
+        document.getElementById("page-content").style.display = "none";
         document.getElementById("site-footer").style.display = "none";
     }
 
-    
     function closeModal() {
-        
         document.getElementById("modalPic").src = "";
         document.getElementById("myModal").style.display = "none";
-        
         document.getElementById("site-header").style.display = "block";
-        document.getElementById("content").style.display = "block";
+        document.getElementById("page-content").style.display = "block";
         document.getElementById("site-footer").style.display = "block";
     }
     closeModal()
-</script>    
+</script>
+
+       
 
 <footer id="site-footer">
     <p>

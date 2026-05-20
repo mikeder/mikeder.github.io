@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Apple Photos Export</title>
     
     <meta name="description" content="A static site built with Hugo!">
@@ -12,29 +11,47 @@
     
     <meta name="author" content="Mike Eder">
     
-
     
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="stylesheet" href='/css/style.css'> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='/css/style.css'>
+    
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header id="site-header">
-    <div class="nav">
-        <a href="https://mikeder.net/">Home</a>  
-        <a href="/about/">Abouts</a> 
-        <a href="/blog/">Blogs</a> 
-        <a href="/projects/">Projects</a> 
-        <a href="/synthesizers/">Synthesizers</a>  
-    </div>
-</header> 
-<main id="content" class="content">
+    <nav class="nav">
+        <a href="https://mikeder.net/" class="nav-brand">mikeder.net</a>
+        <div class="nav-links" id="nav-links">
+            
+            
+            <a href="/about/">Abouts</a>
+            
+            <a href="/blog/">Blogs</a>
+            
+            <a href="/projects/">Projects</a>
+            
+            <a href="/synthesizers/">Synthesizers</a>
+            
+            
+        </div>
+        <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+</header>
+
+    <div id="page-content" class="page-wrapper">
+        
+<main class="content">
     <article class="content-chunk">
         <h1>Apple Photos Export</h1>
-        <h5>10.11.2023 11:01</h5>
+        <div class="post-meta">10.11.2023 11:01</div>
         <div class="container">
             <p>It took me a few attempts to figure out a good way to backup photos from an iPhone and Macbook to a proper format on an external NAS, so I figured I&rsquo;d write it down.</p>
 <p>First, import all the photos from your iPhone(s) onto the Macbook. This should put them in your local Photos library, and will probably start tagging them with &ldquo;Memories&rdquo; and location information.</p>
@@ -60,7 +77,7 @@
 
 
 <div class="md__image">
-    <img id="[371 228 233 83 187 298]" src="export-prompt.png" onclick="openModal(this.id)" alt="prompt"  />
+    <img id="[251 345 200 18 388 221]" src="export-prompt.png" onclick="openModal(this.id)" alt="prompt"  />
 </div></p>
 <p>I pick a local folder on my desktop for the initial export, to double check the formats and naming convention and then copy it over to the external network storage.</p>
 <p>You can check the progress of the export in the Photos app, next to the zoom slider.</p>
@@ -72,60 +89,51 @@
 
 
 <div class="md__image">
-    <img id="[30 320 168 393 306 461]" src="progress.png" onclick="openModal(this.id)" alt="progress"  />
+    <img id="[498 16 100 266 8 272]" src="progress.png" onclick="openModal(this.id)" alt="progress"  />
 </div></p>
 
         </div>
-         
-        <br>
-        <div>
-            <a href="javascript:history.back()">
-                &lt;&lt; Back</a>
-                    <a href="#top">Top ^^</a>
+        
+        
+        <div class="post-nav">
+            <a href="javascript:history.back()">&larr; Back</a>
+            <a href="#top">&#8679; Top</a>
         </div>
     </article>
 </main>
- 
 
-
-
-
-<div id="myModal" class="modal">
+    </div>
+    <div id="myModal" class="modal">
     <div class="modal-content">
-        <img class="modal-pic" id="modalPic" onclick="closeModal()"
-            style="max-width: 100%; max-height: 80vh; margin: auto;">
+        <img class="modal-pic" id="modalPic" onclick="closeModal()">
     </div>
     <button class="modal-close" onclick="closeModal()">X</button>
 </div>
 
 <script>
-    
     function openModal(clicked_id) {
         var src = document.getElementById(clicked_id).src;
         if (src.includes("#")) {
             src = src.substring(0, src.indexOf("#"));
-        };
+        }
         document.getElementById("modalPic").src = src;
         document.getElementById("myModal").style.display = "block";
-        
-        
         document.getElementById("site-header").style.display = "none";
-        document.getElementById("content").style.display = "none";
+        document.getElementById("page-content").style.display = "none";
         document.getElementById("site-footer").style.display = "none";
     }
 
-    
     function closeModal() {
-        
         document.getElementById("modalPic").src = "";
         document.getElementById("myModal").style.display = "none";
-        
         document.getElementById("site-header").style.display = "block";
-        document.getElementById("content").style.display = "block";
+        document.getElementById("page-content").style.display = "block";
         document.getElementById("site-footer").style.display = "block";
     }
     closeModal()
-</script>    
+</script>
+
+       
 
 <footer id="site-footer">
     <p>
