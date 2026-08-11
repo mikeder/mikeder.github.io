@@ -3,10 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://mikeder.net/blog/</loc>
-    <lastmod>2026-03-06T14:46:19-05:00</lastmod>
+    <lastmod>2026-08-11T11:06:08-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/local-llm-pdd/initial/</loc>
     <lastmod>2026-03-06T14:46:19-05:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/life/</loc>
+    <lastmod>2026-08-11T11:06:08-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/love/</loc>
+    <lastmod>2026-08-11T11:06:08-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/blog/reflecting-on-benji/</loc>
+    <lastmod>2026-08-11T11:06:08-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/</loc>
+    <lastmod>2026-08-11T11:06:08-04:00</lastmod>
+  </url><url>
+    <loc>https://mikeder.net/tags/trauma/</loc>
+    <lastmod>2026-08-11T11:06:08-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/tags/engineering/</loc>
     <lastmod>2025-05-01T11:20:47-04:00</lastmod>
@@ -24,9 +39,6 @@
     <lastmod>2025-05-01T11:20:47-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/blog/swetiquette/</loc>
-    <lastmod>2025-05-01T11:20:47-04:00</lastmod>
-  </url><url>
-    <loc>https://mikeder.net/tags/</loc>
     <lastmod>2025-05-01T11:20:47-04:00</lastmod>
   </url><url>
     <loc>https://mikeder.net/projects/homelab/</loc>
