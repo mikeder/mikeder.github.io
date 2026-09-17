@@ -1,7 +1,7 @@
 ---
 title: "Pve Upgrade"
 date: 2026-06-23T21:56:19-04:00
-draft: true
+draft: false
 ---
 
 In place upgrade of Proxmox VE node from 5.4 to 8 something.

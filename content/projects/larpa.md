@@ -4,17 +4,25 @@ date: 2024-08-01T20:17:42-04:00
 draft: true
 ---
 
-Building an MMO game. 
+Building an MMORPG, because thats an easy and sane thing to do for a solo dev - right?
 
-First Explorations:
+## First Try:
+
+* Bevy
+* Lightyear
+* Procgen World
+* Multiplayer Projectiles
+
+## Second Try:
 
 * Ebitengine
 * Donburi ECS
 * NECS Networked ECS
 
-Everything is an image
 
-Second Explorations:
+## Third Try:
 
 * Godot
-* 
+* Netfox
+* Kenney Assets
+  
