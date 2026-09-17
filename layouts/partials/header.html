@@ -8,8 +8,32 @@
             {{ end }}
             {{ end }}
         </div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle" aria-label="Toggle light/dark theme">
+            <span id="theme-toggle-icon"></span>
+        </button>
         <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
         </button>
     </nav>
 </header>
+
+<script>
+    function currentTheme() {
+        var attr = document.documentElement.getAttribute('data-theme');
+        if (attr === 'light' || attr === 'dark') return attr;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setThemeIcon() {
+        document.getElementById('theme-toggle-icon').textContent = currentTheme() === 'dark' ? '☀' : '🌙';
+    }
+
+    function toggleTheme() {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { }
+        setThemeIcon();
+    }
+
+    setThemeIcon();
+</script>
