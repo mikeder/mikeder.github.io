@@ -15,9 +15,16 @@
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved === 'light' || saved === 'dark') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) { }
+        })();
+    </script>
     <link rel="stylesheet" href='/css/style.css'>
     <link rel="alternate" type="application/rss+xml" href="/blog/index.xml" title="mikeder.net">
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
@@ -40,11 +47,35 @@
             
             
         </div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle" aria-label="Toggle light/dark theme">
+            <span id="theme-toggle-icon"></span>
+        </button>
         <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
         </button>
     </nav>
 </header>
+
+<script>
+    function currentTheme() {
+        var attr = document.documentElement.getAttribute('data-theme');
+        if (attr === 'light' || attr === 'dark') return attr;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setThemeIcon() {
+        document.getElementById('theme-toggle-icon').textContent = currentTheme() === 'dark' ? '☀' : '🌙';
+    }
+
+    function toggleTheme() {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { }
+        setThemeIcon();
+    }
+
+    setThemeIcon();
+</script>
 
     <div id="page-content" class="page-wrapper">
         
@@ -55,6 +86,24 @@
         
     </div>
     
+
+    
+        <article class="post-card">
+    <h1><a href="https://mikeder.net/blog/archive/1499884703-docker-shit/">Docker Shit</a></h1>
+    <time>12.07.2017 18:38</time>
+    
+    <div class="tags">
+        
+        <a href="/tags/archive">archive</a>
+        
+    </div>
+    
+    <div class="container">
+        alias docker-nuke=&lsquo;docker kill $(docker ps -q); docker rm $(docker ps -aq); docker rmi -f $(docker images -aq); docker volume prune -f&rsquo;
+deletes and force removes all containers, images, and volumes.
+        
+    </div>
+</article>
 
     
         <article class="post-card">
@@ -245,23 +294,6 @@ for i in /*; do echo $i; find $i |wc -l; done Change to the directory with the h
 Find specific folder w/ large number of inodes:
         
         <a class="read-more" href="https://mikeder.net/blog/archive/1468841522-finding-the-source-of-excessive-inode-usage/">Read more</a>
-        
-    </div>
-</article>
-
-    
-        <article class="post-card">
-    <h1><a href="https://mikeder.net/blog/archive/1468497010-splunk-light-install/">Splunk Light Install</a></h1>
-    <time>14.07.2016 11:50</time>
-    
-    <div class="tags">
-        
-        <a href="/tags/archive">archive</a>
-        
-    </div>
-    
-    <div class="container">
-        wget -O splunklight-6.4.2-00f5bb3fa822-linux-2.6-amd64.deb ‘https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&amp;platform=linux&amp;version=6.4.2&amp;product=splunk_light&amp;filename=splunklight-6.4.2-00f5bb3fa822-linux-2.6-amd64.deb&amp;wget=true'
         
     </div>
 </article>

@@ -15,9 +15,16 @@
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved === 'light' || saved === 'dark') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) { }
+        })();
+    </script>
     <link rel="stylesheet" href='/css/style.css'>
     
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
@@ -40,11 +47,35 @@
             
             
         </div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle" aria-label="Toggle light/dark theme">
+            <span id="theme-toggle-icon"></span>
+        </button>
         <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
         </button>
     </nav>
 </header>
+
+<script>
+    function currentTheme() {
+        var attr = document.documentElement.getAttribute('data-theme');
+        if (attr === 'light' || attr === 'dark') return attr;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setThemeIcon() {
+        document.getElementById('theme-toggle-icon').textContent = currentTheme() === 'dark' ? '☀' : '🌙';
+    }
+
+    function toggleTheme() {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { }
+        setThemeIcon();
+    }
+
+    setThemeIcon();
+</script>
 
     <div id="page-content" class="page-wrapper">
         
@@ -66,7 +97,7 @@
 
 
 <div class="md__image">
-    <img id="[383 176 133 121 331 18]" src="/img/monterey-ver-1201.png#float-right" onclick="openModal(this.id)" alt="Initial Version"  />
+    <img id="[120 207 162 178 44 434]" src="/img/monterey-ver-1201.png#float-right" onclick="openModal(this.id)" alt="Initial Version"  />
 </div></p>
 <p>Issue #1 I don&rsquo;t have a whole lot of evidence to support but it did feel like the battery life on my brand new Macbook Air M1 had gotten a lot worse after the upgrade to Monterey (12.0.1). Previously I could use the laptop for several days without reaching for the charger, now it seems the battery percentage was dropping several percent every few minutes.</p>
 <p>Issue #2 really bothered me. One of the main reasons for getting a new laptop was to use in my synthesizer studio, for recording purposes. If my main audio interface, a SoundCraft MTK 12 mixer, was no longer recognized, it would defeat the purpose of the shiney new Mac.</p>
@@ -78,7 +109,7 @@
 
 
 <div class="md__image">
-    <img id="[273 286 106 274 128 4]" src="/img/bitwig-device-missing.png" onclick="openModal(this.id)" alt="Bitwig Missing I/O"  />
+    <img id="[118 390 409 160 101 53]" src="/img/bitwig-device-missing.png" onclick="openModal(this.id)" alt="Bitwig Missing I/O"  />
 </div></p>
 <p>At first it seemed maybe core audio or core services weren&rsquo;t installed right, or maybe Rosetta 2 wasn&rsquo;t working properly. The version of Bitwig that I own doesn&rsquo;t run natively on Apple silicon, so it requires Rosetta for Intel CPU emulation. 
 
@@ -88,7 +119,7 @@
 
 
 <div class="md__image">
-    <img id="[75 481 174 62 14 397]" src="/img/bitwig-kind-intel.png#float-left" onclick="openModal(this.id)" alt="Bitwig Missing I/O"  />
+    <img id="[235 139 169 126 143 441]" src="/img/bitwig-kind-intel.png#float-left" onclick="openModal(this.id)" alt="Bitwig Missing I/O"  />
 </div> I tried reinstalling Bitwig first, that had no effect. Then I tried reinstalling Rosetta 2, which kept giving me errors but still reported as being installed successfully.</p>
 <p>Finally, I just reinstalled MacOS itself, luckily this was a simple affair; just continue holding the power button on the laptop while turning it on, until a gear icon shows up. You can then navigate to a menu to perform a reinstall, which left all of my programs and stuff in place.</p>
 <p>After the reinstall I tried Bitwig again, at first it seemed the problem persisted but after a disconnect/reconnect of the USB cable to the mixer, things started working again! The mixer was recognized as unplugged and replugged and magically all the inputs and outputs came back as routing options. I swear I unplugged and replugged the mixer several times before attempting any of the above, so I blame MacOS.</p>

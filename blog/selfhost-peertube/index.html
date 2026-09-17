@@ -15,9 +15,16 @@
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved === 'light' || saved === 'dark') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) { }
+        })();
+    </script>
     <link rel="stylesheet" href='/css/style.css'>
     
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
@@ -40,11 +47,35 @@
             
             
         </div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle" aria-label="Toggle light/dark theme">
+            <span id="theme-toggle-icon"></span>
+        </button>
         <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
         </button>
     </nav>
 </header>
+
+<script>
+    function currentTheme() {
+        var attr = document.documentElement.getAttribute('data-theme');
+        if (attr === 'light' || attr === 'dark') return attr;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setThemeIcon() {
+        document.getElementById('theme-toggle-icon').textContent = currentTheme() === 'dark' ? '☀' : '🌙';
+    }
+
+    function toggleTheme() {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { }
+        setThemeIcon();
+    }
+
+    setThemeIcon();
+</script>
 
     <div id="page-content" class="page-wrapper">
         
@@ -131,7 +162,7 @@
 
 
 <div class="md__image">
-    <img id="[286 102 292 242 461 63]" src="pt-admin-config.png" onclick="openModal(this.id)" alt="pt-admin-config"  />
+    <img id="[111 434 156 159 430 311]" src="pt-admin-config.png" onclick="openModal(this.id)" alt="pt-admin-config"  />
 </div></p>
 <p>After the basic configuration, I setup a non-root user to start uploading videos to the instance.</p>
 <h2 id="migrate-videos-from-youtube">Migrate videos from YouTube</h2>
@@ -144,7 +175,7 @@
 
 
 <div class="md__image">
-    <img id="[304 55 349 141 112 441]" src="pt-user-import.png" onclick="openModal(this.id)" alt="pt-user-import"  />
+    <img id="[194 13 24 467 351 143]" src="pt-user-import.png" onclick="openModal(this.id)" alt="pt-user-import"  />
 </div></p>
 <p>
 
@@ -154,7 +185,7 @@
 
 
 <div class="md__image">
-    <img id="[422 454 21 251 204 297]" src="pt-user-sync.png" onclick="openModal(this.id)" alt="pt-user-sync"  />
+    <img id="[109 245 239 19 375 478]" src="pt-user-sync.png" onclick="openModal(this.id)" alt="pt-user-sync"  />
 </div></p>
 <p>You can check on the status of the sync and import by navigating to the &ldquo;My Imports&rdquo; page and expanding individual videos.</p>
 <p>
@@ -165,7 +196,7 @@
 
 
 <div class="md__image">
-    <img id="[327 264 10 449 233 315]" src="pt-user-list-imports.png" onclick="openModal(this.id)" alt="pt-user-list-imports"  />
+    <img id="[196 320 135 114 152 476]" src="pt-user-list-imports.png" onclick="openModal(this.id)" alt="pt-user-list-imports"  />
 </div></p>
 <p>
 
@@ -175,7 +206,7 @@
 
 
 <div class="md__image">
-    <img id="[338 148 420 278 171 143]" src="pt-user-imports-list.png" onclick="openModal(this.id)" alt="pt-user-imports-list"  />
+    <img id="[299 9 404 430 339 326]" src="pt-user-imports-list.png" onclick="openModal(this.id)" alt="pt-user-imports-list"  />
 </div></p>
 <h2 id="following-other-peopleservers">Following Other People/Servers</h2>
 <p>I <a href="https://instances.joinpeertube.org/instances/add">added my instance</a> to the public <a href="https://instances.joinpeertube.org/instances">PeerTube instance list</a>, this will make the server, and the public videos on it, discoverable by other people and servers.</p>
@@ -188,7 +219,7 @@
 
 
 <div class="md__image">
-    <img id="[186 476 275 366 119 239]" src="pt-user-remote-subscribe.png" onclick="openModal(this.id)" alt="remote-subscribe"  />
+    <img id="[331 74 164 303 227 348]" src="pt-user-remote-subscribe.png" onclick="openModal(this.id)" alt="remote-subscribe"  />
 </div></p>
 <p>In order to federate to or follow another servers content I have to login as the admin user and use the &ldquo;Federation&rdquo; panel:</p>
 <p>Administration -&gt; Federation -&gt; Follow</p>
@@ -201,7 +232,7 @@
 
 
 <div class="md__image">
-    <img id="[129 122 183 290 42 340]" src="pt-admin-notifications.png" onclick="openModal(this.id)" alt="admin-notifications"  />
+    <img id="[480 208 161 239 474 421]" src="pt-admin-notifications.png" onclick="openModal(this.id)" alt="admin-notifications"  />
 </div></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>The setup of this small self hosted instance was very painless. I&rsquo;ll likely keep it closed to just myself for now, since my Docker VM isn&rsquo;t configured with a lot of disk space at the moment. In the future I may move the storage to AWS/S3 and configure a CDN to serve all the content. This will save on local disk space and speed up content delivery significantly - right now its at the will of my own upload speed.</p>

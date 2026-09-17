@@ -15,9 +15,16 @@
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved === 'light' || saved === 'dark') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) { }
+        })();
+    </script>
     <link rel="stylesheet" href='/css/style.css'>
     <link rel="alternate" type="application/rss+xml" href="/blog/index.xml" title="mikeder.net">
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
@@ -40,11 +47,35 @@
             
             
         </div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle" aria-label="Toggle light/dark theme">
+            <span id="theme-toggle-icon"></span>
+        </button>
         <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
         </button>
     </nav>
 </header>
+
+<script>
+    function currentTheme() {
+        var attr = document.documentElement.getAttribute('data-theme');
+        if (attr === 'light' || attr === 'dark') return attr;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setThemeIcon() {
+        document.getElementById('theme-toggle-icon').textContent = currentTheme() === 'dark' ? '☀' : '🌙';
+    }
+
+    function toggleTheme() {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { }
+        setThemeIcon();
+    }
+
+    setThemeIcon();
+</script>
 
     <div id="page-content" class="page-wrapper">
         
@@ -55,6 +86,20 @@
         
     </div>
     
+
+    
+        <article class="post-card">
+    <h1><a href="https://mikeder.net/blog/jamuary-2024/day-1/">Jamuary 2024 Day 1</a></h1>
+    <time>01.01.2024 16:37</time>
+    
+    <div class="container">
+        Jamuary 2024 is starting off with “relearning” my studio. Coming off of a week long rearrangement, re-racking and re-cabling effort, it will take me some time to get comfortable with the new layout and connectivity of things.
+Despite the reorganization, I still managed 2 different jams today. Making good use of the rack mount synths I have been neglecting for years. I recorded and put up a video for the first, but the second jam is my favorite - so I shared it on my music server here.
+        
+        <a class="read-more" href="https://mikeder.net/blog/jamuary-2024/day-1/">Read more</a>
+        
+    </div>
+</article>
 
     
         <article class="post-card">
@@ -279,22 +324,6 @@ Will revist at another time, if its working, its working.
 Update October 23, 2022 The JP-6 was acting up again tonight. At this point I think I’ll contact BellToneSynthWorks in Philadelphia, PA to see if they can help. Before I do that I want to collect my notes on previous attempts to address the issues that have been plaguing this synth since I bought it.
         
         <a class="read-more" href="https://mikeder.net/blog/jupiter-6-issues-2022/">Read more</a>
-        
-    </div>
-</article>
-
-    
-        <article class="post-card">
-    <h1><a href="https://mikeder.net/blog/docker-vm-replacement/">Docker VM Replacement</a></h1>
-    <time>01.01.2022 11:23</time>
-    
-    <div class="container">
-        Installation notes for replacement of old Debian docker VM.
-Trying Alpine linux as a host, just to try something else. I started w/ the Alpine “Standard” install in sys mode.
-Install and setup of Alpine was easy enough, just boot the ISO image and perform setup. It took a few minutes to get going. Once the OS was installed I followed the docs for installing docker and docker-compose.
-Docker installed fine and worked as expected, docker-compose however did not work.
-        
-        <a class="read-more" href="https://mikeder.net/blog/docker-vm-replacement/">Read more</a>
         
     </div>
 </article>

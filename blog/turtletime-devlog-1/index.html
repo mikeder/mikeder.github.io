@@ -15,9 +15,16 @@
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved === 'light' || saved === 'dark') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) { }
+        })();
+    </script>
     <link rel="stylesheet" href='/css/style.css'>
     
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
@@ -40,11 +47,35 @@
             
             
         </div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle" aria-label="Toggle light/dark theme">
+            <span id="theme-toggle-icon"></span>
+        </button>
         <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
         </button>
     </nav>
 </header>
+
+<script>
+    function currentTheme() {
+        var attr = document.documentElement.getAttribute('data-theme');
+        if (attr === 'light' || attr === 'dark') return attr;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setThemeIcon() {
+        document.getElementById('theme-toggle-icon').textContent = currentTheme() === 'dark' ? '☀' : '🌙';
+    }
+
+    function toggleTheme() {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { }
+        setThemeIcon();
+    }
+
+    setThemeIcon();
+</script>
 
     <div id="page-content" class="page-wrapper">
         
@@ -88,7 +119,7 @@
 
 
 <div class="md__image">
-    <img id="[463 129 251 70 56 257]" src="initial_concept.png" onclick="openModal(this.id)" alt="initial concept"  />
+    <img id="[405 108 472 263 171 281]" src="initial_concept.png" onclick="openModal(this.id)" alt="initial concept"  />
 </div></p>
 <h2 id="adding-multiplayer">Adding Multiplayer</h2>
 <p>When searching around for Bevy tutorials I discovered an excellent dev blog series by <a href="https://johanhelsing.studio/posts/extreme-bevy">Johan Helsing</a> in which he builds a p2p web game in rust with rollback netcode. This sounded very interesting to me, despite being totally over my head at the time. I wanted to try it out.</p>
@@ -191,7 +222,7 @@
 
 
 <div class="md__image">
-    <img id="[176 351 343 220 200 496]" src="edible_spawns.png" onclick="openModal(this.id)" alt="edible spawns"  />
+    <img id="[320 457 305 355 473 310]" src="edible_spawns.png" onclick="openModal(this.id)" alt="edible spawns"  />
 </div>
 <em>my wife also supplied me with upgraded textures :D</em></p>
 <h3 id="random-spawns-and-how-to-agree-on-their-randomness">Random spawns and how to agree on their randomness.</h3>

@@ -15,9 +15,16 @@
     <link rel="me" href="https://universeodon.com/@sqweebking">
     
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved === 'light' || saved === 'dark') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) { }
+        })();
+    </script>
     <link rel="stylesheet" href='/css/style.css'>
     <link rel="alternate" type="application/rss+xml" href="/blog/index.xml" title="mikeder.net">
     <script src="https://kit.fontawesome.com/9ebc75ba92.js" crossorigin="anonymous"></script>
@@ -40,11 +47,35 @@
             
             
         </div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle" aria-label="Toggle light/dark theme">
+            <span id="theme-toggle-icon"></span>
+        </button>
         <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
         </button>
     </nav>
 </header>
+
+<script>
+    function currentTheme() {
+        var attr = document.documentElement.getAttribute('data-theme');
+        if (attr === 'light' || attr === 'dark') return attr;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setThemeIcon() {
+        document.getElementById('theme-toggle-icon').textContent = currentTheme() === 'dark' ? '☀' : '🌙';
+    }
+
+    function toggleTheme() {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { }
+        setThemeIcon();
+    }
+
+    setThemeIcon();
+</script>
 
     <div id="page-content" class="page-wrapper">
         
@@ -55,6 +86,21 @@
         
     </div>
     
+
+    
+        <article class="post-card">
+    <h1><a href="https://mikeder.net/blog/pve-upgrade/">Pve Upgrade</a></h1>
+    <time>23.06.2026 21:56</time>
+    
+    <div class="container">
+        In place upgrade of Proxmox VE node from 5.4 to 8 something.
+Upgrade Debian bullseye -&gt; bookworm
+Update apt sources lists releases
+sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list.d/*.sources Update and upgrade, fix shit in place
+apt update &amp;&amp; apt-upgrade mv /etc/kernel/postinst.d/zz-pve-efiboot ~ References: <a href="https://forum.proxmox.com/threads/problems-after-upgrading-from-6-x-to-7-4-3.125079/">https://forum.proxmox.com/threads/problems-after-upgrading-from-6-x-to-7-4-3.125079/</a> <a href="https://forum.proxmox.com/threads/problems-after-6-to-7.131754/">https://forum.proxmox.com/threads/problems-after-6-to-7.131754/</a>
+        
+    </div>
+</article>
 
     
         <article class="post-card">
@@ -220,20 +266,6 @@ $ cargo run &ndash;release &ndash;features bevy/trace_tracy &ndash;bin app &ndas
     
     <div class="container">
         On day 2 I didn’t get a jam recorded - I spent my free time finalizing some wiring in the patchbays to some Boss micro rack effects units. I didn’t feel too bad about missing a day since I got a couple jams recorded on day 1, will resume for day 3.
-        
-    </div>
-</article>
-
-    
-        <article class="post-card">
-    <h1><a href="https://mikeder.net/blog/jamuary-2024/day-1/">Jamuary 2024 Day 1</a></h1>
-    <time>01.01.2024 16:37</time>
-    
-    <div class="container">
-        Jamuary 2024 is starting off with “relearning” my studio. Coming off of a week long rearrangement, re-racking and re-cabling effort, it will take me some time to get comfortable with the new layout and connectivity of things.
-Despite the reorganization, I still managed 2 different jams today. Making good use of the rack mount synths I have been neglecting for years. I recorded and put up a video for the first, but the second jam is my favorite - so I shared it on my music server here.
-        
-        <a class="read-more" href="https://mikeder.net/blog/jamuary-2024/day-1/">Read more</a>
         
     </div>
 </article>
