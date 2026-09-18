@@ -1,26 +1,27 @@
 /* =============================================================
-   mikeder.net — Basic 90's Theme (light + dark)
+   mikeder.net — Neon 90's Theme (light + dark)
+   Memphis-Group palette: cyan / magenta / yellow / black / white
    ============================================================= */
 
 :root {
-  --desktop: #008080;
-  --panel: #c0c0c0;
-  --panel-light: #dcdcdc;
+  --desktop: #00c2e0;
+  --panel: #fff5cc;
+  --panel-light: #d6f7ff;
   --surface: #ffffff;
   --white: #ffffff;
 
   --text: #000000;
-  --text-dim: #444444;
-  --heading: #000080;
-  --accent: #000080;
+  --text-dim: #5a5a5a;
+  --heading: #c2008d;
+  --accent: #000000;
 
-  --link: #0000ee;
-  --link-visited: #551a8b;
-  --link-hover: #ff0000;
+  --link: #006d82;
+  --link-visited: #7a0091;
+  --link-hover: #d1005f;
 
   --border-light: #ffffff;
-  --border-dark: #808080;
-  --border-darker: #404040;
+  --border-dark: #000000;
+  --border-darker: #000000;
 
   --font: "Times New Roman", Times, serif;
   --font-mono: "Courier New", Courier, monospace;
@@ -29,43 +30,70 @@
 /* Follow system preference unless the user picked a theme explicitly */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --desktop: #004d4d;
-    --panel: #4a4a4a;
-    --panel-light: #666666;
-    --surface: #1a1a1a;
+    --desktop: #000000;
+    --panel: #12121a;
+    --panel-light: #1f1f2b;
+    --surface: #0a0a0d;
 
-    --text: #e6e6e6;
-    --text-dim: #aaaaaa;
-    --heading: #6fb3ff;
-    --accent: #2244aa;
+    --text: #f0f0f5;
+    --text-dim: #9999a8;
+    --heading: #ff00c8;
+    --accent: #1a0014;
 
-    --link: #55aaff;
-    --link-visited: #c9a0ff;
-    --link-hover: #ff6b6b;
+    --link: #00e5ff;
+    --link-visited: #d966c9;
+    --link-hover: #ffe600;
 
-    --border-light: #999999;
-    --border-darker: #1a1a1a;
+    --border-light: #555566;
+    --border-dark: #333340;
+    --border-darker: #000000;
+  }
+
+  /* Neon glow — flat color alone doesn't read as "neon" */
+  :root:not([data-theme="light"]) h1,
+  :root:not([data-theme="light"]) h2,
+  :root:not([data-theme="light"]) .nav-brand,
+  :root:not([data-theme="light"]) .home-section-header h2 {
+    text-shadow: 0 0 6px currentColor;
+  }
+
+  :root:not([data-theme="light"]) a:hover,
+  :root:not([data-theme="light"]) a:active {
+    text-shadow: 0 0 6px currentColor;
   }
 }
 
 /* Explicit override from the theme toggle, wins either direction */
 :root[data-theme="dark"] {
-  --desktop: #004d4d;
-  --panel: #4a4a4a;
-  --panel-light: #666666;
-  --surface: #1a1a1a;
+  --desktop: #000000;
+  --panel: #12121a;
+  --panel-light: #1f1f2b;
+  --surface: #0a0a0d;
 
-  --text: #e6e6e6;
-  --text-dim: #aaaaaa;
-  --heading: #6fb3ff;
-  --accent: #2244aa;
+  --text: #f0f0f5;
+  --text-dim: #9999a8;
+  --heading: #ff00c8;
+  --accent: #1a0014;
 
-  --link: #55aaff;
-  --link-visited: #c9a0ff;
-  --link-hover: #ff6b6b;
+  --link: #00e5ff;
+  --link-visited: #d966c9;
+  --link-hover: #ffe600;
 
-  --border-light: #999999;
-  --border-darker: #1a1a1a;
+  --border-light: #555566;
+  --border-dark: #333340;
+  --border-darker: #000000;
+}
+
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] .nav-brand,
+:root[data-theme="dark"] .home-section-header h2 {
+  text-shadow: 0 0 6px currentColor;
+}
+
+:root[data-theme="dark"] a:hover,
+:root[data-theme="dark"] a:active {
+  text-shadow: 0 0 6px currentColor;
 }
 
 /* ===== RESET ===== */
@@ -720,7 +748,7 @@ img {
 }
 
 #site-footer a:hover {
-  color: #ffff00;
+  color: #eaff00;
 }
 
 #site-footer a:active {
