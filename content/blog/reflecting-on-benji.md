@@ -21,3 +21,4 @@ I sometimes wonder what subconcious effects this event has had on me as a father
 
 We all miss Benji so much. I hope one day my family and I will heal to the point that we feel safe enough to have a dog in the house again. Until then, we will continue reflecting on the good memories we've had with our sweet little fluff. 
 
+RIP Benji,

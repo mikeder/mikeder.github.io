@@ -1,5 +1,5 @@
 ---
-title: "Pve Upgrade"
+title: "PVE Upgrade"
 date: 2026-06-23T21:56:19-04:00
 draft: false
 ---
@@ -21,12 +21,13 @@ Update and upgrade, fix shit in place
 ```bash
 apt update && apt-upgrade
 
-
 mv /etc/kernel/postinst.d/zz-pve-efiboot ~
 ```
-
 
 
 References:
 https://forum.proxmox.com/threads/problems-after-upgrading-from-6-x-to-7-4-3.125079/
 https://forum.proxmox.com/threads/problems-after-6-to-7.131754/
+
+
+...there was a lot more to it but I never finished writing it all down...
